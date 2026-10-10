@@ -1,0 +1,21 @@
+# secrets never go in the repo
+.env
+.env.*
+*.pem
+*.key
+secrets*
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# runtime ledger files are written by the bot and pushed to the data branch,
+# not committed on main
+ledger/heartbeat.json
+ledger/snapshot.json
+backtests/results/*.parquet
+backtests/data/
+.DS_Store

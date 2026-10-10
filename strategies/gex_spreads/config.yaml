@@ -1,0 +1,5 @@
+name: gex_spreads
+stage: idea
+symbols: [SPY, SPX]
+interval_seconds: 300
+params: {}

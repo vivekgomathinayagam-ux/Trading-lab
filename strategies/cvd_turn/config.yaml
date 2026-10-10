@@ -1,0 +1,5 @@
+name: cvd_turn
+stage: spec
+symbols: [SPY]
+interval_seconds: 180
+params: {lookback: 5, steps: 2, spike_mult: 2.0}

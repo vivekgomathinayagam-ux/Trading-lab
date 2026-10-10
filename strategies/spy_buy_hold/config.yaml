@@ -1,0 +1,6 @@
+name: spy_buy_hold
+stage: spec          # control / benchmark; promoted to paper in Phase 0 step 7
+symbols: [SPY]
+interval_seconds: 300
+params:
+  target_fraction: 1.0   # of settled cash, at the first open after enabling
