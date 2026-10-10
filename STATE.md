@@ -10,7 +10,7 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 ## What runs where
 | Thing | Where | Status |
 |---|---|---|
-| Bot (worker) | Railway, project `compound-city`, service `bot` | being created |
+| Bot (worker) | Railway, project `compound-city` (6e2d45ea), service `bot` (94c0bd23), env `production` | created, no source yet |
 | Code | GitHub `vivekgomathinayagam-ux/Trading-lab`, branch `main` | first commit |
 | Ledger snapshots | branch `data`, folder `ledger/` | not yet pushed |
 | City (visual) | Claude artifact "Compound City" | not built yet |
