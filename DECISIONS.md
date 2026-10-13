@@ -21,3 +21,15 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Two problems found in the logs, both being fixed before any setup trades paper:**
   1. No Railway volume, so `/ledger` resets on each redeploy. Fix: the worker restores `/ledger` from branch `data` at startup. Chosen over a Railway volume because it costs nothing and GitHub is already the source of truth.
   2. The sandbox account shows $100,000 equity. Sizing off that would break rule 7 (paper sized as if live). Fix: virtual paper equity = chosen paper size + the sandbox's dollar P&L since the baseline. The size itself is Gomes's call.
+
+## 2026-10-13 — Paper size, ledger restore, sticky kill switch (PR, needs Gomes's yes)
+- **Paper size: a virtual $1,000 account, whole shares (Gomes's choice).** At $50 the cap is $2.50 a trade and Tradier paper can't do fractional shares, so nothing could trade. Virtual equity = $1,000 + the sandbox's dollar P&L since the baseline. This bends rule 7 on purpose. Every setup also reports "tradeable at $50 live: yes/no" with the reason (`engine/sizing.py`). Results are reported in % and R so they scale.
+- **Ledger restore:** the worker pulls `/ledger` from branch `data` at startup, before writing anything.
+- **Risk state persists** in `ledger/risk_state.json`: peak equity, start-of-day equity, kill switch, paper baseline. Before this, a restart would have cleared the drawdown peak and the kill switch.
+- **Kill switch reset** happens only when Gomes sets `KILL_SWITCH_RESET` to *today's* New York date and the bot restarts. A stale value is ignored.
+- **Off-hours heartbeat push** every 60 minutes, so the city can show the bot is alive overnight.
+- Known edge case: if Tradier resets the sandbox account, the virtual equity jumps. To fix it, change PAPER_EQUITY (that re-baselines) or delete `risk_state.json` from branch `data`.
+
+## 2026-10-13 — LIVE_EQUITY raised to $1,000
+- Gomes clarified: the $50 cap (money rule 1) is his own money going in, not the account size when he actually flips to live. He expects hustle/trading profit to have grown it to roughly $1,000 by then.
+- `LIVE_EQUITY` default changed 50 -> 1000. "Tradeable at live size" flags (`engine/sizing.py`) now report against $1,000. Easy to raise again if the estimate changes before go-live. Money rule 1's $50 cap is unchanged.

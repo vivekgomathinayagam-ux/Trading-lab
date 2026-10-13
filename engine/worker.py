@@ -1,13 +1,18 @@
 """The Railway worker. One process, one loop.
 
-Startup: log settings (redacted), check Tradier sandbox connectivity
-(profile, balances, SPY quote, SPY expirations, market clock), write a
-heartbeat. Then every LOOP_SECONDS: heartbeat; in market hours run each
-runnable strategy, pass orders through the risk engine, send to the paper
-broker, record a shadow fill, write the ledger; every SNAPSHOT_MINUTES and at
-the close, push /ledger to the data branch.
+Startup:
+  1. log settings (redacted)
+  2. restore /ledger from branch `data` (Railway has no volume)
+  3. load risk_state.json (peak, start-of-day, kill switch, paper baseline)
+  4. read-only Tradier sandbox connectivity check
+Then every LOOP_SECONDS: heartbeat; in market hours run each runnable
+strategy, pass orders through the risk engine, send to the paper broker,
+record a shadow fill, write the ledger. Push /ledger to branch `data` every
+SNAPSHOT_MINUTES in market hours, at the close, and every
+OFFHOURS_PUSH_MINUTES otherwise (so the city sees the bot is alive).
 
-Live trading is impossible here until TRADIER_LIVE_TOKEN and
+Paper sizing: virtual $PAPER_EQUITY account (see engine/state.py), not the
+sandbox's $100k. Live trading is impossible here until TRADIER_LIVE_TOKEN and
 LIVE_TRADING_ENABLED=true are both set in Railway by Gomes.
 """
 from __future__ import annotations
@@ -24,13 +29,16 @@ from engine.brokers import TradierBroker
 from engine.clock import is_close_window, is_market_hours, now_ny
 from engine.datapush import DataPusher
 from engine.ledger import Ledger
-from engine.risk import AccountState, RiskEngine
+from engine.risk import DEFAULT_CAPS, AccountState, RiskEngine
 from engine.shadow import ShadowSimulator
+from engine.state import RiskState
 from strategies.registry import load_runnable
 
 logging.basicConfig(level=logging.INFO, stream=sys.stdout,
                     format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 log = logging.getLogger("worker")
+
+STATE_FILE = "risk_state.json"
 
 
 def connectivity_check(broker: TradierBroker) -> dict:
@@ -77,20 +85,54 @@ def connectivity_check(broker: TradierBroker) -> dict:
     return results
 
 
-def account_state(broker: TradierBroker, settings: config.Settings, peak: float,
-                  sod: float) -> AccountState:
+def build_account_state(broker: TradierBroker, settings: config.Settings, st: RiskState,
+                        today: str) -> AccountState:
+    """Real balances in live mode; virtual $PAPER_EQUITY account in paper mode.
+    Updates peak / start-of-day / kill switch in `st` (caller saves it)."""
     b = broker.balances()
-    return AccountState(equity=b.equity, peak_equity=max(peak, b.equity),
-                        start_of_day_equity=sod or b.equity, settled_cash=b.settled_cash,
-                        mode=settings.mode, live_token_present=settings.live_token_present)
+    if settings.mode == "live":
+        equity, settled = b.equity, b.settled_cash
+    else:
+        if st.ensure_paper_baseline(settings.paper_equity, b.equity, b.settled_cash):
+            log.info("paper baseline set: virtual $%.2f account (sandbox equity %.2f)",
+                     settings.paper_equity, b.equity)
+        equity, settled = st.virtual(b.equity, b.settled_cash)
+    st.roll_day(today, equity)
+    st.update_peak(equity)
+    dd = st.drawdown(equity)
+    if dd >= DEFAULT_CAPS.drawdown_kill_pct and st.trip_kill_switch(
+            f"drawdown {dd:.1%} from peak ${st.peak_equity:,.2f}"):
+        log.error("KILL SWITCH TRIPPED: %s", st.kill_switch_reason)
+    return AccountState(equity=equity, peak_equity=st.peak_equity,
+                        start_of_day_equity=st.sod_equity, settled_cash=settled,
+                        mode=settings.mode, live_token_present=settings.live_token_present,
+                        kill_switch_on=st.kill_switch_on)
 
 
 def main() -> int:
     settings = config.load()
     log.info("Compound City worker starting: %s", settings.redacted())
-    ledger = Ledger(settings.ledger_dir)
+    ledger_dir = Path(settings.ledger_dir)
     alerts = Alerts(settings.alert_webhook_url)
     pusher = DataPusher(settings.github_repo, settings.data_branch, settings.github_data_token)
+
+    # 1. restore ledger + risk state BEFORE the ledger writer creates empty files
+    try:
+        pusher.pull_dir(ledger_dir, "ledger")
+    except Exception as e:  # noqa: BLE001
+        log.error("ledger restore failed (continuing with local files): %s", e)
+        alerts.send(f"Compound City bot: ledger restore failed: {e}")
+    ledger = Ledger(settings.ledger_dir)
+    state_path = ledger_dir / STATE_FILE
+    st = RiskState.load(state_path)
+    today = now_ny().date().isoformat()
+    if st.try_reset_kill_switch(settings.kill_switch_reset, today):
+        log.warning("kill switch RESET by KILL_SWITCH_RESET=%s; remove that variable", today)
+        ledger.trade("kill_switch_reset", settings.mode, "-", "-", "-", 0, note=f"reset {today}")
+    if st.kill_switch_on:
+        log.error("kill switch is ON (%s); live entries and exits blocked until reset",
+                  st.kill_switch_reason)
+    st.save(state_path)
 
     if not settings.tradier_sandbox_token:
         log.error("TRADIER_SANDBOX_TOKEN is not set. Add it in Railway > Variables. Idling.")
@@ -110,24 +152,23 @@ def main() -> int:
     strategies = load_runnable()
     log.info("runnable strategies: %s", [s.name for s in strategies] or "none yet")
 
-    peak = 0.0
-    sod = 0.0
-    sod_date = None
     last_push = 0.0
     pushed_close_for = None
     last_run: dict[str, float] = {}
+    kill_alerted = st.kill_switch_on
 
     while True:
         loop_start = time.time()
         try:
             t = now_ny()
             in_hours = is_market_hours(t)
-            if sod_date != t.date():
-                sod_date, sod = t.date(), 0.0
+            acct = None
             if in_hours:
-                acct = account_state(broker, settings, peak, sod)
-                peak = acct.peak_equity
-                sod = sod or acct.equity
+                acct = build_account_state(broker, settings, st, t.date().isoformat())
+                st.save(state_path)
+                if st.kill_switch_on and not kill_alerted:
+                    alerts.send(f"Compound City KILL SWITCH ON: {st.kill_switch_reason}")
+                    kill_alerted = True
                 positions = broker.positions()
                 for strat in strategies:
                     if loop_start - last_run.get(strat.name, 0) < strat.cfg.interval_seconds:
@@ -152,16 +193,21 @@ def main() -> int:
                             ledger.trade("shadow_fill", order.mode, strat.name, sf.symbol, sf.side,
                                          sf.qty, price=sf.price, source=sf.source, note=sf.note)
                 ledger.write_json("snapshot.json", {
-                    "equity": acct.equity, "settled_cash": acct.settled_cash, "mode": settings.mode,
-                    "positions": positions, "strategies": [s.status() for s in strategies],
-                    "peak_equity": peak, "start_of_day_equity": sod})
+                    "mode": settings.mode, "equity": acct.equity, "settled_cash": acct.settled_cash,
+                    "peak_equity": st.peak_equity, "start_of_day_equity": st.sod_equity,
+                    "drawdown": round(st.drawdown(acct.equity), 4),
+                    "kill_switch_on": st.kill_switch_on, "paper_equity_start": st.paper_start_equity,
+                    "positions": positions, "strategies": [s.status() for s in strategies]})
             ledger.heartbeat("ok", {"market_open": in_hours, "mode": settings.mode,
+                                    "kill_switch_on": st.kill_switch_on,
                                     "strategies": [s.name for s in strategies]})
 
-            due = (loop_start - last_push) >= settings.snapshot_minutes * 60
+            since = loop_start - last_push
+            due_in_hours = in_hours and since >= settings.snapshot_minutes * 60
+            due_off_hours = (not in_hours) and since >= settings.offhours_push_minutes * 60
             close_due = is_close_window(t) and pushed_close_for != t.date()
-            if (in_hours and due) or close_due or last_push == 0:
-                pusher.push_dir(Path(settings.ledger_dir), "ledger",
+            if due_in_hours or due_off_hours or close_due or last_push == 0:
+                pusher.push_dir(ledger_dir, "ledger",
                                 f"snapshot {t.isoformat(timespec='minutes')}")
                 last_push = loop_start
                 if close_due:

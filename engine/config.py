@@ -8,6 +8,15 @@ Nothing here is ever logged in full. Variable NAMES (Gomes types the values):
                                        snapshots to the "data" branch
   TRADIER_LIVE_TOKEN         LATER     only when Gomes decides to go live
   LIVE_TRADING_ENABLED       LATER     must be exactly "true" as well
+  KILL_SWITCH_RESET          RARE      today's New York date (YYYY-MM-DD) to clear
+                                       a tripped kill switch on the next restart
+
+Non-secret: PAPER_EQUITY (default 1000, Gomes's choice 2026-10-13),
+LIVE_EQUITY (default 1000, Gomes's clarification 2026-10-13: the $50 money-rule
+cap is his own money going IN, not the account size when he actually flips to
+live — by then he expects hustle/trading profit to have grown it to roughly
+$1,000. Used for "tradeable at $1,000 live" flags; raise it again if that
+estimate changes before go-live.)
 
 Non-secret settings have defaults below and can be overridden the same way.
 """
@@ -36,6 +45,10 @@ class Settings:
     snapshot_minutes: int
     shadow_slippage_bps: float
     env_name: str
+    paper_equity: float
+    live_equity: float
+    kill_switch_reset: str | None
+    offhours_push_minutes: int
 
     @property
     def live_token_present(self) -> bool:
@@ -58,6 +71,9 @@ class Settings:
             "data_branch": self.data_branch,
             "loop_seconds": self.loop_seconds,
             "snapshot_minutes": self.snapshot_minutes,
+            "paper_equity": self.paper_equity,
+            "live_equity": self.live_equity,
+            "kill_switch_reset": "set" if self.kill_switch_reset else "absent",
         }
 
 
@@ -75,4 +91,8 @@ def load() -> Settings:
         snapshot_minutes=int(_env("SNAPSHOT_MINUTES", "15")),
         shadow_slippage_bps=float(_env("SHADOW_SLIPPAGE_BPS", "2")),
         env_name=_env("RAILWAY_ENVIRONMENT_NAME", "local"),
+        paper_equity=float(_env("PAPER_EQUITY", "1000")),
+        live_equity=float(_env("LIVE_EQUITY", "1000")),
+        kill_switch_reset=_env("KILL_SWITCH_RESET"),
+        offhours_push_minutes=int(_env("OFFHOURS_PUSH_MINUTES", "60")),
     )
