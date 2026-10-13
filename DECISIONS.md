@@ -14,3 +14,10 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Alerts** go to a webhook URL (`ALERT_WEBHOOK_URL`, Discord-style). Silent if unset.
 - **Variable names Gomes types into Railway:** `TRADIER_SANDBOX_TOKEN` (now), `ALERT_WEBHOOK_URL` (optional), `GITHUB_DATA_TOKEN` (for snapshots), later `TRADIER_LIVE_TOKEN` + `LIVE_TRADING_ENABLED`.
 - **Strategy stages** live in each `config.yaml`; the worker only runs `paper` and `live`. Promotion = editing one line, reviewed via PR.
+
+## 2026-10-13 — First deploy
+- **Railway region moved from Amsterdam (default) to us-east4.** Reason: closer to US markets and Tradier; lower latency for intraday setups.
+- **First deploy succeeded.** Logs: 5/5 Tradier sandbox checks passed, branch `data` created, 3 ledger files pushed.
+- **Two problems found in the logs, both being fixed before any setup trades paper:**
+  1. No Railway volume, so `/ledger` resets on each redeploy. Fix: the worker restores `/ledger` from branch `data` at startup. Chosen over a Railway volume because it costs nothing and GitHub is already the source of truth.
+  2. The sandbox account shows $100,000 equity. Sizing off that would break rule 7 (paper sized as if live). Fix: virtual paper equity = chosen paper size + the sandbox's dollar P&L since the baseline. The size itself is Gomes's call.
