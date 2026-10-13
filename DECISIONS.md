@@ -29,3 +29,7 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Kill switch reset** happens only when Gomes sets `KILL_SWITCH_RESET` to *today's* New York date and the bot restarts. A stale value is ignored.
 - **Off-hours heartbeat push** every 60 minutes, so the city can show the bot is alive overnight.
 - Known edge case: if Tradier resets the sandbox account, the virtual equity jumps. To fix it, change PAPER_EQUITY (that re-baselines) or delete `risk_state.json` from branch `data`.
+
+## 2026-10-13 — LIVE_EQUITY raised to $1,000
+- Gomes clarified: the $50 cap (money rule 1) is his own money going in, not the account size when he actually flips to live. He expects hustle/trading profit to have grown it to roughly $1,000 by then.
+- `LIVE_EQUITY` default changed 50 -> 1000. "Tradeable at live size" flags (`engine/sizing.py`) now report against $1,000. Easy to raise again if the estimate changes before go-live. Money rule 1's $50 cap is unchanged.
