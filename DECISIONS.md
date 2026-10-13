@@ -33,3 +33,11 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 ## 2026-10-13 — LIVE_EQUITY raised to $1,000
 - Gomes clarified: the $50 cap (money rule 1) is his own money going in, not the account size when he actually flips to live. He expects hustle/trading profit to have grown it to roughly $1,000 by then.
 - `LIVE_EQUITY` default changed 50 -> 1000. "Tradeable at live size" flags (`engine/sizing.py`) now report against $1,000. Easy to raise again if the estimate changes before go-live. Money rule 1's $50 cap is unchanged.
+
+## 2026-10-13 — Compound City (Phase 0 step 5)
+- **The city is a hand-built artifact** (`city/compound-city.html`), not the Dashboard type. Reason: the brief calls for a game-style pixel town with characters, movement, and day and night, which the Dashboard type doesn't do. The Ledger view inside it covers the charts and tables.
+- **State lives in the artifact's database**, not in the page. Residents write with ArtifactData; Gomes answers City Hall on the page. Access rule: anyone who can open the page reads; only owner/editors write.
+- **Seeded honestly:** bot/Depot, Treasury, Watchtower, City Hall tasks and the decision timeline are real. Residents' activity, setup metrics, hustle stalls, the trade log and the newsstand note are SAMPLE, with dashed gold outlines, until real runs replace them.
+- **Day and night follow market hours (PT):** pre-market dawn, market-open day, after-hours dusk, night. Lights dim if the heartbeat is older than 25 min in market hours or 150 min otherwise.
+- **Railway watch patterns** limit redeploys to bot code (`engine/`, `strategies/`, `scripts/`, requirements, railway.toml, .python-version). City or docs commits no longer restart the bot.
+- **Railway source reconnected** as `vivekgomathinayagam-ux/Trading-lab` on branch `main`. The earlier lowercase name with no branch set never auto-deployed after the first build.

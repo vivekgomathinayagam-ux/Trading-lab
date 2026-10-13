@@ -1,0 +1,29 @@
+{
+  "id": "newsie",
+  "name": "Newsie",
+  "short": "Newsie",
+  "kind": "resident",
+  "role": "Pre-market note, weekdays 6 AM",
+  "icon": "news",
+  "home": "newsstand",
+  "district": "trading",
+  "status": "asleep",
+  "action": "SAMPLE \u00b7 Filed today's pre-market note",
+  "action_at": "2026-10-13T13:15:00Z",
+  "progress": null,
+  "queue": [
+    "Tomorrow 6:00 AM PT: pre-market note"
+  ],
+  "history": [
+    {
+      "t": "2026-10-13T13:15:00Z",
+      "text": "SAMPLE \u00b7 Filed the pre-market note"
+    },
+    {
+      "t": "2026-10-13T13:10:00Z",
+      "text": "SAMPLE \u00b7 Checked the bot heartbeat"
+    }
+  ],
+  "sample": true,
+  "real_note": "Not scheduled yet. Real activity starts in Phase 0 step 6."
+}

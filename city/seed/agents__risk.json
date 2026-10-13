@@ -1,0 +1,29 @@
+{
+  "id": "risk",
+  "name": "Risk Officer",
+  "short": "Risk",
+  "kind": "resident",
+  "role": "Daily risk check, 10 AM",
+  "icon": "shield",
+  "home": "watchtower",
+  "district": "trading",
+  "status": "waiting",
+  "action": "SAMPLE \u00b7 Waiting on the Railway deploy status",
+  "action_at": "2026-10-13T22:12:00Z",
+  "progress": null,
+  "queue": [
+    "Check caps after deploy"
+  ],
+  "history": [
+    {
+      "t": "2026-10-13T22:12:00Z",
+      "text": "SAMPLE \u00b7 Asked Railway for deploy status"
+    },
+    {
+      "t": "2026-10-13T17:15:00Z",
+      "text": "SAMPLE \u00b7 All caps within limits"
+    }
+  ],
+  "sample": true,
+  "real_note": "Not scheduled yet. Real activity starts in Phase 0 step 6."
+}

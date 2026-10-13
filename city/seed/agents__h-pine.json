@@ -1,0 +1,30 @@
+{
+  "id": "h-pine",
+  "name": "Pine Script commissions",
+  "short": "Pine work",
+  "stall": 0,
+  "stage": "proposed",
+  "status": "needs_me",
+  "action": "SAMPLE \u00b7 Waiting for your yes at City Hall",
+  "revenue": 0,
+  "costs": 0,
+  "hours": 0,
+  "one_pager": "SAMPLE. Custom TradingView indicators for traders who want their rules coded. Start cost $0. About 3 hours a week of your time for reviews.",
+  "kind": "hustle",
+  "icon": "mega",
+  "district": "hustles",
+  "sample": true,
+  "action_at": "2026-10-13T20:15:00Z",
+  "money_as_of": "2026-10-13T20:15:00Z",
+  "source": "SAMPLE \u00b7 ledger/money.csv",
+  "history": [
+    {
+      "t": "2026-10-13T20:15:00Z",
+      "text": "SAMPLE \u00b7 Proposed at City Hall"
+    }
+  ],
+  "queue": [
+    "Your yes or no"
+  ],
+  "real_note": "Not a real proposal. Real one-pagers arrive in step 7."
+}

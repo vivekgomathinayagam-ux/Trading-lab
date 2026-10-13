@@ -1,0 +1,30 @@
+{
+  "id": "researcher",
+  "name": "Researcher",
+  "short": "Researcher",
+  "kind": "resident",
+  "role": "Backtests, Saturdays",
+  "icon": "flask",
+  "home": "lab",
+  "district": "trading",
+  "status": "working",
+  "action": "SAMPLE \u00b7 Backtesting ORB on SPY, 15-minute range (2 of 6 variants)",
+  "action_at": "2026-10-13T22:03:00Z",
+  "progress": 35,
+  "queue": [
+    "SAMPLE \u00b7 CVD turn, 3-minute backtest",
+    "SAMPLE \u00b7 ORB TQQQ variants"
+  ],
+  "history": [
+    {
+      "t": "2026-10-13T22:03:00Z",
+      "text": "SAMPLE \u00b7 Started ORB SPY 15-minute backtest"
+    },
+    {
+      "t": "2026-10-13T20:45:00Z",
+      "text": "SAMPLE \u00b7 Downloaded 2 years of SPY minute bars"
+    }
+  ],
+  "sample": true,
+  "real_note": "Not scheduled yet. Real activity starts in Phase 0 step 6."
+}

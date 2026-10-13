@@ -1,0 +1,35 @@
+{
+  "id": "mayor",
+  "name": "Mayor",
+  "short": "Mayor",
+  "kind": "resident",
+  "role": "Weekly plan, Sundays",
+  "icon": "flag",
+  "home": "cityhall",
+  "district": "core",
+  "status": "asleep",
+  "action": "SAMPLE \u00b7 Posted the weekly plan to STATE.md",
+  "action_at": "2026-10-11T22:15:00Z",
+  "progress": null,
+  "queue": [
+    "Sunday: weekly plan and district review"
+  ],
+  "history": [
+    {
+      "t": "2026-10-11T22:15:00Z",
+      "text": "SAMPLE \u00b7 Posted the weekly plan"
+    },
+    {
+      "t": "2026-10-11T21:55:00Z",
+      "text": "SAMPLE \u00b7 Reviewed every district"
+    }
+  ],
+  "links": [
+    {
+      "label": "STATE.md",
+      "url": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/STATE.md"
+    }
+  ],
+  "sample": true,
+  "real_note": "Not scheduled yet. Real activity starts in Phase 0 step 6."
+}

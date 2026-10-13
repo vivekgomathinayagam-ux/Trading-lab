@@ -1,0 +1,30 @@
+{
+  "id": "accountant",
+  "name": "Accountant",
+  "short": "Accountant",
+  "kind": "resident",
+  "role": "Daily close, 1:30 PM",
+  "icon": "coin",
+  "home": "treasury",
+  "district": "core",
+  "status": "working",
+  "action": "SAMPLE \u00b7 Reconciling paper fills against Tradier",
+  "action_at": "2026-10-13T22:09:00Z",
+  "progress": 60,
+  "queue": [
+    "Update the Treasury",
+    "Write the journal entry"
+  ],
+  "history": [
+    {
+      "t": "2026-10-13T22:09:00Z",
+      "text": "SAMPLE \u00b7 Started reconciling paper fills"
+    },
+    {
+      "t": "2026-10-13T21:35:00Z",
+      "text": "SAMPLE \u00b7 Reconciled 12 fills"
+    }
+  ],
+  "sample": true,
+  "real_note": "Not scheduled yet. Real activity starts in Phase 0 step 6."
+}

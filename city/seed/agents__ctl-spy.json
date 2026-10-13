@@ -1,0 +1,134 @@
+{
+  "id": "ctl-spy",
+  "name": "SPY buy and hold",
+  "short": "SPY hold",
+  "desk": 3,
+  "stage": "paper",
+  "symbols": [
+    "SPY"
+  ],
+  "status": "asleep",
+  "action": "SAMPLE \u00b7 Holding; nothing to do until rebalance",
+  "progress": null,
+  "metrics": {
+    "trades": 1,
+    "win_rate": null,
+    "expectancy_r": null,
+    "pf": null,
+    "max_dd": 3.4,
+    "sharpe": 1.4,
+    "sample": true,
+    "as_of": "2026-10-13T22:07:00Z",
+    "source": "SAMPLE \u00b7 no trades yet"
+  },
+  "equity": [
+    {
+      "t": "2026-09-15T20:00:00Z",
+      "v": 0.0
+    },
+    {
+      "t": "2026-09-17T06:48:00Z",
+      "v": -0.31
+    },
+    {
+      "t": "2026-09-18T17:36:00Z",
+      "v": -0.61
+    },
+    {
+      "t": "2026-09-20T04:24:00Z",
+      "v": -0.09
+    },
+    {
+      "t": "2026-09-21T15:12:00Z",
+      "v": -0.9
+    },
+    {
+      "t": "2026-09-23T02:00:00Z",
+      "v": -0.74
+    },
+    {
+      "t": "2026-09-24T12:48:00Z",
+      "v": -1.54
+    },
+    {
+      "t": "2026-09-25T23:36:00Z",
+      "v": -0.82
+    },
+    {
+      "t": "2026-09-27T10:24:00Z",
+      "v": -0.51
+    },
+    {
+      "t": "2026-09-28T21:12:00Z",
+      "v": 0.32
+    },
+    {
+      "t": "2026-09-30T08:00:00Z",
+      "v": 0.31
+    },
+    {
+      "t": "2026-10-01T18:48:00Z",
+      "v": 0.71
+    },
+    {
+      "t": "2026-10-03T05:36:00Z",
+      "v": 0.8
+    },
+    {
+      "t": "2026-10-04T16:24:00Z",
+      "v": 0.69
+    },
+    {
+      "t": "2026-10-06T03:12:00Z",
+      "v": 0.98
+    },
+    {
+      "t": "2026-10-07T14:00:00Z",
+      "v": 0.63
+    },
+    {
+      "t": "2026-10-09T00:48:00Z",
+      "v": 0.69
+    },
+    {
+      "t": "2026-10-10T11:36:00Z",
+      "v": 1.22
+    },
+    {
+      "t": "2026-10-11T22:24:00Z",
+      "v": 1.47
+    },
+    {
+      "t": "2026-10-13T09:12:00Z",
+      "v": 1.51
+    }
+  ],
+  "tradeable": {
+    "live_equity": 1000,
+    "ok": true,
+    "why": "1 share of SPY fits"
+  },
+  "kind": "setup",
+  "icon": "chart",
+  "district": "trading",
+  "sample": true,
+  "action_at": "2026-10-13T22:07:00Z",
+  "real_note": "Real stage today: Spec (GEX: Idea). No trades yet; these numbers are examples.",
+  "links": [
+    {
+      "label": "spec.md",
+      "url": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/strategies/controls/spec.md"
+    }
+  ],
+  "history": [
+    {
+      "t": "2026-10-13T22:07:00Z",
+      "text": "SAMPLE \u00b7 Holding; nothing to do until rebalance"
+    },
+    {
+      "t": "2026-10-13T21:15:00Z",
+      "text": "SAMPLE \u00b7 Logged a heartbeat"
+    }
+  ],
+  "queue": []
+}

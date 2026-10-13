@@ -1,0 +1,48 @@
+{
+  "id": "cvd",
+  "name": "CVD turn \u00b7 3-min",
+  "short": "CVD",
+  "desk": 1,
+  "stage": "backtest",
+  "symbols": [
+    "SPY"
+  ],
+  "status": "waiting",
+  "action": "SAMPLE \u00b7 Waiting on the Lab's backtest",
+  "progress": null,
+  "metrics": {
+    "trades": 0,
+    "sample": true,
+    "as_of": "2026-10-13T22:07:00Z",
+    "source": "SAMPLE \u00b7 no trades yet"
+  },
+  "equity": [],
+  "tradeable": {
+    "live_equity": 1000,
+    "ok": true,
+    "why": "Same sizing as ORB on SPY"
+  },
+  "kind": "setup",
+  "icon": "chart",
+  "district": "trading",
+  "sample": true,
+  "action_at": "2026-10-13T22:07:00Z",
+  "real_note": "Real stage today: Spec (GEX: Idea). No trades yet; these numbers are examples.",
+  "links": [
+    {
+      "label": "spec.md",
+      "url": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/strategies/cvd_turn/spec.md"
+    }
+  ],
+  "history": [
+    {
+      "t": "2026-10-13T22:07:00Z",
+      "text": "SAMPLE \u00b7 Waiting on the Lab's backtest"
+    },
+    {
+      "t": "2026-10-13T21:15:00Z",
+      "text": "SAMPLE \u00b7 Logged a heartbeat"
+    }
+  ],
+  "queue": []
+}

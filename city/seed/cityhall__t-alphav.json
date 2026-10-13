@@ -1,0 +1,10 @@
+{
+  "id": "t-alphav",
+  "title": "Connect the Alpha Vantage connector",
+  "kind": "task",
+  "status": "pending",
+  "sample": false,
+  "from_label": "Claude",
+  "created_at": "2026-10-13T21:19:00Z",
+  "detail": "Free key from alphavantage.co, then claude.ai > Settings > Connectors. The Newsie uses it for prices and news."
+}

@@ -1,0 +1,139 @@
+{
+  "sample": true,
+  "as_of": "2026-10-13T22:15:00Z",
+  "source": "SAMPLE \u00b7 ledger/trades.csv",
+  "rows": [
+    {
+      "t": "2026-10-13T19:15:00Z",
+      "setup": "ORB \u00b7 SPY and TQQQ",
+      "symbol": "SPY",
+      "side": "buy",
+      "qty": 1,
+      "price": 775.67,
+      "shadow_price": 775.29,
+      "pnl_r": -0.28,
+      "ref": "trades.csv row 40"
+    },
+    {
+      "t": "2026-10-13T14:15:00Z",
+      "setup": "EMA 9/21 cross",
+      "symbol": "SPY",
+      "side": "sell",
+      "qty": 1,
+      "price": 770.68,
+      "shadow_price": 770.87,
+      "pnl_r": 0.76,
+      "ref": "trades.csv row 39"
+    },
+    {
+      "t": "2026-10-13T09:15:00Z",
+      "setup": "ORB \u00b7 SPY and TQQQ",
+      "symbol": "SPY",
+      "side": "buy",
+      "qty": 1,
+      "price": 778.71,
+      "shadow_price": 778.38,
+      "pnl_r": 0.1,
+      "ref": "trades.csv row 38"
+    },
+    {
+      "t": "2026-10-13T04:15:00Z",
+      "setup": "EMA 9/21 cross",
+      "symbol": "SPY",
+      "side": "sell",
+      "qty": 1,
+      "price": 768.36,
+      "shadow_price": 768.13,
+      "pnl_r": 0.31,
+      "ref": "trades.csv row 37"
+    },
+    {
+      "t": "2026-10-12T23:15:00Z",
+      "setup": "ORB \u00b7 SPY and TQQQ",
+      "symbol": "SPY",
+      "side": "buy",
+      "qty": 1,
+      "price": 768.32,
+      "shadow_price": 768.08,
+      "pnl_r": 0.69,
+      "ref": "trades.csv row 36"
+    },
+    {
+      "t": "2026-10-12T18:15:00Z",
+      "setup": "EMA 9/21 cross",
+      "symbol": "SPY",
+      "side": "sell",
+      "qty": 1,
+      "price": 774.54,
+      "shadow_price": 774.32,
+      "pnl_r": 0.53,
+      "ref": "trades.csv row 35"
+    },
+    {
+      "t": "2026-10-12T13:15:00Z",
+      "setup": "ORB \u00b7 SPY and TQQQ",
+      "symbol": "SPY",
+      "side": "buy",
+      "qty": 1,
+      "price": 777.71,
+      "shadow_price": 777.32,
+      "pnl_r": 1.1,
+      "ref": "trades.csv row 34"
+    },
+    {
+      "t": "2026-10-12T08:15:00Z",
+      "setup": "EMA 9/21 cross",
+      "symbol": "SPY",
+      "side": "sell",
+      "qty": 1,
+      "price": 776.38,
+      "shadow_price": 776.25,
+      "pnl_r": -0.6,
+      "ref": "trades.csv row 33"
+    },
+    {
+      "t": "2026-10-12T03:15:00Z",
+      "setup": "ORB \u00b7 SPY and TQQQ",
+      "symbol": "SPY",
+      "side": "buy",
+      "qty": 1,
+      "price": 779.49,
+      "shadow_price": 779.36,
+      "pnl_r": -0.76,
+      "ref": "trades.csv row 32"
+    },
+    {
+      "t": "2026-10-11T22:15:00Z",
+      "setup": "EMA 9/21 cross",
+      "symbol": "SPY",
+      "side": "sell",
+      "qty": 1,
+      "price": 769.16,
+      "shadow_price": 769.44,
+      "pnl_r": 0.57,
+      "ref": "trades.csv row 31"
+    },
+    {
+      "t": "2026-10-11T17:15:00Z",
+      "setup": "ORB \u00b7 SPY and TQQQ",
+      "symbol": "SPY",
+      "side": "buy",
+      "qty": 1,
+      "price": 777.69,
+      "shadow_price": 777.87,
+      "pnl_r": 0.39,
+      "ref": "trades.csv row 30"
+    },
+    {
+      "t": "2026-10-11T12:15:00Z",
+      "setup": "EMA 9/21 cross",
+      "symbol": "SPY",
+      "side": "sell",
+      "qty": 1,
+      "price": 779.68,
+      "shadow_price": 779.58,
+      "pnl_r": 0.44,
+      "ref": "trades.csv row 29"
+    }
+  ]
+}

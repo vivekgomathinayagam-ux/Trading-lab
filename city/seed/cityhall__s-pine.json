@@ -1,0 +1,10 @@
+{
+  "id": "s-pine",
+  "title": "Start the Pine Script commissions hustle?",
+  "kind": "decision",
+  "status": "pending",
+  "sample": true,
+  "from_label": "Hustle Scout",
+  "created_at": "2026-10-13T20:15:00Z",
+  "detail": "SAMPLE item to show how hustle approvals look."
+}

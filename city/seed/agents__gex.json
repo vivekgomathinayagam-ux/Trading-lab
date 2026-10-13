@@ -1,0 +1,49 @@
+{
+  "id": "gex",
+  "name": "GEX verticals \u00b7 SPY/SPX",
+  "short": "GEX",
+  "desk": 2,
+  "stage": "idea",
+  "symbols": [
+    "SPY",
+    "SPX"
+  ],
+  "status": "error",
+  "action": "SAMPLE \u00b7 Blocked: no GEX data source connected",
+  "progress": null,
+  "metrics": {
+    "trades": 0,
+    "sample": true,
+    "as_of": "2026-10-13T22:07:00Z",
+    "source": "SAMPLE \u00b7 no trades yet"
+  },
+  "equity": [],
+  "tradeable": {
+    "live_equity": 1000,
+    "ok": false,
+    "why": "A $1-wide SPY spread can lose about $60-100; the cap at $1,000 is $50"
+  },
+  "kind": "setup",
+  "icon": "chart",
+  "district": "trading",
+  "sample": true,
+  "action_at": "2026-10-13T22:07:00Z",
+  "real_note": "Real stage today: Spec (GEX: Idea). No trades yet; these numbers are examples.",
+  "links": [
+    {
+      "label": "spec.md",
+      "url": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/strategies/gex_spreads/spec.md"
+    }
+  ],
+  "history": [
+    {
+      "t": "2026-10-13T22:07:00Z",
+      "text": "SAMPLE \u00b7 Blocked: no GEX data source connected"
+    },
+    {
+      "t": "2026-10-13T21:15:00Z",
+      "text": "SAMPLE \u00b7 Logged a heartbeat"
+    }
+  ],
+  "queue": []
+}

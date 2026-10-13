@@ -1,0 +1,33 @@
+{
+  "id": "scout",
+  "name": "Hustle Scout",
+  "short": "Scout",
+  "kind": "resident",
+  "role": "Hustle ideas, Wednesdays",
+  "icon": "mega",
+  "home": "market",
+  "district": "hustles",
+  "status": "needs_me",
+  "action": "SAMPLE \u00b7 Two one-pagers are waiting for you at City Hall",
+  "action_at": "2026-10-13T20:15:00Z",
+  "progress": null,
+  "handoff": {
+    "to": "cityhall",
+    "active": true
+  },
+  "queue": [
+    "Wait for your yes or no"
+  ],
+  "history": [
+    {
+      "t": "2026-10-13T20:15:00Z",
+      "text": "SAMPLE \u00b7 Filed 2 one-pagers at City Hall"
+    },
+    {
+      "t": "2026-10-13T19:15:00Z",
+      "text": "SAMPLE \u00b7 Researched Pine Script commission demand"
+    }
+  ],
+  "sample": true,
+  "real_note": "Not scheduled yet. Real activity starts in Phase 0 step 6."
+}

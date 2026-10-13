@@ -1,0 +1,137 @@
+{
+  "as_of": "2026-10-13T22:15:00Z",
+  "sample_note": "Characters, setup numbers and hustle stalls are SAMPLE until the residents start (step 6) and setups trade (step 7). The bot, Treasury, Watchtower, City Hall and decision timeline are real.",
+  "bot": {
+    "sample": false,
+    "status": "running",
+    "mode": "paper",
+    "last_heartbeat": "2026-10-13T21:58:15Z",
+    "deploy_status": "SUCCESS",
+    "deployed_at": "2026-10-13T21:58:14Z",
+    "commit": "296886a",
+    "region": "us-east4",
+    "checks": "5 of 5 Tradier sandbox checks passed. Ledger restored from the data branch (3 files). Paper account set to $1,000; baseline locks at the next open.",
+    "as_of": "2026-10-13T21:58:15Z",
+    "source": "Railway deploy logs \u00b7 data/ledger/heartbeat.json"
+  },
+  "treasury": {
+    "sample": false,
+    "as_of": "2026-10-13T22:15:00Z",
+    "source": "STATE.md \u00b7 ledger/money.csv (no rows yet)",
+    "seed": 50,
+    "seed_deposited": false,
+    "hustle_income": 0,
+    "trading_pnl": 0,
+    "income_month": 0,
+    "cash": 50,
+    "costs_month": [
+      {
+        "label": "Claude Pro",
+        "amount": 20
+      },
+      {
+        "label": "Railway Hobby",
+        "amount": 5
+      }
+    ]
+  },
+  "watchtower": {
+    "sample": false,
+    "as_of": "2026-10-13T21:58:15Z",
+    "source": "engine/risk \u00b7 ledger/risk_state.json",
+    "mode": "paper",
+    "caps": {
+      "per_trade": 5,
+      "daily": 10,
+      "drawdown": 30
+    },
+    "used": {
+      "per_trade_max": 0,
+      "daily_loss": 0,
+      "drawdown": 0
+    },
+    "kill_switch_on": false,
+    "paper_equity": 1000,
+    "live_equity_assumed": 1000
+  },
+  "newsstand": {
+    "sample": true,
+    "as_of": "2026-10-13T13:15:00Z",
+    "regime": "SAMPLE \u00b7 Range-bound open expected",
+    "note": "SAMPLE. The Newsie starts in step 6 and will post a real pre-market note here each weekday around 6:00 AM PT: calendar, news, regime, and which setups should sit out.",
+    "events": [
+      {
+        "time": "5:30 AM PT",
+        "text": "SAMPLE \u00b7 Economic data release"
+      }
+    ],
+    "sit_out": []
+  },
+  "ticker": [
+    {
+      "t": "2026-10-13T21:58:15Z",
+      "text": "Bot redeployed: $1,000 paper account, ledger restore, sticky kill switch",
+      "sample": false
+    },
+    {
+      "t": "2026-10-13T21:30:00Z",
+      "text": "Pull request #1 merged by Gomes",
+      "sample": false
+    },
+    {
+      "t": "2026-10-13T21:10:45Z",
+      "text": "Data branch created, first ledger snapshot pushed",
+      "sample": false
+    },
+    {
+      "t": "2026-10-13T21:10:42Z",
+      "text": "Tradier sandbox: 5 of 5 connectivity checks passed",
+      "sample": false
+    },
+    {
+      "t": "2026-10-13T22:03:00Z",
+      "text": "Researcher started ORB SPY 15-minute range backtest",
+      "sample": true
+    },
+    {
+      "t": "2026-10-13T21:35:00Z",
+      "text": "Accountant reconciled 12 paper fills",
+      "sample": true
+    },
+    {
+      "t": "2026-10-13T20:15:00Z",
+      "text": "Hustle Scout filed 2 one-pagers at City Hall",
+      "sample": true
+    }
+  ],
+  "decisions": [
+    {
+      "date": "Oct 13",
+      "text": "Live sizing assumes about $1,000 at go-live; the $50 cap on your own money is unchanged."
+    },
+    {
+      "date": "Oct 13",
+      "text": "Ledger and risk state restored from GitHub on restart; the kill switch stays on until you reset it."
+    },
+    {
+      "date": "Oct 13",
+      "text": "Paper trades run on a virtual $1,000 account with whole shares."
+    },
+    {
+      "date": "Oct 13",
+      "text": "Bot moved to a US East region; first deploy passed 5 of 5 Tradier checks."
+    },
+    {
+      "date": "Oct 9",
+      "text": "Shadow fills priced from a real-time last price plus 2 bps slippage."
+    },
+    {
+      "date": "Oct 9",
+      "text": "Risk engine built: 5% per trade, 10% daily stop, 30% drawdown kill switch, no margin, no naked shorts."
+    },
+    {
+      "date": "Oct 9",
+      "text": "Fresh start: repo built from zero."
+    }
+  ]
+}
