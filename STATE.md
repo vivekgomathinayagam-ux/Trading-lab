@@ -14,30 +14,42 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 | Code | GitHub `vivekgomathinayagam-ux/Trading-lab`, branch `main` | pushed |
 | Ledger snapshots | branch `data`, folder `ledger/` | first push 2026-10-13 21:10 UTC |
 | City (visual) | Artifact **Compound City**: https://claude.ai/artifact/TfjmHPyajJQfFdXrWDrPZm (source `city/compound-city.html`) | live, partly SAMPLE |
-| Desk | folder "Compound City" on Gomes's Mac (iCloud) | connected, empty |
+| Desk | folder "Compound City" on Vivek's Mac (iCloud) | connected, empty |
 
 ## Mode
 **paper** (Tradier sandbox). Live impossible: no live token in Railway.
 
-## Treasury
-Seed: $50 (own money, cap; not yet deposited anywhere). Hustle income: $0. Trading P&L: $0.
-Known monthly costs: Claude Pro $20, Railway Hobby $5 (+usage) = $25/month. Runway on the seed: 2.0 months.
+## Treasury (capital rules set by Vivek, 2026-10-13)
+- **Live trading fund:** $1,000 of Vivek's money, for live trading only. Not deposited yet. Hustle income is added here before go-live; Vivek wants to start live with more than $1,000.
+- **Operations fund:** $50 for running costs (Claude Pro $20/month). Runway: 2.5 months. Not deposited yet.
+- **Railway:** paid by Vivek's existing subscription, outside both funds.
+- Never ask Vivek to add money beyond these. Hustle income: $0. Trading P&L: $0.
+- Open question at City Hall: should hustle income top up the operations fund first, before it goes to the live fund? Otherwise the $50 runs out in about 2.5 months.
+- **Paper trading is fully autonomous:** no trade confirmations, ever. Every paper order and fill is logged in `ledger/trades.csv` and shown in the city's Ledger view.
 
 ## Setups (the tournament)
 | Setup | Stage | Notes |
 |---|---|---|
-| ORB SPY/TQQQ | spec | Gomes's design; Pine signal + Python backtest |
+| ORB SPY/TQQQ | spec | Vivek's design; Pine signal + Python backtest |
 | CVD turn 3-min | spec | buy from 5-candle low, sell from 5-candle high; skip spikes; RTH only |
 | GEX-filtered SPY/SPX verticals | idea | needs GEX source (FlashAlpha) and real options history to backtest |
 | Control: SPY buy-and-hold | spec | benchmark |
 | Control: 9/21 EMA cross | spec | benchmark |
 
-## Hustles
-None proposed yet.
+## Hustles (all proposed 2026-10-13; waiting on Vivek at City Hall)
+| Hustle | One-pager | 90-day range | Autonomy |
+|---|---|---|---|
+| Trader spreadsheet templates (Gumroad/Etsy) | `hustles/templates/one-pager.md` | $0-150 | high |
+| Pine Script commissions (Fiverr) | `hustles/pine/one-pager.md` | $0-300 | medium |
+| Discord bots for trading communities (Fiverr) | `hustles/discord/one-pager.md` | $0-450 | medium |
+| Build-in-public posts (LinkedIn/Medium) | `hustles/buildlog/one-pager.md` | $0-25 direct; resume value | high |
+Not recommended now: local-business tools (needs heavy outreach), print-on-demand, surveys or microtasks (often ban AI help), anything selling trading signals.
 
-## Waiting on Gomes (City Hall)
+## Waiting on Vivek (City Hall)
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)
+- 4 hustle decisions + 1 income-routing decision (see Hustles)
+- Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13)
 
 ## Plan
 Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
@@ -65,4 +77,4 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 - GEX setup cannot be backtested honestly without historical options data (paid). Forward paper test only until funded.
 - No strategy has a validated edge yet. Controls exist so we can tell.
 - Railway has no volume; /ledger and risk_state.json are restored from branch `data` at startup (fixed 2026-10-13).
-- The Tradier sandbox account shows $100,000 equity and is a margin-type account. Paper orders must be sized as if live-size (rule 7), not off $100k. Decision 2026-10-13: paper runs as a virtual $1,000 account, whole shares; each setup also reports 'tradeable at $1,000 live: yes/no' (Gomes's expected real live size at go-live, not the $50 own-money cap). Risk engine already blocks margin and short entries.
+- The Tradier sandbox account shows $100,000 equity and is a margin-type account. Paper orders must be sized as if live-size (rule 7), not off $100k. Decision 2026-10-13: paper runs as a virtual $1,000 account, whole shares; each setup also reports 'tradeable at $1,000 live: yes/no' (Vivek's expected real live size at go-live, not the $50 own-money cap). Risk engine already blocks margin and short entries.

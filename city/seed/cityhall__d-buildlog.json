@@ -1,0 +1,11 @@
+{
+  "id": "d-buildlog",
+  "title": "Start: Build-in-public posts?",
+  "kind": "decision",
+  "status": "pending",
+  "sample": false,
+  "from_label": "Hustle Scout",
+  "created_at": "2026-10-13T22:43:00Z",
+  "detail": "Posts every two weeks on LinkedIn about building Compound City, with honest results. Little direct money, strong resume value, and an audience for the other hustles. Claude drafts; you approve and post. Realistic first 90 days: $0 to $25 direct (high confidence it stays small). Your time: About 1 hour a week.",
+  "link": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/hustles/buildlog/one-pager.md"
+}

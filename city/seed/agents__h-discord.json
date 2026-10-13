@@ -1,0 +1,38 @@
+{
+  "id": "h-discord",
+  "name": "Discord bots for trading servers",
+  "short": "Discord bots",
+  "stall": 2,
+  "stage": "proposed",
+  "status": "needs_me",
+  "action": "Waiting for your yes or no at City Hall",
+  "revenue": 0,
+  "costs": 0,
+  "hours": 0,
+  "one_pager": "Alert-relay and recap bots for small trading Discords, around $150 a setup plus optional monthly upkeep. Claude builds the bots; you handle clients and permissions.",
+  "range_90d": "$0 to $450 (low confidence)",
+  "autonomy": "Medium",
+  "your_hours": "3 to 4 hours a week per active client",
+  "kind": "hustle",
+  "icon": "mega",
+  "district": "hustles",
+  "sample": false,
+  "action_at": "2026-10-13T22:40:00Z",
+  "money_as_of": "2026-10-13T22:40:00Z",
+  "source": "ledger/money.csv (no rows yet)",
+  "history": [
+    {
+      "t": "2026-10-13T22:40:00Z",
+      "text": "Proposed at City Hall"
+    }
+  ],
+  "queue": [
+    "Your yes or no"
+  ],
+  "links": [
+    {
+      "label": "one-pager",
+      "url": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/hustles/discord/one-pager.md"
+    }
+  ]
+}

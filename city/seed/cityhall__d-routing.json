@@ -1,0 +1,10 @@
+{
+  "id": "d-routing",
+  "title": "Should hustle income top up the $50 operations fund first?",
+  "kind": "decision",
+  "status": "pending",
+  "sample": false,
+  "from_label": "Claude",
+  "created_at": "2026-10-13T22:45:00Z",
+  "detail": "Claude Pro costs $20 a month, so the $50 lasts about 2.5 months. Yes: hustle income keeps one month of running costs in reserve, and everything above that goes to the live fund. No: all hustle income goes straight to the live fund, and you'd top up running costs yourself."
+}

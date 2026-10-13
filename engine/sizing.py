@@ -1,10 +1,9 @@
 """Is a setup tradeable at a given live account size?
 
 Paper runs at PAPER_EQUITY ($1,000, whole shares). Each setup also reports
-whether the same trade could be placed at LIVE_EQUITY (default $1,000 — the
-expected account size when Gomes actually goes live, not the $50 money-rule
-cap on his own money going in), so the city can show "tradeable at live
-size: yes/no" honestly.
+whether the same trade could be placed at LIVE_EQUITY (default $1,000, Vivek's
+live-trading capital), so the city can show "tradeable at live size: yes/no"
+honestly.
 """
 from __future__ import annotations
 

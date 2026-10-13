@@ -4,7 +4,7 @@ Every order, paper or live, passes through `RiskEngine.check()` before it can
 reach a broker. The engine is deterministic and has no network access. It
 returns a `Verdict`; an order is sent only when `verdict.allowed` is True.
 
-Caps (from the project money rules; changing them needs Gomes's yes in chat):
+Caps (from the project money rules; changing them needs Vivek's yes in chat):
   * MAX_LOSS_PER_TRADE_PCT  = 5%  of live equity (per order's worst case)
   * DAILY_LOSS_STOP_PCT     = 10% of start-of-day equity -> no new live entries today
   * DRAWDOWN_KILL_PCT       = 30% from peak equity -> all live trading stops

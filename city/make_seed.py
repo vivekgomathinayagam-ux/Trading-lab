@@ -31,8 +31,8 @@ def write(name, data):
     (OUT / f"{name}.json").write_text(json.dumps(data, indent=2))
 
 
-SAMPLE_NOTE = ("Characters, setup numbers and hustle stalls are SAMPLE until the residents start "
-               "(step 6) and setups trade (step 7). The bot, Treasury, Watchtower, City Hall and "
+SAMPLE_NOTE = ("Characters' activity, setup numbers and the trade log are SAMPLE until the residents start "
+               "(step 6) and setups trade (step 7). The bot, Treasury, Watchtower, City Hall, hustles and "
                "decision timeline are real.")
 
 # ---------------- city/state (mostly real) ----------------
@@ -48,10 +48,12 @@ state = {
         "as_of": "2026-10-13T21:58:15Z", "source": "Railway deploy logs · data/ledger/heartbeat.json",
     },
     "treasury": {
-        "sample": False, "as_of": iso(NOW), "source": "STATE.md · ledger/money.csv (no rows yet)",
-        "seed": 50, "seed_deposited": False, "hustle_income": 0, "trading_pnl": 0,
-        "income_month": 0, "cash": 50,
-        "costs_month": [{"label": "Claude Pro", "amount": 20}, {"label": "Railway Hobby", "amount": 5}],
+        "sample": False, "as_of": iso(NOW), "source": "STATE.md (capital rules set by Vivek, Oct 13) · ledger/money.csv (no rows yet)",
+        "live_fund": {"base": 1000, "deposited": False, "hustle_added": 0, "trading_pnl": 0},
+        "ops_fund": {"budget": 50, "deposited": False, "spent": 0,
+                     "costs_month": [{"label": "Claude Pro", "amount": 20},
+                                     {"label": "Railway", "amount": 0, "note": "paid by your existing subscription"}]},
+        "hustle_income": 0, "income_month": 0,
     },
     "watchtower": {
         "sample": False, "as_of": "2026-10-13T21:58:15Z", "source": "engine/risk · ledger/risk_state.json",
@@ -67,15 +69,19 @@ state = {
         "sit_out": [],
     },
     "ticker": [
+        {"t": "2026-10-13T22:40:00Z", "text": "Claude posted 4 hustle one-pagers and an income question to City Hall", "sample": False},
+        {"t": "2026-10-13T22:38:00Z", "text": "Capital set by Vivek: $1,000 live fund, $50 operations fund", "sample": False},
         {"t": "2026-10-13T21:58:15Z", "text": "Bot redeployed: $1,000 paper account, ledger restore, sticky kill switch", "sample": False},
-        {"t": "2026-10-13T21:30:00Z", "text": "Pull request #1 merged by Gomes", "sample": False},
+        {"t": "2026-10-13T21:30:00Z", "text": "Pull request #1 merged by Vivek", "sample": False},
         {"t": "2026-10-13T21:10:45Z", "text": "Data branch created, first ledger snapshot pushed", "sample": False},
         {"t": "2026-10-13T21:10:42Z", "text": "Tradier sandbox: 5 of 5 connectivity checks passed", "sample": False},
         {"t": ago(minutes=12), "text": "Researcher started ORB SPY 15-minute range backtest", "sample": True},
         {"t": ago(minutes=40), "text": "Accountant reconciled 12 paper fills", "sample": True},
-        {"t": ago(hours=2), "text": "Hustle Scout filed 2 one-pagers at City Hall", "sample": True},
     ],
     "decisions": [
+        {"date": "Oct 13", "text": "Capital set by Vivek: $1,000 for live trading only, $50 for running costs; Railway paid separately; hustle income goes to the live fund."},
+        {"date": "Oct 13", "text": "Paper trading runs on its own with no trade confirmations; every fill is logged in the Ledger."},
+        {"date": "Oct 13", "text": "Project owner is Vivek Gomathinayagam; his name is on every file and write-up."},
         {"date": "Oct 13", "text": "Live sizing assumes about $1,000 at go-live; the $50 cap on your own money is unchanged."},
         {"date": "Oct 13", "text": "Ledger and risk state restored from GitHub on restart; the kill switch stays on until you reset it."},
         {"date": "Oct 13", "text": "Paper trades run on a virtual $1,000 account with whole shares."},
@@ -115,15 +121,19 @@ residents = [
          action_at=ago(minutes=12), progress=35,
          queue=["SAMPLE · CVD turn, 3-minute backtest", "SAMPLE · ORB TQQQ variants"],
          history=hist((12, "Started ORB SPY 15-minute backtest"), (90, "Downloaded 2 years of SPY minute bars"))),
-    dict(id="scout", name="Hustle Scout", short="Scout", kind="resident", role="Hustle ideas, Wednesdays", icon="mega",
-         home="market", district="hustles", status="needs_me", action="SAMPLE · Two one-pagers are waiting for you at City Hall",
-         action_at=ago(hours=2), progress=None, handoff={"to": "cityhall", "active": True},
-         queue=["Wait for your yes or no"],
-         history=hist((120, "Filed 2 one-pagers at City Hall"), (180, "Researched Pine Script commission demand"))),
 ]
 for r in residents:
     r["sample"] = True
     r["real_note"] = "Not scheduled yet. Real activity starts in Phase 0 step 6."
+residents.append(dict(
+    id="scout", name="Hustle Scout", short="Scout", kind="resident", role="Hustle ideas, Wednesdays", icon="mega",
+    home="market", district="hustles", status="needs_me", sample=False,
+    action="4 hustle one-pagers and an income question are waiting for you at City Hall",
+    action_at="2026-10-13T22:40:00Z", progress=None, handoff={"to": "cityhall", "active": True},
+    queue=["Start whichever hustles you approve", "Wednesday: next round of ideas"],
+    history=[{"t": "2026-10-13T22:40:00Z", "text": "Posted 4 one-pagers to City Hall"},
+             {"t": "2026-10-13T22:30:00Z", "text": "Checked Gumroad, Etsy, Fiverr and TradingView fees and rules"}],
+    links=[{"label": "hustles folder", "url": GH.replace("/blob/", "/tree/") + "hustles"}]))
 
 
 def equity(seed, drift, vol, n=20):
@@ -165,19 +175,31 @@ for s in setups:
              history=hist((8, s["action"].replace("SAMPLE · ", "")), (60, "Logged a heartbeat")), queue=[])
     s["metrics"].update(sample=True, as_of=ago(minutes=8), source=metrics_src)
 
-hustles = [
-    dict(id="h-pine", name="Pine Script commissions", short="Pine work", stall=0, stage="proposed", status="needs_me",
-         action="SAMPLE · Waiting for your yes at City Hall", revenue=0, costs=0, hours=0,
-         one_pager="SAMPLE. Custom TradingView indicators for traders who want their rules coded. Start cost $0. About 3 hours a week of your time for reviews."),
-    dict(id="h-journal", name="Trading-journal template", short="Journal", stall=1, stage="proposed", status="needs_me",
-         action="SAMPLE · Waiting for your yes at City Hall", revenue=0, costs=0, hours=0,
-         one_pager="SAMPLE. A spreadsheet trading journal sold as a template. Start cost $0. About 2 hours a week."),
+HUSTLES = [
+    ("h-templates", "Trader spreadsheet templates", "Templates", 0, "templates",
+     "Google Sheets trade journal plus options risk and position-size calculator, sold for $12 on Gumroad (no monthly fee; about $9.65 kept per sale). Claude builds and maintains it; you create the account, connect payout and approve listings.",
+     "$0 to $150 (low confidence)", "High once set up", "About 2 hours setup, then 30 min a week"),
+    ("h-pine", "Pine Script commissions", "Pine work", 1, "pine",
+     "Custom TradingView indicators coded to a buyer's rules on Fiverr (Fiverr keeps 20%). Claude writes and tests the code and drafts replies; you own the account, message clients and check deliveries.",
+     "$0 to $300 (low to medium confidence)", "Medium", "3 to 5 hours a week while orders are active"),
+    ("h-discord", "Discord bots for trading servers", "Discord bots", 2, "discord",
+     "Alert-relay and recap bots for small trading Discords, around $150 a setup plus optional monthly upkeep. Claude builds the bots; you handle clients and permissions.",
+     "$0 to $450 (low confidence)", "Medium", "3 to 4 hours a week per active client"),
+    ("h-buildlog", "Build-in-public posts", "Build log", 3, "buildlog",
+     "Posts every two weeks on LinkedIn about building Compound City, with honest results. Little direct money, strong resume value, and an audience for the other hustles. Claude drafts; you approve and post.",
+     "$0 to $25 direct (high confidence it stays small)", "High for drafting", "About 1 hour a week"),
 ]
+hustles = []
+for hid, name, short, stall, folder, summary, rng90, auto, hrs in HUSTLES:
+    hustles.append(dict(id=hid, name=name, short=short, stall=stall, stage="proposed", status="needs_me",
+                        action="Waiting for your yes or no at City Hall", revenue=0, costs=0, hours=0,
+                        one_pager=summary, range_90d=rng90, autonomy=auto, your_hours=hrs))
 for h in hustles:
-    h.update(kind="hustle", icon="mega", district="hustles", sample=True, action_at=ago(hours=2),
-             money_as_of=ago(hours=2), source="SAMPLE · ledger/money.csv",
-             history=hist((120, "Proposed at City Hall")), queue=["Your yes or no"],
-             real_note="Not a real proposal. Real one-pagers arrive in step 7.")
+    folder = dict((x[0], x[4]) for x in HUSTLES)[h["id"]]
+    h.update(kind="hustle", icon="mega", district="hustles", sample=False, action_at="2026-10-13T22:40:00Z",
+             money_as_of="2026-10-13T22:40:00Z", source="ledger/money.csv (no rows yet)",
+             history=[{"t": "2026-10-13T22:40:00Z", "text": "Proposed at City Hall"}], queue=["Your yes or no"],
+             links=[{"label": "one-pager", "url": GH + f"hustles/{folder}/one-pager.md"}])
 
 for a in residents + setups + hustles:
     write("agents__" + a["id"], a)
@@ -190,11 +212,15 @@ hall = [
     dict(id="t-alphav", title="Connect the Alpha Vantage connector", kind="task", status="pending", sample=False,
          from_label="Claude", created_at="2026-10-13T21:19:00Z",
          detail="Free key from alphavantage.co, then claude.ai > Settings > Connectors. The Newsie uses it for prices and news."),
-    dict(id="s-pine", title="Start the Pine Script commissions hustle?", kind="decision", status="pending", sample=True,
-         from_label="Hustle Scout", created_at=ago(hours=2), detail="SAMPLE item to show how hustle approvals look."),
-    dict(id="s-journal", title="Start the trading-journal template hustle?", kind="decision", status="pending", sample=True,
-         from_label="Hustle Scout", created_at=ago(hours=2, minutes=5), detail="SAMPLE item to show how hustle approvals look."),
 ]
+for n, (hid, name, short, stall, folder, summary, rng90, auto, hrs) in enumerate(HUSTLES):
+    hall.append(dict(id="d-" + folder, title=f"Start: {name}?", kind="decision", status="pending",
+                     sample=False, from_label="Hustle Scout", created_at=f"2026-10-13T22:4{n}:00Z",
+                     detail=f"{summary} Realistic first 90 days: {rng90}. Your time: {hrs}.",
+                     link=GH + f"hustles/{folder}/one-pager.md"))
+hall.append(dict(id="d-routing", title="Should hustle income top up the $50 operations fund first?", kind="decision",
+                 status="pending", sample=False, from_label="Claude", created_at="2026-10-13T22:45:00Z",
+                 detail="Claude Pro costs $20 a month, so the $50 lasts about 2.5 months. Yes: hustle income keeps one month of running costs in reserve, and everything above that goes to the live fund. No: all hustle income goes straight to the live fund, and you'd top up running costs yourself."))
 for h in hall:
     write("cityhall__" + h["id"], h)
 

@@ -1,0 +1,38 @@
+{
+  "id": "h-buildlog",
+  "name": "Build-in-public posts",
+  "short": "Build log",
+  "stall": 3,
+  "stage": "proposed",
+  "status": "needs_me",
+  "action": "Waiting for your yes or no at City Hall",
+  "revenue": 0,
+  "costs": 0,
+  "hours": 0,
+  "one_pager": "Posts every two weeks on LinkedIn about building Compound City, with honest results. Little direct money, strong resume value, and an audience for the other hustles. Claude drafts; you approve and post.",
+  "range_90d": "$0 to $25 direct (high confidence it stays small)",
+  "autonomy": "High for drafting",
+  "your_hours": "About 1 hour a week",
+  "kind": "hustle",
+  "icon": "mega",
+  "district": "hustles",
+  "sample": false,
+  "action_at": "2026-10-13T22:40:00Z",
+  "money_as_of": "2026-10-13T22:40:00Z",
+  "source": "ledger/money.csv (no rows yet)",
+  "history": [
+    {
+      "t": "2026-10-13T22:40:00Z",
+      "text": "Proposed at City Hall"
+    }
+  ],
+  "queue": [
+    "Your yes or no"
+  ],
+  "links": [
+    {
+      "label": "one-pager",
+      "url": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/hustles/buildlog/one-pager.md"
+    }
+  ]
+}

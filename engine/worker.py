@@ -13,7 +13,7 @@ OFFHOURS_PUSH_MINUTES otherwise (so the city sees the bot is alive).
 
 Paper sizing: virtual $PAPER_EQUITY account (see engine/state.py), not the
 sandbox's $100k. Live trading is impossible here until TRADIER_LIVE_TOKEN and
-LIVE_TRADING_ENABLED=true are both set in Railway by Gomes.
+LIVE_TRADING_ENABLED=true are both set in Railway by Vivek.
 """
 from __future__ import annotations
 

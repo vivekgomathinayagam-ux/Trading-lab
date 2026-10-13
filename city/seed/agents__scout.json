@@ -8,26 +8,32 @@
   "home": "market",
   "district": "hustles",
   "status": "needs_me",
-  "action": "SAMPLE \u00b7 Two one-pagers are waiting for you at City Hall",
-  "action_at": "2026-10-13T20:15:00Z",
+  "sample": false,
+  "action": "4 hustle one-pagers and an income question are waiting for you at City Hall",
+  "action_at": "2026-10-13T22:40:00Z",
   "progress": null,
   "handoff": {
     "to": "cityhall",
     "active": true
   },
   "queue": [
-    "Wait for your yes or no"
+    "Start whichever hustles you approve",
+    "Wednesday: next round of ideas"
   ],
   "history": [
     {
-      "t": "2026-10-13T20:15:00Z",
-      "text": "SAMPLE \u00b7 Filed 2 one-pagers at City Hall"
+      "t": "2026-10-13T22:40:00Z",
+      "text": "Posted 4 one-pagers to City Hall"
     },
     {
-      "t": "2026-10-13T19:15:00Z",
-      "text": "SAMPLE \u00b7 Researched Pine Script commission demand"
+      "t": "2026-10-13T22:30:00Z",
+      "text": "Checked Gumroad, Etsy, Fiverr and TradingView fees and rules"
     }
   ],
-  "sample": true,
-  "real_note": "Not scheduled yet. Real activity starts in Phase 0 step 6."
+  "links": [
+    {
+      "label": "hustles folder",
+      "url": "https://github.com/vivekgomathinayagam-ux/Trading-lab/tree/main/hustles"
+    }
+  ]
 }

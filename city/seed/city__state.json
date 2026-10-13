@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-13T22:15:00Z",
-  "sample_note": "Characters, setup numbers and hustle stalls are SAMPLE until the residents start (step 6) and setups trade (step 7). The bot, Treasury, Watchtower, City Hall and decision timeline are real.",
+  "sample_note": "Characters' activity, setup numbers and the trade log are SAMPLE until the residents start (step 6) and setups trade (step 7). The bot, Treasury, Watchtower, City Hall, hustles and decision timeline are real.",
   "bot": {
     "sample": false,
     "status": "running",
@@ -17,23 +17,31 @@
   "treasury": {
     "sample": false,
     "as_of": "2026-10-13T22:15:00Z",
-    "source": "STATE.md \u00b7 ledger/money.csv (no rows yet)",
-    "seed": 50,
-    "seed_deposited": false,
+    "source": "STATE.md (capital rules set by Vivek, Oct 13) \u00b7 ledger/money.csv (no rows yet)",
+    "live_fund": {
+      "base": 1000,
+      "deposited": false,
+      "hustle_added": 0,
+      "trading_pnl": 0
+    },
+    "ops_fund": {
+      "budget": 50,
+      "deposited": false,
+      "spent": 0,
+      "costs_month": [
+        {
+          "label": "Claude Pro",
+          "amount": 20
+        },
+        {
+          "label": "Railway",
+          "amount": 0,
+          "note": "paid by your existing subscription"
+        }
+      ]
+    },
     "hustle_income": 0,
-    "trading_pnl": 0,
-    "income_month": 0,
-    "cash": 50,
-    "costs_month": [
-      {
-        "label": "Claude Pro",
-        "amount": 20
-      },
-      {
-        "label": "Railway Hobby",
-        "amount": 5
-      }
-    ]
+    "income_month": 0
   },
   "watchtower": {
     "sample": false,
@@ -69,13 +77,23 @@
   },
   "ticker": [
     {
+      "t": "2026-10-13T22:40:00Z",
+      "text": "Claude posted 4 hustle one-pagers and an income question to City Hall",
+      "sample": false
+    },
+    {
+      "t": "2026-10-13T22:38:00Z",
+      "text": "Capital set by Vivek: $1,000 live fund, $50 operations fund",
+      "sample": false
+    },
+    {
       "t": "2026-10-13T21:58:15Z",
       "text": "Bot redeployed: $1,000 paper account, ledger restore, sticky kill switch",
       "sample": false
     },
     {
       "t": "2026-10-13T21:30:00Z",
-      "text": "Pull request #1 merged by Gomes",
+      "text": "Pull request #1 merged by Vivek",
       "sample": false
     },
     {
@@ -97,14 +115,21 @@
       "t": "2026-10-13T21:35:00Z",
       "text": "Accountant reconciled 12 paper fills",
       "sample": true
-    },
-    {
-      "t": "2026-10-13T20:15:00Z",
-      "text": "Hustle Scout filed 2 one-pagers at City Hall",
-      "sample": true
     }
   ],
   "decisions": [
+    {
+      "date": "Oct 13",
+      "text": "Capital set by Vivek: $1,000 for live trading only, $50 for running costs; Railway paid separately; hustle income goes to the live fund."
+    },
+    {
+      "date": "Oct 13",
+      "text": "Paper trading runs on its own with no trade confirmations; every fill is logged in the Ledger."
+    },
+    {
+      "date": "Oct 13",
+      "text": "Project owner is Vivek Gomathinayagam; his name is on every file and write-up."
+    },
     {
       "date": "Oct 13",
       "text": "Live sizing assumes about $1,000 at go-live; the $50 cap on your own money is unchanged."

@@ -7,13 +7,13 @@ startup, so a Railway restart or redeploy does NOT reset:
   * the kill switch itself (sticky until a human resets it)
   * the paper baseline (virtual paper equity)
 
-Virtual paper equity (decided 2026-10-13, Gomes chose $1,000 whole shares):
+Virtual paper equity (decided 2026-10-13, Vivek chose $1,000 whole shares):
 the Tradier sandbox account holds $100,000, so paper sizing uses
     virtual_equity  = PAPER_EQUITY + (sandbox_equity  - baseline_equity)
     virtual_settled = PAPER_EQUITY + (sandbox_settled - baseline_settled)
 i.e. a $1,000 account that gains/loses exactly the dollars the sandbox does.
 
-Kill switch reset: Gomes sets Railway variable KILL_SWITCH_RESET to today's
+Kill switch reset: Vivek sets Railway variable KILL_SWITCH_RESET to today's
 New York date (YYYY-MM-DD) and the bot restarts; any other value is ignored,
 so a value left behind can't silently re-arm trading on a later day.
 """

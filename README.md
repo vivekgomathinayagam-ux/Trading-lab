@@ -1,6 +1,8 @@
 # trading-lab — Compound City
 
-Private repo for Gomes's self-funding trading + side-hustle operation.
+Private repo for Vivek's self-funding trading + side-hustle operation.
+
+**Built and run by Vivek Gomathinayagam** (project owner: strategy, design decisions, risk rules, approvals), with Claude as AI pair-programmer and operator.
 Read `STATE.md` first, then `DECISIONS.md`. Every chat and scheduled task does.
 
 ## Layout
@@ -21,11 +23,11 @@ DECISIONS.md          dated log of what changed and why
 - Tests: `python -m unittest discover -s tests -v`
 
 ## Secrets
-Only in Railway Variables, typed by Gomes. Names are in `engine/config.py`.
+Only in Railway Variables, typed by Vivek. Names are in `engine/config.py`.
 Nothing in this repo holds a token.
 
 ## Money rules (summary; full text in the project prompt)
-$50 own money total; no margin; no undefined risk; 5% max loss per trade;
+Capital: $1,000 of Vivek's money for live trading only; $50 operations fund (Claude Pro etc.); Railway paid separately; hustle income goes to the live account. No margin; no undefined risk; 5% max loss per trade;
 10% daily loss stops new live entries; 30% drawdown stops all live trading.
 Live orders are impossible until `TRADIER_LIVE_TOKEN` and
-`LIVE_TRADING_ENABLED=true` are both set by Gomes.
+`LIVE_TRADING_ENABLED=true` are both set by Vivek.

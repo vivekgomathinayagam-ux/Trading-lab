@@ -1,22 +1,20 @@
 """Settings. Secrets are read ONLY from environment variables set in Railway.
-Nothing here is ever logged in full. Variable NAMES (Gomes types the values):
+Nothing here is ever logged in full. Variable NAMES (Vivek types the values):
 
   TRADIER_SANDBOX_TOKEN      required  Tradier paper (sandbox) access token
   ALERT_WEBHOOK_URL          optional  Discord/webhook URL for phone alerts
   GITHUB_DATA_TOKEN          optional  fine-grained GitHub token, Contents: read/write
                                        on the trading-lab repo only; used to push
                                        snapshots to the "data" branch
-  TRADIER_LIVE_TOKEN         LATER     only when Gomes decides to go live
+  TRADIER_LIVE_TOKEN         LATER     only when Vivek decides to go live
   LIVE_TRADING_ENABLED       LATER     must be exactly "true" as well
   KILL_SWITCH_RESET          RARE      today's New York date (YYYY-MM-DD) to clear
                                        a tripped kill switch on the next restart
 
-Non-secret: PAPER_EQUITY (default 1000, Gomes's choice 2026-10-13),
-LIVE_EQUITY (default 1000, Gomes's clarification 2026-10-13: the $50 money-rule
-cap is his own money going IN, not the account size when he actually flips to
-live — by then he expects hustle/trading profit to have grown it to roughly
-$1,000. Used for "tradeable at $1,000 live" flags; raise it again if that
-estimate changes before go-live.)
+Non-secret: PAPER_EQUITY (default 1000, Vivek's choice 2026-10-13),
+LIVE_EQUITY (default 1000: Vivek's live-trading capital, set 2026-10-13. Hustle
+income is added to it before go-live, so raise it to the real balance then.
+Used for "tradeable at live size" flags.)
 
 Non-secret settings have defaults below and can be overridden the same way.
 """

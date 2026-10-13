@@ -1,0 +1,11 @@
+{
+  "id": "d-templates",
+  "title": "Start: Trader spreadsheet templates?",
+  "kind": "decision",
+  "status": "pending",
+  "sample": false,
+  "from_label": "Hustle Scout",
+  "created_at": "2026-10-13T22:40:00Z",
+  "detail": "Google Sheets trade journal plus options risk and position-size calculator, sold for $12 on Gumroad (no monthly fee; about $9.65 kept per sale). Claude builds and maintains it; you create the account, connect payout and approve listings. Realistic first 90 days: $0 to $150 (low confidence). Your time: About 2 hours setup, then 30 min a week.",
+  "link": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/hustles/templates/one-pager.md"
+}

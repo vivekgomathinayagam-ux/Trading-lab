@@ -2,29 +2,37 @@
   "id": "h-pine",
   "name": "Pine Script commissions",
   "short": "Pine work",
-  "stall": 0,
+  "stall": 1,
   "stage": "proposed",
   "status": "needs_me",
-  "action": "SAMPLE \u00b7 Waiting for your yes at City Hall",
+  "action": "Waiting for your yes or no at City Hall",
   "revenue": 0,
   "costs": 0,
   "hours": 0,
-  "one_pager": "SAMPLE. Custom TradingView indicators for traders who want their rules coded. Start cost $0. About 3 hours a week of your time for reviews.",
+  "one_pager": "Custom TradingView indicators coded to a buyer's rules on Fiverr (Fiverr keeps 20%). Claude writes and tests the code and drafts replies; you own the account, message clients and check deliveries.",
+  "range_90d": "$0 to $300 (low to medium confidence)",
+  "autonomy": "Medium",
+  "your_hours": "3 to 5 hours a week while orders are active",
   "kind": "hustle",
   "icon": "mega",
   "district": "hustles",
-  "sample": true,
-  "action_at": "2026-10-13T20:15:00Z",
-  "money_as_of": "2026-10-13T20:15:00Z",
-  "source": "SAMPLE \u00b7 ledger/money.csv",
+  "sample": false,
+  "action_at": "2026-10-13T22:40:00Z",
+  "money_as_of": "2026-10-13T22:40:00Z",
+  "source": "ledger/money.csv (no rows yet)",
   "history": [
     {
-      "t": "2026-10-13T20:15:00Z",
-      "text": "SAMPLE \u00b7 Proposed at City Hall"
+      "t": "2026-10-13T22:40:00Z",
+      "text": "Proposed at City Hall"
     }
   ],
   "queue": [
     "Your yes or no"
   ],
-  "real_note": "Not a real proposal. Real one-pagers arrive in step 7."
+  "links": [
+    {
+      "label": "one-pager",
+      "url": "https://github.com/vivekgomathinayagam-ux/Trading-lab/blob/main/hustles/pine/one-pager.md"
+    }
+  ]
 }

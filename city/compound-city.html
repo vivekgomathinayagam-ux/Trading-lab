@@ -49,6 +49,7 @@ body { margin: 0; background: var(--night); color: var(--text); font: 15px/1.45 
 .hud { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; min-width: 0; }
 .mark { display: flex; align-items: center; gap: 10px; margin: 0; font: 700 22px/1 var(--display); letter-spacing: .02em; color: var(--gold); text-wrap: balance; }
 .mark svg { width: 26px; height: 26px; flex: none; image-rendering: pixelated; }
+.owner { font: 400 13px/1.2 var(--body); color: var(--muted); align-self: flex-end; padding-bottom: 2px; }
 .hud .spacer { flex: 1 1 0; }
 .chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; background: var(--panel); border: 2px solid var(--edge); font: 600 13px/1.2 var(--body); color: var(--text); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .chip .dot { width: 10px; height: 10px; flex: none; background: var(--sleep); }
@@ -160,6 +161,8 @@ button:focus-visible, a:focus-visible, canvas:focus-visible { outline: 2px solid
 .lg.sample { border-style: dashed; border-color: var(--gold); }
 .lg h2 { margin: 0 0 4px; font: 700 13px/1.2 var(--display); color: var(--gold); letter-spacing: .04em; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .lg > .meta { margin: 0 0 10px !important; }
+.lg h3 { margin: 0 0 6px; font: 700 11px/1.2 var(--display); color: var(--muted); letter-spacing: .04em; }
+table.trades th:nth-child(-n+4), table.trades td:nth-child(-n+4) { text-align: left; }
 .lg-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
 .tbl-wrap { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
@@ -199,6 +202,7 @@ td .pill { font-size: 11px; padding: 1px 6px; }
 <div id="app">
   <header class="hud">
     <h1 class="mark"><svg viewBox="0 0 8 8" aria-hidden="true"><rect x="2" y="0" width="4" height="1" fill="#f2c75c"/><rect x="1" y="1" width="6" height="6" fill="#f2c75c"/><rect x="0" y="2" width="8" height="4" fill="#f2c75c"/><rect x="2" y="7" width="4" height="1" fill="#f2c75c"/><rect x="3" y="2" width="2" height="1" fill="#9c7a1e"/><rect x="2" y="3" width="1" height="1" fill="#9c7a1e"/><rect x="3" y="4" width="2" height="1" fill="#9c7a1e"/><rect x="5" y="5" width="1" height="1" fill="#9c7a1e"/><rect x="3" y="6" width="2" height="1" fill="#9c7a1e"/></svg>Compound City</h1>
+    <span class="owner">Run by Vivek Gomathinayagam</span>
     <span class="spacer"></span>
     <span class="chip" id="clock"><span class="dot" id="clockDot"></span><span id="clockText">Loading clock</span></span>
     <span class="chip" id="botChip"><span class="dot" id="botDot"></span><span id="botText">Bot: waiting for data</span></span>
@@ -613,7 +617,7 @@ function bldMatches(b) {
   return true;
 }
 const pendingHall = () => S.hall.filter(h => h.status === 'pending');
-function needsCount() { return [...S.agents.values()].filter(a => a.status === 'needs_me').length + pendingHall().filter(h => !h.sample).length; }
+function needsCount() { const hall = pendingHall().filter(h => !h.sample).length; const ag = [...S.agents.values()].filter(a => a.status === 'needs_me' && !a.sample).length; return Math.max(hall, ag); }
 
 /* ================= sprites ================= */
 function person(g, fx, fy, p, pose, t, dim) {
@@ -995,7 +999,7 @@ function agentPanel(a) {
     if (a.tradeable) html += `<section><h3>TRADEABLE AT ${esc(money(a.tradeable.live_equity).replace('.00', ''))} LIVE</h3><p><b style="color:var(${a.tradeable.ok ? '--ok' : '--bad'})">${a.tradeable.ok ? 'Yes' : 'No'}</b> · ${esc(a.tradeable.why || '')}</p></section>`;
   }
   if (a.kind === 'hustle') {
-    html += `<section><h3>STALL ${sampTag(a.sample)}</h3><dl class="kv"><dt>Revenue to date</dt><dd>${money(a.revenue)}</dd><dt>Costs to date</dt><dd>${money(a.costs)}</dd><dt>Your hours</dt><dd>${a.hours ?? '—'}</dd></dl><p class="meta">As of ${esc(fmtPT(a.money_as_of || a.action_at))}${a.source ? ' · ' + esc(a.source) : ''}</p></section>`;
+    html += `<section><h3>STALL ${sampTag(a.sample)}</h3><dl class="kv"><dt>Revenue to date</dt><dd>${money(a.revenue)}</dd><dt>Costs to date</dt><dd>${money(a.costs)}</dd><dt>Your hours to date</dt><dd>${a.hours ?? '—'}</dd>${a.range_90d ? `<dt>Realistic first 90 days</dt><dd>${esc(a.range_90d)}</dd>` : ''}${a.autonomy ? `<dt>Runs without you</dt><dd>${esc(a.autonomy)}</dd>` : ''}${a.your_hours ? `<dt>Your time</dt><dd>${esc(a.your_hours)}</dd>` : ''}</dl><p class="meta">As of ${esc(fmtPT(a.money_as_of || a.action_at))}${a.source ? ' · ' + esc(a.source) : ''}</p></section>`;
     if (a.one_pager) html += `<section><h3>ONE-PAGER</h3><p>${esc(a.one_pager)}</p></section>`;
   }
   html += `<section><h3>LAST 10 ACTIONS</h3>${historyList(a.history)}</section>`;
@@ -1012,16 +1016,21 @@ function hallItems(list, canAnswer) {
     const acts = decided ? `<p class="meta">Answered <b>${esc(h.status)}</b> · ${esc(fmtPT(h.answered_at))}</p>`
       : h.sample ? `<p class="meta">Sample item. It can't be answered.</p>`
       : `<div class="acts">${kinds.map(([v, l, c]) => `<button type="button" class="btn ${c}" data-act="answer" data-id="${esc(h.id)}" data-v="${v}" ${canAnswer ? '' : 'disabled'}>${l}</button>`).join('')}</div>${canAnswer ? '' : '<p class="meta">Only the city owner can answer.</p>'}`;
-    return `<div class="req${h.sample ? ' sample' : ''}"><div class="pillrow">${sampTag(h.sample)}<span class="meta" style="margin:0">From ${esc(who)} · ${esc(ago(h.created_at))}</span></div><h4>${esc(h.title)}</h4>${h.detail ? `<p style="font-size:13px">${esc(h.detail)}</p>` : ''}${acts}</div>`;
+    return `<div class="req${h.sample ? ' sample' : ''}"><div class="pillrow">${sampTag(h.sample)}<span class="meta" style="margin:0">From ${esc(who)} · ${esc(ago(h.created_at))}</span></div><h4>${esc(h.title)}</h4>${h.detail ? `<p style="font-size:13px">${esc(h.detail)}</p>` : ''}${h.link ? `<p class="links" style="font-size:13px"><a href="${esc(h.link)}" target="_blank" rel="noopener">Read the full one-pager</a></p>` : ''}${acts}</div>`;
   }).join('');
 }
 function treasuryHTML(tr) {
   if (!tr) return '<p class="empty">No treasury records yet.</p>';
-  const costs = (tr.costs_month || []).reduce((s, c) => s + (+c.amount || 0), 0);
-  const income = +tr.income_month || 0; const cash = +tr.cash || 0;
-  const runway = costs > 0 ? cash / costs : null; const selfF = costs > 0 ? Math.min(1, income / costs) : 1;
-  return `<dl class="kv"><dt>Seed (your money, cap $50)</dt><dd>${money(tr.seed)}${tr.seed_deposited === false ? ' <small style="color:var(--muted);font-weight:400">not deposited</small>' : ''}</dd><dt>Hustle income</dt><dd>${money(tr.hustle_income)}</dd><dt>Trading P&amp;L</dt><dd>${money(tr.trading_pnl)}</dd>${(tr.costs_month || []).map(c => `<dt>${esc(c.label)} / month</dt><dd>${money(-Math.abs(c.amount))}</dd>`).join('')}<dt>Runway</dt><dd>${runway != null ? runway.toFixed(1) + ' months' : '—'}</dd></dl>
-  <p class="meta" style="margin-top:10px">Self-funding: ${money(income)} income vs ${money(costs)} costs per month</p><div class="gauge" role="img" aria-label="Self-funding ${Math.round(selfF * 100)} percent"><i style="width:${Math.max(2, selfF * 100)}%;background:var(${selfF >= 1 ? '--ok' : selfF > .5 ? '--need' : '--bad'})"></i></div>
+  const lf = tr.live_fund || {}, of = tr.ops_fund || {};
+  const costs = (of.costs_month || []).reduce((t, c) => t + (+c.amount || 0), 0);
+  const income = +tr.income_month || 0;
+  const opsLeft = (+of.budget || 0) - (+of.spent || 0);
+  const runway = costs > 0 ? opsLeft / costs : null; const selfF = costs > 0 ? Math.min(1, income / costs) : 1;
+  const nd = d => d === false ? ' <small style="color:var(--muted);font-weight:400">not deposited</small>' : '';
+  const liveTotal = (+lf.base || 0) + (+lf.hustle_added || 0) + (+lf.trading_pnl || 0);
+  return `<h3 style="margin-top:4px">LIVE TRADING FUND</h3><dl class="kv"><dt>Your money (live trading only)</dt><dd>${money(lf.base)}${nd(lf.deposited)}</dd><dt>Hustle income added</dt><dd>${money(lf.hustle_added)}</dd><dt>Live trading P&amp;L</dt><dd>${money(lf.trading_pnl)}</dd><dt>Ready for live</dt><dd>${money(liveTotal)}</dd></dl>
+  <h3 style="margin-top:14px">OPERATIONS FUND</h3><dl class="kv"><dt>Budget (your money)</dt><dd>${money(of.budget)}${nd(of.deposited)}</dd>${(of.costs_month || []).map(c => `<dt>${esc(c.label)} / month</dt><dd>${c.note ? `<small style="color:var(--muted);font-weight:400">${esc(c.note)}</small>` : money(-Math.abs(c.amount))}</dd>`).join('')}<dt>Runway</dt><dd>${runway != null ? runway.toFixed(1) + ' months' : '—'}</dd></dl>
+  <p class="meta" style="margin-top:10px">Self-funding: ${money(income)} hustle income vs ${money(costs)} running costs per month</p><div class="gauge" role="img" aria-label="Self-funding ${Math.round(selfF * 100)} percent"><i style="width:${Math.max(2, selfF * 100)}%;background:var(${selfF >= 1 ? '--ok' : selfF > .5 ? '--need' : '--bad'})"></i></div>
   <p class="meta">As of ${esc(fmtPT(tr.as_of))}${tr.source ? ' · ' + esc(tr.source) : ''}</p>`;
 }
 function capsHTML(w) {
@@ -1119,9 +1128,9 @@ function renderLedger() {
     <section class="lg${st.treasury && st.treasury.sample ? ' sample' : ''}"><h2>TREASURY ${sampTag(st.treasury && st.treasury.sample)}</h2>${treasuryHTML(st.treasury)}</section>
     <section class="lg${st.watchtower && st.watchtower.sample ? ' sample' : ''}"><h2>RISK CAPS ${sampTag(st.watchtower && st.watchtower.sample)}</h2>${capsHTML(st.watchtower)}</section>
   </div>
+  <section class="lg${tr.sample ? ' sample' : ''}"><h2>PAPER TRADES ${sampTag(tr.sample)}</h2><p class="meta">Placed by the bot on its own. No approvals needed. Last 50 fills · as of ${esc(fmtPT(tr.as_of))}${tr.source ? ' · ' + esc(tr.source) : ''}</p>${trows ? `<div class="tbl-wrap"><table class="trades"><thead><tr><th>Time</th><th>Setup</th><th>Symbol</th><th>Side</th><th>Qty</th><th>Paper fill</th><th>Shadow fill</th><th>Result</th><th>Ledger row</th></tr></thead><tbody>${trows}</tbody></table></div>` : '<p class="empty">No trades yet. They appear here as soon as a setup trades paper.</p>'}</section>
   <section class="lg${anySampleSetup ? ' sample' : ''}"><h2>EQUITY CURVES VS SPY ${sampTag(anySampleSetup)}</h2><p class="meta">Percent return on the virtual paper account · as of ${esc(fmtPT(mAsOf))}</p>${equityChart()}</section>
   <section class="lg${anySampleSetup ? ' sample' : ''}"><h2>LEADERBOARD ${sampTag(anySampleSetup)}</h2><p class="meta">Expectancy and profit factor are after costs · as of ${esc(fmtPT(mAsOf))}</p>${rows ? `<div class="tbl-wrap"><table><thead><tr><th>Setup</th><th>Stage</th><th>Trades</th><th>Win rate</th><th>Expectancy</th><th>Profit factor</th><th>Max DD</th><th>Sharpe</th><th>Live at $1,000</th></tr></thead><tbody>${rows}</tbody></table></div>` : '<p class="empty">No setups yet.</p>'}</section>
-  <section class="lg${tr.sample ? ' sample' : ''}"><h2>TRADE LOG ${sampTag(tr.sample)}</h2><p class="meta">Last 50 fills · as of ${esc(fmtPT(tr.as_of))}${tr.source ? ' · ' + esc(tr.source) : ''}</p>${trows ? `<div class="tbl-wrap"><table><thead><tr><th>Time</th><th>Setup</th><th>Symbol</th><th>Side</th><th>Qty</th><th>Paper fill</th><th>Shadow fill</th><th>Result</th><th>Ledger row</th></tr></thead><tbody>${trows}</tbody></table></div>` : '<p class="empty">No trades yet.</p>'}</section>
   <section class="lg${S.hustles.some(a => a.sample) ? ' sample' : ''}"><h2>HUSTLE P&amp;L ${sampTag(S.hustles.some(a => a.sample))}</h2>${hrows ? `<div class="tbl-wrap"><table><thead><tr><th>Hustle</th><th>Stage</th><th>Revenue</th><th>Costs</th><th>Your hours</th><th>Net per hour</th></tr></thead><tbody>${hrows}</tbody></table></div>` : '<p class="empty">No hustles yet.</p>'}</section>
   <section class="lg"><h2>DECISION TIMELINE</h2><p class="meta">From DECISIONS.md in the repo</p>${dec ? `<ol class="timeline">${dec}</ol>` : '<p class="empty">No decisions logged yet.</p>'}</section>`;
 }
@@ -1139,7 +1148,7 @@ function renderHud() {
   if (S.live === null) { note.className = 'note'; note.innerHTML = '<b>CONNECTING</b>Opening the city\'s records…'; }
   else if (S.live === false) { note.className = 'note err'; note.innerHTML = '<b>OFFLINE</b>The city\'s records aren\'t reachable in this view, so the town is empty. Open it from claude.ai to see live data.'; }
   else if (!S.state) { note.className = 'note'; note.innerHTML = '<b>EMPTY</b>No city records yet. The residents fill this in on their first run.'; }
-  else if (S.state.sample_note) { note.className = 'note'; note.innerHTML = `<b>SAMPLE</b><span class="long">${esc(S.state.sample_note)}</span><span class="short">Dashed gold = sample. Bot, Treasury, Watchtower and City Hall are real.</span>`; }
+  else if (S.state.sample_note) { note.className = 'note'; note.innerHTML = `<b>SAMPLE</b><span class="long">${esc(S.state.sample_note)}</span><span class="short">Dashed gold = sample. Bot, Treasury, Watchtower, City Hall and hustles are real.</span>`; }
   else note.hidden = true;
 }
 function renderTicker() {
