@@ -2,7 +2,7 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
-**As of:** 2026-10-13 15:20 PT (Phase 0, step 5 done)
+**As of:** 2026-10-13 16:00 PT (Phase 0, step 5 done; owner and capital updated)
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
@@ -50,6 +50,7 @@ Not recommended now: local-business tools (needs heavy outreach), print-on-deman
 - Alpha Vantage connector (not blocking)
 - 4 hustle decisions + 1 income-routing decision (see Hustles)
 - Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13)
+- Let the Railway GitHub App see `trading-lab` (auto-deploy on push isn't firing; no skipped deploys, so webhooks never arrive). Workaround: Claude deploys by reconnecting the service source (connect-service-source), which builds the latest `main`.
 
 ## Plan
 Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
