@@ -36,7 +36,7 @@ Known monthly costs: Claude plan (tier TBC), Railway Hobby $5 (+usage).
 None proposed yet.
 
 ## Waiting on Gomes (City Hall)
-- Paper sizing equity decision (see Known gaps #4)
+- Merge PR: virtual $1,000 paper account + ledger restore + sticky kill switch (rule 9)
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)
 
@@ -57,4 +57,4 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 - GEX setup cannot be backtested honestly without historical options data (paid). Forward paper test only until funded.
 - No strategy has a validated edge yet. Controls exist so we can tell.
 - 3. Railway has no volume: the container's /ledger resets on every redeploy. Fix in progress: restore /ledger from branch `data` at startup.
-- 4. The Tradier sandbox account shows $100,000 equity and is a margin-type account. Paper orders must be sized as if live-size (rule 7), not off $100k. Fix in progress: virtual paper equity. The risk engine already blocks margin and short entries.
+- 4. The Tradier sandbox account shows $100,000 equity and is a margin-type account. Paper orders must be sized as if live-size (rule 7), not off $100k. Decision 2026-10-13: paper runs as a virtual $1,000 account, whole shares; each setup also reports 'tradeable at $50 live: yes/no'. Risk engine already blocks margin and short entries.

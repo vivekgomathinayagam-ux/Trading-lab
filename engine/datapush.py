@@ -61,6 +61,34 @@ class DataPusher:
             return False
         return True
 
+    def pull_dir(self, local_dir: Path, remote_prefix: str) -> int:
+        """Restore files from the data branch into local_dir (startup).
+        Returns how many files were restored; 0 if disabled or nothing there."""
+        if not self.enabled:
+            log.info("ledger restore skipped: GITHUB_DATA_TOKEN not set")
+            return 0
+        local_dir.mkdir(parents=True, exist_ok=True)
+        r = self.s.get(self._url(f"contents/{remote_prefix}"), params={"ref": self.branch},
+                       timeout=self.timeout)
+        if r.status_code == 404:
+            log.info("ledger restore: nothing on %s/%s yet", self.branch, remote_prefix)
+            return 0
+        r.raise_for_status()
+        n = 0
+        for item in r.json():
+            if item.get("type") != "file":
+                continue
+            f = self.s.get(self._url(f"contents/{item['path']}"), params={"ref": self.branch},
+                           headers={"Accept": "application/vnd.github.raw+json"},
+                           timeout=self.timeout)
+            if f.status_code == 200:
+                (local_dir / item["name"]).write_bytes(f.content)
+                n += 1
+            else:
+                log.warning("restore %s failed %s", item["path"], f.status_code)
+        log.info("ledger restore: %d files from %s/%s", n, self.branch, remote_prefix)
+        return n
+
     def push_dir(self, local_dir: Path, remote_prefix: str, message: str) -> int:
         if not self.enabled:
             log.info("data push skipped: GITHUB_DATA_TOKEN not set")
