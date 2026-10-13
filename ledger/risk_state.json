@@ -1,0 +1,13 @@
+{
+  "as_of": "2026-10-13T21:58:12+00:00",
+  "peak_equity": 0.0,
+  "sod_equity": 0.0,
+  "sod_date": null,
+  "kill_switch_on": false,
+  "kill_switch_reason": "",
+  "kill_switch_at": null,
+  "paper_start_equity": null,
+  "paper_baseline_equity": null,
+  "paper_baseline_settled": null,
+  "paper_baseline_at": null
+}
