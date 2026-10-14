@@ -1,0 +1,13 @@
+{
+  "as_of": "2026-10-14T13:30:13+00:00",
+  "mode": "paper",
+  "equity": 1000.0,
+  "settled_cash": 1000.0,
+  "peak_equity": 1000.0,
+  "start_of_day_equity": 1000.0,
+  "drawdown": 0.0,
+  "kill_switch_on": false,
+  "paper_equity_start": 1000.0,
+  "positions": [],
+  "strategies": []
+}
