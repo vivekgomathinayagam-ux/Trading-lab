@@ -24,7 +24,7 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 - **Operations fund:** $50 for running costs (Claude Pro $20/month). Runway: 2.5 months. Not deposited yet.
 - **Railway:** paid by Vivek's existing subscription, outside both funds.
 - Never ask Vivek to add money beyond these. Hustle income: $0. Trading P&L: $0.
-- Open question at City Hall: should hustle income top up the operations fund first, before it goes to the live fund? Otherwise the $50 runs out in about 2.5 months.
+- Oct 21: Vivek pays Claude Pro himself for now (he'll say if that changes), so all hustle income goes straight to the live fund. The $50 operations fund is untouched.
 - **Paper trading is fully autonomous:** no trade confirmations, ever. Every paper order and fill is logged in `ledger/trades.csv` and shown in the city's Ledger view.
 
 ## Setups (the tournament)
@@ -40,7 +40,7 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 | Hustle | One-pager | 90-day range | Autonomy |
 |---|---|---|---|
 | Trader spreadsheet templates (Gumroad/Etsy) | `hustles/templates/one-pager.md` | $0-150 | high |
-| Pine Script commissions (Fiverr) | `hustles/pine/one-pager.md` | $0-300 | medium |
+| Pine Script commissions (Fiverr) | `hustles/pine/one-pager.md` | $0-300 | **approved Oct 21**; Vivek wants Claude to run the store; setup pending |
 | Discord bots for trading communities (Fiverr) | `hustles/discord/one-pager.md` | $0-450 | medium |
 | Build-in-public posts (LinkedIn/Medium) | `hustles/buildlog/one-pager.md` | $0-25 direct; resume value | high |
 Not recommended now: local-business tools (needs heavy outreach), print-on-demand, surveys or microtasks (often ban AI help), anything selling trading signals.
@@ -48,7 +48,8 @@ Not recommended now: local-business tools (needs heavy outreach), print-on-deman
 ## Waiting on Vivek (City Hall)
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)
-- 4 hustle decisions + 1 income-routing decision (see Hustles)
+- 3 hustle decisions (templates, Discord bots, build log); Pine approved Oct 21
+- How the Fiverr store gets run (see DECISIONS 2026-10-21)
 - Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13)
 - Let the Railway GitHub App see `trading-lab` (auto-deploy on push isn't firing; no skipped deploys, so webhooks never arrive). Workaround: Claude deploys by reconnecting the service source (connect-service-source), which builds the latest `main`.
 
