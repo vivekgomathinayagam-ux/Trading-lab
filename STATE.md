@@ -74,7 +74,7 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 - [x] 3. Railway worker deployed 2026-10-13; logs: `RESULT: 5/5 connectivity checks passed` (sandbox account, SPY quote, 34 SPY expirations, clock)
 - [x] 4. Adapter, shadow fills, ledger, data push live. PR #1 merged; logs: ledger restore 3 files, paper_equity 1000, live_equity 1000, 4 files pushed. Paper baseline locks at the first market-hours loop.
 - [x] 5. Compound City published with SAMPLE data, checked at desktop (1366px) and phone (390px)
-- [ ] 6. Scheduled residents (Researcher created 2026-10-24 as the weekly Pier & Floor Researcher; the other five still to do)
+- [ ] 6. Scheduled residents: "Researcher (Floor + Pier)" runs Saturdays 6:34 AM PT (created 2026-10-24, automatic approval, phone alert only at checkpoints). Mayor, Newsie, Risk Officer, Accountant and Hustle Scout still to do.
 - [ ] 7. Start setups; first Hustle Scout one-pagers
 
 ## How the city gets data (for residents)
