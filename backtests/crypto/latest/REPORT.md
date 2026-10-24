@@ -1,6 +1,6 @@
 # Crypto Pier — historical backtest report
 
-_Generated 2026-10-24 23:33 UTC from Coinbase Exchange public candles (1h, 1d). Data 2017-01-01 to 2026-10-23._
+_Generated 2026-10-24 23:45 UTC from Coinbase Exchange public candles (1h, 1d). Data 2017-01-01 to 2026-10-23._
 
 ## How to read this
 
@@ -12,12 +12,14 @@ _Generated 2026-10-24 23:33 UTC from Coinbase Exchange public candles (1h, 1d). 
 
 ## Data quality
 
-| Asset | Timeframe | Bars | Missing | Largest 1-bar move |
-|---|---|---|---|---|
-| BTC-USD | 1h | 85939 | 0.06% | 22.0% |
-| BTC-USD | 1d | 3583 | 0.0% | 38.8% |
-| ETH-USD | 1h | 85954 | 0.04% | 19.6% |
-| ETH-USD | 1d | 3583 | 0.0% | 43.3% |
+| Asset | Timeframe | Bars | Missing | Largest 1-bar move | Flash-crash wicks (low < half the bar's body) |
+|---|---|---|---|---|---|
+| BTC-USD | 1h | 85939 | 0.06% | 22.0% | none |
+| BTC-USD | 1d | 3583 | 0.0% | 38.8% | 2017-04-15 |
+| ETH-USD | 1h | 85954 | 0.04% | 19.6% | 2017-06-21 |
+| ETH-USD | 1d | 3583 | 0.0% | 43.3% | 2017-06-21 |
+
+A flash-crash wick on one exchange can trigger a resting stop far below the real market (ETH on Coinbase's exchange, 21 June 2017, traded near $0.10 for a moment). The engine fills such stops at the stop price, as a real stop order on that venue could have, so these bars can cause large one-day losses. 'Worst day' in the screen shows it.
 
 ## Benchmarks (buy and hold, no costs after entry)
 
@@ -126,36 +128,36 @@ _Generated 2026-10-24 23:33 UTC from Coinbase Exchange public candles (1h, 1d). 
 
 Pass = 30+ trades, positive expectancy after costs, profit factor 1.2+, max drawdown no worse than -20%, Sharpe above the same asset's buy-and-hold, positive in 2 of 3 periods, positive Sharpe in 2022+.
 
-| Asset | Strategy | Sizing | Result | Why | Worst trade | Approx. breakeven fee per side |
+| Asset | Strategy | Sizing | Result | Why | Worst day | Approx. breakeven fee per side |
 |---|---|---|---|---|---|---|
-| BTC-USD | trend_sma(n=100) | risk5 | fail | max drawdown -31.4% worse than -20%; Sharpe 0.58 not above buy-and-hold 1.0 | -5.76% | 2.451% |
-| BTC-USD | trend_sma(n=100) | risk2 | fail | Sharpe 0.58 not above buy-and-hold 1.0 | -2.3% | 2.5% |
-| BTC-USD | trend_voltarget(n=100,vol=0.4) | risk5 | fail | max drawdown -31.4% worse than -20%; Sharpe 0.58 not above buy-and-hold 1.0 | -5.76% | 2.451% |
-| BTC-USD | trend_voltarget(n=100,vol=0.4) | risk2 | fail | Sharpe 0.58 not above buy-and-hold 1.0 | -2.3% | 2.5% |
-| BTC-USD | donchian(entry_n=20,exit_n=10) | risk5 | fail | max drawdown -38.7% worse than -20%; Sharpe 0.99 not above buy-and-hold 1.0 | -6.72% | 7.899% |
-| BTC-USD | donchian(entry_n=20,exit_n=10) | risk2 | fail | max drawdown -21.7% worse than -20%; Sharpe 0.99 not above buy-and-hold 1.0 | -3.72% | 7.859% |
+| BTC-USD | trend_sma(n=100) | risk5 | fail | max drawdown -31.4% worse than -20%; Sharpe 0.58 not above buy-and-hold 1.0 | -9.3% | 2.451% |
+| BTC-USD | trend_sma(n=100) | risk2 | fail | Sharpe 0.58 not above buy-and-hold 1.0 | -4.5% | 2.5% |
+| BTC-USD | trend_voltarget(n=100,vol=0.4) | risk5 | fail | max drawdown -31.4% worse than -20%; Sharpe 0.58 not above buy-and-hold 1.0 | -9.3% | 2.451% |
+| BTC-USD | trend_voltarget(n=100,vol=0.4) | risk2 | fail | Sharpe 0.58 not above buy-and-hold 1.0 | -4.5% | 2.5% |
+| BTC-USD | donchian(entry_n=20,exit_n=10) | risk5 | fail | max drawdown -38.7% worse than -20%; Sharpe 0.99 not above buy-and-hold 1.0 | -12.7% | 7.899% |
+| BTC-USD | donchian(entry_n=20,exit_n=10) | risk2 | fail | max drawdown -21.7% worse than -20%; Sharpe 0.99 not above buy-and-hold 1.0 | -8.4% | 7.859% |
 | BTC-USD | rsi2_meanrev(buy_below=10,trend_n=200) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.42 < 1.2; max drawdown -37.8% worse than -20%; Sharpe -0.67 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.7% | 0.243% |
-| BTC-USD | rsi2_meanrev(buy_below=10,trend_n=200) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.42 < 1.2; Sharpe -0.68 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -2.68% | 0.245% |
-| BTC-USD | ema_cross_4h(fast=20,slow=50) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.63 < 1.2; max drawdown -99.9% worse than -20%; Sharpe -1.27 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.81% | 0.395% |
-| BTC-USD | ema_cross_4h(fast=20,slow=50) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.67 < 1.2; max drawdown -94.7% worse than -20%; Sharpe -1.05 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -3.83% | 0.487% |
-| BTC-USD | intraday_breakout(look=24,hold=12) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.11 < 1.2; max drawdown -100.0% worse than -20%; Sharpe -7.52 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.43% | 0.016% |
-| BTC-USD | intraday_breakout(look=24,hold=12) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.1 < 1.2; max drawdown -100.0% worse than -20%; Sharpe -7.66 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -3.87% | 0.029% |
-| BTC-USD | intraday_meanrev(buy_below=25) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.17 < 1.2; max drawdown -99.6% worse than -20%; Sharpe -2.8 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.53% | 0.0% |
-| BTC-USD | intraday_meanrev(buy_below=25) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.12 < 1.2; max drawdown -99.2% worse than -20%; Sharpe -2.92 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -3.88% | 0.0% |
-| ETH-USD | trend_sma(n=100) | risk5 | fail | max drawdown -41.5% worse than -20%; Sharpe 0.5 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -5.46% | 2.461% |
-| ETH-USD | trend_sma(n=100) | risk2 | fail | Sharpe 0.48 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -2.18% | 2.455% |
-| ETH-USD | trend_voltarget(n=100,vol=0.4) | risk5 | fail | max drawdown -41.5% worse than -20%; Sharpe 0.5 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -5.46% | 2.458% |
-| ETH-USD | trend_voltarget(n=100,vol=0.4) | risk2 | fail | Sharpe 0.48 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -2.18% | 2.455% |
-| ETH-USD | donchian(entry_n=20,exit_n=10) | risk5 | fail | max drawdown -96.0% worse than -20%; Sharpe 0.87 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -6.69% | 5.371% |
-| ETH-USD | donchian(entry_n=20,exit_n=10) | risk2 | fail | max drawdown -89.7% worse than -20%; Sharpe 0.64 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -2.76% | 5.383% |
+| BTC-USD | rsi2_meanrev(buy_below=10,trend_n=200) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.42 < 1.2; Sharpe -0.68 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -2.7% | 0.245% |
+| BTC-USD | ema_cross_4h(fast=20,slow=50) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.63 < 1.2; max drawdown -99.9% worse than -20%; Sharpe -1.27 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -11.8% | 0.395% |
+| BTC-USD | ema_cross_4h(fast=20,slow=50) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.67 < 1.2; max drawdown -94.7% worse than -20%; Sharpe -1.05 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.6% | 0.487% |
+| BTC-USD | intraday_breakout(look=24,hold=12) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.11 < 1.2; max drawdown -100.0% worse than -20%; Sharpe -7.52 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -16.6% | 0.016% |
+| BTC-USD | intraday_breakout(look=24,hold=12) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.1 < 1.2; max drawdown -100.0% worse than -20%; Sharpe -7.66 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -11.2% | 0.029% |
+| BTC-USD | intraday_meanrev(buy_below=25) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.17 < 1.2; max drawdown -99.6% worse than -20%; Sharpe -2.8 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -12.5% | 0.0% |
+| BTC-USD | intraday_meanrev(buy_below=25) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.12 < 1.2; max drawdown -99.2% worse than -20%; Sharpe -2.92 not above buy-and-hold 1.0; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -11.8% | 0.0% |
+| ETH-USD | trend_sma(n=100) | risk5 | fail | max drawdown -41.5% worse than -20%; Sharpe 0.5 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -13.2% | 2.461% |
+| ETH-USD | trend_sma(n=100) | risk2 | fail | Sharpe 0.48 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -6.6% | 2.455% |
+| ETH-USD | trend_voltarget(n=100,vol=0.4) | risk5 | fail | max drawdown -41.5% worse than -20%; Sharpe 0.5 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -13.2% | 2.458% |
+| ETH-USD | trend_voltarget(n=100,vol=0.4) | risk2 | fail | Sharpe 0.48 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -6.6% | 2.455% |
+| ETH-USD | donchian(entry_n=20,exit_n=10) | risk5 | fail | max drawdown -96.0% worse than -20%; Sharpe 0.87 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -95.0% | 5.371% |
+| ETH-USD | donchian(entry_n=20,exit_n=10) | risk2 | fail | max drawdown -89.7% worse than -20%; Sharpe 0.64 not above buy-and-hold 1.09; not positive out-of-sample (2022+) | -88.1% | 5.383% |
 | ETH-USD | rsi2_meanrev(buy_below=10,trend_n=200) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.47 < 1.2; max drawdown -36.5% worse than -20%; Sharpe -0.61 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.8% | 0.071% |
-| ETH-USD | rsi2_meanrev(buy_below=10,trend_n=200) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.47 < 1.2; Sharpe -0.61 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -2.72% | 0.074% |
-| ETH-USD | ema_cross_4h(fast=20,slow=50) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.83 < 1.2; max drawdown -99.5% worse than -20%; Sharpe -0.55 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.83% | 0.656% |
-| ETH-USD | ema_cross_4h(fast=20,slow=50) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.92 < 1.2; max drawdown -82.0% worse than -20%; Sharpe -0.28 not above buy-and-hold 1.09; positive in only 1 of 3 periods; not positive out-of-sample (2022+) | -3.75% | 0.816% |
-| ETH-USD | intraday_breakout(look=24,hold=12) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.18 < 1.2; max drawdown -100.0% worse than -20%; Sharpe -6.32 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.83% | 0.054% |
-| ETH-USD | intraday_breakout(look=24,hold=12) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.17 < 1.2; max drawdown -100.0% worse than -20%; Sharpe -6.52 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -3.88% | 0.053% |
-| ETH-USD | intraday_meanrev(buy_below=25) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.24 < 1.2; max drawdown -99.8% worse than -20%; Sharpe -2.3 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -6.83% | 0.0% |
-| ETH-USD | intraday_meanrev(buy_below=25) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.19 < 1.2; max drawdown -99.4% worse than -20%; Sharpe -2.5 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -3.89% | 0.0% |
+| ETH-USD | rsi2_meanrev(buy_below=10,trend_n=200) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.47 < 1.2; Sharpe -0.61 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -2.7% | 0.074% |
+| ETH-USD | ema_cross_4h(fast=20,slow=50) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.83 < 1.2; max drawdown -99.5% worse than -20%; Sharpe -0.55 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -16.1% | 0.656% |
+| ETH-USD | ema_cross_4h(fast=20,slow=50) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.92 < 1.2; max drawdown -82.0% worse than -20%; Sharpe -0.28 not above buy-and-hold 1.09; positive in only 1 of 3 periods; not positive out-of-sample (2022+) | -6.8% | 0.816% |
+| ETH-USD | intraday_breakout(look=24,hold=12) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.18 < 1.2; max drawdown -100.0% worse than -20%; Sharpe -6.32 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -11.9% | 0.054% |
+| ETH-USD | intraday_breakout(look=24,hold=12) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.17 < 1.2; max drawdown -100.0% worse than -20%; Sharpe -6.52 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -9.8% | 0.053% |
+| ETH-USD | intraday_meanrev(buy_below=25) | risk5 | fail | expectancy <= 0 after costs; profit factor 0.24 < 1.2; max drawdown -99.8% worse than -20%; Sharpe -2.3 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -21.5% | 0.0% |
+| ETH-USD | intraday_meanrev(buy_below=25) | risk2 | fail | expectancy <= 0 after costs; profit factor 0.19 < 1.2; max drawdown -99.4% worse than -20%; Sharpe -2.5 not above buy-and-hold 1.09; positive in only 0 of 3 periods; not positive out-of-sample (2022+) | -17.0% | 0.0% |
 
 ## Walk-forward check: pick the best variant on 2017-2021, then test 2022+
 
