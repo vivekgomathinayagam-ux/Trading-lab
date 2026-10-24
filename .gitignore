@@ -19,3 +19,4 @@ ledger/snapshot.json
 backtests/results/*.parquet
 backtests/data/
 .DS_Store
+out/
