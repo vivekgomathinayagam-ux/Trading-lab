@@ -68,9 +68,13 @@ def quality(bundle: dict) -> dict:
         step = pd.Timedelta("1h" if tf == "1h" else "1D")
         expected = int((df.index[-1] - df.index[0]) / step) + 1
         moves = (df["close"].pct_change().abs() * 100).dropna()
+        # flash-crash wicks: the low is less than half of both the open and the close
+        body_lo = df[["open", "close"]].min(axis=1)
+        wicks = df.index[df["low"] < 0.5 * body_lo]
         out[tf] = {"bars": len(df), "first": str(df.index[0]), "last": str(df.index[-1]),
                    "missing_pct": round((1 - len(df) / expected) * 100, 2),
-                   "largest_bar_move_pct": round(float(moves.max()), 1)}
+                   "largest_bar_move_pct": round(float(moves.max()), 1),
+                   "flash_crash_bars": [str(t) for t in wicks[:10]]}
     return out
 
 
@@ -179,12 +183,14 @@ def write_report(out: Path, meta: dict, rows: list[dict], wf: list[dict], bh: di
              "the walk-forward table shows how picking the best backtest actually held up.\n")
 
     L.append("## Data quality\n")
-    L.append("| Asset | Timeframe | Bars | Missing | Largest 1-bar move |")
-    L.append("|---|---|---|---|---|")
+    L.append("| Asset | Timeframe | Bars | Missing | Largest 1-bar move | Flash-crash wicks (low < half the bar's body) |")
+    L.append("|---|---|---|---|---|---|")
     for a, q in meta["quality"].items():
         for tf, d in q.items():
-            L.append(f"| {a} | {tf} | {d['bars']} | {d['missing_pct']}% | {d['largest_bar_move_pct']}% |")
+            fc = ", ".join(x[:10] for x in d.get("flash_crash_bars", [])) or "none"
+            L.append(f"| {a} | {tf} | {d['bars']} | {d['missing_pct']}% | {d['largest_bar_move_pct']}% | {fc} |")
     L.append("")
+    L.append("A flash-crash wick on one exchange can trigger a resting stop far below the real market (ETH on Coinbase's exchange, 21 June 2017, traded near $0.10 for a moment). The engine fills such stops at the stop price, as a real stop order on that venue could have, so these bars can cause large one-day losses. 'Worst day' in the screen shows it.\n")
 
     L.append("## Benchmarks (buy and hold, no costs after entry)\n")
     L.append("| Asset | CAGR | Max DD | Sharpe |")
@@ -218,12 +224,12 @@ def write_report(out: Path, meta: dict, rows: list[dict], wf: list[dict], bh: di
     L.append("## Screen for paper trading (Robinhood costs; 5% and 2% risk sizing)\n")
     L.append("Pass = 30+ trades, positive expectancy after costs, profit factor 1.2+, max drawdown no worse than -20%, "
              "Sharpe above the same asset's buy-and-hold, positive in 2 of 3 periods, positive Sharpe in 2022+.\n")
-    L.append("| Asset | Strategy | Sizing | Result | Why | Worst trade | Approx. breakeven fee per side |")
+    L.append("| Asset | Strategy | Sizing | Result | Why | Worst day | Approx. breakeven fee per side |")
     L.append("|---|---|---|---|---|---|---|")
     for r in rows:
         if r["main"] and r["cost"] == HEADLINE_COST and r["sizing"] in ("risk5", "risk2") and r["style"] != "control":
             L.append(f"| {r['asset']} | {r['name']} | {r['sizing']} | {'PASS' if r['screen_pass'] else 'fail'} | "
-                     f"{'; '.join(r['screen_why']) or '–'} | {fmt(r.get('worst_trade_pct'), '%')} | {fmt(r.get('breakeven_fee_pct'), '%')} |")
+                     f"{'; '.join(r['screen_why']) or '–'} | {fmt(r.get('worst_day_pct'), '%')} | {fmt(r.get('breakeven_fee_pct'), '%')} |")
     L.append("")
 
     L.append("## Walk-forward check: pick the best variant on 2017-2021, then test 2022+\n")
@@ -281,10 +287,13 @@ def main() -> None:
     curves = {}
     trades = []
     for r in rows:
-        if (r["main"] and r["cost"] == HEADLINE_COST and r["sizing"] == HEADLINE_SIZING) or r["style"] == "control" and r["cost"] == "robinhood":
+        keep = (r["main"] and r["cost"] == HEADLINE_COST and r["sizing"] in ("risk5", "risk2")) \
+            or (r["style"] == "control" and r["cost"] == "robinhood")
+        if keep:
             eq = r["_res"].equity.resample("1D").last().dropna()
-            curves[f"{r['asset']}|{r['name']}"] = (eq / eq.iloc[0] * 100).round(2)
-            if r["style"] != "control":
+            tag = "" if r["style"] == "control" else f"|{r['sizing']}"
+            curves[f"{r['asset']}|{r['name']}{tag}"] = (eq / eq.iloc[0] * 100).round(2)
+            if r["style"] != "control" and r["sizing"] == HEADLINE_SIZING:
                 for t in r["_res"].trades:
                     trades.append({"asset": r["asset"], "strategy": r["name"], "entry": t.entry_time.isoformat(),
                                    "exit": t.exit_time.isoformat(), "entry_px": round(t.entry_px, 2),

@@ -244,6 +244,7 @@ td .pill { font-size: 11px; padding: 1px 6px; }
       <ul>
         <li>Walking between buildings means a real handoff, like a result carried to City Hall.</li>
         <li>Street lights dim when the bot goes quiet.</li>
+        <li>The Crypto Pier trades BTC and ETH around the clock; its 24/7 sign blinks green while a crypto job is running.</li>
       </ul>
       <h3>DESK AND STALL COLOR</h3>
       <ul>
@@ -301,12 +302,13 @@ const BLD = [
   { id: 'lab', name: 'The Lab', x: 32, y: 12, w: 10, h: 8, dist: 'trading', icon: 'flask' },
   { id: 'market', name: 'Hustle Market', x: 19, y: 23, w: 10, h: 7, dist: 'hustles', icon: 'mega' },
   { id: 'depot', name: 'Depot', x: 31, y: 23, w: 16, h: 7, dist: 'core', icon: 'train' },
+  { id: 'pier', name: 'Crypto Pier', x: 2, y: 23, w: 14, h: 7, dist: 'trading', icon: 'btc' },
 ];
 const BMAP = Object.fromEntries(BLD.map(b => [b.id, b]));
 const HOME = {
   cityhall: [24 * T, 9 * T + 13], treasury: [7.5 * T, 9 * T + 13], watchtower: [44 * T, 9 * T + 13],
   newsstand: [35.5 * T, 8 * T + 14], lab: [37.5 * T, 16.6 * T], market: [24.5 * T, 22 * T + 12],
-  depot: [35 * T, 25.2 * T], trading: [9 * T, 21 * T + 4],
+  depot: [35 * T, 25.2 * T], trading: [9 * T, 21 * T + 4], pier: [6 * T, 22 * T + 12],
 };
 const ROAD_Y = [10.95 * T, 20.95 * T];
 
@@ -320,6 +322,7 @@ const ICON_PIX = {
   mega: ['00000011', '00001111', '11111111', '11111111', '11111111', '00001111', '01000011', '01100000'],
   flag: ['11111100', '11111110', '11111100', '11111000', '10000000', '10000000', '10000000', '10000000'],
   train: ['01111110', '01000010', '01111110', '01111110', '11111111', '11011011', '01111110', '00100100'],
+  btc: ['00101000', '01111100', '00100110', '00111100', '00100110', '00100110', '01111100', '00101000'],
 };
 function iconSVG(name, color = 'currentColor') {
   const rows = ICON_PIX[name] || ICON_PIX.chart; let r = '';
@@ -328,7 +331,8 @@ function iconSVG(name, color = 'currentColor') {
 }
 
 /* ================= state ================= */
-const S = { state: null, agents: new Map(), hall: [], trades: null, live: null, canEdit: false, filter: 'all', view: 'city', sel: null, setups: [], hustles: [], residents: [] };
+const S = { state: null, agents: new Map(), hall: [], trades: null, live: null, canEdit: false, filter: 'all', view: 'city', sel: null, setups: [], pier: [], hustles: [], residents: [] };
+const allSetups = () => [...S.setups, ...S.pier];
 const C = {};
 function readTokens() {
   const cs = getComputedStyle(document.documentElement);
@@ -411,14 +415,20 @@ function buildWorld() {
   R(g, 0, 0, WW, WH, '#3e7a3c');
   for (let i = 0; i < 2200; i++) R(g, r() * WW, r() * WH, 1 + (r() < .3), 1, r() < .5 ? '#47853f' : '#367036');
 
-  // park (bottom-left)
-  R(g, 2 * T, 23 * T, 14 * T, 7 * T, '#356c35');
-  for (let i = 0; i < 260; i++) R(g, 2 * T + r() * 14 * T, 23 * T + r() * 7 * T, 1, 1, r() < .5 ? '#2f6230' : '#3f7a3b');
-  g.fillStyle = '#2d6aa8'; g.beginPath(); g.ellipse(7 * T, 27 * T, 40, 20, 0, 0, Math.PI * 2); g.fill();
-  g.fillStyle = '#3a82c6'; g.beginPath(); g.ellipse(7 * T - 4, 27 * T - 3, 32, 14, 0, 0, Math.PI * 2); g.fill();
-  R(g, 7 * T - 14, 27 * T - 8, 8, 1, '#7fb9ea'); R(g, 7 * T + 6, 27 * T + 3, 6, 1, '#7fb9ea');
-  for (let i = 0; i < 40; i++) R(g, 2.5 * T + r() * 13 * T, 23.5 * T + r() * 6 * T, 2, 2, ['#f2c75c', '#e88dd3', '#f4f6fd', '#ff8a6b'][i % 4]);
-  R(g, 11 * T, 26 * T, 18, 4, '#7a5534'); R(g, 11 * T, 26 * T + 4, 2, 3, '#4b3420'); R(g, 11 * T + 16, 26 * T + 4, 2, 3, '#4b3420');
+  // ---- Crypto Pier (bottom-left): shoreline, water, boardwalk; desks drawn live. Crypto trades 24/7.
+  { const b = BMAP.pier, x = b.x * T, y = b.y * T, w = b.w * T, h = b.h * T;
+    R(g, x, y, w, 8, '#cdb98e'); for (let i = 0; i < 60; i++) R(g, x + r() * w, y + r() * 7, 1, 1, '#b9a375');
+    R(g, x, y + 8, w, h - 8, '#2d6aa8');
+    for (let i = 0; i < 70; i++) R(g, x + r() * (w - 6), y + 10 + r() * (h - 12), 4 + (r() < .4) * 3, 1, r() < .5 ? '#3a82c6' : '#7fb9ea');
+    R(g, x, y + 8, w, 2, '#e9e2cf');
+    const dx0 = x + 8, dw = w - 16, dy0 = y + 10, dh = h - 22;
+    for (let px = dx0 + 2; px < dx0 + dw; px += 22) R(g, px, dy0 + dh - 2, 4, 9, '#4b3420');
+    R(g, dx0, dy0, dw, dh, '#8a6a4a');
+    for (let px = dx0; px < dx0 + dw; px += 6) R(g, px, dy0, 1, dh, '#77593b');
+    R(g, dx0, dy0, dw, 2, '#a5815d'); R(g, dx0, dy0 + dh - 3, dw, 3, '#5d4630');
+    R(g, dx0 - 2, dy0, 2, dh, '#5d4630'); R(g, dx0 + dw, dy0, 2, dh, '#5d4630');
+    lamp(g, dx0 + 3, dy0 + 14); lamp(g, dx0 + dw - 4, dy0 + 14);
+  }
 
   // roads
   const HR = [10, 20], VR = [17, 29];
@@ -539,7 +549,7 @@ function buildWorld() {
 
   // trees
   [[13.5, 3], [15.4, 5.2], [13.8, 7.6], [1.2, 3.5], [1.2, 7.4], [31.6, 3], [31.6, 7.2], [39.6, 3], [40.6, 6.4], [38.8, 1.6],
-   [44, 13.5], [46.2, 15.6], [44.4, 18.2], [0.8, 14.5], [0.8, 18.5], [3, 24], [14, 24.4], [13, 29.4], [3.4, 29.6], [9.5, 23.8],
+   [44, 13.5], [46.2, 15.6], [44.4, 18.2], [0.8, 14.5], [0.8, 18.5], [0.9, 25.5], [0.9, 29], [17.2, 25.5],
    [20, 31], [27, 31], [46.6, 31], [33, 31], [16.2, 31]].forEach(([tx, ty]) => tree(g, tx * T, ty * T));
   // lamps
   [1.5, 13, 16.3, 19.5, 28.5, 31.5, 38, 47].forEach(tx => lamp(g, tx * T, 9 * T + 12));
@@ -559,14 +569,18 @@ function palette(a, idx) {
   return { skin: SKIN[h % SKIN.length], hair: HAIR[(h >> 4) % HAIR.length], shirt: a.shirt || shirts[(idx ?? h) % shirts.length], pants: '#2a3048' };
 }
 function deskPos(i) { const c = i % 4, r = Math.floor(i / 4); return [(3.75 + c * 3.3) * T, (16 + r * 2.75) * T]; }
+function pierDeskPos(i) { const c = i % 4, r = Math.floor(i / 4); return [(3.9 + c * 3.3) * T, (25.4 + r * 2.6) * T]; }
 function stallPos(i) { const c = i % 3, r = Math.floor(i / 3); return [(20.8 + c * 3.2) * T, (25.6 + r * 3) * T]; }
 
 function restoreLayout() {
   const all = [...S.agents.values()];
-  S.setups = all.filter(a => a.kind === 'setup').sort((a, b) => (a.desk ?? 99) - (b.desk ?? 99) || String(a.name).localeCompare(b.name)).slice(0, 8);
+  const setups = all.filter(a => a.kind === 'setup').sort((a, b) => (a.desk ?? 99) - (b.desk ?? 99) || String(a.name).localeCompare(b.name));
+  S.setups = setups.filter(a => a.venue !== 'pier').slice(0, 8);
+  S.pier = setups.filter(a => a.venue === 'pier').slice(0, 8);
   S.hustles = all.filter(a => a.kind === 'hustle').sort((a, b) => (a.stall ?? 99) - (b.stall ?? 99) || String(a.name).localeCompare(b.name)).slice(0, 6);
   S.residents = all.filter(a => a.kind !== 'setup' && a.kind !== 'hustle');
   S.setups.forEach((a, i) => { const [dx, dy] = deskPos(i); a._spot = [dx, dy - 3]; a._pal = palette(a, i); a._seat = i; });
+  S.pier.forEach((a, i) => { const [dx, dy] = pierDeskPos(i); a._spot = [dx, dy - 3]; a._pal = palette(a, i); a._seat = i; });
   S.hustles.forEach((a, i) => { const [sx, sy] = stallPos(i); a._spot = [sx, sy - 7]; a._pal = palette(a, i); a._seat = i; });
   const used = {};
   S.residents.forEach(a => {
@@ -688,14 +702,24 @@ function drawBoard(g, t, open, quiet) {
   const sy = v => y + h - 3 - (v - lo) / ((hi - lo) || 1) * (h - 6);
   boardData.forEach((d, i) => { const cx = x + 4 + i * ((w - 8) / boardData.length); const up = d.c >= d.o; const a = sy(Math.max(d.o, d.c)), bb = sy(Math.min(d.o, d.c)); R(g, cx, a, 3, Math.max(1, bb - a), up ? '#4ccf8a' : '#ff5e6c'); });
 }
-function drawDesk(g, i, a, dim) {
-  const [cx, dy] = deskPos(i);
+function drawDesk(g, i, a, dim, pos = deskPos) {
+  const [cx, dy] = pos(i);
   const top = a ? col(stageVar(a.stage)) : '#4a5070';
   g.globalAlpha = dim ? .35 : 1;
   R(g, cx - 15, dy - 1, 30, 9, '#3a2a1c'); R(g, cx - 15, dy - 2, 30, 4, top); R(g, cx - 15, dy + 2, 30, 1, 'rgba(0,0,0,.3)');
   R(g, cx - 14, dy + 8, 2, 3, '#2a1d12'); R(g, cx + 12, dy + 8, 2, 3, '#2a1d12');
   if (a) { R(g, cx - 6, dy - 8, 12, 7, '#1a1f36'); R(g, cx - 5, dy - 7, 10, 5, '#2a3150'); R(g, cx - 1, dy - 2, 2, 1, '#1a1f36'); }
   if (a && a.sample) { g.strokeStyle = col('--gold'); g.setLineDash([2, 2]); g.lineWidth = 1; g.strokeRect(cx - 16.5, dy - 3.5, 33, 13); g.setLineDash([]); }
+  g.globalAlpha = 1;
+}
+function drawPierSign(g, t, dim) {
+  const b = BMAP.pier, x = b.x * T + b.w * T - 54, y = b.y * T + 13;
+  const busy = S.pier.some(a => a.status === 'working' || a.status === 'waiting');
+  g.globalAlpha = dim ? .35 : 1;
+  R(g, x, y, 40, 10, '#0b1024'); R(g, x - 1, y - 1, 42, 1, '#5b648e');
+  const on = busy && (reduceMotion || Math.floor(t * 2) % 2 === 0);
+  R(g, x + 3, y + 3, 4, 4, busy ? (on ? '#4ccf8a' : '#2f7a55') : '#59618a');
+  g.fillStyle = '#f2c75c'; g.font = '700 6px Silkscreen, monospace'; g.fillText('24/7', x + 11, y + 8);
   g.globalAlpha = 1;
 }
 function drawStall(g, i, a, dim) {
@@ -786,6 +810,17 @@ function drawFrame(t) {
       overHead(g, a, fx, fy, t, dim);
     }
     drawDesk(g, i, a, a && !matchesFilter(a));
+  }
+  // crypto pier desks + traders (24/7)
+  drawPierSign(g, t, !bldMatches(BMAP.pier));
+  for (let i = 0; i < 8; i++) {
+    const a = S.pier[i];
+    if (a) { a._seated = true; const dim = !matchesFilter(a); const [fx, fy] = a._spot; a._pos = [fx, fy];
+      ring(g, fx, fy, col(STATUS[a.status]?.v || '--sleep'), a.sample, dim, t, a.status === 'needs_me');
+      person(g, fx, fy, a._pal, a.status === 'working' ? 'type' : a.status === 'asleep' ? 'sleep' : a.status === 'needs_me' ? 'wave' : 'stand', t, dim);
+      overHead(g, a, fx, fy, t, dim);
+    }
+    if (a || i < 4) drawDesk(g, i, a, a && !matchesFilter(a), pierDeskPos);
   }
   // stalls
   S.hustles.forEach((a, i) => {
@@ -1060,9 +1095,13 @@ function buildingPanel(id) {
     html += n ? `<section><h3>PRE-MARKET NOTE ${sampTag(n.sample)}</h3><p><b>${esc(n.regime || '')}</b></p><p style="margin-top:6px">${esc(n.note || '')}</p>${(n.events || []).length ? `<ul class="list" style="margin-top:8px">${n.events.map(e => `<li><time>${esc(e.time)}</time><span>${esc(e.text)}</span></li>`).join('')}</ul>` : ''}${(n.sit_out || []).length ? `<p style="margin-top:8px">Sitting out today: ${esc(n.sit_out.join(', '))}</p>` : ''}<p class="meta">As of ${esc(fmtPT(n.as_of))}</p></section>` : '<p class="empty">No note yet. The Newsie posts one each weekday before the open.</p>';
   } else if (id === 'trading') {
     html += `<section><h3>DESKS (${S.setups.length} of 8)</h3>${S.setups.length ? `<ul class="list plain">${S.setups.map(a => `<li><button type="button" class="btn" style="width:100%;text-align:left;display:flex;gap:8px;align-items:center;justify-content:space-between" data-act="agent" data-id="${esc(a.id)}"><span>${esc(a.name)}</span>${stagePill(a.stage)}</button></li>`).join('')}</ul>` : '<p class="empty">No setups yet. Say "test: &lt;setup&gt;" in chat and a new trader takes a desk.</p>'}</section>`;
+  } else if (id === 'pier') {
+    const pr = S.agents.get('pier-lab');
+    html += `<section><h3>CRYPTO DESKS (${S.pier.length} of 8)</h3><p class="meta" style="margin:0 0 8px">BTC and ETH, spot only, no leverage. Crypto trades around the clock, so this pier never closes.</p>${S.pier.length ? `<ul class="list plain">${S.pier.map(a => `<li><button type="button" class="btn" style="width:100%;text-align:left;display:flex;gap:8px;align-items:center;justify-content:space-between" data-act="agent" data-id="${esc(a.id)}"><span>${esc(a.name)} ${a.sample ? '<span class="samp">SAMPLE</span>' : ''}</span>${stagePill(a.stage)}</button></li>`).join('')}</ul>` : '<p class="empty">No crypto setups yet.</p>'}</section>`;
+    if (pr) html += `<section><h3>RESEARCH</h3><p>${esc(pr.action || '')}</p><p class="meta">As of ${esc(fmtPT(pr.action_at))}</p>${linksHTML(pr.links)}</section>`;
   } else if (id === 'lab') {
     const r = S.agents.get('researcher');
-    const bt = S.setups.filter(a => a.stage === 'backtest');
+    const bt = allSetups().filter(a => a.stage === 'backtest');
     html += `<section><h3>RUNNING</h3>${r && (r.status === 'working' || r.status === 'waiting') ? `<p>${esc(r.action)}</p>${r.progress != null ? `<div class="big-prog"><i style="width:${r.progress}%;background:var(--ok)"></i></div><p class="meta">${Math.round(r.progress)}% · as of ${esc(fmtPT(r.action_at))}</p>` : ''}` : '<p class="empty">No backtest running.</p>'}</section>`;
     html += `<section><h3>QUEUE ${sampTag(r && r.sample)}</h3>${r && r.queue && r.queue.length ? `<ul class="list plain">${r.queue.map(q => `<li>${esc(q)}</li>`).join('')}</ul>` : '<p class="empty">Nothing queued.</p>'}</section>`;
     if (bt.length) html += `<section><h3>IN BACKTEST</h3><ul class="list plain">${bt.map(a => `<li>${esc(a.name)}</li>`).join('')}</ul></section>`;
@@ -1092,7 +1131,7 @@ panel.addEventListener('click', async e => {
 /* ================= ledger view ================= */
 const SERIES = ['--s1', '--s2', '--s3', '--s4', '--s5'];
 function equityChart() {
-  const ss = S.setups.filter(a => a.equity && a.equity.length > 1);
+  const ss = allSetups().filter(a => a.equity && a.equity.length > 1);
   if (!ss.length) return '<p class="empty">No equity curves yet. They appear once setups have trades.</p>';
   const W = 960, H = 280, L = 48, Rr = 16, Tt = 14, B = 30;
   const all = ss.flatMap(a => a.equity.map(p => p.v)); const lo = Math.min(0, ...all), hi = Math.max(0, ...all);
@@ -1117,9 +1156,9 @@ function equityChart() {
 }
 function renderLedger() {
   const st = S.state || {}; const sec = $('#ledger');
-  const anySampleSetup = S.setups.some(a => a.metrics && a.metrics.sample);
-  const mAsOf = S.setups.map(a => a.metrics && a.metrics.as_of).filter(Boolean).sort().pop();
-  const rows = S.setups.map(a => { const m = a.metrics || {}; return `<tr><td>${esc(a.name)} ${m.sample ? '<span class="samp">SAMPLE</span>' : ''}</td><td>${stagePill(a.stage)}</td><td>${m.trades ?? '—'}</td><td>${m.win_rate != null ? Math.round(m.win_rate * 100) + '%' : '—'}</td><td>${m.expectancy_r != null ? num(m.expectancy_r) + ' R' : '—'}</td><td>${num(m.pf)}</td><td>${m.max_dd != null ? pct(-Math.abs(m.max_dd)) : '—'}</td><td>${num(m.sharpe)}</td><td>${a.tradeable ? (a.tradeable.ok ? 'Yes' : 'No') : '—'}</td></tr>`; }).join('');
+  const anySampleSetup = allSetups().some(a => a.metrics && a.metrics.sample);
+  const mAsOf = allSetups().map(a => a.metrics && a.metrics.as_of).filter(Boolean).sort().pop();
+  const rows = allSetups().map(a => { const m = a.metrics || {}; return `<tr><td>${esc(a.name)} ${m.sample ? '<span class="samp">SAMPLE</span>' : ''}${a.venue === 'pier' ? ' <span class="meta" style="margin:0">· pier</span>' : ''}</td><td>${stagePill(a.stage)}</td><td>${m.trades ?? '—'}</td><td>${m.win_rate != null ? Math.round(m.win_rate * 100) + '%' : '—'}</td><td>${m.expectancy_r != null ? num(m.expectancy_r) + ' R' : '—'}</td><td>${num(m.pf)}</td><td>${m.max_dd != null ? pct(-Math.abs(m.max_dd)) : '—'}</td><td>${num(m.sharpe)}</td><td>${a.tradeable ? (a.tradeable.ok ? 'Yes' : 'No') : '—'}</td></tr>`; }).join('');
   const tr = S.trades || {}; const trows = (tr.rows || []).slice(0, 50).map(r => `<tr><td>${esc(shortPT(r.t))}</td><td>${esc(r.setup)}</td><td>${esc(r.symbol)}</td><td>${esc(r.side)}</td><td>${esc(r.qty)}</td><td>${money(r.price)}</td><td>${money(r.shadow_price)}</td><td>${r.pnl_r != null ? num(r.pnl_r) + ' R' : '—'}</td><td>${esc(r.ref || '')}</td></tr>`).join('');
   const hrows = S.hustles.map(a => `<tr><td>${esc(a.name)} ${a.sample ? '<span class="samp">SAMPLE</span>' : ''}</td><td>${stagePill(a.stage)}</td><td>${money(a.revenue)}</td><td>${money(a.costs)}</td><td>${a.hours ?? '—'}</td><td>${a.hours ? money(((a.revenue || 0) - (a.costs || 0)) / a.hours) : '—'}</td></tr>`).join('');
   const dec = (st.decisions || []).map(d => `<li><time>${esc(d.date)}</time><span>${esc(d.text)}</span></li>`).join('');

@@ -201,6 +201,7 @@ def metrics(res: Result, n_bars: int) -> dict:
         "expectancy_r": round(float(rm.mean()), 3) if rm.size else None,
         "trade_tstat": round(float(tstat), 2),
         "worst_trade_pct": round(float(worst), 2),
+        "worst_day_pct": round(float(r.min() * 100), 1) if len(r) else 0.0,
         "avg_bars_held": round(float(np.mean([t.bars for t in tr])), 1) if tr else 0.0,
         "fees_pct_of_start": round(res.fees_paid / eq.iloc[0] * 100, 1),
     }
