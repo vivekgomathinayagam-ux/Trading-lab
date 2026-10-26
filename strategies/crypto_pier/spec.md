@@ -44,12 +44,25 @@ No `config.yaml` here on purpose: nothing on the Pier is cleared for paper or li
 | Day-trade breakout | retired |
 | Day-trade dip-buy | retired |
 | RSI(2) dip-buy | retired |
+| Drop-bounce (short-horizon mean reversion) | retired |
+| Momentum-burst (short-horizon continuation) | retired |
+| Squeeze-breakout (short-horizon volatility breakout) | retired |
+
+## Crypto ETF / options overlay idea (tested 2026-10-25)
+Vivek asked whether a short-term directional pattern on BTC/ETH could be traded via a crypto ETF (IBIT, FBTC, BITO, etc.) using calls/puts for defined risk instead of spot. Two honest limits on this, upfront:
+- "Decades" of history doesn't exist for this instrument: usable BTC/ETH spot data runs ~2017-2026 (what the lab already uses); the ETFs themselves are new (BITO launched Oct 2021, spot ETFs like IBIT/FBTC launched Jan 2024), and listed options on them have even less history. There's no way to backtest crypto-ETF options directly over a long window.
+- The approach taken: test short-horizon (3-15 day) directional patterns on the real BTC/ETH spot series the lab already has — a pattern found there is the thing a call/put would try to capture, since these ETFs track spot closely (ignoring tracking error and financing cost, which paper trading would still need to check).
+
+Three patterns tested, pre-registered before running: **drop-bounce** (buy after a ≥10% single-day drop, hold up to 5 days — mean reversion), **momentum-burst** (buy after a ≥15% 3-day move, hold up to 5 days — continuation), **squeeze-breakout** (buy a breakout out of a volatility contraction, hold up to 10 days). 5 extra parameter variants each (16 total), same Robinhood-cost assumptions and 2017-2026 data as the rest of the Pier.
+
+**Result: all three fail the screen on both BTC and ETH.** Drop-bounce and squeeze-breakout lose money after costs on both coins. Momentum-burst is the only one with positive expectancy after costs (profit factor 1.5-3.2 depending on cost/sizing slice) but its Sharpe (0.3 BTC, 0.4-0.5 ETH) stays below simply holding the coin, and it still fails the drawdown and out-of-sample checks. None of the three are a basis for an options trade yet — a short-dated option adds theta decay and implied-vol cost on top of a spot pattern that doesn't clear the bar on its own.
 
 ## Research queue (each item gets a written hypothesis before it is run; variant count is reported)
 1. Trailing breakout exit (channel stop that ratchets up) vs the fixed Turtle stop, to remove stale far-away stops.
 2. Close-based stops (bot checks at the close; no resting order on the exchange) vs intrabar stops, to measure flash-crash exposure.
 3. Real Robinhood costs: measure live bid/ask spreads with read-only Robinhood crypto quotes, since default "market maker" routing prices through the spread rather than a listed fee.
 4. A 2022+ hold-out is now spent; new ideas are judged on walk-forward results and on forward (live-data) paper only.
+5. If momentum-burst is refined further (longer lookback, volatility filter) and clears the screen on spot, model it as a real options trade before paper: strike/expiry choice, theta cost over the hold period, and bid/ask on the actual ETF options chain — a spot pass is necessary but not sufficient for an options version to work.
 
 ## Gates (same tournament as the Trading Floor)
 - Backtest screen: 30+ trades, positive expectancy after Robinhood costs, profit factor 1.2+, max drawdown no worse than −20%, Sharpe above buy-and-hold on the same coin, positive in 2 of 3 periods, positive after 2022.

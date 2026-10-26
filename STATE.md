@@ -2,7 +2,7 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
-**As of:** 2026-10-24 17:30 PT (Phase 0, step 5 done; Crypto Pier lab added and first BTC/ETH backtests run)
+**As of:** 2026-10-25 20:30 PT (Phase 0, step 5 done; Crypto Pier lab added; short-horizon ETF/options-style patterns tested, none passed)
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
@@ -45,6 +45,7 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 | ETH trend 100-day | backtest | +4.0%/yr, max DD −18.8%, Sharpe 0.48; negative since 2022 |
 | ETH breakout 20/10 | backtest | flash-crash artifact (−90% DD from Coinbase's 2017 ETH crash); needs trailing exit |
 | 4h EMA swing, day-trade breakout, day-trade dip-buy, RSI(2) dip-buy | retired | lose money after fees |
+| Drop-bounce, momentum-burst, squeeze-breakout (short-horizon, 3-15 day; meant as a defined-risk ETF options overlay) | retired | all 3 fail the screen on both coins after Robinhood-level costs; momentum-burst is the least bad (positive expectancy, Sharpe ~0.3-0.4) but still below buy-and-hold |
 Next (research queue in the spec): trailing breakout exit, close-based stops, real Robinhood spreads.
 
 ## Hustles (all proposed 2026-10-13; waiting on Vivek at City Hall)
