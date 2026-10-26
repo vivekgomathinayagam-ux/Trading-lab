@@ -1,1 +1,2 @@
 ts,event,mode,strategy,symbol,side,qty,price,source,order_id,max_loss,cost,note
+2026-10-26T14:11:43+00:00,entry,paper,orb_vol,SPY,buy,1,764.4709,yahoo_rt+slip,,19.11,764.47,sandbox ok 40668361
