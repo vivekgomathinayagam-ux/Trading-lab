@@ -158,6 +158,11 @@ def main() -> int:
         daytrade = DayTradeRunner(ledger, broker, risk, YahooBars(), ledger_dir,
                                   equity=settings.paper_equity)
         log.info("day-trade desks on paper: %s", [d["label"] for d in daytrade.status()])
+        try:   # proves the live 1-minute feed works now, not at the next open
+            daytrade.warmup()
+        except Exception as e:  # noqa: BLE001
+            log.error("day-trade warm-up failed (will retry at the open): %s", e)
+            alerts.send(f"Compound City: day-trade 1-minute feed failed at startup: {e}")
     desk_names = [s.name for s in strategies] + ([d["desk"] for d in daytrade.status()] if daytrade else [])
 
     last_push = 0.0
