@@ -73,6 +73,7 @@ class DayTradeRunner:
 
     def save(self, marks: dict | None = None) -> None:
         out = {"as_of": datetime.now().astimezone().isoformat(timespec="seconds"), **self.meta,
+               "marks": {k: round(v, 4) for k, v in (marks or {}).items()},
                "desks": {k: {**d.to_dict(), "label": d.rule.label, "equity": round(d.equity(marks), 2)}
                          for k, d in self.desks.items()}}
         self.books_path.write_text(json.dumps(out, indent=1))
