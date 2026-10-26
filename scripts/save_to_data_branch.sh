@@ -6,6 +6,7 @@
 #   scripts/save_to_data_branch.sh "commit message" SRC1:DEST1 [SRC2:DEST2 ...]
 #   SRC is a directory (its files are copied) or a glob; DEST is a path in the data branch.
 set -euo pipefail
+trap 'echo "::error::save_to_data_branch failed at line $LINENO: $BASH_COMMAND (pwd $(pwd))"' ERR
 msg="$1"; shift
 git config user.name "compound-city-lab"
 git config user.email "lab@users.noreply.github.com"
@@ -27,7 +28,8 @@ for attempt in 1 2 3 4 5 6; do
   cd ../databranch
   if git diff --cached --quiet; then echo "no changes"; exit 0; fi
   git commit -q -m "$msg"
-  if git push origin HEAD:data; then echo "saved on attempt $attempt"; exit 0; fi
+  if out=$(git push origin HEAD:data 2>&1); then echo "saved on attempt $attempt"; exit 0; fi
+  echo "::warning::push attempt $attempt failed: $(echo "$out" | tr '\n' ' ' | cut -c1-400)"
   cd "$root"
   sleep $((attempt * 7))
 done
