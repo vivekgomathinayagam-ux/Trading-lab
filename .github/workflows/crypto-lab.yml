@@ -10,13 +10,13 @@ on:
     - cron: "17 9 * * 6"   # Saturdays 09:17 UTC (2:17 AM Pacific)
   push:
     branches: [main, "lab/**"]
-    paths: ["lab/**", ".github/workflows/crypto-lab.yml"]
+    paths: ["lab/crypto/**", "lab/tests/test_crypto_lab.py", "lab/requirements.txt", ".github/workflows/crypto-lab.yml"]
 
 permissions:
   contents: write
 
 concurrency:
-  group: crypto-lab
+  group: data-branch-writer
   cancel-in-progress: false
 
 jobs:
@@ -50,30 +50,7 @@ jobs:
         run: cat out/crypto/REPORT.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Save results to the data branch
-        env:
-          SRC_REF: ${{ github.ref_name }}
         run: |
-          set -e
           stamp=$(date -u +%Y-%m-%d)
-          git config user.name "compound-city-lab"
-          git config user.email "lab@users.noreply.github.com"
-          git fetch origin data --depth=1 || true
-          if git rev-parse --verify -q origin/data >/dev/null; then
-            git worktree add -B data ../databranch origin/data
-          else
-            git worktree add --orphan -b data ../databranch
-          fi
-          for dest in latest "$stamp"; do
-            mkdir -p "../databranch/backtests/crypto/$dest"
-            cp out/crypto/* "../databranch/backtests/crypto/$dest/"
-          done
-          cd ../databranch
-          git add backtests/crypto
-          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
-          git commit -m "crypto-lab: backtest results $stamp (from $SRC_REF)"
-          for i in 1 2 3 4 5; do
-            if git push origin HEAD:data; then exit 0; fi
-            git fetch origin data --depth=1 && git rebase origin/data || true
-            sleep $((i * 5))
-          done
-          exit 1
+          bash scripts/save_to_data_branch.sh "crypto-lab: backtest results $stamp (from ${{ github.ref_name }})" \
+            out/crypto:backtests/crypto/latest out/crypto:backtests/crypto/$stamp
