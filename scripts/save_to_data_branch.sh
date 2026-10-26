@@ -23,7 +23,7 @@ for attempt in 1 2 3 4 5 6; do
     src="${pair%%:*}"; dest="${pair#*:}"
     mkdir -p "../databranch/$dest"
     if [ -d "$root/$src" ]; then cp -r "$root/$src"/. "../databranch/$dest/"; else cp $root/$src "../databranch/$dest/"; fi
-    (cd ../databranch && git add "$dest")
+    (cd ../databranch && git add -f "$dest")   # -f: the data branch inherited an old .gitignore that hides backtests/data/
   done
   cd ../databranch
   if git diff --cached --quiet; then echo "no changes"; exit 0; fi
