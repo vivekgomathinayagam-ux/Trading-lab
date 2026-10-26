@@ -1,5 +1,6 @@
 name: gex_spreads
-stage: idea
-symbols: [SPY, SPX]
+stage: idea  # unblocked 2026-10-26 (Skylit); waiting on Vivek's filter definitions before build
+symbols: [SPY, SPXW]
 interval_seconds: 300
 params: {}
+# data_source: skylit (heat_historical_heatmap, option_chain, contract_history)
