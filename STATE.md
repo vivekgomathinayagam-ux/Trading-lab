@@ -2,7 +2,7 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
-**As of:** 2026-10-25 21:50 PT (day-trade desks on paper from the Oct 26 open; bot deploy 5eab4bc6 warmed up; first Floor backtest done: no edge yet; daily close task created)
+**As of:** 2026-10-26 14:50 PT (daily close, paper day 1: first 3 paper trades, all closed at the end of day; no +5% hits; bot healthy, kill switch off)
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
@@ -32,11 +32,11 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 ### Day-trade desks (spec `strategies/daytrade/spec.md`; SPY, QQQ, TQQQ, UPRO, SQQQ, SPXU; +5% target, -2.5% stop, 1-min volume spike)
 | Desk | Stage | Backtest 1-min Oct 1-23 (17 sessions, $1,000) | Paper so far | Notes |
 |---|---|---|---|---|
-| ORB + volume | **paper from 2026-10-26** | 12 trades, −2.65%, PF 0.55, +5% hits 0 | starts Oct 26 | 09:30-09:45 range breakout on a volume-spike bar |
-| EMA 9/21 + volume | **paper from 2026-10-26** | 11 trades, −2.51%, PF 0.33, +5% hits 0 | starts Oct 26 | 5-min EMA cross with a 1-min volume spike in that bucket |
-| Volume spike | **paper from 2026-10-26** | 17 trades, +1.13%, PF 1.2, +5% hits 0 | starts Oct 26 | spike bar closes up, above VWAP and the prior 15-bar high |
+| ORB + volume | **paper from 2026-10-26** | 12 trades, −2.65%, PF 0.55, +5% hits 0 | 1 trade, +0.05%, vs SPY −0.32 pts (as of Oct 26 close) | 09:30-09:45 range breakout on a volume-spike bar |
+| EMA 9/21 + volume | **paper from 2026-10-26** | 11 trades, −2.51%, PF 0.33, +5% hits 0 | 1 trade, −0.41%, vs SPY −0.78 pts (as of Oct 26 close) | 5-min EMA cross with a 1-min volume spike in that bucket |
+| Volume spike | **paper from 2026-10-26** | 17 trades, +1.13%, PF 1.2, +5% hits 0 | 1 trade, −0.19%, vs SPY −0.56 pts (as of Oct 26 close) | spike bar closes up, above VWAP and the prior 15-bar high |
 | ORB plain / EMA plain / Volume spike 2x | backtest only | +0.37% / +0.46% / +0.28% | — | comparisons |
-| SPY buy-and-hold | benchmark | −0.58% same window | from Oct 26 open | control |
+| SPY buy-and-hold | benchmark | −0.58% same window | +0.37% (762.35 → 765.19, as of Oct 26 close) | control |
 Verdict so far: **no edge yet** (tiny sample; 3x slippage and the 5-min 37-session check are negative for all paper desks). The +5% target is rare: since 2010 it happened on 0.17% of SPY days and 3-10% of 3x-ETF days, while the −2.5% stop level was hit on 19-31% of 3x-ETF days.
 Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:backtests/floor/latest/REPORT.md`. Paper books: `data:ledger/daytrade_books.json`, trades `data:ledger/daytrade_trades.csv`. Tracked daily by the Accountant (daily close) task.
 
@@ -105,6 +105,8 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 ## Known gaps (honest list)
 - The repo is public: strategy code, ledger and decisions are visible to anyone. No secrets are in it.
 - Crypto paper trading doesn't exist yet: Tradier has no crypto. When a Pier rule passes, crypto paper runs inside the bot on live quotes.
+- Paper end-of-day exits fill about 1-2 min after 15:55 ET (Oct 26: 15:56:43) at the live price, while the backtest exits at the 15:55 bar's open. The bot acts on the 15:55 bar once it completes. Small, but paper and backtest differ here; fixing it touches engine/ (needs Vivek's yes).
+- floor-lab's after-close GitHub Actions run (21:25 UTC) had not started by 21:50 UTC on Oct 26; GitHub's scheduler often runs late. Next Accountant run checks it.
 - Shadow fills use Yahoo's 1-minute last price (no bid/ask) + 2 bps slippage. Options shadow fills use delayed sandbox quotes. Real-time options need a paid feed.
 - GEX setup cannot be backtested honestly without historical options data (paid). Forward paper test only until funded.
 - No strategy has a validated edge yet. Controls exist so we can tell.
