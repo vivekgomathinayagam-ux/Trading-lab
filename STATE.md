@@ -2,7 +2,7 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
-**As of:** 2026-10-25 20:30 PT (Phase 0, step 5 done; Crypto Pier lab added; short-horizon ETF/options-style patterns tested, none passed)
+**As of:** 2026-10-25 21:45 PT (day-trade desks built and set to paper from Oct 26; Floor lab on Actions; Crypto Pier lab running)
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
@@ -29,13 +29,23 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 - **Paper trading is fully autonomous:** no trade confirmations, ever. Every paper order and fill is logged in `ledger/trades.csv` and shown in the city's Ledger view.
 
 ## Setups (the tournament)
+### Day-trade desks (spec `strategies/daytrade/spec.md`; SPY, QQQ, TQQQ, UPRO, SQQQ, SPXU; +5% target, -2.5% stop, 1-min volume spike)
+| Desk | Stage | Notes |
+|---|---|---|
+| ORB + volume | **paper from 2026-10-26** | 09:30-09:45 range breakout on a volume-spike bar |
+| EMA 9/21 + volume | **paper from 2026-10-26** | 5-min EMA cross with a 1-min volume spike in that bucket |
+| Volume spike | **paper from 2026-10-26** | spike bar closes up, above VWAP and the prior 15-bar high |
+| ORB / EMA without volume, Volume spike 2x | backtest only | comparisons |
+Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:backtests/floor/latest/REPORT.md`. Paper books: `data:ledger/daytrade_books.json`, trades `data:ledger/daytrade_trades.csv`.
+
+### Other setups
 | Setup | Stage | Notes |
 |---|---|---|
-| ORB SPY/TQQQ | spec | Vivek's design; Pine signal + Python backtest |
+| ORB SPY/TQQQ (original Pine design) | spec | superseded on paper by the ORB + volume desk above |
 | CVD turn 3-min | spec | buy from 5-candle low, sell from 5-candle high; skip spikes; RTH only |
 | GEX-filtered SPY/SPX verticals | idea | needs GEX source (FlashAlpha) and real options history to backtest |
 | Control: SPY buy-and-hold | spec | benchmark |
-| Control: 9/21 EMA cross | spec | benchmark |
+| Control: 9/21 EMA cross | spec | now a real desk (EMA 9/21 + volume); SPY buy-and-hold from Oct 26 stays the benchmark |
 
 ### Crypto Pier (BTC/ETH spot, long only; spec `strategies/crypto_pier/spec.md`)
 | Desk | Stage | Backtest, Robinhood costs, 2% risk (2017 to Oct 2026) |
@@ -76,7 +86,7 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 - [x] 4. Adapter, shadow fills, ledger, data push live. PR #1 merged; logs: ledger restore 3 files, paper_equity 1000, live_equity 1000, 4 files pushed. Paper baseline locks at the first market-hours loop.
 - [x] 5. Compound City published with SAMPLE data, checked at desktop (1366px) and phone (390px)
 - [ ] 6. Scheduled residents: "Researcher (Floor + Pier)" runs Saturdays 6:34 AM PT (created 2026-10-24, automatic approval, phone alert only at checkpoints). Mayor, Newsie, Risk Officer, Accountant and Hustle Scout still to do.
-- [ ] 7. Start setups; first Hustle Scout one-pagers
+- [~] 7. Day-trade desks on paper from 2026-10-26; hustle one-pagers posted 2026-10-13
 
 ## How the city gets data (for residents)
 - Database of the artifact above; write with ArtifactData (url = the artifact link). Docs:

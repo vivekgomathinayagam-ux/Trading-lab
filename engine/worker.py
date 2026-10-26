@@ -27,7 +27,9 @@ from engine import config
 from engine.alerts import Alerts
 from engine.brokers import TradierBroker
 from engine.clock import is_close_window, is_market_hours, now_ny
+from engine.daytrade_runner import DayTradeRunner, enabled as daytrade_enabled
 from engine.datapush import DataPusher
+from engine.marketdata import YahooBars
 from engine.ledger import Ledger
 from engine.risk import DEFAULT_CAPS, AccountState, RiskEngine
 from engine.shadow import ShadowSimulator
@@ -151,6 +153,12 @@ def main() -> int:
     shadow = ShadowSimulator(slippage_bps=settings.shadow_slippage_bps)
     strategies = load_runnable()
     log.info("runnable strategies: %s", [s.name for s in strategies] or "none yet")
+    daytrade = None
+    if daytrade_enabled():
+        daytrade = DayTradeRunner(ledger, broker, risk, YahooBars(), ledger_dir,
+                                  equity=settings.paper_equity)
+        log.info("day-trade desks on paper: %s", [d["label"] for d in daytrade.status()])
+    desk_names = [s.name for s in strategies] + ([d["desk"] for d in daytrade.status()] if daytrade else [])
 
     last_push = 0.0
     pushed_close_for = None
@@ -192,15 +200,22 @@ def main() -> int:
                         if sf:
                             ledger.trade("shadow_fill", order.mode, strat.name, sf.symbol, sf.side,
                                          sf.qty, price=sf.price, source=sf.source, note=sf.note)
+                if daytrade:
+                    try:
+                        daytrade.step(t)
+                    except Exception as e:  # noqa: BLE001  (a desk bug must not stop the bot)
+                        log.error("day-trade step error: %s\n%s", e, traceback.format_exc())
+                        ledger.heartbeat("daytrade_error", {"error": str(e)})
                 ledger.write_json("snapshot.json", {
                     "mode": settings.mode, "equity": acct.equity, "settled_cash": acct.settled_cash,
                     "peak_equity": st.peak_equity, "start_of_day_equity": st.sod_equity,
                     "drawdown": round(st.drawdown(acct.equity), 4),
                     "kill_switch_on": st.kill_switch_on, "paper_equity_start": st.paper_start_equity,
-                    "positions": positions, "strategies": [s.status() for s in strategies]})
+                    "positions": positions, "strategies": [s.status() for s in strategies],
+                    "daytrade_desks": daytrade.status() if daytrade else []})
             ledger.heartbeat("ok", {"market_open": in_hours, "mode": settings.mode,
                                     "kill_switch_on": st.kill_switch_on,
-                                    "strategies": [s.name for s in strategies]})
+                                    "strategies": desk_names})
 
             since = loop_start - last_push
             due_in_hours = in_hours and since >= settings.snapshot_minutes * 60

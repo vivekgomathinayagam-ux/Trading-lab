@@ -1,0 +1,84 @@
+# Trading Floor day-trade lab: archive 1-minute ETF bars (Yahoo keeps only ~30
+# days, so the archive is what lets history grow), backtest the pre-registered
+# desks in strategies/daytrade/spec.md, and save results to the "data" branch
+# under backtests/floor/. Runs after every weekday close, on lab/rule changes,
+# and on demand. No secrets: built-in GITHUB_TOKEN only.
+name: floor-lab
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "25 21 * * 1-5"   # 21:25 UTC = after the 4:00 PM ET close all year
+  push:
+    branches: [main, "lab/**"]
+    paths: ["lab/floor/**", "strategies/daytrade/**", "tests/test_daytrade_core.py", ".github/workflows/floor-lab.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: floor-lab
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install lab dependencies
+        run: pip install -r lab/requirements.txt
+
+      - name: Unit tests (shared day-trade core)
+        run: python -m unittest tests.test_daytrade_core -v
+
+      - name: Restore the 1-minute archive from the data branch
+        run: |
+          mkdir -p backtests/data/etf1m
+          git fetch origin data --depth=1 || true
+          for s in SPY QQQ TQQQ UPRO SQQQ SPXU; do
+            git show "origin/data:backtests/data/etf1m/$s.csv.gz" > "backtests/data/etf1m/$s.csv.gz" 2>/dev/null \
+              || rm -f "backtests/data/etf1m/$s.csv.gz"
+          done
+          ls -la backtests/data/etf1m || true
+
+      - name: Run backtests (real Yahoo data)
+        run: python -m lab.floor.run --out out/floor --archive backtests/data/etf1m
+
+      - name: Show report
+        run: cat out/floor/REPORT.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Save results and archive to the data branch
+        env:
+          SRC_REF: ${{ github.ref_name }}
+        run: |
+          set -e
+          stamp=$(date -u +%Y-%m-%d)
+          git config user.name "compound-city-lab"
+          git config user.email "lab@users.noreply.github.com"
+          if git rev-parse --verify -q origin/data >/dev/null; then
+            git worktree add -B data ../databranch origin/data
+          else
+            git worktree add --orphan -b data ../databranch
+          fi
+          for dest in latest "$stamp"; do
+            mkdir -p "../databranch/backtests/floor/$dest"
+            cp out/floor/* "../databranch/backtests/floor/$dest/"
+          done
+          mkdir -p ../databranch/backtests/data/etf1m
+          cp backtests/data/etf1m/*.csv.gz ../databranch/backtests/data/etf1m/
+          cd ../databranch
+          git add backtests/floor backtests/data/etf1m
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "floor-lab: results $stamp (from $SRC_REF)"
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:data; then exit 0; fi
+            git fetch origin data --depth=1 && git rebase origin/data || true
+            sleep $((i * 5))
+          done
+          exit 1

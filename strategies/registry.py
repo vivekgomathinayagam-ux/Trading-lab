@@ -26,6 +26,8 @@ def load_runnable() -> list[Strategy]:
     for cfg in discover():
         if cfg.stage not in RUNNABLE:
             continue
+        if not (ROOT / cfg.name / "strategy.py").exists():
+            continue   # e.g. strategies/daytrade runs via engine/daytrade_runner.py
         try:
             mod = importlib.import_module(f"strategies.{cfg.name}.strategy")
             strategies.append(mod.build(cfg))
