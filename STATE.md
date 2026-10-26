@@ -2,7 +2,7 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
-**As of:** 2026-10-25 21:45 PT (day-trade desks built and set to paper from Oct 26; Floor lab on Actions; Crypto Pier lab running)
+**As of:** 2026-10-25 21:50 PT (day-trade desks on paper from the Oct 26 open; bot deploy 5eab4bc6 warmed up; first Floor backtest done: no edge yet; daily close task created)
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
@@ -30,13 +30,15 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 
 ## Setups (the tournament)
 ### Day-trade desks (spec `strategies/daytrade/spec.md`; SPY, QQQ, TQQQ, UPRO, SQQQ, SPXU; +5% target, -2.5% stop, 1-min volume spike)
-| Desk | Stage | Notes |
-|---|---|---|
-| ORB + volume | **paper from 2026-10-26** | 09:30-09:45 range breakout on a volume-spike bar |
-| EMA 9/21 + volume | **paper from 2026-10-26** | 5-min EMA cross with a 1-min volume spike in that bucket |
-| Volume spike | **paper from 2026-10-26** | spike bar closes up, above VWAP and the prior 15-bar high |
-| ORB / EMA without volume, Volume spike 2x | backtest only | comparisons |
-Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:backtests/floor/latest/REPORT.md`. Paper books: `data:ledger/daytrade_books.json`, trades `data:ledger/daytrade_trades.csv`.
+| Desk | Stage | Backtest 1-min Oct 1-23 (17 sessions, $1,000) | Paper so far | Notes |
+|---|---|---|---|---|
+| ORB + volume | **paper from 2026-10-26** | 12 trades, −2.65%, PF 0.55, +5% hits 0 | starts Oct 26 | 09:30-09:45 range breakout on a volume-spike bar |
+| EMA 9/21 + volume | **paper from 2026-10-26** | 11 trades, −2.51%, PF 0.33, +5% hits 0 | starts Oct 26 | 5-min EMA cross with a 1-min volume spike in that bucket |
+| Volume spike | **paper from 2026-10-26** | 17 trades, +1.13%, PF 1.2, +5% hits 0 | starts Oct 26 | spike bar closes up, above VWAP and the prior 15-bar high |
+| ORB plain / EMA plain / Volume spike 2x | backtest only | +0.37% / +0.46% / +0.28% | — | comparisons |
+| SPY buy-and-hold | benchmark | −0.58% same window | from Oct 26 open | control |
+Verdict so far: **no edge yet** (tiny sample; 3x slippage and the 5-min 37-session check are negative for all paper desks). The +5% target is rare: since 2010 it happened on 0.17% of SPY days and 3-10% of 3x-ETF days, while the −2.5% stop level was hit on 19-31% of 3x-ETF days.
+Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:backtests/floor/latest/REPORT.md`. Paper books: `data:ledger/daytrade_books.json`, trades `data:ledger/daytrade_trades.csv`. Tracked daily by the Accountant (daily close) task.
 
 ### Other setups
 | Setup | Stage | Notes |
@@ -85,7 +87,10 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 - [x] 3. Railway worker deployed 2026-10-13; logs: `RESULT: 5/5 connectivity checks passed` (sandbox account, SPY quote, 34 SPY expirations, clock)
 - [x] 4. Adapter, shadow fills, ledger, data push live. PR #1 merged; logs: ledger restore 3 files, paper_equity 1000, live_equity 1000, 4 files pushed. Paper baseline locks at the first market-hours loop.
 - [x] 5. Compound City published with SAMPLE data, checked at desktop (1366px) and phone (390px)
-- [ ] 6. Scheduled residents: "Researcher (Floor + Pier)" runs Saturdays 6:34 AM PT (created 2026-10-24, automatic approval, phone alert only at checkpoints). Mayor, Newsie, Risk Officer, Accountant and Hustle Scout still to do.
+- [ ] 6. Scheduled residents (automatic approval, phone alert only at checkpoints):
+  - "Researcher (Floor + Pier)", Saturdays 6:34 AM PT (created 2026-10-24)
+  - "Accountant (daily close)", weekdays 2:40 PM PT (created 2026-10-25): paper stats vs SPY, city, STATE.md, retire proposals, Friday scorecard
+  - Still to do: Mayor, Newsie, Risk Officer, Hustle Scout
 - [~] 7. Day-trade desks on paper from 2026-10-26; hustle one-pagers posted 2026-10-13
 
 ## How the city gets data (for residents)
