@@ -1,6 +1,6 @@
 # Crypto Pier — historical backtest report
 
-_Generated 2026-10-26 04:35 UTC from Coinbase Exchange public candles (1h, 1d). Data 2017-01-01 to 2026-10-25._
+_Generated 2026-10-26 04:37 UTC from Coinbase Exchange public candles (1h, 1d). Data 2017-01-01 to 2026-10-25._
 
 ## How to read this
 
