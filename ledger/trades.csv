@@ -1,3 +1,4 @@
 ts,event,mode,strategy,symbol,side,qty,price,source,order_id,max_loss,cost,note
 2026-10-26T14:11:43+00:00,entry,paper,orb_vol,SPY,buy,1,764.4709,yahoo_rt+slip,,19.11,764.47,sandbox ok 40668361
 2026-10-26T14:53:43+00:00,entry,paper,volspike,SPY,buy,1,766.8333,yahoo_rt+slip,,19.17,766.83,sandbox ok 40672278
+2026-10-26T16:50:43+00:00,entry,paper,ema_vol,SQQQ,buy,25,38.5243,yahoo_rt+slip,,24.08,963.11,sandbox ok 40679802
