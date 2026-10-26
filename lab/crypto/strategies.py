@@ -125,6 +125,43 @@ def intraday_meanrev(df, daily_df, rsi_n=14, buy_below=25, exit_above=50, hold=2
     return _sig((r < buy_below) & ok, r > exit_above, k * atr(df, atr_n), max_hold=hold)
 
 
+# --------------------------------------------------- short-horizon patterns
+# Fixed, short holding periods (days), meant to be tradeable via a short-dated
+# long call/put on a crypto ETF (defined risk = premium paid) instead of the
+# spot position the backtest actually simulates. A stop here is a simulated
+# close-out, not an options Greek; it does not model theta, IV or the ETF's
+# tracking error against spot, which real paper trading would need to check.
+
+def extreme_drop_bounce(df, daily_df, drop_pct=10.0, hold=5, atr_n=14, k=1.5):
+    """Mean reversion: buy after a single-day drop of drop_pct% or more,
+    hold up to `hold` days, fixed stop at k*ATR (a put would be the mirror)."""
+    ret1 = df["close"].pct_change()
+    enter = ret1 < -drop_pct / 100.0
+    never = pd.Series(False, index=df.index)
+    return _sig(enter, never, k * atr(df, atr_n), max_hold=hold)
+
+
+def momentum_burst(df, daily_df, lookback=3, thresh_pct=15.0, hold=5, atr_n=14, k=2.0):
+    """Continuation: buy after a thresh_pct% move over the last `lookback`
+    days, hold up to `hold` days, fixed stop at k*ATR."""
+    mom = df["close"].pct_change(lookback)
+    enter = mom > thresh_pct / 100.0
+    never = pd.Series(False, index=df.index)
+    return _sig(enter, never, k * atr(df, atr_n), max_hold=hold)
+
+
+def squeeze_breakout(df, daily_df, squeeze_n=20, breakout_n=10, atr_n=14, k=1.5, hold=10):
+    """Volatility-contraction breakout: when ATR% is in its lowest quartile
+    of the last squeeze_n days, buy a close above the prior breakout_n-day
+    high; trailing k*ATR stop, time exit after `hold` days."""
+    atr_pct = atr(df, atr_n) / df["close"]
+    squeezed = atr_pct <= atr_pct.rolling(squeeze_n, min_periods=squeeze_n).quantile(0.25)
+    hi = df["high"].rolling(breakout_n, min_periods=breakout_n).max().shift(1)
+    enter = (df["close"] > hi) & squeezed
+    never = pd.Series(False, index=df.index)
+    return _sig(enter, never, k * atr(df, atr_n), trail=True, max_hold=hold)
+
+
 @dataclass(frozen=True)
 class Spec:
     key: str
@@ -167,6 +204,20 @@ VARIANTS = [
     Spec("intraday_breakout", "day", "1h", intraday_breakout, {"look": 48, "hold": 24}, False),
     Spec("intraday_meanrev", "day", "1h", intraday_meanrev, {"buy_below": 20}, False),
     Spec("intraday_meanrev", "day", "1h", intraday_meanrev, {"buy_below": 30}, False),
+]
+
+PATTERNS_MAIN = [
+    Spec("drop_bounce", "pattern", "1d", extreme_drop_bounce, {"drop_pct": 10.0, "hold": 5}),
+    Spec("momentum_burst", "pattern", "1d", momentum_burst, {"lookback": 3, "thresh_pct": 15.0, "hold": 5}),
+    Spec("squeeze_breakout", "pattern", "1d", squeeze_breakout, {"squeeze_n": 20, "breakout_n": 10, "hold": 10}),
+]
+
+PATTERNS_VARIANTS = [
+    Spec("drop_bounce", "pattern", "1d", extreme_drop_bounce, {"drop_pct": 7.0, "hold": 3}, False),
+    Spec("drop_bounce", "pattern", "1d", extreme_drop_bounce, {"drop_pct": 15.0, "hold": 7}, False),
+    Spec("momentum_burst", "pattern", "1d", momentum_burst, {"lookback": 5, "thresh_pct": 20.0, "hold": 7}, False),
+    Spec("momentum_burst", "pattern", "1d", momentum_burst, {"lookback": 2, "thresh_pct": 10.0, "hold": 3}, False),
+    Spec("squeeze_breakout", "pattern", "1d", squeeze_breakout, {"squeeze_n": 30, "breakout_n": 20, "hold": 15}, False),
 ]
 
 CONTROL = Spec("buy_hold", "control", "1d", buy_hold, {})

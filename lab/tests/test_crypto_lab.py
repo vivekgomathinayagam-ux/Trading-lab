@@ -122,7 +122,8 @@ class TestNoLookAhead(unittest.TestCase):
 
     def test_daily_strategies_causal(self):
         d = self.d
-        for b, kw in [(S.trend_sma, {}), (S.trend_voltarget, {}), (S.donchian, {}), (S.rsi2_meanrev, {"trend_n": 50})]:
+        for b, kw in [(S.trend_sma, {}), (S.trend_voltarget, {}), (S.donchian, {}), (S.rsi2_meanrev, {"trend_n": 50}),
+                      (S.extreme_drop_bounce, {}), (S.momentum_burst, {}), (S.squeeze_breakout, {"squeeze_n": 30})]:
             self._check(b, d, d, **kw)
 
     def test_intraday_strategies_causal(self):
@@ -142,6 +143,17 @@ class TestNoLookAhead(unittest.TestCase):
         s = S.donchian(df, df, entry_n=2, exit_n=2, atr_n=1)
         # close 12 at bar 2 breaks the prior two highs (10, 11)
         self.assertTrue(s.enter[2])
+
+    def test_drop_bounce_enters_on_single_day_drop(self):
+        df = bars([100, 100, 88, 88])  # -12% day at bar 2
+        s = S.extreme_drop_bounce(df, df, drop_pct=10.0)
+        self.assertTrue(s.enter[2])
+        self.assertFalse(s.enter[1])
+
+    def test_momentum_burst_enters_on_multiday_move(self):
+        df = bars([100, 105, 110, 120])  # +20% over 3 days by bar 3
+        s = S.momentum_burst(df, df, lookback=3, thresh_pct=15.0)
+        self.assertTrue(s.enter[3])
 
 
 class TestData(unittest.TestCase):

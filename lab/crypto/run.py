@@ -18,7 +18,7 @@ import pandas as pd
 
 from . import data as D
 from .engine import Costs, metrics, run as run_bt
-from .strategies import CONTROL, MAIN, VARIANTS, Spec
+from .strategies import CONTROL, MAIN, VARIANTS, PATTERNS_MAIN, PATTERNS_VARIANTS, Spec
 
 ASSETS = ["BTC-USD", "ETH-USD"]
 START = D.utc(2017, 1, 1)
@@ -180,7 +180,11 @@ def write_report(out: Path, meta: dict, rows: list[dict], wf: list[dict], bh: di
     L.append("- 'mid' assumes a 0.40% fee (cheaper exchange, assumption). 'gross' = slippage only, to see if any edge exists before fees.")
     L.append(f"- Parameters were fixed before running. {meta['variants_total']} parameter variants per asset were run in total "
              f"({meta['variants_main']} pre-registered + {meta['variants_extra']} sensitivity). Results from many variants overstate edge; "
-             "the walk-forward table shows how picking the best backtest actually held up.\n")
+             "the walk-forward table shows how picking the best backtest actually held up.")
+    L.append("- The 'pattern' family (drop_bounce, momentum_burst, squeeze_breakout) are short-horizon (3-15 day) "
+             "setups meant to map to a defined-risk long call/put on a crypto ETF, not the spot position actually "
+             "simulated here. They do not model options theta, implied vol, or ETF tracking error — a pass here is "
+             "a reason to size a real options trade carefully in paper, not evidence the options trade itself works.\n")
 
     L.append("## Data quality\n")
     L.append("| Asset | Timeframe | Bars | Missing | Largest 1-bar move | Flash-crash wicks (low < half the bar's body) |")
@@ -263,7 +267,7 @@ def main() -> None:
             else load_asset(p, Path(a.cache), end)
         print(f"{p}: 1h bars {len(bundles[p]['1h'])}, 1d bars {len(bundles[p]['1d'])}", flush=True)
 
-    specs = MAIN + VARIANTS
+    specs = MAIN + VARIANTS + PATTERNS_MAIN + PATTERNS_VARIANTS
     rows: list[dict] = []
     bh: dict = {}
     for p, b in bundles.items():
@@ -311,8 +315,8 @@ def main() -> None:
             "end": str(any_b["1h"].index[-1].date()),
             "costs": {k: {"fee_per_side": v.fee, "slippage_per_side": v.slip} for k, v in COSTS.items()},
             "headline": {"cost": HEADLINE_COST, "sizing": HEADLINE_SIZING, "risk_cap": 0.05},
-            "variants_main": len(MAIN), "variants_extra": len(VARIANTS),
-            "variants_total": len(MAIN) + len(VARIANTS),
+            "variants_main": len(MAIN) + len(PATTERNS_MAIN), "variants_extra": len(VARIANTS) + len(PATTERNS_VARIANTS),
+            "variants_total": len(MAIN) + len(VARIANTS) + len(PATTERNS_MAIN) + len(PATTERNS_VARIANTS),
             "quality": {p: quality(b) for p, b in bundles.items()},
             "periods": PERIODS}
     clean_rows = [{k: v for k, v in r.items() if k != "_res"} for r in rows]
