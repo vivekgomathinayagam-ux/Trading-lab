@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-10-27T18:45:28+00:00",
+  "as_of": "2026-10-27T19:00:33+00:00",
   "mode": "paper",
-  "equity": 1022.89,
+  "equity": 1023.94,
   "settled_cash": 31.41,
   "peak_equity": 1031.29,
   "start_of_day_equity": 998.95,
-  "drawdown": 0.0081,
+  "drawdown": 0.0071,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
@@ -28,8 +28,15 @@
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 995.91,
-      "position": null
+      "cash": 70.96,
+      "position": {
+        "sym": "TQQQ",
+        "qty": 13,
+        "entry_px": 71.15055749999999,
+        "stop": 69.37179356249999,
+        "target": 74.708085375,
+        "entry_t": "2026-10-27T15:00:28.066555-04:00"
+      }
     },
     {
       "desk": "volspike",
