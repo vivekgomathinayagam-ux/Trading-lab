@@ -1,0 +1,44 @@
+//@version=6
+indicator("Opening Range Box (draft)", overlay = true, max_boxes_count = 50, max_lines_count = 100)
+
+// Draws the high/low of the first N minutes of the regular session and
+// marks the first close above or below that range. Not a trading signal.
+orMinutes = input.int(15, "Opening range (minutes)", minval = 1, maxval = 120)
+sess      = input.session("0930-1600", "Session (exchange time)")
+showBreak = input.bool(true, "Mark first breakout each day")
+
+inSess  = not na(time(timeframe.period, sess))
+newDay  = inSess and not inSess[1]
+var float orHigh = na
+var float orLow  = na
+var int   orEnd  = na
+var bool  broke  = false
+var box   orBox  = na
+
+if newDay
+    orHigh := high
+    orLow  := low
+    orEnd  := time + orMinutes * 60 * 1000
+    broke  := false
+    orBox  := box.new(time, high, orEnd, low, xloc = xloc.bar_time, border_color = color.new(color.blue, 0), bgcolor = color.new(color.blue, 85))
+
+inRange = inSess and not na(orEnd) and time < orEnd
+if inRange and not newDay
+    orHigh := math.max(orHigh, high)
+    orLow  := math.min(orLow, low)
+    box.set_top(orBox, orHigh)
+    box.set_bottom(orBox, orLow)
+
+afterRange = inSess and not na(orEnd) and time >= orEnd
+if afterRange
+    box.set_right(orBox, time)
+
+upBreak = showBreak and afterRange and not broke and close > orHigh
+dnBreak = showBreak and afterRange and not broke and close < orLow
+if upBreak or dnBreak
+    broke := true
+
+plotshape(upBreak, "Break up", shape.triangleup, location.belowbar, color.green, size = size.small)
+plotshape(dnBreak, "Break down", shape.triangledown, location.abovebar, color.red, size = size.small)
+alertcondition(upBreak, "ORB break up", "Price closed above the opening range")
+alertcondition(dnBreak, "ORB break down", "Price closed below the opening range")

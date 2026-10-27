@@ -158,3 +158,9 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
   - Credit discipline: cache raw pulls on the data branch, use batch tools, sample at fixed times. Budget: research 20,000 credits a week, bot up to 500 credits a day, balance above 20,000.
 - **New permission:** the Researcher may add read-only Skylit data plumbing in `engine/` (for example `engine/skylit_feed.py`, plus additive changes in the day-trade runner and market data) so its Skylit desks can paper trade. Tests must show existing desks trade identically. Orders, fills, the risk engine, brokers, caps and live stay off-limits, so money rule 9 is not triggered. An options order path is still order code and goes to Vivek as a PR.
 - The Researcher's scheduled prompt was updated to match.
+
+## 2026-10-27 — Trader Toolkit v1 built; moved to ready (Hustle Department)
+- Built and tested two products: Options Day Trader Journal.xlsx and Options Risk and Position Size Calculator.xlsx (LibreOffice recalculation, 0 errors, outputs hand-checked). Listing, FAQ and AI disclosure written for Gumroad at $12.
+- Pine indicator pack dropped from v1: a script can't be compile-tested here and an untested script should not be sold. Draft kept unlisted.
+- Stage: ready. Posted the single bundled City Hall item `t-store-setup` (Gumroad account, identity, tax form, payout). Nothing else needs Vivek.
+- Schedule unchanged (daily): second experiment to be researched next run.
