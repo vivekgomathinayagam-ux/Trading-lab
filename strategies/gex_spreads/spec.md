@@ -186,7 +186,7 @@ All of these use **defined-risk verticals only**. No naked options, no margin (m
 5. **Pin Score:** do you already have a formula from FlashAlpha? If so, I'll use yours and drop mine.
 6. **Decision times:** is 10:00 ET the right first read (after the opening "amateur move")? Any other times you act on GEX?
 7. **Structures:** credit verticals, debit verticals, or both? (Both are defined risk; credit spreads have assignment and early-exercise considerations on SPY, which is American-style; SPX is cash-settled but too big for $1,000.)
-8. **Stage B2 archive:** okay to start saving SPY 0DTE intraday option prices daily from Skylit now (about 3 credits per contract per day, roughly 10 strikes ≈ 30 credits a day ≈ $0.03), so the real-price dataset starts growing?
+8. **Stage B2 archive:** okay to start saving SPY 0DTE intraday option prices daily from Skylit now (about 3 credits per contract per day; ~10 contracts ≈ 30 credits ≈ $0.03 a day, ~20 if calls and puts ≈ $0.06), so the real-price dataset starts growing?
 
 ## 8. Verified vs assumption — summary
 | Item | Status |
