@@ -73,6 +73,7 @@ Not recommended now: local-business tools (needs heavy outreach), print-on-deman
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)
 - 3 hustle decisions (templates, Discord bots, build log); Pine approved Oct 21
+- Approve or reject the paper-data fixes (`docs/audits/2026-10-26-paper-data-audit.md`)
 - Review the GEX filter spec and answer its 8 questions (`strategies/gex_spreads/spec.md`, section 7)
 - How the Fiverr store gets run (see DECISIONS 2026-10-21)
 - Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13), Crypto Pier section
@@ -108,7 +109,7 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 - Crypto paper trading doesn't exist yet: Tradier has no crypto. When a Pier rule passes, crypto paper runs inside the bot on live quotes.
 - Paper end-of-day exits fill about 1-2 min after 15:55 ET (Oct 26: 15:56:43) at the live price, while the backtest exits at the 15:55 bar's open. The bot acts on the 15:55 bar once it completes. Small, but paper and backtest differ here; fixing it touches engine/ (needs Vivek's yes).
 - floor-lab's after-close GitHub Actions run (21:25 UTC) had not started by 21:50 UTC on Oct 26; GitHub's scheduler often runs late. Next Accountant run checks it.
-- Shadow fills use Yahoo's 1-minute last price (no bid/ask) + 2 bps slippage. Options shadow fills use delayed sandbox quotes. Real-time options need a paid feed.
+- Day-trade fills use Yahoo's live last price (verified real-time vs Skylit on 2026-10-26; no bid/ask) + slippage. Quote time isn't recorded, and stop/target exits would fill at the live price, not the rule level. Fix proposed in `docs/audits/2026-10-26-paper-data-audit.md`, waiting on Vivek. Tradier sandbox orders are mirrors only. No running setup trades options.
 - GEX: Skylit gives 365 days of historical gamma and ~2 years of IV, but real intraday option prices only for the last 30 days. Older spread fills must be modeled; a real-price archive can start on Vivek's yes.
 - No strategy has a validated edge yet. Controls exist so we can tell.
 - Railway has no volume; /ledger and risk_state.json are restored from branch `data` at startup (fixed 2026-10-13).
