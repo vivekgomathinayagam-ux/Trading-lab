@@ -1,6 +1,6 @@
 # Hustle: Discord bots for trading communities
 
-**Stage:** proposed (waiting on Vivek's yes at City Hall) · **Proposed:** 2026-10-13 · **Autonomy:** medium
+**Stage:** dropped 2026-10-26 (client work needs live conversations, server permissions and deadlines with a person; see `hustles/OPERATING.md`) · **Proposed:** 2026-10-13
 
 ## What it is
 Set-up-and-maintain bots for small trading Discord servers: TradingView alert relays (webhook to channel), daily market recaps, and role or welcome helpers. Vivek's existing recap bot for Bird Gang is the portfolio piece (shown only with the server owner's OK).

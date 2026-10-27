@@ -1,6 +1,6 @@
 # Hustle: Build-in-public posts about Compound City
 
-**Stage:** proposed (waiting on Vivek's yes at City Hall) · **Proposed:** 2026-10-13 · **Autonomy:** high (drafting); every post needs Vivek's yes
+**Stage:** dropped 2026-10-26 (LinkedIn's terms ban automated posting, so it would need Vivek to post by hand; see `hustles/OPERATING.md`) · **Proposed:** 2026-10-13
 
 ## What it is
 A post every two weeks on LinkedIn (and optionally Medium) about building an AI-run trading lab: the risk engine, the paper-testing tournament, the city, and honest results, including setups that fail.

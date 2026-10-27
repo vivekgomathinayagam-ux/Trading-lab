@@ -1,6 +1,6 @@
 # Hustle: Trader spreadsheet templates
 
-**Stage:** proposed (waiting on Vivek's yes at City Hall) · **Proposed:** 2026-10-13 · **Autonomy:** high once set up
+**Stage:** building, from 2026-10-26 (autonomous department; the only step for Vivek is the one-time store and payout setup once a product is ready) · **Proposed:** 2026-10-13
 
 ## What it is
 Google Sheets templates for options day traders, built from what Vivek actually uses:

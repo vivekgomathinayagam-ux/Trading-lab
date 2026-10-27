@@ -106,3 +106,17 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Real gaps found:** quote timestamps not recorded; stop/target exits would fill at the live price, not the rule level; EOD exit timing differs from the backtest; Yahoo is unofficial (no bid/ask, robots-disallowed, no SLA).
 - **Proposed (not done, waiting for Vivek's yes):** log quote provenance + age; a Skylit cross-check at each fill (~6 credits/day); exit at rule levels like the backtest; EOD at the 15:55 open; Skylit fallback for marks only. No production endpoint, no live token.
 - **Results so far (1 day, 3 trades):** retained, labeled "Yahoo real-time + assumed slippage, quote time not recorded". Full report: `docs/audits/2026-10-26-paper-data-audit.md`.
+
+## 2026-10-26 — Hustle department runs on its own (from Vivek)
+- **Vivek's rule:** Claude runs the whole hustle department with no approvals and no setup questions. Anything that needs Vivek by hand gets dropped. Keep trying ideas until one works, then scale it and keep going. The only thing Claude may ask for is starting funds for a hustle Claude can run alone that is close to certain to work, and Vivek wants that to be extremely rare.
+- **Two limits Claude can't remove, written into `hustles/OPERATING.md`:**
+  - **Payout setup:** no store pays out until the account owner verifies his own identity, tax form and bank. Claude asks for this once, as one bundled City Hall item, only when a product is ready to sell.
+  - **No passwords in chat** (money rule 3). Signed-in sites run through Vivek's Chrome in interactive sessions only.
+- **Money rules unchanged:** Claude never moves or spends money (start cost $0), and Vivek moves income to the live fund. The honesty rules also stay: no fake reviews, no spam, no impersonation, no signal products, and each platform's terms are followed.
+- **Dropped:**
+  - **Pine commissions on Fiverr:** custom orders need live client chats, and Fiverr requires the owner to represent his own gig.
+  - **Discord bot clients:** need clients, server permissions and deadlines.
+  - **LinkedIn build log:** LinkedIn's terms ban automated posting.
+- **Started:** Trader Toolkit, ready-made digital products (trade journal and options risk spreadsheets, ready-made Pine indicators). They sell without customer contact.
+- **Records:** hustle money goes in `hustles/LEDGER.csv` on main, not the data branch. The bot's snapshot pushes rewrite `data:ledger/`, so hustle rows there could be overwritten.
+- **Schedule:** "Hustle Department" runs Tue and Fri at 8:43 AM PT with automatic approval. It replaces the planned Wednesday Hustle Scout.

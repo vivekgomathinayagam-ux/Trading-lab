@@ -1,6 +1,6 @@
 # Hustle: Pine Script commissions
 
-**Stage:** proposed (waiting on Vivek's yes at City Hall) · **Proposed:** 2026-10-13 · **Autonomy:** medium
+**Stage:** dropped as Fiverr commissions 2026-10-26 (custom orders need live client chats, and Fiverr requires the account owner to represent his own gig). The Pine skills move to ready-made indicator products under `hustles/templates/` · **Approved:** 2026-10-21
 
 ## What it is
 Custom TradingView indicators and strategies coded to a buyer's rules, sold as a Fiverr gig under Vivek's name. Vivek already ships Pine Script v6 work (CVD turn indicator, ORB), so there is a real portfolio to show.

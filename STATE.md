@@ -60,22 +60,21 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 | Drop-bounce, momentum-burst, squeeze-breakout (short-horizon, 3-15 day; meant as a defined-risk ETF options overlay) | retired | all 3 fail the screen on both coins after Robinhood-level costs; momentum-burst is the least bad (positive expectancy, Sharpe ~0.3-0.4) but still below buy-and-hold |
 Next (research queue in the spec): trailing breakout exit, close-based stops, real Robinhood spreads.
 
-## Hustles (all proposed 2026-10-13; waiting on Vivek at City Hall)
-| Hustle | One-pager | 90-day range | Autonomy |
+## Hustles (autonomous department from 2026-10-26; rules in `hustles/OPERATING.md`)
+Claude runs the department alone: ideas, building, launching, killing, scaling. Vivek is contacted only for (1) funding for a hustle already proven at $0 cost (extreme case), (2) a one-time store and payout setup when a product is ready to sell, and (3) a notice when income is ready to move to the live fund. Scheduled task "Hustle Department" runs Tue and Fri at 8:43 AM PT.
+| Experiment | Stage | Revenue | Notes |
 |---|---|---|---|
-| Trader spreadsheet templates (Gumroad/Etsy) | `hustles/templates/one-pager.md` | $0-150 | high |
-| Pine Script commissions (Fiverr) | `hustles/pine/one-pager.md` | $0-300 | **approved Oct 21**; Vivek wants Claude to run the store; setup pending |
-| Discord bots for trading communities (Fiverr) | `hustles/discord/one-pager.md` | $0-450 | medium |
-| Build-in-public posts (LinkedIn/Medium) | `hustles/buildlog/one-pager.md` | $0-25 direct; resume value | high |
-Not recommended now: local-business tools (needs heavy outreach), print-on-demand, surveys or microtasks (often ban AI help), anything selling trading signals.
+| Trader Toolkit (spreadsheet templates + ready-made Pine indicators) | building | $0 | `hustles/templates/`; digital products, no client contact |
+| Pine Script commissions (Fiverr) | dropped 2026-10-26 | $0 | needs live client chats; Fiverr requires the owner to represent his gig |
+| Discord bots for clients | dropped 2026-10-26 | $0 | needs live clients, permissions and deadlines |
+| Build-in-public posts (LinkedIn) | dropped 2026-10-26 | $0 | LinkedIn's terms ban automated posting |
+Ledger: `hustles/LEDGER.csv` (no rows yet).
 
 ## Waiting on Vivek (City Hall)
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)
-- 3 hustle decisions (templates, Discord bots, build log); Pine approved Oct 21
 - Approve or reject the paper-data fixes (`docs/audits/2026-10-26-paper-data-audit.md`)
 - Review the GEX filter spec and answer its 8 questions (`strategies/gex_spreads/spec.md`, section 7)
-- How the Fiverr store gets run (see DECISIONS 2026-10-21)
 - Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13), Crypto Pier section
 - Make the GitHub repo private (it is public now)
 - Let the Railway GitHub App see `trading-lab` (auto-deploy on push isn't firing; no skipped deploys, so webhooks never arrive). Workaround: Claude deploys by reconnecting the service source (connect-service-source), which builds the latest `main`.
