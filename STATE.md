@@ -2,7 +2,8 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
-**As of:** 2026-10-26 14:50 PT (daily close, paper day 1: first 3 paper trades, all closed at the end of day; no +5% hits; bot healthy, kill switch off)
+**As of:** 2026-10-26 17:50 PT (price provenance deployed)
+**Previously:** 2026-10-26 14:50 PT (daily close, paper day 1: first 3 paper trades, all closed at the end of day; no +5% hits; bot healthy, kill switch off)
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
@@ -30,13 +31,14 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 
 ## Setups (the tournament)
 ### Day-trade desks (spec `strategies/daytrade/spec.md`; SPY, QQQ, TQQQ, UPRO, SQQQ, SPXU; +5% target, -2.5% stop, 1-min volume spike)
-| Desk | Stage | Backtest 1-min Oct 1-23 (17 sessions, $1,000) | Paper so far | Notes |
+| Desk | Stage | Backtest 1-min Oct 1-23 (17 sessions, $1,000) | Paper so far (**PRELIMINARY**: before price provenance; kept, not judged) | Notes |
 |---|---|---|---|---|
 | ORB + volume | **paper from 2026-10-26** | 12 trades, −2.65%, PF 0.55, +5% hits 0 | 1 trade, +0.05%, vs SPY −0.32 pts (as of Oct 26 close) | 09:30-09:45 range breakout on a volume-spike bar |
 | EMA 9/21 + volume | **paper from 2026-10-26** | 11 trades, −2.51%, PF 0.33, +5% hits 0 | 1 trade, −0.41%, vs SPY −0.78 pts (as of Oct 26 close) | 5-min EMA cross with a 1-min volume spike in that bucket |
 | Volume spike | **paper from 2026-10-26** | 17 trades, +1.13%, PF 1.2, +5% hits 0 | 1 trade, −0.19%, vs SPY −0.56 pts (as of Oct 26 close) | spike bar closes up, above VWAP and the prior 15-bar high |
 | ORB plain / EMA plain / Volume spike 2x | backtest only | +0.37% / +0.46% / +0.28% | — | comparisons |
 | SPY buy-and-hold | benchmark | −0.58% same window | +0.37% (762.35 → 765.19, as of Oct 26 close) | control |
+**Evaluation status (Vivek, 2026-10-26):** Oct 26 trades are labeled `preliminary` (Yahoo real-time + assumed slippage, no quote time recorded). A fresh evaluation starts once the new logging is verified in a live session: every fill in `ledger/daytrade_fills.csv` has quote time, age, bar time, and a Skylit cross-check within 0.05% (needs `SKYLIT_API_KEY`). Then: set `evaluation:` in `strategies/daytrade/config.yaml` to `eval-1`, archive the preliminary ledger files, and reset each desk to $1,000.
 Verdict so far: **no edge yet** (tiny sample; 3x slippage and the 5-min 37-session check are negative for all paper desks). The +5% target is rare: since 2010 it happened on 0.17% of SPY days and 3-10% of 3x-ETF days, while the −2.5% stop level was hit on 19-31% of 3x-ETF days.
 Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:backtests/floor/latest/REPORT.md`. Paper books: `data:ledger/daytrade_books.json`, trades `data:ledger/daytrade_trades.csv`. Tracked daily by the Accountant (daily close) task.
 
@@ -73,7 +75,8 @@ Ledger: `hustles/LEDGER.csv` (no rows yet).
 ## Waiting on Vivek (City Hall)
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)
-- Approve or reject the paper-data fixes (`docs/audits/2026-10-26-paper-data-audit.md`)
+- Add Railway variable `SKYLIT_API_KEY` (a new key just for the bot, from app.skylit.ai/developer) so the price cross-check and Yahoo fallback switch on
+- Decide on Fix 3, realistic stop/target fills (`docs/proposals/2026-10-26-fix3-stop-target-model.md`)
 - Review the GEX filter spec and answer its 8 questions (`strategies/gex_spreads/spec.md`, section 7)
 - Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13), Crypto Pier section
 - Make the GitHub repo private (it is public now)
@@ -122,7 +125,7 @@ Rules for new and changed tasks:
 - Crypto paper trading doesn't exist yet: Tradier has no crypto. When a Pier rule passes, crypto paper runs inside the bot on live quotes.
 - Paper end-of-day exits fill about 1-2 min after 15:55 ET (Oct 26: 15:56:43) at the live price, while the backtest exits at the 15:55 bar's open. The bot acts on the 15:55 bar once it completes. Small, but paper and backtest differ here; fixing it touches engine/ (needs Vivek's yes).
 - floor-lab's after-close GitHub Actions run (21:25 UTC) had not started by 21:50 UTC on Oct 26; GitHub's scheduler often runs late. Next Accountant run checks it.
-- Day-trade fills use Yahoo's live last price (verified real-time vs Skylit on 2026-10-26; no bid/ask) + slippage. Quote time isn't recorded, and stop/target exits would fill at the live price, not the rule level. Fix proposed in `docs/audits/2026-10-26-paper-data-audit.md`, waiting on Vivek. Tradier sandbox orders are mirrors only. No running setup trades options.
+- Day-trade fills use Yahoo's live last price (verified real-time vs Skylit on Oct 26; no bid/ask) + slippage. Since deploy d8f0b896 (Oct 26 17:46 PT) every fill is logged with quote time, quote age (flag > 90 s), signal-bar time, the backtest rule price next to the paper price, and a Skylit check of all six ETFs (flag > 0.05%; off until `SKYLIT_API_KEY` is set). If Yahoo fails, positions are valued with Skylit and no new entries open. Stops/targets still fill at the live price; a realistic model is proposed, not built. While Yahoo is down, stops/targets aren't checked (unchanged). Tradier sandbox orders are mirrors only, sandbox token only.
 - GEX: Skylit gives 365 days of historical gamma and ~2 years of IV, but real intraday option prices only for the last 30 days. Older spread fills must be modeled; a real-price archive can start on Vivek's yes.
 - No strategy has a validated edge yet. Controls exist so we can tell.
 - Railway has no volume; /ledger and risk_state.json are restored from branch `data` at startup (fixed 2026-10-13).

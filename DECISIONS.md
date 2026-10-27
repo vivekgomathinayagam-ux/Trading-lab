@@ -125,3 +125,15 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Vivek's rule:** Claude picks the right model for each task, now and for future tasks, instead of using the top model for everything.
 - **Applied:** Researcher stays on Opus 5.5 (backtest rigor). The Accountant moves to Sonnet 5.5 (routine). The Hustle Department moves to Sonnet 5.5 and now runs daily at 8:43 AM PT while products are being built, then switches itself to Tue and Fri once everything is live. That gives about 3x more hustle work for roughly the same usage, since Sonnet costs less per run.
 - **Policy and table:** see STATE.md, "Models for scheduled tasks".
+
+## 2026-10-26 — Approved paper-data fixes built (Vivek's decisions)
+- **Built and deployed (d8f0b896):**
+  - Fix 1: quote time, quote age (flag > 90 s) and signal-bar time on every entry and exit.
+  - Fix 2: Skylit cross-check of all six ETFs at each fill (flag > 0.05%; one 1-credit call per step with fills).
+  - Fix 4: every exit records the backtest rule price next to the paper price, including the 15:55 open vs the ~15:56:43 live price. Record only.
+  - Fix 5: if Yahoo fails, open positions are valued with Skylit and all new entries pause until Yahoo is back.
+  - Fix 6: Tradier mirroring unchanged, sandbox token only.
+  - All of it goes to a new file, `ledger/daytrade_fills.csv`.
+- **Unchanged:** signals, sizing, fill prices in normal operation (a test proves identical trades with and without the checks), the risk engine, live-order code.
+- **Fix 3 not built:** Vivek rejected exact-price stop/target fills. A realistic model (stop-market with extra slippage; limit target fills only if price trades through) is proposed in `docs/proposals/2026-10-26-fix3-stop-target-model.md` for his review.
+- **Results:** Oct 26 trades kept, labeled `preliminary`. A fresh evaluation (`eval-1`, desks reset to $1,000) starts after one live session verifies the new logging and the Skylit check (needs `SKYLIT_API_KEY`).
