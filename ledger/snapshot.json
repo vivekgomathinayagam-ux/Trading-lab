@@ -1,22 +1,14 @@
 {
-  "as_of": "2026-10-27T19:45:28+00:00",
+  "as_of": "2026-10-27T19:59:28+00:00",
   "mode": "paper",
-  "equity": 1030.49,
-  "settled_cash": -890.29,
-  "peak_equity": 1033.05,
+  "equity": 1036.3,
+  "settled_cash": 1036.3,
+  "peak_equity": 1038.75,
   "start_of_day_equity": 998.95,
-  "drawdown": 0.0025,
+  "drawdown": 0.0024,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 1889.23,
-      "date_acquired": "2026-10-27T14:30:28.498Z",
-      "id": 2691511,
-      "quantity": 27.0,
-      "symbol": "TQQQ"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
@@ -28,28 +20,14 @@
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 70.96,
-      "position": {
-        "sym": "TQQQ",
-        "qty": 13,
-        "entry_px": 71.15055749999999,
-        "stop": 69.37179356249999,
-        "target": 74.708085375,
-        "entry_t": "2026-10-27T15:00:28.066555-04:00"
-      }
+      "cash": 994.14,
+      "position": null
     },
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 21.31,
-      "position": {
-        "sym": "TQQQ",
-        "qty": 14,
-        "entry_px": 69.77486999999999,
-        "stop": 68.03049825,
-        "target": 73.26361349999999,
-        "entry_t": "2026-10-27T10:30:27.998560-04:00"
-      }
+      "cash": 1015.51,
+      "position": null
     }
   ]
 }
