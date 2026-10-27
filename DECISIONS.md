@@ -149,3 +149,12 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-10-26 — Skylit key live in the bot (Vivek)
 - Vivek created a separate read-only key for the bot and added it as `SKYLIT_API_KEY` in Railway (separate from the key used by the Claude connector, so each can be rotated alone). First attempt was saved under the wrong name (`skylit_api_token`) and was still unapplied; he fixed the name and deployed. Deploy 4202b52a (main at 30e2db8, docs only): logs show 5/5 Tradier checks, ledger restored (7 files), `CHECK skylit spot: ok, 6/6 symbols`, desks warmed up through Oct 26 15:59 ET. The Skylit price cross-check and the Yahoo-down fallback are on from the Oct 27 open.
+
+## 2026-10-26 — Skylit becomes the Researcher's own edge project (from Vivek)
+- **Vivek:** he provides resources, not finished strategies. The Researcher must use Skylit to develop setups itself, through its own research and paper trading, and keep improving them.
+- **What changed:**
+  - The GEX spec's 8 questions for Vivek are closed. The Researcher defines every metric itself.
+  - New charter section on Skylit: all of Heatseeker, Flowseeker and Tempest are in scope. Research path: measure what predicts, pre-register, back-test once, paper, then improve through new versions.
+  - Credit discipline: cache raw pulls on the data branch, use batch tools, sample at fixed times. Budget: research 20,000 credits a week, bot up to 500 credits a day, balance above 20,000.
+- **New permission:** the Researcher may add read-only Skylit data plumbing in `engine/` (for example `engine/skylit_feed.py`, plus additive changes in the day-trade runner and market data) so its Skylit desks can paper trade. Tests must show existing desks trade identically. Orders, fills, the risk engine, brokers, caps and live stay off-limits, so money rule 9 is not triggered. An options order path is still order code and goes to Vivek as a PR.
+- The Researcher's scheduled prompt was updated to match.

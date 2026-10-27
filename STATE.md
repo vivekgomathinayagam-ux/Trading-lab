@@ -83,7 +83,6 @@ Ledger: `hustles/LEDGER.csv` (no rows yet).
 - Alpha Vantage connector (not blocking)
 - ~~Add `SKYLIT_API_KEY`~~ done Oct 26 22:10 PT (deploy 4202b52a): logs show `CHECK skylit spot: ok, 6/6 symbols`; the price cross-check and Yahoo fallback are on from the Oct 27 open
 - Decide on Fix 3, realistic stop/target fills (`docs/proposals/2026-10-26-fix3-stop-target-model.md`)
-- Review the GEX filter spec and answer its 8 questions (`strategies/gex_spreads/spec.md`, section 7)
 - Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13), Crypto Pier section
 - Make the GitHub repo private (it is public now)
 - Let the Railway GitHub App see `trading-lab` (auto-deploy on push isn't firing; no skipped deploys, so webhooks never arrive). Workaround: Claude deploys by reconnecting the service source (connect-service-source), which builds the latest `main`.

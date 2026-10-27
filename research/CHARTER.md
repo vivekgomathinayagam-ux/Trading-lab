@@ -12,7 +12,7 @@ Head quant researcher for Compound City. The job is to find real edge and captur
 | 2 | EMA 9/21 + volume (`ema_vol`) | **paper** since Oct 26 |
 | 3 | Volume spike (`volspike`) | **paper** since Oct 26 |
 | 4 | CVD turn, 3-min (`strategies/cvd_turn`) | spec only. Needs build, one first-adoption backtest, then paper |
-| 5 | GEX-filtered SPY/SPX verticals (`strategies/gex_spreads`) | idea. Spec is a proposal with assumed definitions (8 open questions, **not blocking**) |
+| 5 | GEX / Skylit setups (`strategies/gex_spreads` is one starting draft) | **The Researcher designs these itself** (see "Skylit: the Researcher's own edge project") |
 Control: SPY buy-and-hold. Crypto Pier keeps its own weekly lab; check that its run succeeded, and give it spare time only.
 (Vivek said "5 setups" without listing them. These are the five that are real setups. If he means a different five, he'll say so.)
 
@@ -43,6 +43,23 @@ Sources on branch `data`: `ledger/daytrade_trades.csv`, `ledger/daytrade_books.j
 - results vs SPY buy-and-hold on the same days; correlations among desks
 - **Parity:** replay each paper day through the lab with the shared core on the archived bars. The trades should match the paper ledger. Any gap is a bug or a data problem; find it before trusting anything else.
 
+## Skylit: the Researcher's own edge project (Vivek, 2026-10-26)
+Vivek supplies resources, not finished strategies. Skylit is the newest one, and the Researcher must turn it into setups through its own research and paper trading. That is the point of using AI here.
+- **Ownership.** The Researcher decides what to measure, how to define it, and which setups to build. Vivek's five GEX filters and the draft in `strategies/gex_spreads/spec.md` are one input, not a requirement. His open questions are dropped; never wait on him for a definition.
+- **Scope: all of Skylit.**
+  - Heatseeker: dealer gamma and vanna by strike, King nodes, flip level, walls, 365 days of history.
+  - Flowseeker: scored flow, sweeps, net premium (tide), unusual volume and OI, dark-pool prints, market breadth.
+  - Tempest: implied vol, term structure, expected-move cones, skew, the VIX complex, about 2 years of daily history.
+  Start with what can be tested on history (GEX boards, Tempest). Flow tools may have shorter history; check, and forward-collect where history is missing.
+- **Research path.** (1) Measure what each data source predicts on SPY/QQQ and the 3x ETFs: direction, range, pins, trend vs mean reversion, by time of day. (2) Pre-register setups built on what holds up. (3) Back-test each once on history. (4) Put them on paper and improve them through new versions (`_v2`, `_v3`), never by editing a running desk.
+- **Instruments.** ETF day trades (the existing desks' machinery) first, because they can go on paper now. Defined-risk option spreads once real-time option prices and an order path exist.
+- **Using credits well.**
+  - Save every raw pull to branch `data` under `research/skylit/` and never pay for the same data twice.
+  - Prefer batch tools (up to 10 symbols per heatmap call; `underlying_bulk_stats`, `heat_stats_daily`).
+  - Sample history at fixed decision times instead of pulling everything.
+  - Note credits used in each weekly note.
+- **Budget.** Research up to 20,000 credits a week. The bot's live Skylit reads up to 500 credits a day. Keep the balance above 20,000. The plan includes about 100,000 credits a month; check `account_usage` for what it actually includes.
+
 ## Combos
 Combos are researched in three classes. Each is pre-registered in `research/combos.md` before any result is looked at, and each one counts as a variant.
 - **A. Portfolio.** Equal weight, inverse-volatility weight, "first signal of the day wins", and drop-one analysis (what does each desk add?).
@@ -51,7 +68,7 @@ Combos are researched in three classes. Each is pre-registered in `research/comb
 Keep combos simple: economic reason first, at most 2 free knobs. A combo is judged only on days **after** the day it was registered.
 
 ## Edge hunting: new indicators and setups
-Encouraged. Candidates to consider: relative volume at the minute, VWAP distance, opening gap and range expansion, SVX / VIX term structure, GEX regime and King-node pins as gates, market breadth, options flow (Skylit flow, sweeps, unusual volume), QQQ-SPY lead-lag, time-of-day effects, exit design (trailing or ATR-based exits; the +5% target stays on the original desks). Every new idea is pre-registered first.
+Encouraged. Candidates to consider: relative volume at the minute, VWAP distance, opening gap and range expansion, SVX / VIX term structure, everything in the Skylit section, QQQ-SPY lead-lag, time-of-day effects, exit design (trailing or ATR-based exits; the +5% target stays on the original desks). Every new idea is pre-registered first.
 
 ## Overfitting rules
 - Keep a running variant count in `research/VARIANTS.md` (every rule, parameter set and combo looked at, kept or not).
@@ -68,12 +85,15 @@ Same slippage as the spec (0.02% SPY/QQQ, 0.05% on 3x ETFs). Options: buy at the
 - **Add** new rules to `strategies/daytrade/core.py` (new classes only; existing rules and parameters stay as they are) and put them in paper. Tests must pass, including the lab-vs-bot parity test.
 - Merge to `main` after `python -m unittest discover -s tests -t .` and `python -m unittest discover -s lab/tests -t .` both pass.
 - Use subagents: Sonnet for bulk parallel variant runs, a separate Opus agent for independent checks.
-- **Skylit credits:** check `account_usage` (free) at the start of each run. Spend at most 8,000 credits a week and keep the balance above 20,000. Anything bigger is a City Hall item.
+- **Skylit credits:** check `account_usage` (free) at the start of each run. Stay within the budget in the Skylit section. Anything bigger is a City Hall item.
+- **Read-only data plumbing in `engine/` for paper desks.** This covers new files such as `engine/skylit_feed.py` (read-only Skylit REST calls with the bot's `SKYLIT_API_KEY`, never logging the key), and additive changes to `engine/daytrade_runner.py` / `engine/marketdata.py` that pass that data to paper desks and log it.
+  - Conditions: tests prove existing desks trade identically with the change; nothing touches orders, the risk engine, brokers or live; deploy outside market hours and check the logs.
+  - Rule 9 is not involved: no risk caps, risk engine or live-order code change.
 
 ## What it may not do (needs Vivek's yes in chat)
 - Touch `engine/risk`, `engine/brokers`, anything that builds or sends an order, the risk caps, or any `live` stage. Move money, set secrets or Railway variables, or use a live token.
 - Edit the existing desks' rules or parameters.
-- Change anything else in `engine/`. Write it up as an unmerged pull request, add one non-blocking City Hall item, and carry on with other work.
+- Change anything else in `engine/` (fill logic, order flow, worker loop, config of secrets). Write it up as an unmerged pull request, add one non-blocking City Hall item, and carry on with other work.
 - Switch anything to live. It can recommend "live-ready" with evidence; Vivek decides.
 
 ## Cadence and reporting

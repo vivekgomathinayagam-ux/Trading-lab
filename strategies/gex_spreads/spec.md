@@ -178,7 +178,7 @@ All of these use **defined-risk verticals only**. No naked options, no margin (m
 - No end-of-day `option_chain` fields (last price, maxPain) in a 10:00 decision.
 - Unit tests prove these, like the crypto lab's no-look-ahead tests.
 
-## 7. Open questions for Vivek
+## 7. Open questions (closed 2026-10-26: Vivek handed GEX setup design to the Researcher; it defines these itself)
 1. **GEX Share:** is it "0DTE share of total gamma" (4.2), or "King concentration"? Or both, with one living inside Pin Score?
 2. **0DTE GEX vs Net GEX Regime:** should Net GEX Regime count only the nearest 5 expiries (my assumption), all expiries, or only 0DTE plus the next day?
 3. **IV Ratio:** which pair did you use on FlashAlpha: 1-day vs 30-day, 0DTE ATM IV vs VIX, or something else? Any thresholds you already trade by?
