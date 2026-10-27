@@ -1,6 +1,37 @@
 name: gex_spreads
-stage: idea  # unblocked 2026-10-26 (Skylit); waiting on Vivek's filter definitions before build
-symbols: [SPY, SPXW]
+# idea = not runnable. The registry only runs "paper" and "live". Do not change
+# this until Vivek has reviewed spec.md and a backtest has passed its gate.
+stage: idea
+symbols: [SPY, SPXW]   # SPXW = S&P dailies/weeklies on Skylit (SPX is monthlies only)
 interval_seconds: 300
-params: {}
-# data_source: skylit (heat_historical_heatmap, option_chain, contract_history)
+# data_source: skylit (heat_historical_heatmap, heat_heatmap, tempest_history, tempest_iv)
+#
+# Every threshold below is an ASSUMPTION proposed on 2026-10-26 for review
+# (see spec.md section 4). None is an established standard. Metric code must
+# read these values from here and never hard-code them.
+params:
+  decision_times_et: ["10:00", "12:30"]   # Q6 in spec
+  window_pct: 1.5            # strikes within +/- this % of spot count toward sums
+  share_expirations: 5       # "all expiries" = nearest N (Skylit default 5); Q2
+  gex0:
+    strength_lookback_sessions: 60
+    strong_pctile: 70        # |gex0_net| percentile vs own history
+    weak_pctile: 30
+  gex_share:                 # meaning still open: Q1
+    high: 0.50
+    low: 0.25
+  iv_ratio:
+    numerator: svx1d_adj     # Q3: pair to confirm
+    denominator: svx30_adj
+    calm_below: 0.80
+    stressed_above: 1.10
+  pin_score:
+    em_mult: 0.5             # distance scale in expected moves (em_1d_pct, prior day)
+    pin_day_min: 40
+    no_pin_below: 15
+  regime:
+    flip_band_pct: 0.10      # spot within this % of flip = transition
+    flip_must_match_skylit_pct: 0.10   # Q4: validation tolerance vs live summary.flip
+  sit_out:
+    min_concentration: 0.15  # below = Rainbow Road (no structure)
+    event_days: true         # em_1d_event = 1, CPI/FOMC flagged by the Newsie

@@ -45,7 +45,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 |---|---|---|
 | ORB SPY/TQQQ (original Pine design) | spec | superseded on paper by the ORB + volume desk above |
 | CVD turn 3-min | spec | buy from 5-candle low, sell from 5-candle high; skip spikes; RTH only |
-| GEX-filtered SPY/SPX verticals | idea | needs GEX source (FlashAlpha) and real options history to backtest |
+| GEX-filtered SPY/SPX verticals | idea (spec for review) | Skylit connected = GEX data unblocked (365 days). Proposed 5-filter spec in `strategies/gex_spreads/spec.md`, waiting on Vivek's answers (8 questions). No code yet. |
 | Control: SPY buy-and-hold | spec | benchmark |
 | Control: 9/21 EMA cross | spec | now a real desk (EMA 9/21 + volume); SPY buy-and-hold from Oct 26 stays the benchmark |
 
@@ -73,6 +73,7 @@ Not recommended now: local-business tools (needs heavy outreach), print-on-deman
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)
 - 3 hustle decisions (templates, Discord bots, build log); Pine approved Oct 21
+- Review the GEX filter spec and answer its 8 questions (`strategies/gex_spreads/spec.md`, section 7)
 - How the Fiverr store gets run (see DECISIONS 2026-10-21)
 - Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13), Crypto Pier section
 - Make the GitHub repo private (it is public now)
@@ -108,7 +109,7 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 - Paper end-of-day exits fill about 1-2 min after 15:55 ET (Oct 26: 15:56:43) at the live price, while the backtest exits at the 15:55 bar's open. The bot acts on the 15:55 bar once it completes. Small, but paper and backtest differ here; fixing it touches engine/ (needs Vivek's yes).
 - floor-lab's after-close GitHub Actions run (21:25 UTC) had not started by 21:50 UTC on Oct 26; GitHub's scheduler often runs late. Next Accountant run checks it.
 - Shadow fills use Yahoo's 1-minute last price (no bid/ask) + 2 bps slippage. Options shadow fills use delayed sandbox quotes. Real-time options need a paid feed.
-- GEX setup cannot be backtested honestly without historical options data (paid). Forward paper test only until funded.
+- GEX: Skylit gives 365 days of historical gamma and ~2 years of IV, but real intraday option prices only for the last 30 days. Older spread fills must be modeled; a real-price archive can start on Vivek's yes.
 - No strategy has a validated edge yet. Controls exist so we can tell.
 - Railway has no volume; /ledger and risk_state.json are restored from branch `data` at startup (fixed 2026-10-13).
 - The Tradier sandbox account shows $100,000 equity and is a margin-type account. Paper orders must be sized as if live-size (rule 7), not off $100k. Decision 2026-10-13: paper runs as a virtual $1,000 account, whole shares; each setup also reports 'tradeable at $1,000 live: yes/no' (Vivek's expected real live size at go-live, not the $50 own-money cap). Risk engine already blocks margin and short entries.
