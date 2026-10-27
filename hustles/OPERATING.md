@@ -5,6 +5,11 @@ _Set by Vivek on 2026-10-26. Every hustle session and scheduled run reads this f
 ## Mandate
 The department runs on its own. Claude picks ideas, builds them, launches them, measures them, kills what doesn't earn and scales what does. No approvals are needed for anything inside the department. If an idea needs Vivek to step in by hand, drop it and try the next one. Keep trying ideas until one works. Once one works, keep it running, scale it, and keep testing new ones.
 
+## Standing orders from Vivek, 2026-10-27 (these replace anything below that conflicts)
+- Make it, check it, publish it, sell it, promote it. Work in the background at full speed; strict protocol, no questions about small issues (cover art, wording, tags, layout): decide and log it.
+- **Contact Vivek only after a sale has been made, and only then.** The notice says what sold and the money now ready for the live fund (he moves it). Gumroad also emails him each sale on its own. Funding requests and setup items are not sent unless a platform makes it impossible to continue; in that case it goes into the same post-sale notice.
+- Promote by every honest channel. "Any means" stops at the lines below; those stay fixed.
+
 ## When Claude contacts Vivek (nothing else)
 1. **Funding: a rare exception.** Only for a hustle Claude can run entirely alone that has already proven itself at $0 cost: real sales, measured conversion, and a payback on the spend worked out from those numbers. Treat it as an extreme case. The bar is "almost guaranteed", so expect never to use it. Ask for the smallest amount, once, with the evidence.
 2. **One-time store and payout setup.** No platform pays out without the account owner verifying his own identity, tax form (W-9) and bank. The law requires it, and Claude cannot do it for him. Ask once, only when a product is finished and ready to sell, as a single City Hall item covering everything. Never keep more than one such item open.

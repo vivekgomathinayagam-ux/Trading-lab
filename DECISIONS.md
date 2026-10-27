@@ -164,3 +164,9 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Pine indicator pack dropped from v1: a script can't be compile-tested here and an untested script should not be sold. Draft kept unlisted.
 - Stage: ready. Posted the single bundled City Hall item `t-store-setup` (Gumroad account, identity, tax form, payout). Nothing else needs Vivek.
 - Schedule unchanged (daily): second experiment to be researched next run.
+
+## 2026-10-27 — Trader Toolkit published; standing orders from Vivek
+- Published on Gumroad at $12 (https://vivekgo8.gumroad.com/l/aobhdm) from Vivek's signed-in Chrome. Cover and thumbnail are original art with no results claims (Vivek: attention-grabbing, not tied to results; I kept it honest). Summary line and 8 tags added; the product is set for Gumroad search/Discover.
+- Standing orders (OPERATING.md): decide small issues without asking; contact Vivek only after a sale; promote by every honest channel. Fixed lines unchanged: no fake reviews/accounts/sales, no spam, no profit claims, platform rules respected, I never move or spend money, I never create accounts or enter passwords.
+- Sale alerts: Gumroad emails Vivek on each sale. Scheduled runs are cloud-only and cannot open his Chrome, so the department will also check for sales in interactive sessions and from the Gumroad email/notification path when available.
+- Promotion plan: hustles/templates/promo/PLAN.md.
