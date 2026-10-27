@@ -11,7 +11,7 @@ _Last set: 2026-10-26 by Claude. Top item first._
 
 ## Next
 6. First pre-registered combos (`research/combos.md`): portfolio of the three paper desks, drop-one, GEX regime as a gate on each day-trade desk. Judged on forward days only.
-7. GEX Stage B: model-priced SPY verticals (2x cost stress). Stage C (paper) needs real-time option prices: the bot needs `SKYLIT_API_KEY` (a Railway variable only Vivek can add; already on his list) and possibly `engine/` work, which goes to Vivek as one PR and one City Hall item.
+7. GEX Stage B: model-priced SPY verticals (2x cost stress). Stage C (paper) needs real-time option prices: the bot already has `SKYLIT_API_KEY` (added Oct 26; read-only key used for price checks) and may need `engine/` work, which goes to Vivek as one PR and one City Hall item.
 8. New-setup ideas from the CHARTER list, one per week, pre-registered.
 
 ## Standing

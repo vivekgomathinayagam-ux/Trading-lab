@@ -81,7 +81,7 @@ Ledger: `hustles/LEDGER.csv` (no rows yet).
 ## Waiting on Vivek (City Hall)
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)
-- Add Railway variable `SKYLIT_API_KEY` (a new key just for the bot, from app.skylit.ai/developer) so the price cross-check and Yahoo fallback switch on
+- ~~Add `SKYLIT_API_KEY`~~ done Oct 26 22:10 PT (deploy 4202b52a): logs show `CHECK skylit spot: ok, 6/6 symbols`; the price cross-check and Yahoo fallback are on from the Oct 27 open
 - Decide on Fix 3, realistic stop/target fills (`docs/proposals/2026-10-26-fix3-stop-target-model.md`)
 - Review the GEX filter spec and answer its 8 questions (`strategies/gex_spreads/spec.md`, section 7)
 - Update the project instructions: name Vivek, new capital rule (text in DECISIONS 2026-10-13), Crypto Pier section
@@ -131,7 +131,7 @@ Rules for new and changed tasks:
 - Crypto paper trading doesn't exist yet: Tradier has no crypto. When a Pier rule passes, crypto paper runs inside the bot on live quotes.
 - Paper end-of-day exits fill about 1-2 min after 15:55 ET (Oct 26: 15:56:43) at the live price, while the backtest exits at the 15:55 bar's open. The bot acts on the 15:55 bar once it completes. Small, but paper and backtest differ here; fixing it touches engine/ (needs Vivek's yes).
 - floor-lab's after-close GitHub Actions run (21:25 UTC) had not started by 21:50 UTC on Oct 26; GitHub's scheduler often runs late. Next Accountant run checks it.
-- Day-trade fills use Yahoo's live last price (verified real-time vs Skylit on Oct 26; no bid/ask) + slippage. Since deploy d8f0b896 (Oct 26 17:46 PT) every fill is logged with quote time, quote age (flag > 90 s), signal-bar time, the backtest rule price next to the paper price, and a Skylit check of all six ETFs (flag > 0.05%; off until `SKYLIT_API_KEY` is set). If Yahoo fails, positions are valued with Skylit and no new entries open. Stops/targets still fill at the live price; a realistic model is proposed, not built. While Yahoo is down, stops/targets aren't checked (unchanged). Tradier sandbox orders are mirrors only, sandbox token only.
+- Day-trade fills use Yahoo's live last price (verified real-time vs Skylit on Oct 26; no bid/ask) + slippage. Since deploy d8f0b896 (Oct 26 17:46 PT) every fill is logged with quote time, quote age (flag > 90 s), signal-bar time, the backtest rule price next to the paper price, and a Skylit check of all six ETFs (flag > 0.05%; on since Oct 26 22:10 PT, when `SKYLIT_API_KEY` was added). If Yahoo fails, positions are valued with Skylit and no new entries open. Stops/targets still fill at the live price; a realistic model is proposed, not built. While Yahoo is down, stops/targets aren't checked (unchanged). Tradier sandbox orders are mirrors only, sandbox token only.
 - GEX: Skylit gives 365 days of historical gamma and ~2 years of IV, but real intraday option prices only for the last 30 days. Older spread fills must be modeled; a real-price archive can start on Vivek's yes.
 - No strategy has a validated edge yet. Controls exist so we can tell.
 - Railway has no volume; /ledger and risk_state.json are restored from branch `data` at startup (fixed 2026-10-13).
