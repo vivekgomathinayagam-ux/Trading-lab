@@ -30,6 +30,7 @@ from engine.clock import is_close_window, is_market_hours, now_ny
 from engine.daytrade_runner import DayTradeRunner, enabled as daytrade_enabled
 from engine.datapush import DataPusher
 from engine.marketdata import YahooBars
+from engine.quotecheck import SkylitSpot
 from engine.ledger import Ledger
 from engine.risk import DEFAULT_CAPS, AccountState, RiskEngine
 from engine.shadow import ShadowSimulator
@@ -155,9 +156,17 @@ def main() -> int:
     log.info("runnable strategies: %s", [s.name for s in strategies] or "none yet")
     daytrade = None
     if daytrade_enabled():
+        spot = SkylitSpot(settings.skylit_api_key)
         daytrade = DayTradeRunner(ledger, broker, risk, YahooBars(), ledger_dir,
-                                  equity=settings.paper_equity)
+                                  equity=settings.paper_equity, spot=spot)
         log.info("day-trade desks on paper: %s", [d["label"] for d in daytrade.status()])
+        if spot.configured:   # read-only check, 1 Skylit credit; never logs the key
+            got = spot.spots(daytrade.symbols)
+            log.info("CHECK skylit spot: %s, %d/%d symbols %s", spot.status, len(got),
+                     len(daytrade.symbols), {k: v["spot"] for k, v in got.items()})
+        else:
+            log.warning("SKYLIT_API_KEY not set: fill prices are logged without the Skylit "
+                        "cross-check, and there is no fallback if Yahoo fails")
         try:   # proves the live 1-minute feed works now, not at the next open
             daytrade.warmup()
         except Exception as e:  # noqa: BLE001

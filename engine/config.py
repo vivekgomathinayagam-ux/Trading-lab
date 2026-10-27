@@ -6,6 +6,9 @@ Nothing here is ever logged in full. Variable NAMES (Vivek types the values):
   GITHUB_DATA_TOKEN          optional  fine-grained GitHub token, Contents: read/write
                                        on the trading-lab repo only; used to push
                                        snapshots to the "data" branch
+  SKYLIT_API_KEY             optional  read-only Skylit API key (one key for the bot, made at
+                                       app.skylit.ai/developer). Used only to cross-check
+                                       paper fill prices and value positions if Yahoo fails.
   TRADIER_LIVE_TOKEN         LATER     only when Vivek decides to go live
   LIVE_TRADING_ENABLED       LATER     must be exactly "true" as well
   KILL_SWITCH_RESET          RARE      today's New York date (YYYY-MM-DD) to clear
@@ -47,6 +50,7 @@ class Settings:
     live_equity: float
     kill_switch_reset: str | None
     offhours_push_minutes: int
+    skylit_api_key: str | None = None
 
     @property
     def live_token_present(self) -> bool:
@@ -72,6 +76,7 @@ class Settings:
             "paper_equity": self.paper_equity,
             "live_equity": self.live_equity,
             "kill_switch_reset": "set" if self.kill_switch_reset else "absent",
+            "skylit_api_key": "set" if self.skylit_api_key else "absent",
         }
 
 
@@ -93,4 +98,5 @@ def load() -> Settings:
         live_equity=float(_env("LIVE_EQUITY", "1000")),
         kill_switch_reset=_env("KILL_SWITCH_RESET"),
         offhours_push_minutes=int(_env("OFFHOURS_PUSH_MINUTES", "60")),
+        skylit_api_key=_env("SKYLIT_API_KEY"),
     )

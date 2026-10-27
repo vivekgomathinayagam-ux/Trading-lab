@@ -25,6 +25,10 @@ class YahooBars:
         self.s = requests.Session()
         self.s.headers.update(UA)
         self.timeout = timeout
+        # Provenance of the latest price per symbol (logging only, never used to trade):
+        # quote_epoch = Yahoo's regularMarketTime, delayed_by = exchangeDataDelayedBy (minutes),
+        # fetched_at = when the bot received it.
+        self.last_meta: dict[str, dict] = {}
 
     def bars(self, sym: str, rng: str = "1d", now: datetime | None = None) -> tuple[list[Bar], float | None]:
         r = self.s.get(CHART.format(sym=sym), params={"interval": "1m", "range": rng, "includePrePost": "false"},
@@ -34,7 +38,11 @@ class YahooBars:
         if not res:
             return [], None
         res = res[0]
-        price = (res.get("meta") or {}).get("regularMarketPrice")
+        meta = res.get("meta") or {}
+        price = meta.get("regularMarketPrice")
+        self.last_meta[sym] = {"quote_epoch": meta.get("regularMarketTime"),
+                               "delayed_by": meta.get("exchangeDataDelayedBy"),
+                               "fetched_at": datetime.now(timezone.utc)}
         now = now or datetime.now(timezone.utc)
         ts = res.get("timestamp") or []
         q = ((res.get("indicators") or {}).get("quote") or [{}])[0]
