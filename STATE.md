@@ -42,6 +42,12 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 Verdict so far: **no edge yet** (tiny sample; 3x slippage and the 5-min 37-session check are negative for all paper desks). The +5% target is rare: since 2010 it happened on 0.17% of SPY days and 3-10% of 3x-ETF days, while the −2.5% stop level was hit on 19-31% of 3x-ETF days.
 Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:backtests/floor/latest/REPORT.md`. Paper books: `data:ledger/daytrade_books.json`, trades `data:ledger/daytrade_trades.csv`. Tracked daily by the Accountant (daily close) task.
 
+### Research desk (charter `research/CHARTER.md`, set by Vivek 2026-10-26)
+- The five setups: ORB + volume, EMA 9/21 + volume, Volume spike (paper since Oct 26), CVD turn and GEX verticals (to be built, back-tested once, then paper).
+- **Month-1 paper test: Oct 26 to Nov 25 (23 sessions). Desk rules are frozen.** At most about 23 trades per desk, so verdicts will be "promising / inconclusive / failing" with confidence intervals; the 50-trade gate is out of reach inside the month. Month-1 report due Sat Nov 28.
+- Backtests run once, when a setup is first adopted. After that: paper every day. floor-lab keeps running as the 1-minute archiver and parity replay.
+- Combos (portfolio, confluence and gating, sequencing) are pre-registered in `research/combos.md` and judged on forward days only. Variant count: `research/VARIANTS.md`. Queue: `research/QUEUE.md`.
+
 ### Other setups
 | Setup | Stage | Notes |
 |---|---|---|
@@ -88,7 +94,7 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 ## Models for scheduled tasks (Vivek, 2026-10-26: Claude assigns them; don't default everything to the top model)
 | Task | Model | Why |
 |---|---|---|
-| Researcher (Floor + Pier), Sat 6:34 AM | Opus 5.5 | backtests: subtle bugs (look-ahead, overfitting) cost the most |
+| Researcher (quant desk), Wed + Sat 3:34 PM | Opus 5.5 | edge hunting, paper-data statistics, combos: subtle bugs (look-ahead, overfitting) cost the most |
 | Accountant (daily close), weekdays 2:40 PM | Sonnet 5.5 | routine reading, arithmetic in code, records |
 | Hustle Department, daily 8:43 AM | Sonnet 5.5 | building products, listings, research, records |
 Rules for new and changed tasks:
@@ -106,7 +112,7 @@ Rules for new and changed tasks:
 - [x] 4. Adapter, shadow fills, ledger, data push live. PR #1 merged; logs: ledger restore 3 files, paper_equity 1000, live_equity 1000, 4 files pushed. Paper baseline locks at the first market-hours loop.
 - [x] 5. Compound City published with SAMPLE data, checked at desktop (1366px) and phone (390px)
 - [ ] 6. Scheduled residents (automatic approval, phone alert only at checkpoints):
-  - "Researcher (Floor + Pier)", Saturdays 6:34 AM PT (created 2026-10-24)
+  - "Researcher (quant desk)", Wed + Sat 3:34 PM PT, Opus 5.5 (created 2026-10-26; charter `research/CHARTER.md`). It replaces "Researcher (Floor + Pier)" (Sat 6:34 AM PT, created 2026-10-24), which still needs to be disabled or deleted by Vivek: Claude's attempt was blocked.
   - "Accountant (daily close)", weekdays 2:40 PM PT (created 2026-10-25): paper stats vs SPY, city, STATE.md, retire proposals, Friday scorecard
   - Still to do: Mayor, Newsie, Risk Officer, Hustle Scout
 - [~] 7. Day-trade desks on paper from 2026-10-26; hustle one-pagers posted 2026-10-13
