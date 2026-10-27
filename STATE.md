@@ -61,7 +61,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 Next (research queue in the spec): trailing breakout exit, close-based stops, real Robinhood spreads.
 
 ## Hustles (autonomous department from 2026-10-26; rules in `hustles/OPERATING.md`)
-Claude runs the department alone: ideas, building, launching, killing, scaling. Vivek is contacted only for (1) funding for a hustle already proven at $0 cost (extreme case), (2) a one-time store and payout setup when a product is ready to sell, and (3) a notice when income is ready to move to the live fund. Scheduled task "Hustle Department" runs Tue and Fri at 8:43 AM PT.
+Claude runs the department alone: ideas, building, launching, killing, scaling. Vivek is contacted only for (1) funding for a hustle already proven at $0 cost (extreme case), (2) a one-time store and payout setup when a product is ready to sell, and (3) a notice when income is ready to move to the live fund. Scheduled task "Hustle Department" (Sonnet 5.5) runs daily at 8:43 AM PT while products are being built, and switches itself to Tue and Fri once everything is live and only waiting on sales.
 | Experiment | Stage | Revenue | Notes |
 |---|---|---|---|
 | Trader Toolkit (spreadsheet templates + ready-made Pine indicators) | building | $0 | `hustles/templates/`; digital products, no client contact |
@@ -81,6 +81,20 @@ Ledger: `hustles/LEDGER.csv` (no rows yet).
 
 ## Plan
 Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
+
+## Models for scheduled tasks (Vivek, 2026-10-26: Claude assigns them; don't default everything to the top model)
+| Task | Model | Why |
+|---|---|---|
+| Researcher (Floor + Pier), Sat 6:34 AM | Opus 5.5 | backtests: subtle bugs (look-ahead, overfitting) cost the most |
+| Accountant (daily close), weekdays 2:40 PM | Sonnet 5.5 | routine reading, arithmetic in code, records |
+| Hustle Department, daily 8:43 AM | Sonnet 5.5 | building products, listings, research, records |
+Rules for new and changed tasks:
+- **Opus 5.5:** research and backtests, go-live reviews, independent checks before going live, and anything touching the risk engine or live-order code.
+- **Sonnet 5.5:** building, writing and routine runs.
+- **Haiku 5.5:** simple check-only runs (heartbeat or deploy status, with no judgment calls).
+- **Fable 5.1:** not used for scheduled runs.
+
+`create_trigger` can't pick a model (new tasks inherit the session's model), so set the model with `update_trigger` right after creating a task. A scheduled run may change its own schedule only, never its model.
 
 ## Phase 0 checklist
 - [x] 1. Check connections: GitHub ok (App installed), Railway ok, folder ok, Alpha Vantage pending

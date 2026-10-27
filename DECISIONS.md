@@ -120,3 +120,8 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Started:** Trader Toolkit, ready-made digital products (trade journal and options risk spreadsheets, ready-made Pine indicators). They sell without customer contact.
 - **Records:** hustle money goes in `hustles/LEDGER.csv` on main, not the data branch. The bot's snapshot pushes rewrite `data:ledger/`, so hustle rows there could be overwritten.
 - **Schedule:** "Hustle Department" runs Tue and Fri at 8:43 AM PT with automatic approval. It replaces the planned Wednesday Hustle Scout.
+
+## 2026-10-26 — Claude assigns each scheduled task its model (from Vivek)
+- **Vivek's rule:** Claude picks the right model for each task, now and for future tasks, instead of using the top model for everything.
+- **Applied:** Researcher stays on Opus 5.5 (backtest rigor). The Accountant moves to Sonnet 5.5 (routine). The Hustle Department moves to Sonnet 5.5 and now runs daily at 8:43 AM PT while products are being built, then switches itself to Tue and Fri once everything is live. That gives about 3x more hustle work for roughly the same usage, since Sonnet costs less per run.
+- **Policy and table:** see STATE.md, "Models for scheduled tasks".
