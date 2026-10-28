@@ -107,3 +107,45 @@ class RunnerTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RunnerNewDesksTests(RunnerTests):
+    """2026-10-28: the bot with the new desks present trades the original desk identically,
+    and a CVD sell turn exits through the runner at the live price."""
+
+    def _run(self, rules, n=120):
+        d = Path(tempfile.mkdtemp())
+        br = FakeBroker()
+        r = DayTradeRunner(Ledger(str(d)), br, RiskEngine(), self.md, d, symbols=["SPY"], rules=rules)
+        for i in range(1, n):
+            r.step(DAY + timedelta(minutes=i, seconds=5))
+        rows = list(csv.DictReader((d / "daytrade_trades.csv").open())) if (d / "daytrade_trades.csv").exists() else []
+        return r, rows, br
+
+    def test_orb_identical_with_all_paper_desks(self):
+        from strategies.daytrade.core import PAPER_RULES  # noqa: F401  (fresh instances below)
+        from strategies.daytrade.core import CVDTurn, EMACross, EMACrossV2, VolSpike
+        _, alone, _ = self._run([ORB()])
+        _, mixed, _ = self._run([ORB(), EMACross(), VolSpike(), EMACrossV2(), CVDTurn("SPY"), CVDTurn("TQQQ")])
+        strip = lambda rows: [{k: v for k, v in x.items()} for x in rows if x["desk"] == "orb_vol"]  # noqa: E731
+        self.assertEqual(strip(alone), strip(mixed))
+
+    def test_cvd_sell_exit_through_runner(self):
+        from strategies.daytrade.core import CVDTurn
+        # rising CVD then a buy turn, then a sell turn: candles built from bars closing at high/low
+        bars, px = [], 100.0
+        pattern = [100, -50, -50, -50, -50, -50, 30] + [60, 60, 60, 60, 60, -40] + [0] * 117
+        for i, dlt in enumerate(pattern):
+            for j in range(3):
+                t = DAY + timedelta(minutes=i * 3 + j)
+                if j == 0 and dlt != 0:
+                    c = px + (0.02 if dlt > 0 else -0.02)
+                    h, l = max(px, c) + 0.0, min(px, c)
+                    bars.append(Bar(t, px, h, l, c, abs(dlt)))
+                    px = c
+                else:
+                    bars.append(Bar(t, px, px + 0.01, px - 0.01, px, 10.0))
+        self.md = FakeMD(self.md.history, bars)
+        r, rows, br = self._run([CVDTurn("SPY")], n=len(pattern) * 3)
+        self.assertEqual([x["reason"] for x in rows], ["cvd_sell"])
+        self.assertEqual([o.side for o in br.orders], ["buy", "sell"])

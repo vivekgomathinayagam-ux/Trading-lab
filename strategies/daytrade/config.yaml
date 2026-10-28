@@ -1,7 +1,7 @@
 name: daytrade
 stage: paper            # runs in the bot via engine/daytrade_runner.py (not the old registry)
 symbols: [SPY, QQQ, TQQQ, UPRO, SQQQ, SPXU]
-desks: [orb_vol, ema_vol, volspike]
+desks: [orb_vol, ema_vol, volspike, ema_vol_v2, cvd_spy, cvd_tqqq]   # last three from 2026-10-29
 # Label written on every fill row. 'preliminary' = before price provenance was verified
 # (Oct 26 trades). Changed to a new id when a fresh evaluation starts (Vivek, 2026-10-26).
 evaluation: preliminary

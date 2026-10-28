@@ -80,6 +80,16 @@ class Features:
         self.prior_high = math.nan
         self.cross_up = False
         self.minute = 0
+        # ema_vol_v2: clock-based 5-minute buckets (additive; v1 fields above are untouched)
+        self.ema2_f: Optional[float] = None
+        self.ema2_s: Optional[float] = None
+        self.ema2_n = 0
+        self.prev_diff2: Optional[float] = None
+        self.bucket2: list[tuple[float, float]] = []
+        self.bucket2_id: Optional[int] = None
+        self.bucket2_close: Optional[float] = None
+        self.cross_up_v2 = False
+        self.cross_bucket2: list[tuple[float, float]] = []
 
     def _new_day(self, d: date) -> None:
         for m, v in self.today_minute_vols.items():
@@ -89,6 +99,8 @@ class Features:
         self.pv = self.vv = 0.0
         self.or_high = self.or_low = None
         self.bucket = []
+        self.bucket2 = []
+        self.bucket2_id = None
         self.day = d
 
     def update(self, bar: Bar) -> None:
@@ -136,7 +148,36 @@ class Features:
                              and self.ema_n > self.ema_slow_n)
             self.prev_diff = diff
             self.last_bucket, self.bucket = self.bucket, []
+        self._update_v2(m, bar)
         self.prev_close = bar.c
+
+    def _close_bucket2(self, c: float) -> bool:
+        if self.ema2_f is None:
+            self.ema2_f = self.ema2_s = c
+        else:
+            self.ema2_f = c * self.kf + self.ema2_f * (1 - self.kf)
+            self.ema2_s = c * self.ks + self.ema2_s * (1 - self.ks)
+        self.ema2_n += 1
+        diff = self.ema2_f - self.ema2_s
+        crossed = (self.prev_diff2 is not None and self.prev_diff2 <= 0 < diff and self.ema2_n > self.ema_slow_n)
+        self.prev_diff2 = diff
+        done, self.bucket2 = self.bucket2, []
+        if crossed:
+            self.cross_bucket2 = done
+        return crossed
+
+    def _update_v2(self, m: int, bar: Bar) -> None:
+        """5-minute buckets by clock: a bucket closes on its last minute's bar, or, if that bar is
+        missing, when the first bar of a later bucket arrives (that bar then starts the new bucket)."""
+        self.cross_up_v2 = False
+        bid = m // self.ema_bucket
+        if self.bucket2_id is not None and bid != self.bucket2_id and self.bucket2:
+            self.cross_up_v2 |= self._close_bucket2(self.bucket2_close)
+        self.bucket2.append((self.vol_ratio, self.minute_ratio))
+        self.bucket2_id = bid
+        self.bucket2_close = bar.c
+        if (m + self.bm) % self.ema_bucket == 0:
+            self.cross_up_v2 |= self._close_bucket2(bar.c)
 
     # --- volume tests on the latest bar
     @staticmethod
@@ -153,6 +194,9 @@ class Features:
     def bucket_volume_ok(self, mult: float = VOL_MULT) -> bool:
         return any(self._spike(v, mr, mult) for v, mr in self.last_bucket)
 
+    def cross_bucket2_volume_ok(self, mult: float = VOL_MULT) -> bool:
+        return any(self._spike(v, mr, mult) for v, mr in self.cross_bucket2)
+
     @property
     def or_done(self) -> bool:
         return self.minute >= self.or_minutes and self.or_high is not None
@@ -165,6 +209,16 @@ class Rule:
 
     def signal(self, f: Features, bar: Bar) -> bool:
         raise NotImplementedError
+
+    # Optional hooks (added 2026-10-28). The base versions do nothing, so the original desks are
+    # unchanged. Desk.exit_check calls observe() once for every bar of every symbol, BEFORE the
+    # shared feature update; a rule may keep its own state there and return an exit reason, decided
+    # at this bar's close, for the symbol the desk holds.
+    def observe(self, sym: str, bar: Bar) -> Optional[str]:
+        return None
+
+    def reset(self) -> None:
+        return None
 
 
 class ORB(Rule):
@@ -210,7 +264,117 @@ class VolSpike(Rule):
                 and not math.isnan(f.prior_high) and bar.c > f.prior_high)
 
 
-PAPER_RULES = [ORB(), EMACross(), VolSpike()]
+class EMACrossV2(Rule):
+    """ema_vol_v2: EMACross with clock-based 5-minute buckets (spec addendum 2026-10-28)."""
+    key = "ema_vol_v2"
+    label = "EMA 9/21 + volume v2"
+
+    def __init__(self, vol_mult: float = VOL_MULT):
+        self.vol = vol_mult
+
+    def signal(self, f: Features, bar: Bar) -> bool:
+        if not f.cross_up_v2 or bar.t.time() < dtime(9, 45):
+            return False
+        return f.cross_bucket2_volume_ok(self.vol)
+
+
+class _CVD3:
+    """Session CVD on 3-minute clock candles, delta approximated by close-location value
+    (strategies/cvd_turn/spec.md). update() returns 'buy' / 'sell' / None at a candle close."""
+    CANDLE = 3
+    LOOK = 5
+    SPIKE_MULT = 3.0
+
+    def __init__(self):
+        self.reset()
+
+    def reset(self) -> None:
+        self.day: Optional[date] = None
+        self.cvd: list[float] = []
+        self.ranges: list[float] = []
+        self.cur_id: Optional[int] = None
+        self.cur: Optional[list] = None      # [delta, high, low]
+        self.spike = False
+
+    def _close(self) -> Optional[str]:
+        delta, h, l = self.cur
+        self.cur = None
+        self.cvd.append((self.cvd[-1] if self.cvd else 0.0) + delta)
+        rng = h - l
+        prior = self.ranges[:]
+        self.ranges.append(rng)
+        k = len(self.cvd) - 1
+        self.spike = len(prior) >= self.LOOK and rng > self.SPIKE_MULT * median(prior)
+        if k < self.LOOK:
+            return None
+        win = self.cvd[k - self.LOOK:k]
+        if self.cvd[k - 1] == min(win) and self.cvd[k] > self.cvd[k - 1]:
+            return "buy"
+        if self.cvd[k - 1] == max(win) and self.cvd[k] < self.cvd[k - 1]:
+            return "sell"
+        return None
+
+    def update(self, bar: Bar) -> Optional[str]:
+        d = bar.t.date()
+        if d != self.day:
+            self.reset()
+            self.day = d
+        m = bar.t.hour * 60 + bar.t.minute - OPEN_MIN
+        if m < 0:
+            return None
+        cid = m // self.CANDLE
+        ev, spike = None, False
+        if self.cur is not None and cid != self.cur_id:
+            ev = self._close()                       # last bar of that candle was missing
+            spike = self.spike
+        rng = bar.h - bar.l
+        delta = bar.v * ((bar.c - bar.l) - (bar.h - bar.c)) / rng if rng > 0 else 0.0
+        if self.cur is None:
+            self.cur = [0.0, bar.h, bar.l]
+        self.cur[0] += delta
+        self.cur[1] = max(self.cur[1], bar.h)
+        self.cur[2] = min(self.cur[2], bar.l)
+        self.cur_id = cid
+        if (m + 1) % self.CANDLE == 0:
+            ev2 = self._close()
+            if ev2 or ev is None:
+                ev, spike = ev2, self.spike
+        self.spike = spike                           # spike flag of the candle behind `ev`
+        return ev
+
+
+class CVDTurn(Rule):
+    """CVD turn on 3-minute candles (strategies/cvd_turn/spec.md). Trades one symbol on its own
+    CVD: buy turn -> entry (skipped on a fast-spike candle); sell turn -> exit."""
+
+    def __init__(self, sym: str):
+        self.sym = sym
+        self.key = f"cvd_{sym.lower()}"
+        self.label = f"CVD turn 3-min ({sym})"
+        self.cvd = _CVD3()
+        self.last: tuple = (None, None, False)     # (bar time, event, spike)
+
+    def reset(self) -> None:
+        self.cvd.reset()
+        self.last = (None, None, False)
+
+    def observe(self, sym: str, bar: Bar) -> Optional[str]:
+        if sym != self.sym:
+            return None
+        ev = self.cvd.update(bar)
+        self.last = (bar.t, ev, self.cvd.spike)
+        return "cvd_sell" if ev == "sell" else None
+
+    def signal(self, f: Features, bar: Bar) -> bool:
+        t, ev, spike = self.last
+        return t == bar.t and ev == "buy" and not spike
+
+
+SIGNAL_EXITS = {"cvd_sell"}
+
+PAPER_RULES = [ORB(), EMACross(), VolSpike(),
+               # added by the Researcher 2026-10-28 (pre-registered: strategies/cvd_turn/spec.md, daytrade spec addendum)
+               EMACrossV2(), CVDTurn("SPY"), CVDTurn("TQQQ")]
 COMPARISON_RULES = [ORB(None), EMACross(None), VolSpike(2.0)]
 
 
@@ -239,6 +403,9 @@ class Desk:
     last_entry_day: Optional[str] = None
     trades: list = field(default_factory=list)
 
+    def __post_init__(self):
+        self.rule.reset()
+
     @property
     def key(self) -> str:
         return self.rule.key
@@ -251,6 +418,7 @@ class Desk:
 
     # step 2: exits
     def exit_check(self, sym: str, bar: Bar) -> Optional[tuple[str, float]]:
+        sig = self.rule.observe(sym, bar)        # base Rule: always None (original desks unchanged)
         p = self.pos
         if not p or p.sym != sym:
             return None
@@ -260,6 +428,8 @@ class Desk:
             return ("stop", min(bar.o, p.stop))
         if bar.h >= p.target:
             return ("target", max(bar.o, p.target))
+        if sig:
+            return (sig, bar.c)                  # decided at this bar's close; lab fills next open
         return None
 
     # step 4: entries

@@ -11,11 +11,13 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import Iterable
 
-from strategies.daytrade.core import SLIP, SYMBOLS, Bar, Desk, Features, Rule
+from strategies.daytrade.core import SIGNAL_EXITS, SLIP, SYMBOLS, Bar, Desk, Features, Rule
 
 
 def simulate(bars: dict[str, list[Bar]], rules: Iterable[Rule], bar_minutes: int = 1,
-             equity: float = 1000.0, slip_mult: float = 1.0, warmup_days: int = 3) -> dict:
+             equity: float = 1000.0, slip_mult: float = 1.0, warmup_days: int = 3,
+             trade_from_day=None) -> dict:
+    """trade_from_day (a date) overrides warmup_days: trade only from that day on (parity replay)."""
     syms = [s for s in SYMBOLS if bars.get(s)]
     order = {s: i for i, s in enumerate(SYMBOLS)}
     hub = {s: Features(bar_minutes=bar_minutes) for s in syms}
@@ -23,13 +25,21 @@ def simulate(bars: dict[str, list[Bar]], rules: Iterable[Rule], bar_minutes: int
     events = sorted(((b.t, order[s], s, b) for s in syms for b in bars[s]), key=lambda e: (e[0], e[1]))
     days = sorted({b.t.date() for s in syms for b in bars[s]})
     trade_from = days[warmup_days] if len(days) > warmup_days else None
+    if trade_from_day is not None:
+        trade_from = trade_from_day
     eod_equity = {d.key: {} for d in desks}
     marks: dict[str, float] = {}
     first_px: dict[str, float] = {}
     last_px: dict[str, float] = {}
+    pending_exit: dict[str, tuple[str, str]] = {}          # desk key -> (sym, reason): signal exits fill next bar open
     for t, _, sym, bar in events:
         slip = SLIP[sym] * slip_mult
         trading = trade_from is not None and bar.t.date() >= trade_from
+        for d in desks:                                   # 0. pending signal exits
+            pe = pending_exit.get(d.key)
+            if pe and pe[0] == sym and d.pos and d.pos.sym == sym:
+                d.fill_exit(bar.o * (1 - slip), bar.t, pe[1])
+                del pending_exit[d.key]
         for d in desks:                                   # 1. pending fills
             if d.pending == sym:
                 if d.pending_valid(bar):
@@ -38,7 +48,10 @@ def simulate(bars: dict[str, list[Bar]], rules: Iterable[Rule], bar_minutes: int
                     d.pending = d.pending_day = None
         for d in desks:                                   # 2. exits
             ex = d.exit_check(sym, bar)
-            if ex:
+            if ex and ex[0] in SIGNAL_EXITS:
+                pending_exit[d.key] = (sym, ex[0])
+            elif ex:
+                pending_exit.pop(d.key, None)
                 d.fill_exit(ex[1] * (1 - slip), bar.t, ex[0])
         hub[sym].update(bar)                              # 3. features
         if trading:                                       # 4. signals

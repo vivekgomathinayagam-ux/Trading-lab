@@ -36,6 +36,9 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 | ORB + volume | **paper from 2026-10-26** | 12 trades, −2.65%, PF 0.55, +5% hits 0 | 2 trades (1 win), −0.03%, vs SPY −1.25 pts; Oct 28: SPY −$0.85 (as of Oct 28 close) | 09:30-09:45 range breakout on a volume-spike bar |
 | EMA 9/21 + volume | **paper from 2026-10-26** | 11 trades, −2.51%, PF 0.33, +5% hits 0 | 3 trades (0 wins), −1.01%, vs SPY −2.23 pts; Oct 28: SPXU −$4.23 (as of Oct 28 close) | 5-min EMA cross with a 1-min volume spike in that bucket |
 | Volume spike | **paper from 2026-10-26** | 17 trades, +1.13%, PF 1.2, +5% hits 0 | 3 trades (2 wins), +1.78%, vs SPY +0.56 pts; Oct 28: QQQ +$2.29 (as of Oct 28 close) | spike bar closes up, above VWAP and the prior 15-bar high |
+| EMA 9/21 + volume v2 (`ema_vol_v2`) | **paper from 2026-10-29** | 14 trades, −0.43%, PF 0.82 (Oct 1-27; reference only, design touched by paper data) | — | bug-fix version: 5-min buckets by clock (Yahoo drops 1-6% of UPRO/SPXU minutes, which merged buckets in `ema_vol`) |
+| CVD turn SPY (`cvd_spy`) | **paper from 2026-10-29** | 19 trades, −0.12%, PF 0.90, expectancy −0.006%/trade [−0.07, +0.06] | — | Vivek's setup; spec `strategies/cvd_turn/spec.md`; CVD approximated from 1-min bars (close location) |
+| CVD turn TQQQ (`cvd_tqqq`) | **paper from 2026-10-29** | 19 trades, +9.3%, PF 10.4, +0.47%/trade [+0.19, +0.78]; 2x costs +0.37%; 3x +0.28% | — | best of 6 symbols tried (QQQ +0.07, UPRO 0.00, SQQQ −0.27, SPXU −0.08 per trade): treat as suspect until paper agrees; all exits on the CVD sell turn, holds 3-33 min |
 | ORB plain / EMA plain / Volume spike 2x | backtest only | +0.37% / +0.46% / +0.28% | — | comparisons |
 | SPY buy-and-hold | benchmark | −0.58% same window | +1.22% (762.35 → 771.67, as of Oct 28 close) | control |
 **Evaluation status (Vivek, 2026-10-26):** Oct 26 trades are labeled `preliminary` (Yahoo real-time + assumed slippage, no quote time recorded). A fresh evaluation starts once the new logging is verified in a live session: every fill in `ledger/daytrade_fills.csv` has quote time, age, bar time, and a Skylit cross-check within 0.05% (needs `SKYLIT_API_KEY`). Then: set `evaluation:` in `strategies/daytrade/config.yaml` to `eval-1`, archive the preliminary ledger files, and reset each desk to $1,000.
@@ -46,14 +49,15 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 - The five setups: ORB + volume, EMA 9/21 + volume, Volume spike (paper since Oct 26), CVD turn and GEX verticals (to be built, back-tested once, then paper).
 - **Month-1 paper test: Oct 26 to Nov 25 (23 sessions). Desk rules are frozen.** At most about 23 trades per desk, so verdicts will be "promising / inconclusive / failing" with confidence intervals; the 50-trade gate is out of reach inside the month. Month-1 report due Sat Nov 28.
 - Backtests run once, when a setup is first adopted. After that: paper every day. floor-lab keeps running as the 1-minute archiver and parity replay.
+- Paper report `lab/floor/paper_report.py` and parity replay `lab/floor/replay.py` exist (2026-10-28). Parity Oct 26-27: 4/5 trades match; 1 explained (`research/parity/2026-10-28.md`).
 - Combos (portfolio, confluence and gating, sequencing) are pre-registered in `research/combos.md` and judged on forward days only. Variant count: `research/VARIANTS.md`. Queue: `research/QUEUE.md`.
 
 ### Other setups
 | Setup | Stage | Notes |
 |---|---|---|
 | ORB SPY/TQQQ (original Pine design) | spec | superseded on paper by the ORB + volume desk above |
-| CVD turn 3-min | spec | buy from 5-candle low, sell from 5-candle high; skip spikes; RTH only |
-| GEX-filtered SPY/SPX verticals | idea (spec for review) | Skylit connected = GEX data unblocked (365 days). Proposed 5-filter spec in `strategies/gex_spreads/spec.md`, waiting on Vivek's answers (8 questions). No code yet. |
+| CVD turn 3-min | **paper from 2026-10-29** as `cvd_spy` and `cvd_tqqq` (see the day-trade table) | |
+| GEX / Skylit setups | research | The Researcher's own project (charter). Pilot 1 (2026-10-28, 62 days of 10:00 ET boards, SPY/QQQ): no king pull, no gamma-sign effect on the rest-of-day move. Next: intraday horizon, 0DTE-only boards, Tempest IV. Log: `research/skylit/STUDY.md`. |
 | Control: SPY buy-and-hold | spec | benchmark |
 | Control: 9/21 EMA cross | spec | now a real desk (EMA 9/21 + volume); SPY buy-and-hold from Oct 26 stays the benchmark |
 

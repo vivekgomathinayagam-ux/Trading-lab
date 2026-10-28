@@ -1,0 +1,353 @@
+{
+ "1x": {
+  "first_day": "2026-10-01",
+  "last_day": "2026-10-27",
+  "sessions": 19,
+  "desks": [
+   {
+    "desk": "cvd_spy",
+    "label": "CVD turn 3-min (SPY)",
+    "trades": 19,
+    "win_rate_pct": 36.8,
+    "avg_win_pct": 0.15,
+    "avg_loss_pct": -0.1,
+    "expectancy_pct": -0.006,
+    "profit_factor": 0.9,
+    "total_return_pct": -0.12,
+    "end_equity": 998.76,
+    "max_dd_pct": -0.48,
+    "sharpe_daily_ann": 1.28,
+    "exits": {
+     "cvd_sell": 19
+    },
+    "by_symbol": {
+     "SPY": {
+      "trades": 19,
+      "pnl_usd": -1.23
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     -0.071,
+     0.059
+    ]
+   },
+   {
+    "desk": "cvd_tqqq",
+    "label": "CVD turn 3-min (TQQQ)",
+    "trades": 19,
+    "win_rate_pct": 63.2,
+    "avg_win_pct": 0.82,
+    "avg_loss_pct": -0.14,
+    "expectancy_pct": 0.47,
+    "profit_factor": 10.42,
+    "total_return_pct": 9.28,
+    "end_equity": 1092.75,
+    "max_dd_pct": -0.83,
+    "sharpe_daily_ann": 11.57,
+    "exits": {
+     "cvd_sell": 19
+    },
+    "by_symbol": {
+     "TQQQ": {
+      "trades": 19,
+      "pnl_usd": 92.76
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     0.191,
+     0.778
+    ]
+   },
+   {
+    "desk": "ema_vol_v2",
+    "label": "EMA 9/21 + volume v2",
+    "trades": 14,
+    "win_rate_pct": 42.9,
+    "avg_win_pct": 0.31,
+    "avg_loss_pct": -0.29,
+    "expectancy_pct": -0.03,
+    "profit_factor": 0.82,
+    "total_return_pct": -0.43,
+    "end_equity": 995.71,
+    "max_dd_pct": -1.8,
+    "sharpe_daily_ann": -1.52,
+    "exits": {
+     "eod": 14
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 1,
+      "pnl_usd": -1.71
+     },
+     "SPXU": {
+      "trades": 6,
+      "pnl_usd": 3.05
+     },
+     "SPY": {
+      "trades": 2,
+      "pnl_usd": 4.53
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": 0.75
+     },
+     "TQQQ": {
+      "trades": 1,
+      "pnl_usd": -0.85
+     },
+     "UPRO": {
+      "trades": 1,
+      "pnl_usd": -10.07
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     -0.252,
+     0.173
+    ]
+   }
+  ]
+ },
+ "2x": {
+  "first_day": "2026-10-01",
+  "last_day": "2026-10-27",
+  "sessions": 19,
+  "desks": [
+   {
+    "desk": "cvd_spy",
+    "label": "CVD turn 3-min (SPY)",
+    "trades": 19,
+    "win_rate_pct": 31.6,
+    "avg_win_pct": 0.14,
+    "avg_loss_pct": -0.12,
+    "expectancy_pct": -0.037,
+    "profit_factor": 0.55,
+    "total_return_pct": -0.71,
+    "end_equity": 992.91,
+    "max_dd_pct": -0.72,
+    "sharpe_daily_ann": -2.39,
+    "exits": {
+     "cvd_sell": 19
+    },
+    "by_symbol": {
+     "SPY": {
+      "trades": 19,
+      "pnl_usd": -7.08
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     -0.102,
+     0.028
+    ]
+   },
+   {
+    "desk": "cvd_tqqq",
+    "label": "CVD turn 3-min (TQQQ)",
+    "trades": 19,
+    "win_rate_pct": 63.2,
+    "avg_win_pct": 0.73,
+    "avg_loss_pct": -0.23,
+    "expectancy_pct": 0.374,
+    "profit_factor": 5.36,
+    "total_return_pct": 7.31,
+    "end_equity": 1073.14,
+    "max_dd_pct": -1.22,
+    "sharpe_daily_ann": 9.26,
+    "exits": {
+     "cvd_sell": 19
+    },
+    "by_symbol": {
+     "TQQQ": {
+      "trades": 19,
+      "pnl_usd": 73.14
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     0.095,
+     0.683
+    ]
+   },
+   {
+    "desk": "ema_vol_v2",
+    "label": "EMA 9/21 + volume v2",
+    "trades": 14,
+    "win_rate_pct": 42.9,
+    "avg_win_pct": 0.23,
+    "avg_loss_pct": -0.37,
+    "expectancy_pct": -0.114,
+    "profit_factor": 0.47,
+    "total_return_pct": -1.6,
+    "end_equity": 984.01,
+    "max_dd_pct": -2.37,
+    "sharpe_daily_ann": -4.33,
+    "exits": {
+     "eod": 14
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 1,
+      "pnl_usd": -2.01
+     },
+     "SPXU": {
+      "trades": 6,
+      "pnl_usd": -2.84
+     },
+     "SPY": {
+      "trades": 2,
+      "pnl_usd": 3.92
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": -2.41
+     },
+     "TQQQ": {
+      "trades": 1,
+      "pnl_usd": -1.72
+     },
+     "UPRO": {
+      "trades": 1,
+      "pnl_usd": -10.94
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     -0.335,
+     0.088
+    ]
+   }
+  ]
+ },
+ "3x": {
+  "first_day": "2026-10-01",
+  "last_day": "2026-10-27",
+  "sessions": 19,
+  "desks": [
+   {
+    "desk": "cvd_spy",
+    "label": "CVD turn 3-min (SPY)",
+    "trades": 19,
+    "win_rate_pct": 31.6,
+    "avg_win_pct": 0.11,
+    "avg_loss_pct": -0.15,
+    "expectancy_pct": -0.068,
+    "profit_factor": 0.34,
+    "total_return_pct": -1.29,
+    "end_equity": 987.05,
+    "max_dd_pct": -1.15,
+    "sharpe_daily_ann": -6.06,
+    "exits": {
+     "cvd_sell": 19
+    },
+    "by_symbol": {
+     "SPY": {
+      "trades": 19,
+      "pnl_usd": -12.93
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     -0.133,
+     -0.003
+    ]
+   },
+   {
+    "desk": "cvd_tqqq",
+    "label": "CVD turn 3-min (TQQQ)",
+    "trades": 19,
+    "win_rate_pct": 63.2,
+    "avg_win_pct": 0.63,
+    "avg_loss_pct": -0.32,
+    "expectancy_pct": 0.282,
+    "profit_factor": 3.36,
+    "total_return_pct": 5.45,
+    "end_equity": 1054.49,
+    "max_dd_pct": -1.69,
+    "sharpe_daily_ann": 7.11,
+    "exits": {
+     "cvd_sell": 19
+    },
+    "by_symbol": {
+     "TQQQ": {
+      "trades": 19,
+      "pnl_usd": 54.48
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     -0.0,
+     0.591
+    ]
+   },
+   {
+    "desk": "ema_vol_v2",
+    "label": "EMA 9/21 + volume v2",
+    "trades": 14,
+    "win_rate_pct": 35.7,
+    "avg_win_pct": 0.21,
+    "avg_loss_pct": -0.42,
+    "expectancy_pct": -0.199,
+    "profit_factor": 0.27,
+    "total_return_pct": -2.76,
+    "end_equity": 972.39,
+    "max_dd_pct": -2.95,
+    "sharpe_daily_ann": -6.92,
+    "exits": {
+     "eod": 14
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 1,
+      "pnl_usd": -2.31
+     },
+     "SPXU": {
+      "trades": 6,
+      "pnl_usd": -8.85
+     },
+     "SPY": {
+      "trades": 2,
+      "pnl_usd": 3.31
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": -5.33
+     },
+     "TQQQ": {
+      "trades": 1,
+      "pnl_usd": -2.64
+     },
+     "UPRO": {
+      "trades": 1,
+      "pnl_usd": -11.81
+     }
+    },
+    "targets_hit": 0,
+    "expectancy_ci95": [
+     -0.424,
+     0.007
+    ]
+   }
+  ]
+ },
+ "control_long_0948_to_1555": {
+  "SPY": {
+   "days": 19,
+   "mean_move_pct": -0.018,
+   "ci95": [
+    -0.233,
+    0.178
+   ]
+  },
+  "TQQQ": {
+   "days": 19,
+   "mean_move_pct": -0.264,
+   "ci95": [
+    -1.381,
+    0.791
+   ]
+  }
+ }
+}

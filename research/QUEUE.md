@@ -1,13 +1,18 @@
 # Research queue (ordered; the Researcher edits this)
 
-_Last set: 2026-10-26 by Claude. Top item first._
+_Last set: 2026-10-28 by the Researcher (Wednesday build run). Top item first._
 
 ## Now
-1. **Weekly paper report script** (`lab/floor/paper_report.py`): reads the data-branch ledger and prints the stats in CHARTER "Reading the paper data". Unit-tested on a made-up ledger.
-2. **Parity replay** (`lab/floor/replay.py`): replay one date from the archived 1-min bars through the shared core and compare with `ledger/daytrade_trades.csv`. First check: Oct 26 (3 trades).
-3. **Split floor-lab**: archive job (stays daily) and replay job. Freeze the Oct 1-23 backtest as the reference.
-4. **CVD turn**: pre-register (`strategies/cvd_turn/spec.md`): how 1-min bars approximate volume delta, 3-min aggregation, 5-candle lookback, the spike filter, long-only handling of the "sell" turn (exit, or buy an inverse ETF). Implement as a new rule in `core.py`, backtest once, then paper (Vivek's setup, so paper regardless).
-5. **Skylit edge study (the Researcher's own project, top priority after 1-2)**:
+- [x] Paper report script `lab/floor/paper_report.py` (2026-10-28, tested)
+- [x] Parity replay `lab/floor/replay.py` (2026-10-28): Oct 26-27, 4/5 match, 1 explained (missing Yahoo bars -> `ema_vol_v2`)
+- [x] CVD turn pre-registered, built, back-tested once, on paper from Oct 29 (`cvd_spy`, `cvd_tqqq`)
+- [x] Skylit pilot 1 (10:00 ET boards, 62 days): no king pull, no gamma-sign effect on the rest-of-day move
+
+1. **Saturday Oct 31 review**: paper report + parity for Oct 26-30, first look at the 3 new desks (expect 2-3 trades each; nothing to judge).
+2. **Run parity inside floor-lab** after the archive step (one more step in the Actions job; lab code only). Also make floor-lab's 5-min robustness table skip the CVD desks (3-min candles cannot be built from 5-min bars).
+3. **Skylit edge study, pilot 2** (pre-register first): intraday horizon instead of rest-of-day. Boards at 10:00/12:30 ET vs the next 60-90 minutes from the 1-min archive (Sep 28 on): distance to the nearest large positive node (magnet) and to the nearest large negative node (accelerant); 0DTE-only board (max_expirations=1). Also Tempest: SVX/IV term slope vs next-day range (cheap: tempest_history).
+4. **Skylit forward collection**: `engine/skylit_feed.py` read-only snapshot at 09:45/10:30/12:30/15:00 ET for SPY, QQQ, SPXW (~20 credits/day) written to the ledger, so forward data accrues without paid backfills.
+5. **Skylit edge study (continuing)**:
    - Map which Skylit tools have history and how far back.
    - Build a cached dataset on branch `data` (`research/skylit/`): GEX boards at fixed decision times (09:45, 10:30, 12:30, 15:00 ET) for SPY/QQQ/SPXW, plus Tempest daily rows.
    - Measure what each feature predicts for the next hours on SPY/QQQ and the 3x ETFs: King-node pull and pins, flip distance, gamma sign vs realized range, wall rejections, IV term structure.

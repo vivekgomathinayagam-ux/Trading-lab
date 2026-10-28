@@ -20,3 +20,4 @@ backtests/results/*.parquet
 backtests/data/
 .DS_Store
 out/
+research/skylit/raw/
