@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-28T22:41:25+00:00",
+  "as_of": "2026-10-28T22:57:09+00:00",
   "status": "ok",
   "market_open": false,
   "mode": "paper",
@@ -7,6 +7,9 @@
   "strategies": [
     "orb_vol",
     "ema_vol",
-    "volspike"
+    "volspike",
+    "ema_vol_v2",
+    "cvd_spy",
+    "cvd_tqqq"
   ]
 }
