@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-10-28T17:30:28+00:00",
+  "as_of": "2026-10-28T17:45:28+00:00",
   "mode": "paper",
-  "equity": 1036.72,
-  "settled_cash": -456.79,
+  "equity": 1036.06,
+  "settled_cash": -1440.76,
   "peak_equity": 1039.29,
   "start_of_day_equity": 1036.3,
-  "drawdown": 0.0025,
+  "drawdown": 0.0031,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
@@ -15,6 +15,13 @@
       "id": 2695136,
       "quantity": 1.0,
       "symbol": "QQQ"
+    },
+    {
+      "cost_basis": 983.97,
+      "date_acquired": "2026-10-28T17:35:29.052Z",
+      "id": 2696443,
+      "quantity": 29.0,
+      "symbol": "SPXU"
     },
     {
       "cost_basis": 771.18,
@@ -42,8 +49,15 @@
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 994.14,
-      "position": null
+      "cash": 9.97,
+      "position": {
+        "sym": "SPXU",
+        "qty": 29,
+        "entry_px": 33.93696,
+        "stop": 33.088536,
+        "target": 35.633808,
+        "entry_t": "2026-10-28T13:35:28.390100-04:00"
+      }
     },
     {
       "desk": "volspike",
