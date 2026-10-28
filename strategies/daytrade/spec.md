@@ -57,3 +57,13 @@ never stops on its own. Only the risk engine's caps can stop it.
 ## Gate (unchanged)
 Live-ready needs 50+ trades over 4+ weeks, positive expectancy after costs, profit factor 1.2+, max
 drawdown 20% or less, better risk-adjusted return than SPY buy-and-hold, and paper close to backtest.
+
+## Addendum 2026-10-28 (Researcher): `ema_vol_v2`, clock-based 5-minute buckets (pre-registered before any test)
+The parity replay of Oct 26 found that `ema_vol` closes a 5-minute bucket only on a bar whose minute ends a
+5-minute boundary. Yahoo's 1-minute data drops 1-6% of minutes for UPRO and SPXU, so a missing boundary bar
+merges two buckets (Oct 26 SPXU: 12:32 and 12:34 missing, so 12:30-12:39 became one 8-bar bucket), and the
+EMA and the cross differ between the bot's live bars and the archive. That breaks the spec ("5-minute closes").
+`ema_vol` stays frozen and keeps running as is (Month-1 rule). `ema_vol_v2` is identical except that buckets
+are by clock: a bucket also closes when the first bar of a later bucket arrives, and that later bar starts the
+new bucket. Nothing else changes (EMA 9/21, volume spike in the bucket, from 09:45, shared exits).
+Judged on forward paper days only (it is a design touched by paper data).
