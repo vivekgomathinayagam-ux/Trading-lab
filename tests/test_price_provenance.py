@@ -35,8 +35,9 @@ class MetaMD(FakeMD):
 
 
 class FakeSpot:
-    def __init__(self, offset_pct=0.0, configured=True):
+    def __init__(self, offset_pct=0.0, configured=True, per_symbol=None):
         self.offset_pct, self._conf = offset_pct, configured
+        self.per_symbol = per_symbol or {}
         self.status = "ok" if configured else "unconfigured"
         self.calls = 0
         self.md = None
@@ -51,7 +52,8 @@ class FakeSpot:
         for s in symbols:
             px = self.md.prices.get(s) if self.md else None
             if px:
-                out[s] = {"spot": px * (1 + self.offset_pct / 100), "as_of": "t"}
+                off = self.per_symbol.get(s, self.offset_pct)
+                out[s] = {"spot": px * (1 + off / 100), "as_of": "t"}
         return out
 
 
@@ -129,6 +131,17 @@ class TestCrossCheck(Base):
     def test_difference_above_005pct_is_flagged(self):
         self.run_day(spot=FakeSpot(offset_pct=0.2))
         self.assertTrue(all(r["skylit_flag"] == "True" for r in self.fills()))
+
+    def test_flag_looks_only_at_the_traded_etf(self):
+        # SPY (traded) matches; another ETF is far off: logged for information, not flagged
+        self.run_day(spot=FakeSpot(per_symbol={"SPY": 0.01, "SPXU": 0.5}))
+        for r in self.fills():
+            self.assertEqual(r["skylit_flag"], "False")
+            self.assertEqual(r["skylit_diff_pct"], "-0.01")   # Yahoo vs Skylit
+        # and the traded ETF off -> flagged
+        folder = Path(tempfile.mkdtemp())
+        self.run_day(spot=FakeSpot(per_symbol={"SPY": 0.2}), folder=folder)
+        self.assertTrue(all(r["skylit_flag"] == "True" for r in self.fills(folder)))
 
     def test_unconfigured_skylit_logs_without_crashing(self):
         self.run_day(spot=FakeSpot(configured=False))

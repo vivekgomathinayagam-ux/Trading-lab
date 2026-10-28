@@ -157,7 +157,9 @@ class DayTradeRunner:
                "skylit_as_of": sk.get("as_of", ""),
                "skylit_diff_pct": diffs.get(sym, ""),
                "skylit_max_diff_pct": "" if mx is None else mx,
-               "skylit_flag": "" if mx is None else (mx > XCHECK_FLAG_PCT),
+               # Vivek 2026-10-28: flag only the ETF actually traded; the other five stay in
+               # skylit_all_diffs / skylit_max_diff_pct for information.
+               "skylit_flag": "" if sym not in diffs else (abs(diffs[sym]) > XCHECK_FLAG_PCT),
                "skylit_all_diffs": json.dumps(diffs, separators=(",", ":")) if diffs else "",
                "sandbox": sandbox}
         try:
@@ -172,7 +174,8 @@ class DayTradeRunner:
         if row["quote_stale"] is True:
             log.warning("STALE QUOTE %s %s %s: %.0fs old", kind, d.key, sym, age)
         if row["skylit_flag"] is True:
-            log.warning("PRICE CHECK %s %s: Yahoo vs Skylit max diff %.3f%% (%s)", kind, sym, mx, diffs)
+            log.warning("PRICE CHECK %s %s: Yahoo vs Skylit diff %.3f%% on the traded ETF (all: %s)",
+                        kind, sym, diffs[sym], diffs)
 
     # ---------------------------------------------------------- warm-up
     def warmup(self) -> None:
