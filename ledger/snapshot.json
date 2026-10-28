@@ -1,76 +1,33 @@
 {
-  "as_of": "2026-10-28T19:45:28+00:00",
+  "as_of": "2026-10-28T19:59:28+00:00",
   "mode": "paper",
-  "equity": 1037.79,
-  "settled_cash": -1440.76,
+  "equity": 1037.8,
+  "settled_cash": 1037.8,
   "peak_equity": 1039.51,
   "start_of_day_equity": 1036.3,
-  "drawdown": 0.0017,
+  "drawdown": 0.0016,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 721.91,
-      "date_acquired": "2026-10-28T14:29:28.786Z",
-      "id": 2695136,
-      "quantity": 1.0,
-      "symbol": "QQQ"
-    },
-    {
-      "cost_basis": 983.97,
-      "date_acquired": "2026-10-28T17:35:29.052Z",
-      "id": 2696443,
-      "quantity": 29.0,
-      "symbol": "SPXU"
-    },
-    {
-      "cost_basis": 771.18,
-      "date_acquired": "2026-10-28T16:55:28.950Z",
-      "id": 2696240,
-      "quantity": 1.0,
-      "symbol": "SPY"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 227.93,
-      "position": {
-        "sym": "SPY",
-        "qty": 1,
-        "entry_px": 772.584486,
-        "stop": 753.26987385,
-        "target": 811.2137103,
-        "entry_t": "2026-10-28T12:55:28.380412-04:00"
-      }
+      "cash": 999.67,
+      "position": null
     },
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 9.97,
-      "position": {
-        "sym": "SPXU",
-        "qty": 29,
-        "entry_px": 33.93696,
-        "stop": 33.088536,
-        "target": 35.633808,
-        "entry_t": "2026-10-28T13:35:28.390100-04:00"
-      }
+      "cash": 989.91,
+      "position": null
     },
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 293.23,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 722.274426,
-        "stop": 704.21756535,
-        "target": 758.3881473,
-        "entry_t": "2026-10-28T10:29:28.349613-04:00"
-      }
+      "cash": 1017.8,
+      "position": null
     }
   ]
 }
