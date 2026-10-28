@@ -116,6 +116,7 @@ for a in ("B21","B22"): st[a].border=box; st[a].fill=gry
 # equity chart
 ch=LineChart(); ch.title="Running P&L ($)"; ch.height=8; ch.width=18
 ch.add_data(Reference(j,min_col=15,min_row=1,max_row=60),titles_from_data=True); ch.legend=None
+for _s in ch.series: _s.smooth=False   # straight segments, no smoothing overshoot
 st.add_chart(ch,"E3")
 
 # ---------- By Setup
@@ -142,7 +143,7 @@ for i,d in enumerate(["Mon","Tue","Wed","Thu","Fri"]):
     c=k.cell(row=3,column=2+i,value=d); c.font=hdr; c.fill=hfill; c.alignment=Alignment(horizontal="center")
 k.cell(row=3,column=1,value="Week of").font=hdr; k.cell(row=3,column=1).fill=hfill
 k.cell(row=3,column=7,value="Week total").font=hdr; k.cell(row=3,column=7).fill=hfill
-k.column_dimensions["A"].width=14
+k.column_dimensions["A"].width=22
 for col in "BCDEFG": k.column_dimensions[col].width=14
 D=f"Journal!$A$2:$A${N+1}"
 # Monday of week containing 1st: $E$1 - WEEKDAY($E$1,3)
