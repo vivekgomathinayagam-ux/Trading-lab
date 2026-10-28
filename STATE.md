@@ -72,11 +72,11 @@ Next (research queue in the spec): trailing breakout exit, close-based stops, re
 Claude runs the department alone: ideas, building, launching, killing, scaling. Vivek is contacted only for (1) funding for a hustle already proven at $0 cost (extreme case), (2) a one-time store and payout setup when a product is ready to sell, and (3) a notice when income is ready to move to the live fund. Scheduled task "Hustle Department" (Sonnet 5.5) runs daily at 8:43 AM PT while products are being built, and switches itself to Tue and Fri once everything is live and only waiting on sales.
 | Experiment | Stage | Revenue | Notes |
 |---|---|---|---|
-| Trader Toolkit (journal + risk calculator spreadsheets) | **LIVE** (2026-10-27, $12) | $0 | `hustles/templates/`; two tested .xlsx files + listing in `product/`. Store: vivekgo8.gumroad.com/l/aobhdm. Promotion plan in `hustles/templates/promo/PLAN.md`. Pine pack held back: can't be compile-tested without TradingView |
+| Trader Toolkit (journal + risk calculator spreadsheets) | **LIVE** (2026-10-27, $12) | $0 | `hustles/templates/`; two tested .xlsx files + listing in `product/`. Store: vivekgo8.gumroad.com/l/aobhdm. Promotion plan in `hustles/templates/promo/PLAN.md`. Pine pack held back: can't be compile-tested without TradingView. Oct 28: free cheat sheet + calculator pages, Plan Pack workbook (tested, not yet in store), community drafts queued for Chrome |
 | Pine Script commissions (Fiverr) | dropped 2026-10-26 | $0 | needs live client chats; Fiverr requires the owner to represent his gig |
 | Discord bots for clients | dropped 2026-10-26 | $0 | needs live clients, permissions and deadlines |
 | Build-in-public posts (LinkedIn) | dropped 2026-10-26 | $0 | LinkedIn's terms ban automated posting |
-Ledger: `hustles/LEDGER.csv` (no rows yet). Hustle table as of 2026-10-27 09:00 PT.
+Ledger: `hustles/LEDGER.csv` (no rows yet). Hustle table as of 2026-10-28 08:55 PT. Trader Toolkit: $0 revenue, 0 known sales (day 2 of 45); sales data not reachable from cloud runs, so a sale will show up when Vivek's Gumroad email is seen or an interactive session checks the dashboard.
 
 ## Waiting on Vivek (City Hall)
 - ~~Trader Toolkit store setup~~ done Oct 27; product published

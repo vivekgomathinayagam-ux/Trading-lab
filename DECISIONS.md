@@ -170,3 +170,10 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Standing orders (OPERATING.md): decide small issues without asking; contact Vivek only after a sale; promote by every honest channel. Fixed lines unchanged: no fake reviews/accounts/sales, no spam, no profit claims, platform rules respected, I never move or spend money, I never create accounts or enter passwords.
 - Sale alerts: Gumroad emails Vivek on each sale. Scheduled runs are cloud-only and cannot open his Chrome, so the department will also check for sales in interactive sessions and from the Gumroad email/notification path when available.
 - Promotion plan: hustles/templates/promo/PLAN.md.
+
+## 2026-10-28 — Hustle Department run: promotion and Plan Pack
+- Measure: no reachable sales data from a cloud run (Gumroad page fetch needs approval nobody can give unattended). No ledger row; nothing estimated.
+- Promote: published free search-friendly pages in the repo (`hustles/templates/promo/pages/`): position-size cheat sheet and calculator, both linking to the product, no results claims. GitHub Pages cannot be enabled from here, so the HTML page is queued for an interactive session.
+- Build: Plan Pack workbook (pre-trade checklist with GO/WAIT, daily plan, weekly review) tested in LibreOffice. Decision: add it to the existing Toolkit at the same $12 price as one change; a cheaper standalone and a free funnel product are later tests. Only one active experiment, so no new hustle was started; research showed Gumroad trading-plan templates are crowded, so a separate product is not justified yet.
+- Community drafts queued (Chrome only, each community's rules first).
+- Cadence unchanged: daily while promotion/building work remains.
