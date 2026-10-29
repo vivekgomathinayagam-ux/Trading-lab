@@ -188,3 +188,8 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Engine:** no engine/ file changed. Two hooks added in `strategies/daytrade/core.py` (`Rule.observe`, `Rule.reset`; base versions do nothing) so a rule can exit on its own signal. Proof the original desks are untouched: identical trades to the frozen floor-lab run (100 of 100) with and without the new desks, plus unit tests in lab and through the bot runner.
 - **Skylit pilot 1 (pre-registered in `research/skylit/STUDY.md`):** 62 sessions of 10:00 ET boards for SPY/QQQ. The close moved toward the king strike 46% of days [37, 55]; net-gamma sign made no difference to the rest-of-day move; positive kings did not pin harder. Nothing to trade. Credits used this run: 341 (balance 104,217). Raw pulls cached on branch `data` under `research/skylit/raw/` (commit a92f498); a spot check of one board re-pulled from Skylit matched the subagent transcription exactly, and the daily closes match Yahoo within 0.04%.
 - Desks in paper: 6 of 8.
+
+## 2026-10-29 — Hustle Department run: second experiment
+- Measure: Gumroad fetch not permitted from the unattended run; no sale evidence; ledger unchanged.
+- Start: Funded-Account Drawdown Tracker ($9, $0 cost) as experiment 2. Reason: existing tools show search demand, it can be fully tested by recalculation, and it needs no customer contact. Crowded market noted; kill rule 45 days after live. Publishing queued for an interactive Chrome session.
+- Promote: free trailing-drawdown explainer page. Cadence unchanged (daily): publishing and community posts still pending.

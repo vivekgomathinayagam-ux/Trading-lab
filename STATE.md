@@ -77,10 +77,11 @@ Claude runs the department alone: ideas, building, launching, killing, scaling. 
 | Experiment | Stage | Revenue | Notes |
 |---|---|---|---|
 | Trader Toolkit (journal + risk calculator spreadsheets) | **LIVE** (2026-10-27, $12) | $0 | `hustles/templates/`; two tested .xlsx files + listing in `product/`. Store: vivekgo8.gumroad.com/l/aobhdm. Promotion plan in `hustles/templates/promo/PLAN.md`. Pine pack held back: can't be compile-tested without TradingView. Oct 28: free cheat sheet + calculator pages, Plan Pack workbook (tested, not yet in store), community drafts queued for Chrome |
+| Funded-Account Drawdown Tracker (prop-firm rule tracker, $9) | **building** (2026-10-29) | $0 | `hustles/propdd/`; workbook built and recalculated, listing + explainer written; publishing queued for a Chrome session |
 | Pine Script commissions (Fiverr) | dropped 2026-10-26 | $0 | needs live client chats; Fiverr requires the owner to represent his gig |
 | Discord bots for clients | dropped 2026-10-26 | $0 | needs live clients, permissions and deadlines |
 | Build-in-public posts (LinkedIn) | dropped 2026-10-26 | $0 | LinkedIn's terms ban automated posting |
-Ledger: `hustles/LEDGER.csv` (no rows yet). Hustle table as of 2026-10-28 08:55 PT. Trader Toolkit: $0 revenue, 0 known sales (day 2 of 45); sales data not reachable from cloud runs, so a sale will show up when Vivek's Gumroad email is seen or an interactive session checks the dashboard.
+Ledger: `hustles/LEDGER.csv` (no rows yet). Hustle table as of 2026-10-29 09:10 PT (Oct 29 run: no sales data reachable; second experiment built). Trader Toolkit: $0 revenue, 0 known sales (day 2 of 45); sales data not reachable from cloud runs, so a sale will show up when Vivek's Gumroad email is seen or an interactive session checks the dashboard.
 
 ## Waiting on Vivek (City Hall)
 - ~~Trader Toolkit store setup~~ done Oct 27; product published

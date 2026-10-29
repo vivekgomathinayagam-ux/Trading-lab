@@ -5,3 +5,8 @@
 
 ## 2026-10-28 (listing polish)
 - Gumroad: cover carousel now 5 images (original + 4 real sheet screenshots); rebuilt journal (no chart smoothing, wider Calendar column) swapped in; Plan Pack added as a third file; description mentions the bonus. Stats at ~13:00 PT: 0 views, 0 sales.
+
+## 2026-10-29 (cloud run)
+- Measure: Gumroad page fetch not permitted unattended; no sales/analytics reachable; ledger unchanged, nothing estimated.
+- Promote: free explainer page `promo/pages/trailing-drawdown-explained.md` (hand-checked example) added for search; it will link the second product once live. Still QUEUED for Chrome: community drafts A/B, view/sales check, public hosting for promo/pages.
+- Decision: started experiment 2 (Funded-Account Drawdown Tracker); 2 of 3 slots in use.
