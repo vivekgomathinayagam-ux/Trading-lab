@@ -1,10 +1,10 @@
 {
-  "as_of": "2026-10-28T19:59:28+00:00",
+  "as_of": "2026-10-29T13:30:10+00:00",
   "mode": "paper",
   "equity": 1037.8,
   "settled_cash": 1037.8,
   "peak_equity": 1039.51,
-  "start_of_day_equity": 1036.3,
+  "start_of_day_equity": 1037.8,
   "drawdown": 0.0016,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
@@ -27,6 +27,24 @@
       "desk": "volspike",
       "label": "Volume spike",
       "cash": 1017.8,
+      "position": null
+    },
+    {
+      "desk": "ema_vol_v2",
+      "label": "EMA 9/21 + volume v2",
+      "cash": 1000.0,
+      "position": null
+    },
+    {
+      "desk": "cvd_spy",
+      "label": "CVD turn 3-min (SPY)",
+      "cash": 1000.0,
+      "position": null
+    },
+    {
+      "desk": "cvd_tqqq",
+      "label": "CVD turn 3-min (TQQQ)",
+      "cash": 1000.0,
       "position": null
     }
   ]
