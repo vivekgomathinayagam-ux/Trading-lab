@@ -1,5 +1,5 @@
 {
- "run_at": "2026-10-28T22:56+00:00",
+ "run_at": "2026-10-29T01:03+00:00",
  "data_source": "Yahoo Finance 1m (archived), 5m, 1d",
  "bars_1m": {
   "SPY": 8970,
@@ -1080,8 +1080,8 @@
  "base_rates": {
   "SPY": {
    "from": "2010-03-01",
-   "to": "2026-10-28",
-   "days": 4193,
+   "to": "2026-10-27",
+   "days": 4192,
    "pct_days_high_5pct_above_open": 0.17,
    "pct_days_low_2_5pct_below_open": 1.67,
    "pct_days_both": 0.05,
@@ -1089,8 +1089,8 @@
   },
   "QQQ": {
    "from": "2010-03-01",
-   "to": "2026-10-28",
-   "days": 4193,
+   "to": "2026-10-27",
+   "days": 4192,
    "pct_days_high_5pct_above_open": 0.19,
    "pct_days_low_2_5pct_below_open": 3.63,
    "pct_days_both": 0.07,
@@ -1098,17 +1098,17 @@
   },
   "TQQQ": {
    "from": "2010-03-01",
-   "to": "2026-10-28",
-   "days": 4193,
+   "to": "2026-10-27",
+   "days": 4192,
    "pct_days_high_5pct_above_open": 6.68,
-   "pct_days_low_2_5pct_below_open": 30.91,
+   "pct_days_low_2_5pct_below_open": 30.92,
    "pct_days_both": 1.48,
    "pct_days_close_5pct_above_open": 3.77
   },
   "UPRO": {
    "from": "2010-03-01",
-   "to": "2026-10-28",
-   "days": 4193,
+   "to": "2026-10-27",
+   "days": 4192,
    "pct_days_high_5pct_above_open": 3.22,
    "pct_days_low_2_5pct_below_open": 21.3,
    "pct_days_both": 0.72,
@@ -1116,17 +1116,17 @@
   },
   "SQQQ": {
    "from": "2010-03-01",
-   "to": "2026-10-28",
-   "days": 4193,
+   "to": "2026-10-27",
+   "days": 4192,
    "pct_days_high_5pct_above_open": 9.92,
    "pct_days_low_2_5pct_below_open": 28.91,
    "pct_days_both": 1.53,
-   "pct_days_close_5pct_above_open": 4.98
+   "pct_days_close_5pct_above_open": 4.99
   },
   "SPXU": {
    "from": "2010-03-01",
-   "to": "2026-10-28",
-   "days": 4193,
+   "to": "2026-10-27",
+   "days": 4192,
    "pct_days_high_5pct_above_open": 5.7,
    "pct_days_low_2_5pct_below_open": 18.77,
    "pct_days_both": 0.69,
