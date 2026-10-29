@@ -2,8 +2,8 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
-**As of:** 2026-10-28 14:45 PT (daily close, paper day 3: 3 trades (SPY, QQQ, SPXU), all closed at 15:56 ET; no +5% hits; bot healthy, kill switch off)
-**Previously:** 2026-10-27 14:45 PT (daily close, paper day 2)
+**As of:** 2026-10-29 14:45 PT (daily close, paper day 4: 5 trades (QQQ, UPRO, SPXU, plus first CVD trades TQQQ and SPY); no +5% hits; bot healthy, kill switch off)
+**Previously:** 2026-10-28 14:45 PT (daily close, paper day 3)
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
@@ -33,14 +33,14 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 ### Day-trade desks (spec `strategies/daytrade/spec.md`; SPY, QQQ, TQQQ, UPRO, SQQQ, SPXU; +5% target, -2.5% stop, 1-min volume spike)
 | Desk | Stage | Backtest 1-min Oct 1-23 (17 sessions, $1,000) | Paper so far (**PRELIMINARY**: before price provenance; kept, not judged) | Notes |
 |---|---|---|---|---|
-| ORB + volume | **paper from 2026-10-26** | 12 trades, −2.65%, PF 0.55, +5% hits 0 | 2 trades (1 win), −0.03%, vs SPY −1.25 pts; Oct 28: SPY −$0.85 (as of Oct 28 close) | 09:30-09:45 range breakout on a volume-spike bar |
-| EMA 9/21 + volume | **paper from 2026-10-26** | 11 trades, −2.51%, PF 0.33, +5% hits 0 | 3 trades (0 wins), −1.01%, vs SPY −2.23 pts; Oct 28: SPXU −$4.23 (as of Oct 28 close) | 5-min EMA cross with a 1-min volume spike in that bucket |
-| Volume spike | **paper from 2026-10-26** | 17 trades, +1.13%, PF 1.2, +5% hits 0 | 3 trades (2 wins), +1.78%, vs SPY +0.56 pts; Oct 28: QQQ +$2.29 (as of Oct 28 close) | spike bar closes up, above VWAP and the prior 15-bar high |
-| EMA 9/21 + volume v2 (`ema_vol_v2`) | **paper from 2026-10-29** | 14 trades, −0.43%, PF 0.82 (Oct 1-27; reference only, design touched by paper data) | — | bug-fix version: 5-min buckets by clock (Yahoo drops 1-6% of UPRO/SPXU minutes, which merged buckets in `ema_vol`) |
-| CVD turn SPY (`cvd_spy`) | **paper from 2026-10-29** | 19 trades, −0.12%, PF 0.90, expectancy −0.006%/trade [−0.07, +0.06] | — | Vivek's setup; spec `strategies/cvd_turn/spec.md`; CVD approximated from 1-min bars (close location) |
-| CVD turn TQQQ (`cvd_tqqq`) | **paper from 2026-10-29** | 19 trades, +9.3%, PF 10.4, +0.47%/trade [+0.19, +0.78]; 2x costs +0.37%; 3x +0.28% | — | best of 6 symbols tried (QQQ +0.07, UPRO 0.00, SQQQ −0.27, SPXU −0.08 per trade): treat as suspect until paper agrees; all exits on the CVD sell turn, holds 3-33 min |
+| ORB + volume | **paper from 2026-10-26** | 12 trades, −2.65%, PF 0.55, +5% hits 0 | 3 trades (1 win), −0.32%, vs SPY −1.25 pts; Oct 29: QQQ −$2.86 (as of Oct 29 close) | 09:30-09:45 range breakout on a volume-spike bar |
+| EMA 9/21 + volume | **paper from 2026-10-26** | 11 trades, −2.51%, PF 0.33, +5% hits 0 | 4 trades (0 wins), −1.48%, vs SPY −2.41 pts; Oct 29: UPRO −$4.73 (as of Oct 29 close) | 5-min EMA cross with a 1-min volume spike in that bucket |
+| Volume spike | **paper from 2026-10-26** | 17 trades, +1.13%, PF 1.2, +5% hits 0 | 4 trades (2 wins), +1.26%, vs SPY +0.33 pts; Oct 29: SPXU −$5.20 (as of Oct 29 close) | spike bar closes up, above VWAP and the prior 15-bar high |
+| EMA 9/21 + volume v2 (`ema_vol_v2`) | **paper from 2026-10-29** | 14 trades, −0.43%, PF 0.82 (Oct 1-27; reference only, design touched by paper data) | no setup yet, $1,000 (as of Oct 29 close) | bug-fix version: 5-min buckets by clock (Yahoo drops 1-6% of UPRO/SPXU minutes, which merged buckets in `ema_vol`) |
+| CVD turn SPY (`cvd_spy`) | **paper from 2026-10-29** | 19 trades, −0.12%, PF 0.90, expectancy −0.006%/trade [−0.07, +0.06] | 1 trade (loss), −0.01%, vs SPY −0.94 pts; Oct 29: SPY −$0.10 (as of Oct 29 close) | Vivek's setup; spec `strategies/cvd_turn/spec.md`; CVD approximated from 1-min bars (close location) |
+| CVD turn TQQQ (`cvd_tqqq`) | **paper from 2026-10-29** | 19 trades, +9.3%, PF 10.4, +0.47%/trade [+0.19, +0.78]; 2x costs +0.37%; 3x +0.28% | 1 trade (win), +0.22%, vs SPY −0.71 pts; Oct 29: TQQQ +$2.22 (as of Oct 29 close) | best of 6 symbols tried (QQQ +0.07, UPRO 0.00, SQQQ −0.27, SPXU −0.08 per trade): treat as suspect until paper agrees; all exits on the CVD sell turn, holds 3-33 min |
 | ORB plain / EMA plain / Volume spike 2x | backtest only | +0.37% / +0.46% / +0.28% | — | comparisons |
-| SPY buy-and-hold | benchmark | −0.58% same window | +1.22% (762.35 → 771.67, as of Oct 28 close) | control |
+| SPY buy-and-hold | benchmark | −0.58% same window | +0.93% (762.35 → 769.43, as of Oct 29 close) | control |
 **Evaluation status (Vivek, 2026-10-26):** Oct 26 trades are labeled `preliminary` (Yahoo real-time + assumed slippage, no quote time recorded). A fresh evaluation starts once the new logging is verified in a live session: every fill in `ledger/daytrade_fills.csv` has quote time, age, bar time, and a Skylit cross-check within 0.05% (needs `SKYLIT_API_KEY`). Then: set `evaluation:` in `strategies/daytrade/config.yaml` to `eval-1`, archive the preliminary ledger files, and reset each desk to $1,000.
 Verdict so far: **no edge yet** (tiny sample; 3x slippage and the 5-min 37-session check are negative for all paper desks). The +5% target is rare: since 2010 it happened on 0.17% of SPY days and 3-10% of 3x-ETF days, while the −2.5% stop level was hit on 19-31% of 3x-ETF days.
 Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:backtests/floor/latest/REPORT.md`. Paper books: `data:ledger/daytrade_books.json`, trades `data:ledger/daytrade_trades.csv`. Tracked daily by the Accountant (daily close) task.
@@ -133,7 +133,8 @@ Rules for new and changed tasks:
 
 ## Known gaps (honest list)
 - Skylit price check flags every fill (max diff over all six ETFs > 0.05%) because SPXU (−0.12% to −0.23%) and SQQQ (−0.11% to −0.07%) disagree with Yahoo; the traded symbol's diff was within 0.07% (TQQQ −0.007% and +0.063% on Oct 27). The flag is driven by the untraded inverse ETFs, so it may be too noisy to be useful. Logged by the Accountant 2026-10-27; engine/ untouched.
-- floor-lab's latest results are from the run at 2026-10-28 00:34 UTC (Oct 27 session); today's 21:25 UTC run had not appeared at 21:41 UTC (GitHub schedules often run late). Logged by the Accountant 2026-10-28.
+- Accountant 2026-10-29: floor-lab's latest results are from the run at 2026-10-29 01:03 UTC (Oct 28 session); today's 21:25 UTC run had not appeared by 21:41 UTC (GitHub scheduler lateness again). Paper figures come from the bot's own ledger, so they are unaffected.
+- floor-lab's earlier results were from the run at 2026-10-28 00:34 UTC (Oct 27 session); today's 21:25 UTC run had not appeared at 21:41 UTC (GitHub schedules often run late). Logged by the Accountant 2026-10-28.
 - The repo is public: strategy code, ledger and decisions are visible to anyone. No secrets are in it.
 - Crypto paper trading doesn't exist yet: Tradier has no crypto. When a Pier rule passes, crypto paper runs inside the bot on live quotes.
 - Paper end-of-day exits fill about 1-2 min after 15:55 ET (Oct 26: 15:56:43) at the live price, while the backtest exits at the 15:55 bar's open. The bot acts on the 15:55 bar once it completes. Small, but paper and backtest differ here; fixing it touches engine/ (needs Vivek's yes).
