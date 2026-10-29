@@ -201,3 +201,9 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Decision:** no change to any desk (Month-1 rules stay frozen). Proposed to Vivek: paper clones `cvd_tqqq_atr2` and `cvd_spy_atr3` (judged forward only; paper count would be 8 of 8); re-run at about 40 sessions. Variant count now 35.
 - Files: `lab/floor/exit_lab.py`, `lab/tests/test_exit_lab.py`, `research/exits/`.
 
+## 2026-10-29 — Entry-quality study (Vivek's brief): no entry change
+- **Method:** pre-registered (`research/entries/PREREG.md`). Every signal of the 6 production rules (1,094) with 28 causal features; outcome = the desk's own exit, net of costs. Chronological splits: train Oct 1-15, validation Oct 16-22, test Oct 23-29; expanding walk-forward for the score; day-block intervals. First-signal emulation reproduces all 109 engine trades.
+- **Findings:** the average signal loses after costs in every rule. Held in both halves: distance above the open / OR high (more extended = worse) and low ATR % (worst third). Multi-day trend features flip sign between halves. Score separates weakly out of sample but its top third still loses. 0 of 90 filter configurations passed train+validation (validation had 1-5 trades per desk). cvd_tqqq: first signal +0.46%/trade vs later signals -0.07%; post-hoc it beat a fixed 10:00 entry by +0.40% (18/21 days).
+- **Bug:** `CVDTurn.signal()` compares bar time only, not symbol; in a stale-bar edge case a CVD desk could buy another ETF. Paper only; no wrong trade in the ledger. Not fixed (frozen desk code; needs Vivek's yes).
+- **Decision:** no production change. Proposed: shadow-log extension, ATR % and score in the bot (logging only); pre-registered H1 (skip top-third extension) and H2 (skip bottom-third ATR) for new days; re-run at about 40 sessions. Variant count 129.
+

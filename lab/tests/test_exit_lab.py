@@ -47,3 +47,13 @@ def test_partial_then_rest_to_eod():
     r = run_exit(sd, 5, 100.0, VARS["C_half@1"], False, entry_slip_in_px=False, fee=0.0)
     assert r["partial"] and r["reason"] == "eod"
     assert 0.5 * 1.0 - 0.2 < r["ret"] < 0.5 * 1.0 + 0.5
+
+
+def test_entry_emulate_takes_first_qualifying_signal():
+    from lab.floor.entry_lab import emulate
+    rows = [{"rule": "x", "day": "2026-10-20", "t": "2026-10-20T10:00", "order": 2, "valid": 1, "ok": False},
+            {"rule": "x", "day": "2026-10-20", "t": "2026-10-20T10:00", "order": 0, "valid": 1, "ok": True},
+            {"rule": "x", "day": "2026-10-20", "t": "2026-10-20T09:50", "order": 1, "valid": 0, "ok": True},
+            {"rule": "x", "day": "2026-10-20", "t": "2026-10-20T11:00", "order": 0, "valid": 1, "ok": True}]
+    assert emulate(rows)[0]["order"] == 0 and emulate(rows)[0]["t"].endswith("10:00")
+    assert emulate(rows, lambda r: r["t"].endswith("11:00"))[0]["t"].endswith("11:00")
