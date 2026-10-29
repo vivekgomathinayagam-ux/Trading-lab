@@ -28,3 +28,5 @@ _Last set: 2026-10-28 by the Researcher (Wednesday build run). Top item first._
 ## Standing
 - Weekly: check the crypto-lab run succeeded (Sat 09:17 UTC); fix lab code if it broke. Pier research only when the Floor queue is empty.
 - No open questions for Vivek. The Researcher defines every GEX and Skylit metric itself (Vivek, 2026-10-26).
+- **Exit follow-ups (2026-10-29):** (a) clone desks `cvd_tqqq_atr2`, `cvd_spy_atr3` once Vivek says yes (new classes only; engine untouched); (b) re-run `lab.floor.exit_lab` at about 40 archived sessions and on Month-1 paper trades.
+

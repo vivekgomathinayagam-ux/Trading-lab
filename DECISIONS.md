@@ -193,3 +193,11 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Measure: Gumroad fetch not permitted from the unattended run; no sale evidence; ledger unchanged.
 - Start: Funded-Account Drawdown Tracker ($9, $0 cost) as experiment 2. Reason: existing tools show search demand, it can be fully tested by recalculation, and it needs no customer contact. Crowded market noted; kill rule 45 days after live. Publishing queued for an interactive Chrome session.
 - Promote: free trailing-drawdown explainer page. Cadence unchanged (daily): publishing and community posts still pending.
+
+## 2026-10-29 — Exit study (Vivek's request): no exit change
+- **Scope:** exits only; entries and indicators untouched. Pre-registered in `research/exits/PREREG.md` before any result.
+- **Method:** one replay of the shared core finds each desk's entries (89 trades, 5 desks, Oct 1-28, 20 sessions); each is re-run through 18 exit variants with engine slippage + 0.003% sell fee. Replay matches the engine on all 89 exits. Walk-forward, paired bootstrap, 2x/3x cost stress, 3,600-entry random control, overnight-hold check.
+- **Findings:** the +5% target is a real take-profit on the traded ETF price and fired 0 of 89 times (1% of trades even touched +5%). Fixed take-profits lose to baseline. ATR trails look best in-sample (+0.115 vs +0.064%/trade, DD -7% vs -11.5%) but pooled walk-forward gave +0.06 vs +0.19 for baseline. The CVD exit keeps CVD losses small (avg loss -0.13% vs -1.7% without it). Holding the 3:55 PM exits overnight: -0.30% vs +0.05%, 8 stops in 44, worst gap -3.4%.
+- **Decision:** no change to any desk (Month-1 rules stay frozen). Proposed to Vivek: paper clones `cvd_tqqq_atr2` and `cvd_spy_atr3` (judged forward only; paper count would be 8 of 8); re-run at about 40 sessions. Variant count now 35.
+- Files: `lab/floor/exit_lab.py`, `lab/tests/test_exit_lab.py`, `research/exits/`.
+

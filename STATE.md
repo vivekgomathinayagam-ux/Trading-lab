@@ -46,6 +46,7 @@ Verdict so far: **no edge yet** (tiny sample; 3x slippage and the 5-min 37-sessi
 Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:backtests/floor/latest/REPORT.md`. Paper books: `data:ledger/daytrade_books.json`, trades `data:ledger/daytrade_trades.csv`. Tracked daily by the Accountant (daily close) task.
 
 ### Research desk (charter `research/CHARTER.md`, set by Vivek 2026-10-26)
+- **Exit study (2026-10-29, Vivek's request; entries frozen):** `research/exits/REPORT.md`. 89 trades, 18 exit variants: fixed take-profits worse than baseline; ATR trail best in-sample but failed walk-forward (+0.06 vs +0.19%/trade); 3:55 PM flat protects (holding overnight -0.30% vs +0.05%). **Nothing changed.** Proposed: paper clones `cvd_tqqq_atr2`, `cvd_spy_atr3`; re-run at about 40 sessions.
 - The five setups: ORB + volume, EMA 9/21 + volume, Volume spike (paper since Oct 26), CVD turn and GEX verticals (to be built, back-tested once, then paper).
 - **Month-1 paper test: Oct 26 to Nov 25 (23 sessions). Desk rules are frozen.** At most about 23 trades per desk, so verdicts will be "promising / inconclusive / failing" with confidence intervals; the 50-trade gate is out of reach inside the month. Month-1 report due Sat Nov 28.
 - Backtests run once, when a setup is first adopted. After that: paper every day. floor-lab keeps running as the 1-minute archiver and parity replay.

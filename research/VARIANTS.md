@@ -12,3 +12,4 @@ Every rule, parameter set and combination looked at, kept or not. Add a row each
 | 2026-10-28 | CVD turn controls | long 09:48->15:55 same days; random same-duration entries 09:48-10:40 | controls | 13 |
 | 2026-10-28 | Skylit pilot 1 | 3 questions on 10:00 ET GEX boards (king pull, net-gamma sign vs move, king sign vs pin) | none held up | 16 |
 | 2026-10-28 | Combo | C-1 cvd_tqqq + volspike confluence (record only) | registered | 17 |
+| 2026-10-29 | Exit study (entries frozen) | 18 exit variants (6 fixed TP, 3 trail, 2 ATR trail, 3 partial, 4 CVD delay/confirm) x 5 desks + random-entry control + overnight-hold check; none adopted | none | 35 |
