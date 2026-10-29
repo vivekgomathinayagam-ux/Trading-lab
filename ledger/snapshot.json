@@ -1,76 +1,33 @@
 {
-  "as_of": "2026-10-29T19:45:13+00:00",
+  "as_of": "2026-10-29T19:59:10+00:00",
   "mode": "paper",
-  "equity": 1026.54,
-  "settled_cash": -1573.87,
+  "equity": 1026.11,
+  "settled_cash": 1026.11,
   "peak_equity": 1039.51,
   "start_of_day_equity": 1037.8,
-  "drawdown": 0.0125,
+  "drawdown": 0.0129,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 715.81,
-      "date_acquired": "2026-10-29T15:31:10.494Z",
-      "id": 2699082,
-      "quantity": 1.0,
-      "symbol": "QQQ"
-    },
-    {
-      "cost_basis": 989.19,
-      "date_acquired": "2026-10-29T14:49:10.370Z",
-      "id": 2698666,
-      "quantity": 29.0,
-      "symbol": "SPXU"
-    },
-    {
-      "cost_basis": 897.96,
-      "date_acquired": "2026-10-29T15:30:10.469Z",
-      "id": 2699065,
-      "quantity": 6.0,
-      "symbol": "UPRO"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 282.01,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 717.653502,
-        "stop": 699.7121644499999,
-        "target": 753.5361771,
-        "entry_t": "2026-10-29T11:31:09.844475-04:00"
-      }
+      "cash": 996.81,
+      "position": null
     },
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 90.44,
-      "position": {
-        "sym": "UPRO",
-        "qty": 6,
-        "entry_px": 149.912919,
-        "stop": 146.165096025,
-        "target": 157.40856495,
-        "entry_t": "2026-10-29T11:30:09.844355-04:00"
-      }
+      "cash": 985.19,
+      "position": null
     },
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 22.02,
-      "position": {
-        "sym": "SPXU",
-        "qty": 29,
-        "entry_px": 34.33716,
-        "stop": 33.478730999999996,
-        "target": 36.054018,
-        "entry_t": "2026-10-29T10:49:09.840396-04:00"
-      }
+      "cash": 1012.6,
+      "position": null
     },
     {
       "desk": "ema_vol_v2",
