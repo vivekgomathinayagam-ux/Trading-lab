@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-10-30T14:30:12+00:00",
+  "as_of": "2026-10-30T14:45:11+00:00",
   "mode": "paper",
-  "equity": 1029.09,
-  "settled_cash": -915.08,
+  "equity": 1028.82,
+  "settled_cash": -1673.82,
   "peak_equity": 1039.51,
   "start_of_day_equity": 1026.11,
-  "drawdown": 0.01,
+  "drawdown": 0.0103,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
@@ -15,6 +15,13 @@
       "id": 2701816,
       "quantity": 28.0,
       "symbol": "SPXU"
+    },
+    {
+      "cost_basis": 758.74,
+      "date_acquired": "2026-10-30T14:30:11.216Z",
+      "id": 2702002,
+      "quantity": 1.0,
+      "symbol": "SPY"
     },
     {
       "cost_basis": 950.55,
@@ -73,15 +80,8 @@
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 60.35,
-      "position": {
-        "sym": "TQQQ",
-        "qty": 15,
-        "entry_px": 62.79138,
-        "stop": 61.22159549999999,
-        "target": 65.930949,
-        "entry_t": "2026-10-30T10:27:10.009716-04:00"
-      }
+      "cash": 1016.87,
+      "position": null
     }
   ]
 }
