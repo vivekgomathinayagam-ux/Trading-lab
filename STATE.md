@@ -3,6 +3,7 @@
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
 **As of:** 2026-10-29 14:45 PT (daily close, paper day 4: 5 trades (QQQ, UPRO, SPXU, plus first CVD trades TQQQ and SPY); no +5% hits; bot healthy, kill switch off)
+**Hustles as of 2026-10-30 09:20 PT:** no sales data reachable (Gumroad fetch refused again); ledger unchanged; new free spread-math page published to repo.
 **Previously:** 2026-10-28 14:45 PT (daily close, paper day 3)
 
 ## Phase
@@ -83,7 +84,7 @@ Claude runs the department alone: ideas, building, launching, killing, scaling. 
 | Pine Script commissions (Fiverr) | dropped 2026-10-26 | $0 | needs live client chats; Fiverr requires the owner to represent his gig |
 | Discord bots for clients | dropped 2026-10-26 | $0 | needs live clients, permissions and deadlines |
 | Build-in-public posts (LinkedIn) | dropped 2026-10-26 | $0 | LinkedIn's terms ban automated posting |
-Ledger: `hustles/LEDGER.csv` (no rows yet). Hustle table as of 2026-10-29 09:10 PT (Oct 29 run: no sales data reachable; second experiment built). Trader Toolkit: $0 revenue, 0 known sales (day 2 of 45); sales data not reachable from cloud runs, so a sale will show up when Vivek's Gumroad email is seen or an interactive session checks the dashboard.
+Ledger: `hustles/LEDGER.csv` (no rows yet). Oct 30 run: $0 known revenue, day 4 of 45 for the Toolkit; no sales data reachable; new page vertical-spread-max-loss-calculator.md. Prior note: Hustle table as of 2026-10-29 09:10 PT (Oct 29 run: no sales data reachable; second experiment built). Trader Toolkit: $0 revenue, 0 known sales (day 2 of 45); sales data not reachable from cloud runs, so a sale will show up when Vivek's Gumroad email is seen or an interactive session checks the dashboard.
 
 ## Waiting on Vivek (City Hall)
 - ~~Trader Toolkit store setup~~ done Oct 27; product published

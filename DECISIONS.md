@@ -207,3 +207,8 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Bug:** `CVDTurn.signal()` compares bar time only, not symbol; in a stale-bar edge case a CVD desk could buy another ETF. Paper only; no wrong trade in the ledger. Not fixed (frozen desk code; needs Vivek's yes).
 - **Decision:** no production change. Proposed: shadow-log extension, ATR % and score in the bot (logging only); pre-registered H1 (skip top-third extension) and H2 (skip bottom-third ATR) for new days; re-run at about 40 sessions. Variant count 129.
 
+
+## 2026-10-30 — Hustle Department run: promotion only
+- Measure: Gumroad unreachable from the cloud run; ledger unchanged.
+- Promote: added free page `vertical-spread-max-loss-calculator.md` (numbers verified by script). One change only; no listing or price change this run, so the day-4 baseline stays clean.
+- Decision: did not start a third experiment. Two products are finished and waiting on a Chrome session to publish or promote; a third would only grow that queue. Cadence stays daily while browser-only work is pending (no change to the schedule).

@@ -10,3 +10,9 @@
 - Measure: Gumroad page fetch not permitted unattended; no sales/analytics reachable; ledger unchanged, nothing estimated.
 - Promote: free explainer page `promo/pages/trailing-drawdown-explained.md` (hand-checked example) added for search; it will link the second product once live. Still QUEUED for Chrome: community drafts A/B, view/sales check, public hosting for promo/pages.
 - Decision: started experiment 2 (Funded-Account Drawdown Tracker); 2 of 3 slots in use.
+
+## 2026-10-30 (cloud run)
+- Measure: Gumroad page fetch refused again (permission not answered in an unattended run); no sales or analytics reachable. Ledger unchanged, nothing estimated. Day 4 of 45.
+- Promote: new free search page `promo/pages/vertical-spread-max-loss-calculator.md` (four formulas, two worked examples, position-size table; every number re-computed in Python). Targets "vertical spread max loss calculator". Links to the Toolkit; no results claims.
+- Still QUEUED for Chrome: upload Plan Pack check, community drafts A/B (read each group's rules first), views/sales check on Gumroad analytics, public hosting for promo/pages (GitHub Pages), publish Drawdown Tracker listing.
+- Slots: 2 of 3 in use (Toolkit live, Drawdown Tracker building). Third idea not started this run: no cloud-only way to publish more than the two products waiting on Chrome, so more building would only add to the unpublished queue.
