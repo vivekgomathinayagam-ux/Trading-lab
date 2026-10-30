@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-30T14:15:10+00:00",
+ "as_of": "2026-10-30T14:30:12+00:00",
  "peak": {
   "orb_vol": 1003.0591364,
   "ema_vol": 1000.4176900000002,
@@ -39,12 +39,12 @@
   "skylit": "ok"
  },
  "marks": {
-  "SPY": 758.66,
-  "QQQ": 694.428,
-  "TQQQ": 63.12,
-  "UPRO": 142.97,
-  "SQQQ": 41.22,
-  "SPXU": 35.615
+  "SPY": 757.91,
+  "QQQ": 693.91,
+  "TQQQ": 62.97,
+  "UPRO": 142.53,
+  "SQQQ": 41.3,
+  "SPXU": 35.72
  },
  "desks": {
   "orb_vol": {
@@ -64,12 +64,19 @@
    "equity": 985.19
   },
   "volspike": {
-   "cash": 1012.6005605000005,
+   "cash": 13.397208500000488,
    "start_equity": 1000.0,
-   "last_entry_day": "2026-10-29",
-   "pos": null,
+   "last_entry_day": "2026-10-30",
+   "pos": {
+    "sym": "SPXU",
+    "qty": 28,
+    "entry_px": 35.685834,
+    "stop": 34.79368815,
+    "target": 37.470125700000004,
+    "entry_t": "2026-10-30T10:17:10.008804-04:00"
+   },
    "label": "Volume spike",
-   "equity": 1012.6
+   "equity": 1013.56
   },
   "ema_vol_v2": {
    "cash": 1000.0,
@@ -80,20 +87,34 @@
    "equity": 1000.0
   },
   "cvd_spy": {
-   "cash": 999.9013942000001,
+   "cash": 241.8398122000002,
    "start_equity": 1000.0,
-   "last_entry_day": "2026-10-29",
-   "pos": null,
+   "last_entry_day": "2026-10-30",
+   "pos": {
+    "sym": "SPY",
+    "qty": 1,
+    "entry_px": 758.0615819999999,
+    "stop": 739.1100424499999,
+    "target": 795.9646611,
+    "entry_t": "2026-10-30T10:30:10.009976-04:00"
+   },
    "label": "CVD turn 3-min (SPY)",
-   "equity": 999.9
+   "equity": 999.75
   },
   "cvd_tqqq": {
-   "cash": 1002.2219540000001,
+   "cash": 60.351254000000154,
    "start_equity": 1000.0,
-   "last_entry_day": "2026-10-29",
-   "pos": null,
+   "last_entry_day": "2026-10-30",
+   "pos": {
+    "sym": "TQQQ",
+    "qty": 15,
+    "entry_px": 62.79138,
+    "stop": 61.22159549999999,
+    "target": 65.930949,
+    "entry_t": "2026-10-30T10:27:10.009716-04:00"
+   },
    "label": "CVD turn 3-min (TQQQ)",
-   "equity": 1002.22
+   "equity": 1004.9
   }
  }
 }
