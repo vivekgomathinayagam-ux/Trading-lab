@@ -1,14 +1,29 @@
 {
-  "as_of": "2026-10-30T14:15:10+00:00",
+  "as_of": "2026-10-30T14:30:12+00:00",
   "mode": "paper",
-  "equity": 1026.11,
-  "settled_cash": 1026.11,
+  "equity": 1029.09,
+  "settled_cash": -915.08,
   "peak_equity": 1039.51,
   "start_of_day_equity": 1026.11,
-  "drawdown": 0.0129,
+  "drawdown": 0.01,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [],
+  "positions": [
+    {
+      "cost_basis": 990.64,
+      "date_acquired": "2026-10-30T14:17:10.631Z",
+      "id": 2701816,
+      "quantity": 28.0,
+      "symbol": "SPXU"
+    },
+    {
+      "cost_basis": 950.55,
+      "date_acquired": "2026-10-30T14:27:10.502Z",
+      "id": 2701949,
+      "quantity": 15.0,
+      "symbol": "TQQQ"
+    }
+  ],
   "strategies": [],
   "daytrade_desks": [
     {
@@ -26,8 +41,15 @@
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 1012.6,
-      "position": null
+      "cash": 13.4,
+      "position": {
+        "sym": "SPXU",
+        "qty": 28,
+        "entry_px": 35.685834,
+        "stop": 34.79368815,
+        "target": 37.470125700000004,
+        "entry_t": "2026-10-30T10:17:10.008804-04:00"
+      }
     },
     {
       "desk": "ema_vol_v2",
@@ -38,14 +60,28 @@
     {
       "desk": "cvd_spy",
       "label": "CVD turn 3-min (SPY)",
-      "cash": 999.9,
-      "position": null
+      "cash": 241.84,
+      "position": {
+        "sym": "SPY",
+        "qty": 1,
+        "entry_px": 758.0615819999999,
+        "stop": 739.1100424499999,
+        "target": 795.9646611,
+        "entry_t": "2026-10-30T10:30:10.009976-04:00"
+      }
     },
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 1002.22,
-      "position": null
+      "cash": 60.35,
+      "position": {
+        "sym": "TQQQ",
+        "qty": 15,
+        "entry_px": 62.79138,
+        "stop": 61.22159549999999,
+        "target": 65.930949,
+        "entry_t": "2026-10-30T10:27:10.009716-04:00"
+      }
     }
   ]
 }
