@@ -30,3 +30,4 @@ ts,event,mode,strategy,symbol,side,qty,price,source,order_id,max_loss,cost,note
 2026-10-30T14:30:11+00:00,entry,paper,cvd_spy,SPY,buy,1,758.0616,yahoo_rt+slip,,18.95,758.06,sandbox ok 40816307
 2026-10-30T14:45:10+00:00,exit,paper,cvd_tqqq,TQQQ,sell,15,63.7681,yahoo_rt+slip,,,,cvd_sell; pnl $+14.65; sandbox ok 40818327
 2026-10-30T14:48:10+00:00,exit,paper,cvd_spy,SPY,sell,1,759.738,yahoo_rt+slip,,,,cvd_sell; pnl $+1.68; sandbox ok 40818676
+2026-10-30T19:58:10+00:00,exit,paper,volspike,SPXU,sell,28,36.5467,yahoo_rt+slip,,,,eod_safety; pnl $+24.10; sandbox ok 40847514
