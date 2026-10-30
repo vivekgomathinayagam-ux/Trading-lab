@@ -212,3 +212,7 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Measure: Gumroad unreachable from the cloud run; ledger unchanged.
 - Promote: added free page `vertical-spread-max-loss-calculator.md` (numbers verified by script). One change only; no listing or price change this run, so the day-4 baseline stays clean.
 - Decision: did not start a third experiment. Two products are finished and waiting on a Chrome session to publish or promote; a third would only grow that queue. Cadence stays daily while browser-only work is pending (no change to the schedule).
+
+## 2026-10-30 — Accountant daily close (paper day 5)
+- 3 closed paper trades, all wins: Volume spike SPXU +$24.10, CVD TQQQ +$14.65, CVD SPY +$1.68. ORB, EMA and EMA v2 had no setup. No +5% target hits. Books vs SPY (−1.42% since Oct 26): Volume spike +3.67%, CVD TQQQ +1.69% and CVD SPY +0.16% (since Oct 29), ORB −0.32%, EMA −1.48%.
+- Flag: the Volume spike exit left via `eod_safety` (15:58 ET) instead of the regular end-of-day exit (~15:56). No desk rule changed; logged under Known gaps. Samples are still tiny (2-5 trades per desk), so no edge is claimed.
