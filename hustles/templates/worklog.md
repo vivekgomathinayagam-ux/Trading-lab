@@ -16,3 +16,8 @@
 - Promote: new free search page `promo/pages/vertical-spread-max-loss-calculator.md` (four formulas, two worked examples, position-size table; every number re-computed in Python). Targets "vertical spread max loss calculator". Links to the Toolkit; no results claims.
 - Still QUEUED for Chrome: upload Plan Pack check, community drafts A/B (read each group's rules first), views/sales check on Gumroad analytics, public hosting for promo/pages (GitHub Pages), publish Drawdown Tracker listing.
 - Slots: 2 of 3 in use (Toolkit live, Drawdown Tracker building). Third idea not started this run: no cloud-only way to publish more than the two products waiting on Chrome, so more building would only add to the unpublished queue.
+
+## 2026-10-31 (cloud run)
+- Measure: Gumroad fetch refused again (permission not answered unattended). No sales or analytics reachable. Ledger unchanged, nothing estimated. Day 5 of 45.
+- Promote: new free search page `promo/pages/r-multiple-expectancy-explained.md` (targets "options trading journal spreadsheet", "expectancy calculator"; every number re-computed in Python). One change only; listing and price untouched.
+- Still QUEUED for Chrome: publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check, public hosting for promo/pages.
