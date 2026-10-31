@@ -37,6 +37,9 @@ from strategies.daytrade.core import (PAPER_RULES, SLIP, STOP_PCT, SYMBOLS, Bar,
 log = logging.getLogger("daytrade")
 CONFIG = Path(__file__).resolve().parent.parent / "strategies" / "daytrade" / "config.yaml"
 SAFETY_FLAT = dtime(15, 58)
+# A Yahoo answer whose quote time is this old counts as a failed feed (Oct 30: Yahoo froze at
+# 14:44 ET and the 15:58 safety exit filled SPXU at a 74-minute-old price).
+FEED_STALE_S = 300
 TRADE_COLS = ["desk", "sym", "qty", "entry_t", "exit_t", "entry_px", "exit_px", "pnl_usd",
               "pnl_pct_equity", "move_pct", "reason", "equity_after"]
 FILL_COLS = ["evaluation", "kind", "desk", "sym", "qty", "reason", "bot_time", "signal_bar_start",
@@ -268,6 +271,12 @@ class DayTradeRunner:
             except Exception as e:  # noqa: BLE001
                 log.warning("bars %s failed: %s", s, e)
                 down.append(s)
+                continue
+            meta = (getattr(self.md, "last_meta", {}) or {}).get(s, {})
+            q_age = age_seconds(meta.get("quote_epoch"), meta.get("fetched_at") or now)
+            if px and q_age is not None and q_age > FEED_STALE_S:
+                log.warning("Yahoo quote for %s is %.0fs old: treated as feed down", s, q_age)
+                down.append(s)                      # frozen feed = failed feed (fallback below)
                 continue
             if px:
                 prices[s] = px
