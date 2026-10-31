@@ -158,7 +158,7 @@ class TestNoExecutionChange(Base):
     def test_fill_prices_identical_with_and_without_checks(self):
         a, b = Path(tempfile.mkdtemp()), Path(tempfile.mkdtemp())
         self.run_day(spot=None, folder=a)
-        self.run_day(spot=FakeSpot(offset_pct=0.3), quote_lag_s=500, folder=b)
+        self.run_day(spot=FakeSpot(offset_pct=0.3), quote_lag_s=250, folder=b)  # < FEED_STALE_S
         ta = list(csv.DictReader((a / "daytrade_trades.csv").open()))
         tb = list(csv.DictReader((b / "daytrade_trades.csv").open()))
         strip = lambda rows: [{k: v for k, v in r.items() if not k.endswith("_t")} for r in rows]
@@ -188,6 +188,25 @@ class TestFallback(Base):
         r.step(DAY + timedelta(minutes=40, seconds=5))         # catch-up bars are stale
         self.assertEqual(broker.orders, [])
         self.assertFalse(r.feed["entries_paused"])
+
+
+class TestFrozenFeed(Base):
+    """Oct 30, 2026: Yahoo kept answering with a quote frozen at 14:44 ET. A quote older than
+    FEED_STALE_S must count as a failed feed: Skylit values the position, entries pause."""
+    def test_frozen_quote_values_with_skylit_and_pauses_entries(self):
+        sp = FakeSpot()
+        r, md, broker = self.run_day(spot=sp, until=25)
+        self.assertIsNotNone(r.desks["orb_vol"].pos)
+        md.quote_lag_s = 4415
+        r.step(DAY + timedelta(minutes=25, seconds=5))
+        self.assertEqual(r.price_src.get("SPY"), "skylit_fallback")
+        self.assertTrue(r.feed["entries_paused"])
+        self.assertEqual(r.feed["yahoo_down"], ["SPY"])
+
+    def test_quotes_under_threshold_trade_identically(self):
+        a, _, ba = self.run_day(spot=FakeSpot(), quote_lag_s=5, folder=Path(tempfile.mkdtemp()))
+        b, _, bb = self.run_day(spot=FakeSpot(), quote_lag_s=250, folder=Path(tempfile.mkdtemp()))
+        self.assertEqual([o.__dict__ for o in ba.orders], [o.__dict__ for o in bb.orders])
 
 
 class TestSkylitClient(unittest.TestCase):
