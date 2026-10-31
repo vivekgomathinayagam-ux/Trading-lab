@@ -1,6 +1,6 @@
 # Research queue (ordered; the Researcher edits this)
 
-_Last set: 2026-10-28 by the Researcher (Wednesday build run). Top item first._
+_Last set: 2026-10-31 by the Researcher (Saturday review run). Top item first._
 
 ## Now
 - [x] Paper report script `lab/floor/paper_report.py` (2026-10-28, tested)
@@ -8,10 +8,13 @@ _Last set: 2026-10-28 by the Researcher (Wednesday build run). Top item first._
 - [x] CVD turn pre-registered, built, back-tested once, on paper from Oct 29 (`cvd_spy`, `cvd_tqqq`)
 - [x] Skylit pilot 1 (10:00 ET boards, 62 days): no king pull, no gamma-sign effect on the rest-of-day move
 
-1. **Saturday Oct 31 review**: paper report + parity for Oct 26-30, first look at the 3 new desks (expect 2-3 trades each; nothing to judge).
-2. **Run parity inside floor-lab** after the archive step (one more step in the Actions job; lab code only). Also make floor-lab's 5-min robustness table skip the CVD desks (3-min candles cannot be built from 5-min bars).
-3. **Skylit edge study, pilot 2** (pre-register first): intraday horizon instead of rest-of-day. Boards at 10:00/12:30 ET vs the next 60-90 minutes from the 1-min archive (Sep 28 on): distance to the nearest large positive node (magnet) and to the nearest large negative node (accelerant); 0DTE-only board (max_expirations=1). Also Tempest: SVX/IV term slope vs next-day range (cheap: tempest_history).
-4. **Skylit forward collection**: `engine/skylit_feed.py` read-only snapshot at 09:45/10:30/12:30/15:00 ET for SPY, QQQ, SPXW (~20 credits/day) written to the ledger, so forward data accrues without paid backfills.
+- [x] Saturday Oct 31 review (2026-10-31): paper report, parity 10/16 match (stale-feed bug -> PR #2), weekly note `research/weekly/2026-W44.md`
+- [x] Skylit pilot 2 (2026-10-31): 0DTE boards say nothing about the next 60-90 min; Tempest: realized next-day move ~0.7x the priced move (variance premium, both halves)
+
+1. **Variance-premium spread study** (pre-register first): 1-day SPY iron condor, short strikes at +-1 priced sigma (`em_1d_pct`), wings $5, entered at 15:45 ET or next-day 09:45 ET; real Skylit option prices (30-day intraday), buy at ask / sell at bid, 2x stress. Compare with the Tempest breach rate. Paper needs an options order path (Vivek, PR + City Hall).
+2. **Live-bar logging** in the bot (logging only; tests prove desks trade identically) so parity compares bar by bar. 3 of 6 parity gaps this week trace to Yahoo bar revisions that can't be proven without it.
+3. **Run parity inside floor-lab** after the archive step (one more step in the Actions job; lab code only). Also make floor-lab's 5-min robustness table skip the CVD desks (3-min candles cannot be built from 5-min bars).
+4. **Skylit forward collection** (also feeds combo C-2; until it exists, the Saturday run pulls the week's 10:00 ET 0DTE SPY/QQQ boards, 5 calls): `engine/skylit_feed.py` read-only snapshot at 09:45/10:30/12:30/15:00 ET for SPY, QQQ, SPXW (~20 credits/day) written to the ledger, so forward data accrues without paid backfills.
 5. **Skylit edge study (continuing)**:
    - Map which Skylit tools have history and how far back.
    - Build a cached dataset on branch `data` (`research/skylit/`): GEX boards at fixed decision times (09:45, 10:30, 12:30, 15:00 ET) for SPY/QQQ/SPXW, plus Tempest daily rows.

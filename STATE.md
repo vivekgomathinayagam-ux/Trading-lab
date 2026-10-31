@@ -2,6 +2,7 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
+**Researcher as of 2026-10-31 16:30 PT:** Saturday review: no desk has an edge (2-5 trades each); parity 10/16; Oct 30 Yahoo froze at 14:44 ET and volspike's SPXU exit used a 74-min-old price (+$24.10 logged, ~+$9.27 real) -> PR #2 awaiting Vivek; Skylit pilot 2: no intraday GEX effect, variance premium in Tempest. Note `research/weekly/2026-W44.md`.
 **As of:** 2026-10-30 14:50 PT (daily close, paper day 5: 3 trades, all wins (SPXU volume spike +$24.10, TQQQ cvd +$14.65, SPY cvd +$1.68); no +5% hits; bot healthy, kill switch off)
 **Previously:** 2026-10-29 14:45 PT (daily close, paper day 4)
 **Hustles as of 2026-10-31 08:50 PT:** no sales data reachable (Gumroad fetch refused again); ledger unchanged; new free R-multiple/expectancy page published to repo.
@@ -52,6 +53,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 - The five setups: ORB + volume, EMA 9/21 + volume, Volume spike (paper since Oct 26), CVD turn and GEX verticals (to be built, back-tested once, then paper).
 - **Month-1 paper test: Oct 26 to Nov 25 (23 sessions). Desk rules are frozen.** At most about 23 trades per desk, so verdicts will be "promising / inconclusive / failing" with confidence intervals; the 50-trade gate is out of reach inside the month. Month-1 report due Sat Nov 28.
 - Backtests run once, when a setup is first adopted. After that: paper every day. floor-lab keeps running as the 1-minute archiver and parity replay.
+- **Saturday review 2026-10-31** (`research/weekly/2026-W44.md`): 16 trades, every desk too small to say; parity 10/16 (1 stale-feed bug, 2 ema_vol buckets, 3 likely Yahoo bar revisions); Skylit pilot 2: 0DTE board has no 60-90 min effect; Tempest: realized next-day move ~0.7x priced (variance premium, both halves) -> next: real-price iron condor study. Combo C-2 registered. Variants 138.
 - Paper report `lab/floor/paper_report.py` and parity replay `lab/floor/replay.py` exist (2026-10-28). Parity Oct 26-27: 4/5 trades match; 1 explained (`research/parity/2026-10-28.md`).
 - Combos (portfolio, confluence and gating, sequencing) are pre-registered in `research/combos.md` and judged on forward days only. Variant count: `research/VARIANTS.md`. Queue: `research/QUEUE.md`.
 
@@ -60,7 +62,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 |---|---|---|
 | ORB SPY/TQQQ (original Pine design) | spec | superseded on paper by the ORB + volume desk above |
 | CVD turn 3-min | **paper from 2026-10-29** as `cvd_spy` and `cvd_tqqq` (see the day-trade table) | |
-| GEX / Skylit setups | research | The Researcher's own project (charter). Pilot 1 (2026-10-28, 62 days of 10:00 ET boards, SPY/QQQ): no king pull, no gamma-sign effect on the rest-of-day move. Next: intraday horizon, 0DTE-only boards, Tempest IV. Log: `research/skylit/STUDY.md`. |
+| GEX / Skylit setups | research | The Researcher's own project (charter). Pilot 2 (2026-10-31): 0DTE boards at 10:00/12:30 ET show no magnet, regime or accelerant effect over 60-90 min; Tempest shows a variance premium (next-day move ~0.7x priced). Pilot 1 (2026-10-28, 62 days of 10:00 ET boards, SPY/QQQ): no king pull, no gamma-sign effect on the rest-of-day move. Next: intraday horizon, 0DTE-only boards, Tempest IV. Log: `research/skylit/STUDY.md`. |
 | Control: SPY buy-and-hold | spec | benchmark |
 | Control: 9/21 EMA cross | spec | now a real desk (EMA 9/21 + volume); SPY buy-and-hold from Oct 26 stays the benchmark |
 
@@ -135,6 +137,7 @@ Rules for new and changed tasks:
 - Seed generator: `city/make_seed.py` (only for a reset; it overwrites real data).
 
 ## Known gaps (honest list)
+- **Researcher 2026-10-31, cause found:** Yahoo froze for all six ETFs at 14:44 ET on Oct 30 (quote 4,416 s old at the exit; Skylit 36.035 vs Yahoo 36.565). No 15:55 bar arrived, so only the 15:58 safety exit fired, at the frozen price: volspike's +$24.10 is really about +$9.27 (book +$21.86, not +$36.71). The ledger is not edited. Fix: PR #2 (stale quote > 300 s = feed down -> Skylit valuation, entries paused), unmerged, needs Vivek's yes. Earlier note follows.
 - Accountant 2026-10-30: Volume spike's SPXU exit today was reason `eod_safety` at 15:58:10 ET, not the usual `eod` at about 15:56 (every earlier EOD exit was 15:56). The safety net worked and the position was flat, but the regular 15:55 exit did not fire for this one. Not investigated (engine/ untouched); worth a look by the Researcher or Vivek. Also: floor-lab's Oct 30 21:25 UTC run had not appeared by 21:45 UTC (latest REPORT is the 2026-10-30 01:09 UTC run); paper figures come from the bot's ledger and are unaffected.
 - Skylit price check flags every fill (max diff over all six ETFs > 0.05%) because SPXU (−0.12% to −0.23%) and SQQQ (−0.11% to −0.07%) disagree with Yahoo; the traded symbol's diff was within 0.07% (TQQQ −0.007% and +0.063% on Oct 27). The flag is driven by the untraded inverse ETFs, so it may be too noisy to be useful. Logged by the Accountant 2026-10-27; engine/ untouched.
 - Accountant 2026-10-29: floor-lab's latest results are from the run at 2026-10-29 01:03 UTC (Oct 28 session); today's 21:25 UTC run had not appeared by 21:41 UTC (GitHub scheduler lateness again). Paper figures come from the bot's own ledger, so they are unaffected.

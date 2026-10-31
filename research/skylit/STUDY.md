@@ -53,3 +53,13 @@ gets a pre-registered setup and forward paper, never a trade directly. Expected 
   strikes nearest spot for every board (the first 3 boards were pulled with 60; the analysis trims them to the same 30).
   Tempest cache keeps only `close`, `em_1d_pct`, `term_slope` (all that Q2.5-2.6 use). Data in the cache was copied by workers;
   the analysis spot-checks one board against a pull made directly in the run.
+
+### Pilot 2 result (2026-10-31; `pilot2.py`, `pilot2_results.json`, raw cache on branch `data`)
+100 boards (25 sessions x 2 times x SPY/QQQ); spot check: the Oct 30 10:00 board in the cache matches a direct pull to the unit.
+- Q2.1 toward magnet: 47.9% [37.8, 58.0] at 60 min, 51.1% [41.0, 61.2] at 90 min (n=94). No pull.
+- Q2.2 range, net0 > 0 minus <= 0: +0.004 [-0.117, +0.135] / -0.018 [-0.147, +0.117] pts. Nothing.
+- Q2.3 range near accelerant minus not: -0.079 [-0.180, +0.013] / -0.116 [-0.230, -0.004]. Opposite sign to the hypothesis; 1 of 6 heat tests barely excludes 0. Treated as noise.
+- Q2.5 Tempest: next-day |move| > priced 1-sigma on 22.2% of SPY days [18.7, 25.8] and 26.4% of QQQ [22.7, 30.2] (normal 31.7%); mean |move|/priced 0.68 SPY, 0.72 QQQ (normal 0.80). Holds in both halves for both symbols. **The priced move is too wide on average: a variance premium.**
+- Q2.6 term slope (= svx9 - svx30): top vs bottom third breach rate differs by +0.01 [-0.07, +0.10] SPY, +0.02 [-0.07, +0.11] QQQ, sign flips between halves. Nothing.
+- Credits: 50 board calls x 5 + 1 duplicate (5) + Tempest 16 window calls + 1 check = 372 total for the run.
+- Next: whether the premium survives bid/ask and the fat tail on real option prices (queue item 1).

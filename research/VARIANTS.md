@@ -14,3 +14,5 @@ Every rule, parameter set and combination looked at, kept or not. Add a row each
 | 2026-10-28 | Combo | C-1 cvd_tqqq + volspike confluence (record only) | registered | 17 |
 | 2026-10-29 | Exit study (entries frozen) | 18 exit variants (6 fixed TP, 3 trail, 2 ATR trail, 3 partial, 4 CVD delay/confirm) x 5 desks + random-entry control + overnight-hold check; none adopted | none | 35 |
 | 2026-10-29 | Entry-quality study (research only) | 196 feature correlations, 3 regime dims, 1 score + 12 ablations, 15 filters/combos x 6 desks (90 configs), 3 post-hoc checks; no filter passed the train+validation bar | none | 129 |
+| 2026-10-31 | Skylit pilot 2 | 0DTE boards 10:00/12:30 ET: magnet pull, gamma sign vs range, accelerant proximity (each at 60 and 90 min) + Tempest priced-vs-realized move and term slope | none tradeable; variance premium noted as a lead | 137 |
+| 2026-10-31 | Combo | C-2 volspike split by SPY 0DTE net gamma at 10:00 (record only, forward from Nov 2) | registered | 138 |
