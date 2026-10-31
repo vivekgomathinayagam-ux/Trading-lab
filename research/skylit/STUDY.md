@@ -48,3 +48,8 @@ Tempest (daily, ~2 years, SPY and QQQ, `tempest_history`; cached as `research/sk
   the result). Bootstrap CI on the difference; must hold in both halves.
 Variants: 6 heat questions x 2 horizons... counted as 6 (Q2.1-2.3 at 60 and 90) + 2 Tempest = 8. Pilot only: anything that holds
 gets a pre-registered setup and forward paper, never a trade directly. Expected credits: ~25 sessions x 2 times x 5 = 250, Tempest ~150.
+- **Amendment 2026-10-31, before any result:** MCP output has to be transcribed into the cache by workers, so boards are pulled
+  with `max_strikes=30` (about ±2% of spot for SPY/QQQ; the ±1% magnet/accelerant window is unaffected). net0 = sum over the 30
+  strikes nearest spot for every board (the first 3 boards were pulled with 60; the analysis trims them to the same 30).
+  Tempest cache keeps only `close`, `em_1d_pct`, `term_slope` (all that Q2.5-2.6 use). Data in the cache was copied by workers;
+  the analysis spot-checks one board against a pull made directly in the run.
