@@ -26,3 +26,25 @@ forward test, never a trade directly.
 - Reading: at this horizon (10:00 to close) and with this definition (2 nearest expirations, 40 strikes), the board has
   no usable directional or range information. That does not rule out shorter horizons or 0DTE-only boards (pilot 2).
 - Credits: 62 calls of 5 credits (each holds SPY and QQQ) + 4 daily-stats calls + 3 checks = 341.
+
+## Pilot 2, registered 2026-10-31 (Saturday review run) before pulling or computing anything
+Horizon: intraday, next 60 and 90 minutes. Data: Heatseeker historical boards, **0DTE only** (`max_expirations=1`), 60 strikes
+around spot, SPY and QQQ, at **10:00 and 12:30 ET** (asOf <= the decision minute), every session in the 1-minute archive
+(2026-09-28 .. 2026-10-30, about 25 sessions). Outcomes from the 1-minute archive (`backtests/data/etf1m/`, bars that START at or
+after the decision minute; the decision uses nothing later). Raw pulls cached on branch `data` under `research/skylit/raw/heat0dte_*.jsonl`.
+Definitions (fixed now):
+- spot = the board's spot; magnet = strike with the largest positive gamma within ±1% of spot; accelerant = strike with the most
+  negative gamma within ±1%; net0 = sum of gamma over the 60 strikes.
+- Q2.1 **Magnet pull:** over the next 60 min, does price move toward the magnet (sign of close(t+60) - spot vs sign(magnet - spot))?
+  Only when |magnet - spot| > 0.05%. Null 50%. Binomial 95% CI.
+- Q2.2 **Gamma regime vs range:** next-60-min range (high-low)/spot, net0 > 0 minus net0 <= 0. Bootstrap 95% CI (day blocks).
+- Q2.3 **Accelerant proximity:** next-60-min range when spot is within 0.25% of the accelerant minus when it is not. Bootstrap CI.
+- Q2.4 Same three at 90 minutes (reported, not separately counted as new ideas: 3 more variants).
+Tempest (daily, ~2 years, SPY and QQQ, `tempest_history`; cached as `research/skylit/raw/tempest_hist_*.json`):
+- Q2.5 **Priced vs realized 1-day move:** share of next sessions whose |close-to-close| exceeds the prior close's `em_1d_pct`
+  (normal-model null ≈ 31.7%), and mean |move|/em_1d. Below 1 = the market overprices next-day moves (premium for defined-risk sellers).
+  Split chronologically into halves; a finding must hold in both.
+- Q2.6 **Term slope:** breach rate (Q2.5) in the top vs bottom third of `term slope` (whatever sign convention Tempest uses, stated in
+  the result). Bootstrap CI on the difference; must hold in both halves.
+Variants: 6 heat questions x 2 horizons... counted as 6 (Q2.1-2.3 at 60 and 90) + 2 Tempest = 8. Pilot only: anything that holds
+gets a pre-registered setup and forward paper, never a trade directly. Expected credits: ~25 sessions x 2 times x 5 = 250, Tempest ~150.
