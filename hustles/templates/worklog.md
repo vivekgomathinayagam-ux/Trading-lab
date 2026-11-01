@@ -21,3 +21,8 @@
 - Measure: Gumroad fetch refused again (permission not answered unattended). No sales or analytics reachable. Ledger unchanged, nothing estimated. Day 5 of 45.
 - Promote: new free search page `promo/pages/r-multiple-expectancy-explained.md` (targets "options trading journal spreadsheet", "expectancy calculator"; every number re-computed in Python). One change only; listing and price untouched.
 - Still QUEUED for Chrome: publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check, public hosting for promo/pages.
+
+## 2026-11-01 (cloud run)
+- Measure: Gumroad fetch refused again (permission not answered unattended). No sales or analytics reachable. Ledger unchanged, nothing estimated. Day 6 of 45.
+- Promote: new free search page `promo/pages/daily-loss-limit-and-pre-trade-checklist.md` (targets "options trading plan template", "daily loss limit trading"; numbers re-computed in Python). One change only; listing and price untouched.
+- Still QUEUED for Chrome: publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check, public hosting for promo/pages.

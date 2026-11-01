@@ -15,3 +15,4 @@
 ## Metrics
 Visits n/a (a cloud run cannot read Gumroad analytics) · Sales 0 known · Revenue $0 (as of 2026-10-28 08:50 PT; no sale email or store data reachable from this run). Trial clock started 2026-10-27 (45 days).
 Update 2026-10-31 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 5 of 45. New free page: r-multiple-expectancy-explained.md.
+Update 2026-11-01 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 6 of 45. New free page: daily-loss-limit-and-pre-trade-checklist.md.

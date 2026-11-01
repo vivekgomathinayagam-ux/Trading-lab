@@ -228,3 +228,8 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Parity:** 10/16 trades match. 3 gaps most likely come from Yahoo revising bars after the fact (e.g. UPRO 09:45 Oct 29 shows 54k shares in the archive); unprovable until the bot logs its live bars (queued, logging only).
 - **Skylit pilot 2** (pre-registered, amended before results to 30 strikes): no magnet pull, no gamma-regime or accelerant effect over 60-90 min. Tempest: next-day |move| exceeds the priced 1-sigma on 22% (SPY) / 26% (QQQ) of days vs 32% for a normal; mean ratio 0.68/0.72; holds in both halves. Next: test whether 1-day iron condors at the priced move pay after bid/ask (pre-register first). 372 credits.
 - **Combo C-2** registered (volspike split by SPY 0DTE net gamma at 10:00, judged from Nov 2). Variant count 138. Crypto-lab Oct 31 run: success.
+
+## 2026-11-01 — Hustle Department run: promotion only
+- Measure: Gumroad unreachable from the cloud run; ledger unchanged.
+- Promote: added free page `daily-loss-limit-and-pre-trade-checklist.md` (numbers verified by script). One change only; no listing or price change.
+- Decision: no third experiment (two finished products still wait on a Chrome session). Cadence stays daily.
