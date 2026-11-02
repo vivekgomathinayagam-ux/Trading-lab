@@ -1,19 +1,19 @@
 {
-  "as_of": "2026-11-02T16:30:11+00:00",
+  "as_of": "2026-11-02T16:45:11+00:00",
   "mode": "paper",
-  "equity": 1024.47,
-  "settled_cash": -1442.79,
+  "equity": 1020.31,
+  "settled_cash": -2202.89,
   "peak_equity": 1056.64,
   "start_of_day_equity": 1045.58,
-  "drawdown": 0.0304,
+  "drawdown": 0.0344,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
     {
-      "cost_basis": 1524.77,
+      "cost_basis": 2284.86,
       "date_acquired": "2026-11-02T15:27:11.238Z",
       "id": 2705827,
-      "quantity": 2.0,
+      "quantity": 3.0,
       "symbol": "SPY"
     },
     {
@@ -29,8 +29,15 @@
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 996.81,
-      "position": null
+      "cash": 236.61,
+      "position": {
+        "sym": "SPY",
+        "qty": 1,
+        "entry_px": 760.192008,
+        "stop": 741.1872078,
+        "target": 798.2016084,
+        "entry_t": "2026-11-02T11:40:10.690931-05:00"
+      }
     },
     {
       "desk": "ema_vol",
