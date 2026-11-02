@@ -233,3 +233,8 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Measure: Gumroad unreachable from the cloud run; ledger unchanged.
 - Promote: added free page `daily-loss-limit-and-pre-trade-checklist.md` (numbers verified by script). One change only; no listing or price change.
 - Decision: no third experiment (two finished products still wait on a Chrome session). Cadence stays daily.
+
+## 2026-11-02 — Hustle Department run: promotion only
+- Measure: Gumroad unreachable from the cloud run; ledger unchanged.
+- Promote: added free page `options-breakeven-with-fees.md` (numbers verified by script). One change only.
+- Decision: no third experiment (two finished products still wait on a Chrome session). Cadence stays daily.

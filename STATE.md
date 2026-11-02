@@ -5,7 +5,7 @@ _Read this first. Updated by every session and scheduled task. Times are America
 **Researcher as of 2026-10-31 16:30 PT:** Saturday review: no desk has an edge (2-5 trades each); parity 10/16; Oct 30 Yahoo froze at 14:44 ET and volspike's SPXU exit used a 74-min-old price (+$24.10 logged, ~+$9.27 real) -> PR #2 awaiting Vivek; Skylit pilot 2: no intraday GEX effect, variance premium in Tempest. Note `research/weekly/2026-W44.md`.
 **As of:** 2026-10-30 14:50 PT (daily close, paper day 5: 3 trades, all wins (SPXU volume spike +$24.10, TQQQ cvd +$14.65, SPY cvd +$1.68); no +5% hits; bot healthy, kill switch off)
 **Previously:** 2026-10-29 14:45 PT (daily close, paper day 4)
-**Hustles as of 2026-11-01 08:50 PT:** no sales data reachable (Gumroad fetch refused again); ledger unchanged; new free daily-loss-limit/pre-trade checklist page published to repo.
+**Hustles as of 2026-11-02 08:50 PT:** no sales data reachable; ledger unchanged; new free options-breakeven-with-fees page published to repo.
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
@@ -86,7 +86,7 @@ Claude runs the department alone: ideas, building, launching, killing, scaling. 
 | Pine Script commissions (Fiverr) | dropped 2026-10-26 | $0 | needs live client chats; Fiverr requires the owner to represent his gig |
 | Discord bots for clients | dropped 2026-10-26 | $0 | needs live clients, permissions and deadlines |
 | Build-in-public posts (LinkedIn) | dropped 2026-10-26 | $0 | LinkedIn's terms ban automated posting |
-Ledger: `hustles/LEDGER.csv` (no rows yet). Nov 1 run: $0 known revenue, day 6 of 45; no sales data reachable; new page daily-loss-limit-and-pre-trade-checklist.md. Prior, Oct 31 run: $0 known revenue, day 5 of 45 for the Toolkit; no sales data reachable; new page r-multiple-expectancy-explained.md. Prior, Oct 30 run: $0 known revenue, day 4 of 45 for the Toolkit; no sales data reachable; new page vertical-spread-max-loss-calculator.md. Prior note: Hustle table as of 2026-10-29 09:10 PT (Oct 29 run: no sales data reachable; second experiment built). Trader Toolkit: $0 revenue, 0 known sales (day 2 of 45); sales data not reachable from cloud runs, so a sale will show up when Vivek's Gumroad email is seen or an interactive session checks the dashboard.
+Ledger: `hustles/LEDGER.csv` (no rows yet). Nov 2 run: $0 known revenue, day 7 of 45; no sales data reachable; new page options-breakeven-with-fees.md. Prior, Nov 1 run: $0 known revenue, day 6 of 45; no sales data reachable; new page daily-loss-limit-and-pre-trade-checklist.md. Prior, Oct 31 run: $0 known revenue, day 5 of 45 for the Toolkit; no sales data reachable; new page r-multiple-expectancy-explained.md. Prior, Oct 30 run: $0 known revenue, day 4 of 45 for the Toolkit; no sales data reachable; new page vertical-spread-max-loss-calculator.md. Prior note: Hustle table as of 2026-10-29 09:10 PT (Oct 29 run: no sales data reachable; second experiment built). Trader Toolkit: $0 revenue, 0 known sales (day 2 of 45); sales data not reachable from cloud runs, so a sale will show up when Vivek's Gumroad email is seen or an interactive session checks the dashboard.
 
 ## Waiting on Vivek (City Hall)
 - ~~Trader Toolkit store setup~~ done Oct 27; product published
