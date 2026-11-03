@@ -1,19 +1,19 @@
 {
-  "as_of": "2026-11-03T18:45:15+00:00",
+  "as_of": "2026-11-03T19:00:11+00:00",
   "mode": "paper",
-  "equity": 1003.49,
-  "settled_cash": -1127.31,
+  "equity": 1003.92,
+  "settled_cash": -1815.61,
   "peak_equity": 1056.64,
   "start_of_day_equity": 1006.97,
-  "drawdown": 0.0503,
+  "drawdown": 0.0499,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
     {
-      "cost_basis": 1369.38,
+      "cost_basis": 2057.67,
       "date_acquired": "2026-11-03T15:15:11.439Z",
       "id": 2710256,
-      "quantity": 2.0,
+      "quantity": 3.0,
       "symbol": "QQQ"
     },
     {
@@ -29,8 +29,15 @@
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 988.7,
-      "position": null
+      "cash": 301.08,
+      "position": {
+        "sym": "QQQ",
+        "qty": 1,
+        "entry_px": 687.617496,
+        "stop": 670.4270585999999,
+        "target": 721.9983708,
+        "entry_t": "2026-11-03T13:50:10.913490-05:00"
+      }
     },
     {
       "desk": "ema_vol",
