@@ -241,3 +241,36 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-03 (Hustle run)
 - Promotion: added free page small-account-options-position-sizing (table recomputed by script). Cadence unchanged (daily 8:43 PT): building/promotion work remains, and 2 of 3 slots are used. No start/kill/scale decisions; both products still await Chrome-session publishing.
+
+## 2026-11-03 — Vivek's review: from waiting to self-improving (interactive session)
+- **Trigger:** Vivek's Nov 3 feedback. The system wasn't learning from sessions, wasn't testing basic ideas (Fibonacci) on its own, kept a dead crypto desk, and its agents worked in isolation.
+- **Post-mortem built** (`lab/foundry/postmortem.py`). Each session it writes what the market offered (best up and down legs), what each desk did, what each desk gave back, and what the research rules would have done. The output goes to `data:research/postmortem/`.
+  - Nov 2: SPY offered a 1.6% down-leg and all 4 desk trades were longs. Nov 3: all 5 entries were long, and the ones still open at 15:00 ET were under water.
+  - Root causes: the desks have no short side on SPY/QQQ, and their exits are either hold-to-15:55 or a 3-minute CVD flip.
+- **Foundry batch 1** (pre-registered, commit 3b05704): Ripster cloud ride (2 exits), VWAP trend, trend-break reversal, Fibonacci 61.8 and 38.2. Every rule had long and short sides, costs, both halves and a random control, run on 26 sessions of 1-min and 41 sessions of 5-min.
+  - **All 6 refuted.** Details: `research/foundry/batch1_REPORT.md`. The F5 Fibonacci rule looked good on 26 sessions and failed on 41.
+  - Variants now 146. No desk changed.
+- **New resident: Session Coach (daily post-mortem)**, weekdays 6:13 PM PT, Sonnet. It makes sure the day's bars and post-mortem exist (starting the Actions runs if GitHub is late), then writes `research/coach/<day>.md`, one lesson and up to 2 board items. It messages Vivek only for a recurring miss pattern or a broken pipeline.
+- **Shared memory:**
+  - `research/LESSONS.md`: 18 lessons with evidence and confirmed/tentative/refuted tags. Every agent reads it first.
+  - `research/BOARD.md`: agents post findings, challenges and requests to each other. Nothing reaches "confirmed" until another agent has tried to break it.
+  - `research/IDEAS.md`: the backlog the Researcher picks from without asking.
+- **Researcher rewritten:**
+  - It tests at least 2 hypotheses of its own each run, always on both archives and both sides.
+  - It may put a rule that clears its bar onto paper as a new desk, and retire a paper desk with 20+ trades whose expectancy CI is below zero (or that a newer desk dominates).
+  - It adds a lesson every run, answers the board, and sends Vivek a 5-line Saturday digest.
+  - Its crypto duty is removed.
+- **Paper autonomy reading:** I take Vivek's Nov 3 message ("Don't bring every small idea to me… develop your own strategies") to cover:
+  - adding and retiring PAPER desks as new keys
+  - lab code and research
+  Still his yes:
+  - engine/ changes (fill logic, valuation, orders)
+  - risk caps and live anything
+  - money and outward hustle actions
+  - his Oct 26 rule against editing an existing desk's logic, which is why changes become new keys
+- **Crypto Pier retired:** crypto-lab's weekly schedule removed (nothing passed in 4 runs, and Tradier has no crypto). The code stays; the workflow can still be run by hand.
+- **foundry-lab Actions workflow:**
+  - runs weekdays 22:05 UTC, on lab/foundry changes, and on demand
+  - grows a 5-min SPY/QQQ archive (`data:backtests/data/etf5m`)
+  - runs the foundry batches on both archives, then the post-mortem
+- **Data gap stated plainly:** intraday history is 26 sessions of 1-min and 41 of 5-min, too short for confident verdicts. Asked Vivek for a free Alpaca key (minute bars since 2016) as a GitHub Actions secret, which is an exception to the "secrets only in Railway" rule.
