@@ -238,3 +238,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Measure: Gumroad unreachable from the cloud run; ledger unchanged.
 - Promote: added free page `options-breakeven-with-fees.md` (numbers verified by script). One change only.
 - Decision: no third experiment (two finished products still wait on a Chrome session). Cadence stays daily.
+
+## 2026-11-03 (Hustle run)
+- Promotion: added free page small-account-options-position-sizing (table recomputed by script). Cadence unchanged (daily 8:43 PT): building/promotion work remains, and 2 of 3 slots are used. No start/kill/scale decisions; both products still await Chrome-session publishing.

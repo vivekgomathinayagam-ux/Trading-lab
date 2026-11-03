@@ -31,3 +31,8 @@
 - Measure: Gumroad fetch not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 7 of 45.
 - Promote: new free search page `promo/pages/options-breakeven-with-fees.md` (targets "options break-even calculator with fees"; every number re-computed in Python). One change only; listing and price untouched.
 - Still QUEUED for Chrome: publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check, public hosting for promo/pages.
+
+## 2026-11-03 (cloud run)
+- Measure: Gumroad fetch not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 8 of 45.
+- Promote: new free search page `promo/pages/small-account-options-position-sizing.md` (targets "small account options position sizing"; 15-row contracts-that-fit table computed in Python). One change only; listing and price untouched.
+- Still QUEUED for Chrome: publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check, public hosting for promo/pages.

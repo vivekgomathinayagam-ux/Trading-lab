@@ -5,7 +5,7 @@ _Read this first. Updated by every session and scheduled task. Times are America
 **Researcher as of 2026-10-31 16:30 PT:** Saturday review: no desk has an edge (2-5 trades each); parity 10/16; Oct 30 Yahoo froze at 14:44 ET and volspike's SPXU exit used a 74-min-old price (+$24.10 logged, ~+$9.27 real) -> PR #2 awaiting Vivek; Skylit pilot 2: no intraday GEX effect, variance premium in Tempest. Note `research/weekly/2026-W44.md`.
 **As of:** 2026-11-02 14:45 PT (daily close, paper day 6: 4 trades, all losses (ORB SPY -$8.11, Vol spike SPY -$11.78, CVD SPY -$2.93, CVD TQQQ -$17.60); no +5% hits; bot healthy, kill switch off; SPY hold -1.40% since start)
 **Previously:** 2026-10-30 14:50 PT (daily close, paper day 5: 3 trades, all wins)
-**Hustles as of 2026-11-02 08:50 PT:** no sales data reachable; ledger unchanged; new free options-breakeven-with-fees page published to repo.
+**Hustles as of 2026-11-03 08:50 PT:** no sales data reachable; ledger unchanged; new free small-account position-sizing page published to repo.
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.
