@@ -1,0 +1,59 @@
+# Foundry: pre-registered research rules (research/foundry/) + the daily session post-mortem.
+# Runs after floor-lab has archived the day's 1-minute bars. Research only: nothing here trades.
+name: foundry-lab
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "5 22 * * 1-5"    # 22:05 UTC, after floor-lab (21:25 UTC)
+  push:
+    branches: [main, "lab/**"]
+    paths: ["lab/foundry/**", ".github/workflows/foundry-lab.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-branch-writer
+  cancel-in-progress: false
+
+jobs:
+  foundry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -r lab/requirements.txt pandas numpy
+      - name: Restore archives and paper ledger from the data branch
+        run: |
+          mkdir -p backtests/data/etf1m backtests/data/etf5m ledger
+          git fetch origin data --depth=1 || true
+          for s in SPY QQQ TQQQ UPRO SQQQ SPXU; do
+            git show "origin/data:backtests/data/etf1m/$s.csv.gz" > "backtests/data/etf1m/$s.csv.gz" 2>/dev/null || rm -f "backtests/data/etf1m/$s.csv.gz"
+          done
+          for s in SPY QQQ; do
+            git show "origin/data:backtests/data/etf5m/$s.csv.gz" > "backtests/data/etf5m/$s.csv.gz" 2>/dev/null || rm -f "backtests/data/etf5m/$s.csv.gz"
+          done
+          git show origin/data:ledger/daytrade_trades.csv > ledger/daytrade_trades.csv 2>/dev/null || true
+      - name: Grow the 5-minute archive (Yahoo keeps ~60 days)
+        run: python -m lab.foundry.fetch5m backtests/data/etf5m SPY,QQQ
+      - name: Batch 1 on the 1-minute archive
+        run: python -m lab.foundry.rules --archive backtests/data/etf1m --syms SPY,QQQ --out out/foundry/batch1_1m
+      - name: Batch 1 on the 5-minute archive
+        run: python -m lab.foundry.rules --archive backtests/data/etf5m --syms SPY,QQQ --out out/foundry/batch1_5m
+      - name: Session post-mortem (latest archived day)
+        run: python -m lab.foundry.postmortem --archive backtests/data/etf1m --trades ledger/daytrade_trades.csv --out out/postmortem
+      - name: Summary
+        run: |
+          cat out/postmortem/*.md >> "$GITHUB_STEP_SUMMARY"
+          python -c "import json;[print(p, json.dumps(json.load(open(p))['meta'])) for p in ['out/foundry/batch1_1m/summary.json','out/foundry/batch1_5m/summary.json']]" >> "$GITHUB_STEP_SUMMARY"
+      - name: Save to the data branch
+        run: |
+          stamp=$(date -u +%Y-%m-%d)
+          bash scripts/save_to_data_branch.sh "foundry-lab: $stamp (from ${{ github.ref_name }})" \
+            out/foundry:backtests/foundry/latest out/foundry:backtests/foundry/$stamp \
+            out/postmortem:research/postmortem backtests/data/etf5m:backtests/data/etf5m

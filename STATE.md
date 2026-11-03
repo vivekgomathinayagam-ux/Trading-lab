@@ -2,6 +2,14 @@
 
 _Read this first. Updated by every session and scheduled task. Times are America/Los_Angeles._
 
+**Read next: `research/LESSONS.md` (what we know), `research/BOARD.md` (agent-to-agent items), `research/IDEAS.md` (test backlog).**
+
+**Interactive 2026-11-03 13:00 PT:**
+- Vivek's review led to a restructure: daily post-mortems, a new Session Coach resident, an autonomous Researcher, and shared LESSONS/BOARD/IDEAS files.
+- Crypto Pier is retired.
+- Foundry batch 1 tested 6 trend/Fibonacci rules on 2 samples: all refuted (`research/foundry/batch1_REPORT.md`).
+- Waiting on Vivek: an Alpaca data key, and one bundled yes for the 4 paper-engine fixes.
+
 **Researcher as of 2026-10-31 16:30 PT:** Saturday review: no desk has an edge (2-5 trades each); parity 10/16; Oct 30 Yahoo froze at 14:44 ET and volspike's SPXU exit used a 74-min-old price (+$24.10 logged, ~+$9.27 real) -> PR #2 awaiting Vivek; Skylit pilot 2: no intraday GEX effect, variance premium in Tempest. Note `research/weekly/2026-W44.md`.
 **As of:** 2026-11-02 14:45 PT (daily close, paper day 6: 4 trades, all losses (ORB SPY -$8.11, Vol spike SPY -$11.78, CVD SPY -$2.93, CVD TQQQ -$17.60); no +5% hits; bot healthy, kill switch off; SPY hold -1.40% since start)
 **Previously:** 2026-10-30 14:50 PT (daily close, paper day 5: 3 trades, all wins)
@@ -16,7 +24,8 @@ Phase 0 — building from zero. See the Phase 0 checklist below.
 | Bot (worker) | Railway, project `compound-city` (6e2d45ea), service `bot` (94c0bd23), env `production`, region us-east4 | **running**; deploys from `main` |
 | Code | GitHub `vivekgomathinayagam-ux/Trading-lab`, branch `main` | pushed |
 | Ledger snapshots | branch `data`, folder `ledger/` | first push 2026-10-13 21:10 UTC |
-| Crypto Pier lab | GitHub Actions `crypto-lab` (weekly Sat 09:17 UTC + on `lab/` changes); results on branch `data`, `backtests/crypto/latest/` | first run 2026-10-24: nothing passed |
+| Crypto Pier lab | GitHub Actions `crypto-lab` (manual only since 2026-11-03) | **retired** 2026-11-03: nothing passed in 4 runs |
+| Foundry lab + post-mortem | GitHub Actions `foundry-lab` (weekdays 22:05 UTC, on lab/foundry changes, manual) | results `data:backtests/foundry/latest/`, post-mortems `data:research/postmortem/`, 5-min archive `data:backtests/data/etf5m/` |
 | City (visual) | Artifact **Compound City**: https://claude.ai/artifact/TfjmHPyajJQfFdXrWDrPZm (source `city/compound-city.html`) | live, partly SAMPLE |
 | Desk | folder "Compound City" on Vivek's Mac (iCloud) | connected, empty |
 
@@ -55,6 +64,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 - Backtests run once, when a setup is first adopted. After that: paper every day. floor-lab keeps running as the 1-minute archiver and parity replay.
 - **Saturday review 2026-10-31** (`research/weekly/2026-W44.md`): 16 trades, every desk too small to say; parity 10/16 (1 stale-feed bug, 2 ema_vol buckets, 3 likely Yahoo bar revisions); Skylit pilot 2: 0DTE board has no 60-90 min effect; Tempest: realized next-day move ~0.7x priced (variance premium, both halves) -> next: real-price iron condor study. Combo C-2 registered. Variants 138.
 - Paper report `lab/floor/paper_report.py` and parity replay `lab/floor/replay.py` exist (2026-10-28). Parity Oct 26-27: 4/5 trades match; 1 explained (`research/parity/2026-10-28.md`).
+- **Foundry batch 1 (2026-11-03):** 6 rules, each long and short: Ripster cloud ride ×2, VWAP trend, trend break, Fib 61.8, Fib 38.2. Tested on 26 sessions of 1-min and 41 of 5-min. All refuted (`research/foundry/batch1_REPORT.md`). Next: a trend-day gate (BOARD).
 - Combos (portfolio, confluence and gating, sequencing) are pre-registered in `research/combos.md` and judged on forward days only. Variant count: `research/VARIANTS.md`. Queue: `research/QUEUE.md`.
 
 ### Other setups
@@ -66,7 +76,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 | Control: SPY buy-and-hold | spec | benchmark |
 | Control: 9/21 EMA cross | spec | now a real desk (EMA 9/21 + volume); SPY buy-and-hold from Oct 26 stays the benchmark |
 
-### Crypto Pier (BTC/ETH spot, long only; spec `strategies/crypto_pier/spec.md`)
+### Crypto Pier: RETIRED 2026-11-03 (kept for reference; spec `strategies/crypto_pier/spec.md`)
 | Desk | Stage | Backtest, Robinhood costs, 2% risk (2017 to Oct 2026) |
 |---|---|---|
 | BTC breakout 20/10 | backtest | +17.1%/yr, max DD −21.7%, Sharpe 0.99 vs BTC hold 1.0; 3 trades made most of it |
@@ -107,6 +117,7 @@ Claude Pro → Risk Officer runs once a day (10 AM PT), not hourly.
 | Researcher (quant desk), Wed + Sat 3:34 PM | Opus 5.5 | edge hunting, paper-data statistics, combos: subtle bugs (look-ahead, overfitting) cost the most |
 | Accountant (daily close), weekdays 2:40 PM | Sonnet 5.5 | routine reading, arithmetic in code, records |
 | Hustle Department, daily 8:43 AM | Sonnet 5.5 | building products, listings, research, records |
+| Session Coach (daily post-mortem), weekdays 6:13 PM | Sonnet 5.5 | reads the scripted post-mortem, writes one lesson, board items (created 2026-11-03, trig_011Fgio2UtAqRaH7jRgSBsvE) |
 Rules for new and changed tasks:
 - **Opus 5.5:** research and backtests, go-live reviews, independent checks before going live, and anything touching the risk engine or live-order code.
 - **Sonnet 5.5:** building, writing and routine runs.
