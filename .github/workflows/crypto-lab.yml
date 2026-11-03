@@ -6,8 +6,7 @@ name: crypto-lab
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "17 9 * * 6"   # Saturdays 09:17 UTC (2:17 AM Pacific)
+  # schedule removed 2026-11-03: Crypto Pier retired (nothing passed in 4 runs; Tradier has no crypto)
   push:
     branches: [main, "lab/**"]
     paths: ["lab/crypto/**", "lab/tests/test_crypto_lab.py", "lab/requirements.txt", ".github/workflows/crypto-lab.yml"]
