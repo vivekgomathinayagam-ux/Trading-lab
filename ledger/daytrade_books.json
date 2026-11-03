@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-03T20:45:11+00:00",
+ "as_of": "2026-11-03T20:59:11+00:00",
  "peak": {
   "orb_vol": 1003.0591364,
   "ema_vol": 1000.4176900000002,
@@ -39,73 +39,45 @@
   "skylit": "ok"
  },
  "marks": {
-  "SPY": 754.51,
-  "QQQ": 685.92,
-  "TQQQ": 60.654,
-  "UPRO": 140.46,
-  "SQQQ": 42.66,
+  "SPY": 754.61,
+  "QQQ": 685.83,
+  "TQQQ": 60.65,
+  "UPRO": 140.51,
+  "SQQQ": 42.675,
   "SPXU": 36.21
  },
  "desks": {
   "orb_vol": {
-   "cash": 301.08080440000026,
+   "cash": 986.6536624000003,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-03",
-   "pos": {
-    "sym": "QQQ",
-    "qty": 1,
-    "entry_px": 687.617496,
-    "stop": 670.4270585999999,
-    "target": 721.9983708,
-    "entry_t": "2026-11-03T13:50:10.913490-05:00"
-   },
+   "pos": null,
    "label": "ORB + volume",
-   "equity": 987.0
+   "equity": 986.65
   },
   "ema_vol": {
-   "cash": 299.4325710000003,
+   "cash": 985.0054290000003,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-03",
-   "pos": {
-    "sym": "QQQ",
-    "qty": 1,
-    "entry_px": 685.757124,
-    "stop": 668.6131958999999,
-    "target": 720.0449802,
-    "entry_t": "2026-11-03T10:15:10.883402-05:00"
-   },
+   "pos": null,
    "label": "EMA 9/21 + volume",
-   "equity": 985.35
+   "equity": 985.01
   },
   "volspike": {
-   "cash": 269.10597550000045,
+   "cash": 1023.3650935000004,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-03",
-   "pos": {
-    "sym": "SPY",
-    "qty": 1,
-    "entry_px": 755.8211339999999,
-    "stop": 736.9256056499999,
-    "target": 793.6121906999999,
-    "entry_t": "2026-11-03T10:56:10.889665-05:00"
-   },
+   "pos": null,
    "label": "Volume spike",
-   "equity": 1023.62
+   "equity": 1023.37
   },
   "ema_vol_v2": {
-   "cash": 314.242876,
+   "cash": 999.815734,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-03",
-   "pos": {
-    "sym": "QQQ",
-    "qty": 1,
-    "entry_px": 685.757124,
-    "stop": 668.6131958999999,
-    "target": 720.0449802,
-    "entry_t": "2026-11-03T10:15:10.883402-05:00"
-   },
+   "pos": null,
    "label": "EMA 9/21 + volume v2",
-   "equity": 1000.16
+   "equity": 999.82
   },
   "cvd_spy": {
    "cash": 998.3165892000004,
