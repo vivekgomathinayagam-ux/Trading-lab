@@ -1,14 +1,22 @@
 {
-  "as_of": "2026-11-03T15:15:12+00:00",
+  "as_of": "2026-11-03T15:30:11+00:00",
   "mode": "paper",
-  "equity": 997.19,
-  "settled_cash": 997.19,
+  "equity": 999.05,
+  "settled_cash": -372.19,
   "peak_equity": 1056.64,
   "start_of_day_equity": 1006.97,
-  "drawdown": 0.0563,
+  "drawdown": 0.0545,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [],
+  "positions": [
+    {
+      "cost_basis": 1369.38,
+      "date_acquired": "2026-11-03T15:15:11.439Z",
+      "id": 2710256,
+      "quantity": 2.0,
+      "symbol": "QQQ"
+    }
+  ],
   "strategies": [],
   "daytrade_desks": [
     {
