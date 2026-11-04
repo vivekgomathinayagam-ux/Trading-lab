@@ -12,6 +12,10 @@ Rank by: expected edge × testability with our data ÷ cost.
 - [ ] VWAP reclaim / reject after a trend move (2-sided)
 - [ ] Round numbers ($5 SPY strikes) as magnets (needs no GEX)
 
+- [ ] Giveback trail: once open profit reaches +0.3%, exit when it falls to half of its best (long and short). Evidence: Nov 2-3 eod holds gave back 0.29-1.54% (coach 2026-11-03)
+- [ ] Reversal-day short: after an up-leg of 0.6% or more by 11:00 ET, short (SQQQ/SPXU) on the VWAP loss; mirror: long (TQQQ/UPRO) after a down-leg of 0.6% or more and a VWAP reclaim. Nov 3 QQQ went +0.81% to 11:04, then -0.73% (coach 2026-11-03)
+- [ ] Entry-time cutoff for ORB/volspike/EMA desks (e.g. no new entries after 11:30 or 13:00 ET), judged on both sides (coach 2026-11-03)
+
 ## Indicators
 - [x] Ripster EMA clouds 5/12 and 34/50 (foundry F1/F2, 2026-11-03: refuted ungated; retest only with a trend-day gate)
 - [x] Fibonacci retracements of the session range (F5/F6, 2026-11-03: both refuted on 41 sessions)

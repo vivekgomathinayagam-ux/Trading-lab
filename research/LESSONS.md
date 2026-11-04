@@ -23,6 +23,8 @@ This is the system's memory of what works, what doesn't, and why. Every lesson c
    - Fixed take-profits lost to baseline, and the ATR trail failed walk-forward. (exit study)
 8. `tentative` **Entries that are already extended do worse,** as does very low ATR. Both held in both halves of the entry study, but neither passed as a filter. (research/entries/REPORT.md)
 
+8b. `tentative` **Late entries lose.** Every paper entry after 13:00 ET lost: 3 of 3, -$1.77, -$4.23, -$2.04 (Oct 27 ema_vol TQQQ 15:00, Oct 28 ema_vol SPXU 13:35, Nov 3 orb_vol QQQ 13:50 into an existing down-leg). n=3, so a lead only, not a rule. (coach 2026-11-03)
+
 ## Rule families tested (foundry batch 1, 5-min bars, 26 sessions, SPY+QQQ, costs 0.046% round trip)
 9. `refuted` **Simple trend rules lose after costs:** Ripster cloud ride (F1 slow exit, F2 tight exit) and VWAP trend (F3).
    - 1-min sample (26 sessions): F2 +0.013%/trade, F3 +0.008%, F1 −0.006%. Gross edge is about +0.04-0.06%, roughly the 0.046% round-trip cost.
