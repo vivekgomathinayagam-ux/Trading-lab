@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-04T14:45:11+00:00",
+  "as_of": "2026-11-04T15:00:14+00:00",
   "mode": "paper",
   "equity": 996.18,
   "settled_cash": 996.18,
@@ -38,14 +38,28 @@
     {
       "desk": "cvd_spy",
       "label": "CVD turn 3-min (SPY)",
-      "cash": 998.32,
-      "position": null
+      "cash": 230.98,
+      "position": {
+        "sym": "SPY",
+        "qty": 1,
+        "entry_px": 767.3334359999999,
+        "stop": 748.1501000999999,
+        "target": 805.7001078,
+        "entry_t": "2026-11-04T10:00:11.101688-05:00"
+      }
     },
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 1002.26,
-      "position": null
+      "cash": 44.63,
+      "position": {
+        "sym": "TQQQ",
+        "qty": 15,
+        "entry_px": 63.841905,
+        "stop": 62.24585737499999,
+        "target": 67.03400025,
+        "entry_t": "2026-11-04T10:00:11.101688-05:00"
+      }
     }
   ]
 }
