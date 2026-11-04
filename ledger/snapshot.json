@@ -1,82 +1,39 @@
 {
-  "as_of": "2026-11-04T20:45:11+00:00",
+  "as_of": "2026-11-04T20:59:11+00:00",
   "mode": "paper",
-  "equity": 997.26,
-  "settled_cash": -2165.82,
+  "equity": 991.15,
+  "settled_cash": 991.15,
   "peak_equity": 1056.64,
   "start_of_day_equity": 996.18,
-  "drawdown": 0.0562,
+  "drawdown": 0.062,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 1384.85,
-      "date_acquired": "2026-11-04T16:55:11.560Z",
-      "id": 2715528,
-      "quantity": 2.0,
-      "symbol": "QQQ"
-    },
-    {
-      "cost_basis": 1766.34,
-      "date_acquired": "2026-11-04T15:13:11.652Z",
-      "id": 2714156,
-      "quantity": 12.0,
-      "symbol": "UPRO"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 98.75,
-      "position": {
-        "sym": "UPRO",
-        "qty": 6,
-        "entry_px": 147.98395499999998,
-        "stop": 144.284356125,
-        "target": 155.38315275,
-        "entry_t": "2026-11-04T10:13:11.103399-05:00"
-      }
+      "cash": 980.37,
+      "position": null
     },
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 288.36,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 696.6493019999999,
-        "stop": 679.2330694499999,
-        "target": 731.4817671,
-        "entry_t": "2026-11-04T11:55:11.118843-05:00"
-      }
+      "cash": 979.38,
+      "position": null
     },
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 139.9,
-      "position": {
-        "sym": "UPRO",
-        "qty": 6,
-        "entry_px": 147.24358499999997,
-        "stop": 143.56249537499997,
-        "target": 154.60576424999996,
-        "entry_t": "2026-11-04T11:01:11.111795-05:00"
-      }
+      "cash": 1021.52,
+      "position": null
     },
     {
       "desk": "ema_vol_v2",
       "label": "EMA 9/21 + volume v2",
-      "cash": 303.17,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 696.6493019999999,
-        "stop": 679.2330694499999,
-        "target": 731.4817671,
-        "entry_t": "2026-11-04T11:55:11.118843-05:00"
-      }
+      "cash": 994.19,
+      "position": null
     },
     {
       "desk": "cvd_spy",
