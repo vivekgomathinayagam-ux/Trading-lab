@@ -18,3 +18,4 @@ Update 2026-10-31 08:50 PT: still no reachable sales data; Sales 0 known, Revenu
 Update 2026-11-01 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 6 of 45. New free page: daily-loss-limit-and-pre-trade-checklist.md.
 Update 2026-11-02 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 7 of 45. New free page: options-breakeven-with-fees.md.
 Update 2026-11-03 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 8 of 45. New free page: small-account-options-position-sizing.md.
+Update 2026-11-04 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 9 of 45. New free page: risk-of-ruin-table.md.

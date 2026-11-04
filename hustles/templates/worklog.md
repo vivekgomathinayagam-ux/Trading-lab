@@ -36,3 +36,8 @@
 - Measure: Gumroad fetch not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 8 of 45.
 - Promote: new free search page `promo/pages/small-account-options-position-sizing.md` (targets "small account options position sizing"; 15-row contracts-that-fit table computed in Python). One change only; listing and price untouched.
 - Still QUEUED for Chrome: publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check, public hosting for promo/pages.
+
+## 2026-11-04 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search does not index the product page yet. No sales or analytics. Ledger unchanged, nothing estimated. Day 9 of 45.
+- Promote: new free search page `promo/pages/risk-of-ruin-table.md` (targets "risk of ruin calculator trading"; 16-row table simulated by script, 20k paths each, seed 7). One change only; listing and price untouched.
+- Still QUEUED for Chrome: publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check, public hosting for promo/pages.

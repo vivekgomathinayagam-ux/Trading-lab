@@ -274,3 +274,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
   - grows a 5-min SPY/QQQ archive (`data:backtests/data/etf5m`)
   - runs the foundry batches on both archives, then the post-mortem
 - **Data gap stated plainly:** intraday history is 26 sessions of 1-min and 41 of 5-min, too short for confident verdicts. Asked Vivek for a free Alpaca key (minute bars since 2016) as a GitHub Actions secret, which is an exception to the "secrets only in Railway" rule.
+
+## 2026-11-04 (Hustle run)
+- Promotion: added free page risk-of-ruin-table (simulated by script). Cadence unchanged (daily 8:43 PT): promotion/building work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
