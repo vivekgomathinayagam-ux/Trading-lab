@@ -39,12 +39,18 @@ jobs:
             git show "origin/data:backtests/data/etf5m/$s.csv.gz" > "backtests/data/etf5m/$s.csv.gz" 2>/dev/null || rm -f "backtests/data/etf5m/$s.csv.gz"
           done
           git show origin/data:ledger/daytrade_trades.csv > ledger/daytrade_trades.csv 2>/dev/null || true
+          git show origin/data:backtests/floor/latest/trades_1m.csv > ledger/floor_trades_1m.csv 2>/dev/null || true
       - name: Grow the 5-minute archive (Yahoo keeps ~60 days)
         run: python -m lab.foundry.fetch5m backtests/data/etf5m SPY,QQQ
       - name: Batch 1 on the 1-minute archive
         run: python -m lab.foundry.rules --archive backtests/data/etf1m --syms SPY,QQQ --out out/foundry/batch1_1m
       - name: Batch 1 on the 5-minute archive
         run: python -m lab.foundry.rules --archive backtests/data/etf5m --syms SPY,QQQ --out out/foundry/batch1_5m
+      - name: Batch 2 (giveback trail, trend-day gate, reversal day, time buckets) on both archives
+        run: |
+          if [ -s ledger/floor_trades_1m.csv ]; then
+            python -m lab.foundry.batch2 --archive1m backtests/data/etf1m --archive5m backtests/data/etf5m --desk-trades ledger/floor_trades_1m.csv --out out/foundry/batch2 > /dev/null
+          fi
       - name: Session post-mortem (latest archived day)
         run: python -m lab.foundry.postmortem --archive backtests/data/etf1m --trades ledger/daytrade_trades.csv --out out/postmortem
       - name: Summary

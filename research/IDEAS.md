@@ -12,9 +12,9 @@ Rank by: expected edge × testability with our data ÷ cost.
 - [ ] VWAP reclaim / reject after a trend move (2-sided)
 - [ ] Round numbers ($5 SPY strikes) as magnets (needs no GEX)
 
-- [ ] Giveback trail: once open profit reaches +0.3%, exit when it falls to half of its best (long and short). Evidence: Nov 2-3 eod holds gave back 0.29-1.54% (coach 2026-11-03)
-- [ ] Reversal-day short: after an up-leg of 0.6% or more by 11:00 ET, short (SQQQ/SPXU) on the VWAP loss; mirror: long (TQQQ/UPRO) after a down-leg of 0.6% or more and a VWAP reclaim. Nov 3 QQQ went +0.81% to 11:04, then -0.73% (coach 2026-11-03)
-- [ ] Entry-time cutoff for ORB/volspike/EMA desks (e.g. no new entries after 11:30 or 13:00 ET), judged on both sides (coach 2026-11-03)
+- [x] (2026-11-04 refuted, LESSONS 20) Giveback trail: once open profit reaches +0.3%, exit when it falls to half of its best (long and short). Evidence: Nov 2-3 eod holds gave back 0.29-1.54% (coach 2026-11-03)
+- [x] (2026-11-04 refuted, LESSONS 22) Reversal-day short: after an up-leg of 0.6% or more by 11:00 ET, short (SQQQ/SPXU) on the VWAP loss; mirror: long (TQQQ/UPRO) after a down-leg of 0.6% or more and a VWAP reclaim. Nov 3 QQQ went +0.81% to 11:04, then -0.73% (coach 2026-11-03)
+- [x] (2026-11-04 13:00 weakly supported, LESSONS 23; forward test on paper) Entry-time cutoff for ORB/volspike/EMA desks (e.g. no new entries after 11:30 or 13:00 ET), judged on both sides (coach 2026-11-03)
 
 ## Indicators
 - [x] Ripster EMA clouds 5/12 and 34/50 (foundry F1/F2, 2026-11-03: refuted ungated; retest only with a trend-day gate)
@@ -27,13 +27,20 @@ Rank by: expected edge × testability with our data ÷ cost.
 - [ ] CVD divergence at session highs/lows (Vivek's CVD, 2-sided)
 
 ## Regime and selection
-- [ ] Trend-day detector by 10:30 ET (range expansion + VWAP slope) → only run trend rules on trend days
+- [x] (2026-11-04 refuted as a continuation gate, LESSONS 21) Trend-day detector by 10:30 ET (range expansion + VWAP slope) → only run trend rules on trend days
 - [ ] Day-of-week and event days (CPI, FOMC) splits
 - [ ] VIX level / term structure as a gate (Tempest)
 
 ## Options-native (needs real option prices; Skylit has 30 days intraday)
-- [ ] 1-day iron condor at ±1 priced sigma (variance premium, queued)
+- [x] 1-day iron condor at ±1 priced sigma (2026-11-04 refuted, LESSONS 19)
+- [ ] Condor v2: short strikes where the credit is ≥ 20% of the width, or a 1.5-sigma 2-5 DTE condor; size $1 wings under the 5% cap (needs a reason beyond 'try again'; credit/width is that reason)
+- [ ] Fade the first hour: G3x (non-trend days) was +0.12% on A but −0.04% on B. Weak; test only with the Alpaca history
 - [ ] 0DTE debit spread on cloud-ride signals vs trading the ETF (does the option leverage survive the spread?)
+
+## New from batch 2 (2026-11-04)
+- [ ] Gap-and-first-hour fade vs continuation, split by gap size (the opening-drive idea above, on 5-min B plus the Alpaca history)
+- [ ] Prior-day high/low break: next on the list (chartable; no history problem; both sides)
+- [ ] volspike-only giveback trail (`volspike_gb`): +0.18% per trade over 24 backtest entries; picked after the fact, so a lead only. Test only on sessions after Nov 4
 
 ## Data upgrades
 - [ ] Long history: Alpaca free minute bars since 2016 (needs Vivek's free key as a GitHub Actions secret)
