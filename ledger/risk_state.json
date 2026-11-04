@@ -1,8 +1,8 @@
 {
-  "as_of": "2026-11-03T20:59:10+00:00",
+  "as_of": "2026-11-04T14:30:12+00:00",
   "peak_equity": 1056.64,
-  "sod_equity": 1006.97,
-  "sod_date": "2026-11-03",
+  "sod_equity": 996.18,
+  "sod_date": "2026-11-04",
   "kill_switch_on": false,
   "kill_switch_reason": "",
   "kill_switch_at": null,
