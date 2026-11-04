@@ -21,3 +21,6 @@ Even on a pass, paper needs an options order path in `engine/` → one unmerged 
 
 ## Variants
 1 (no grid). Running total 155 → 156. Credits: about 21 × 4 × 3 = 252 plus 1 for Tempest.
+
+## Amendment A (2026-11-04 16:45 PT, before any usable option price was seen)
+`contract_chart` over MCP returns only the first 115 of ~2,350 5-min rows (the truncation note), all from Sep 24, so the 15:45 ET bar cannot be read. Switch the leg price to `contract_history` for day D (5 credits/leg): the day's **last** trade price. SPY options trade to 16:15 ET, so this print can be up to 30 min after the 15:45 strike choice; that adds noise, not a known bias. The $0.02/leg cost and 2x stress stay. A leg with no D volume → day dropped and counted. Nov 2 sigma = 1.199 (Tempest, pulled today, 1 credit). Credits: 84 × 5 = 420.
