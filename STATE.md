@@ -10,8 +10,17 @@ _Read this first. Updated by every session and scheduled task. Times are America
 - Foundry batch 1 tested 6 trend/Fibonacci rules on 2 samples: all refuted (`research/foundry/batch1_REPORT.md`).
 - Waiting on Vivek: an Alpaca data key, and one bundled yes for the 4 paper-engine fixes.
 
-**Researcher as of 2026-10-31 16:30 PT:** Saturday review: no desk has an edge (2-5 trades each); parity 10/16; Oct 30 Yahoo froze at 14:44 ET and volspike's SPXU exit used a 74-min-old price (+$24.10 logged, ~+$9.27 real) -> PR #2 awaiting Vivek; Skylit pilot 2: no intraday GEX effect, variance premium in Tempest. Note `research/weekly/2026-W44.md`.
-**As of:** 2026-11-04 14:45 PT (daily close, paper day 8: 6 trades, 2 wins (CVD TQQQ +$4.07, CVD SPY +$0.68), 4 small eod losses (EMA and EMA v2 QQQ -$5.63 each, ORB UPRO -$6.28, Vol spike UPRO -$1.84); no +5% hits; bot healthy, kill switch off; SPY hold +0.54% since start)
+**Researcher as of 2026-11-04 17:00 PT (Wed build run):**
+- Batch 2 and condor study 1, 5 tests, all pre-registered (`research/foundry/batch2_REPORT.md`):
+  - giveback trail: refuted (desk entries +0.0015%/trade, CI [−0.05, +0.05]; worse than holding on random entries)
+  - 10:30 trend-day gate: refuted
+  - reversal day: refuted
+  - 1-day SPY iron condor at ±1 sigma: refuted (21 trades, −$12.52 per condor; 81% wins, but 4 breaches erased them; max loss ~$450, over the 5% cap at $1k)
+  - no entries from 13:00 ET: weakly supported (LESSONS 23), forward-tested on the paper ledger
+- No desk added or retired: nothing passed, and no desk has 20+ paper trades. Variants 156. Skylit 424 credits (balance 104,533).
+
+**Researcher (previous) as of 2026-10-31 16:30 PT:** Saturday review: no desk has an edge (2-5 trades each); parity 10/16; Oct 30 Yahoo froze at 14:44 ET and volspike's SPXU exit used a 74-min-old price (+$24.10 logged, ~+$9.27 real) -> PR #2 awaiting Vivek; Skylit pilot 2: no intraday GEX effect, variance premium in Tempest. Note `research/weekly/2026-W44.md`.
+**As of:** 2026-11-04 17:00 PT (Researcher build run; see above). Accountant: 2026-11-04 14:45 PT (daily close, paper day 8: 6 trades, 2 wins (CVD TQQQ +$4.07, CVD SPY +$0.68), 4 small eod losses (EMA and EMA v2 QQQ -$5.63 each, ORB UPRO -$6.28, Vol spike UPRO -$1.84); no +5% hits; bot healthy, kill switch off; SPY hold +0.54% since start)
 **Previously:** 2026-11-03 14:50 PT (daily close, paper day 7: 6 trades, 1 win (CVD TQQQ +$2.98), 5 small losses; EMA v2 took its first paper trade; no +5% hits; bot healthy, kill switch off; SPY hold −1.02% since start)
 **Earlier:** 2026-11-02 14:45 PT (daily close, paper day 6: 4 trades, all losses)
 **Hustles as of 2026-11-04 08:50 PT:** no sales data reachable; ledger unchanged; new free risk-of-ruin table page published to repo.
@@ -66,6 +75,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 - **Saturday review 2026-10-31** (`research/weekly/2026-W44.md`): 16 trades, every desk too small to say; parity 10/16 (1 stale-feed bug, 2 ema_vol buckets, 3 likely Yahoo bar revisions); Skylit pilot 2: 0DTE board has no 60-90 min effect; Tempest: realized next-day move ~0.7x priced (variance premium, both halves) -> next: real-price iron condor study. Combo C-2 registered. Variants 138.
 - Paper report `lab/floor/paper_report.py` and parity replay `lab/floor/replay.py` exist (2026-10-28). Parity Oct 26-27: 4/5 trades match; 1 explained (`research/parity/2026-10-28.md`).
 - **Foundry batch 1 (2026-11-03):** 6 rules, each long and short: Ripster cloud ride ×2, VWAP trend, trend break, Fib 61.8, Fib 38.2. Tested on 26 sessions of 1-min and 41 of 5-min. All refuted (`research/foundry/batch1_REPORT.md`). Next: a trend-day gate (BOARD).
+- **Foundry batch 2 + condor study 1 (2026-11-04):** giveback trail, trend-day gate, reversal day, 1-day ±1σ iron condor: all refuted. 13:00 ET entry cutoff: tentative, forward test on the paper ledger (wrong if 10 late paper entries average ≥ 0). foundry-lab now runs batch 2 each weekday. Next Wed: prior-day high/low and opening-drive rules (`research/QUEUE.md`).
 - Combos (portfolio, confluence and gating, sequencing) are pre-registered in `research/combos.md` and judged on forward days only. Variant count: `research/VARIANTS.md`. Queue: `research/QUEUE.md`.
 
 ### Other setups

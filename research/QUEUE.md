@@ -1,6 +1,6 @@
 # Research queue (ordered; the Researcher edits this)
 
-_Last set: 2026-10-31 by the Researcher (Saturday review run). Top item first._
+_Last set: 2026-11-04 by the Researcher (Wednesday build run). Top item first._
 
 ## Now
 - [x] Paper report script `lab/floor/paper_report.py` (2026-10-28, tested)
@@ -11,7 +11,10 @@ _Last set: 2026-10-31 by the Researcher (Saturday review run). Top item first._
 - [x] Saturday Oct 31 review (2026-10-31): paper report, parity 10/16 match (stale-feed bug -> PR #2), weekly note `research/weekly/2026-W44.md`
 - [x] Skylit pilot 2 (2026-10-31): 0DTE boards say nothing about the next 60-90 min; Tempest: realized next-day move ~0.7x the priced move (variance premium, both halves)
 
-1. **Variance-premium spread study** (pre-register first): 1-day SPY iron condor, short strikes at +-1 priced sigma (`em_1d_pct`), wings $5, entered at 15:45 ET or next-day 09:45 ET; real Skylit option prices (30-day intraday), buy at ask / sell at bid, 2x stress. Compare with the Tempest breach rate. Paper needs an options order path (Vivek, PR + City Hall).
+- [x] Foundry batch 2 + condor study 1 (2026-11-04, `research/foundry/batch2_REPORT.md`): giveback trail, trend-day gate, reversal day and the 1-day condor all refuted; 13:00 cutoff weakly supported (forward test on paper ledger). No desk changed.
+
+1. **Sat Nov 7 review:** paper stats with CIs, the forward test of the 13:00 cutoff (LESSONS 23), C-2 boards, parity, weekly note W45.
+1b. **Batch 3 (Wed Nov 11), pre-register first:** prior-day high/low break-and-hold vs reject, and opening drive (first 15/30 min) continuation vs reversal split by gap size. Both sides, both archives, random control. Plus condor v2 if it can be sized under the 5% cap (credit ≥ 20% of the width).
 2. **Live-bar logging** in the bot (logging only; tests prove desks trade identically) so parity compares bar by bar. 3 of 6 parity gaps this week trace to Yahoo bar revisions that can't be proven without it.
 3. **Run parity inside floor-lab** after the archive step (one more step in the Actions job; lab code only). Also make floor-lab's 5-min robustness table skip the CVD desks (3-min candles cannot be built from 5-min bars).
 4. **Skylit forward collection** (also feeds combo C-2; until it exists, the Saturday run pulls the week's 10:00 ET 0DTE SPY/QQQ boards, 5 calls): `engine/skylit_feed.py` read-only snapshot at 09:45/10:30/12:30/15:00 ET for SPY, QQQ, SPXW (~20 credits/day) written to the ledger, so forward data accrues without paid backfills.

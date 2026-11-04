@@ -277,3 +277,19 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-04 (Hustle run)
 - Promotion: added free page risk-of-ruin-table (simulated by script). Cadence unchanged (daily 8:43 PT): promotion/building work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
+
+## 2026-11-04 — Researcher Wednesday build run: batch 2 + condor study 1 (nothing passed)
+- **Pre-registered before computing:** `research/foundry/PREREG_batch2.md` (commit 249a383) and `research/skylit/PREREG_condor1.md`.
+  - Amendment A was made before any usable price was seen: MCP `contract_chart` truncates to 115 of 2,350 rows, so leg prices are the daily last print from `contract_history`.
+- **Results** (`research/foundry/batch2_REPORT.md`):
+  - giveback trail: refuted (LESSONS 20)
+  - 10:30 trend-day gate: refuted (21)
+  - reversal-day VWAP cross: refuted (22)
+  - 1-day SPY iron condor at ±1 priced sigma, $5 wings: refuted (19). 21 trades, −$12.52 per condor after $0.02/leg, −$4.04 with no slippage. Its ~$450 max loss also breaks the 5% cap at a $1,000 account.
+  - 13:00 ET entry cutoff: tentative (23)
+- **No desk change.** Nothing cleared its bar.
+  - The cutoff is not given a new desk key: it would duplicate existing desks, and the existing paper ledger already contains the forward test.
+  - No retirement: no desk has 20+ paper trades.
+- **Board:** 4 items answered. The two-sided SPXU/SQQQ trend rule is deferred until some rule has an edge on both sides (LESSONS 24: every short-side "edge" so far is the Sep-Nov down-drift).
+- **Plumbing (lab only):** foundry-lab runs batch 2 each weekday. Skylit raw cache: `data:research/skylit/raw/condor1_contract_history.jsonl`.
+- **Totals:** variants 146 → 156. Skylit 424 credits; balance 104,533.

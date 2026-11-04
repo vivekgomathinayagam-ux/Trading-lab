@@ -10,7 +10,7 @@ This is the system's memory of what works, what doesn't, and why. Every lesson c
 2. `confirmed` **Flat by 15:55 beats holding overnight.** Holding gave −0.30%/trade vs +0.05%, with a worst gap of −3.4%. (research/exits/REPORT.md)
 3. `tentative` **Sep 28 to Nov 2 was a down-drift regime.** Long from 09:45 to 15:55 averaged −0.13% a day on SPY/QQQ. Every trend rule's short side made money and its long side lost. That is regime, not edge: rules must be judged on both sides and on more than one regime. (foundry batch 1, 2026-11-03)
 4. `confirmed` **The 0DTE GEX board does not predict the next 60-90 minutes:** no magnet, no gamma-regime range effect. (Skylit pilots 1 and 2)
-5. `confirmed` **Options over-price SPY/QQQ next-day moves.** Realized moves are about 0.68-0.75x the priced 1-sigma, in both halves of 2 years. That is a lead for defined-risk premium selling, but not yet proven after bid/ask. (Skylit pilot 2)
+5. `confirmed` **Options over-price SPY/QQQ next-day moves.** Realized moves are about 0.68-0.75x the priced 1-sigma, in both halves of 2 years. ~~That is a lead for defined-risk premium selling, but not yet proven after bid/ask.~~ (Skylit pilot 2) **Update 2026-11-04:** the premium is real, but the plain 1-sigma 1-day condor doesn't capture it: see 19.
 
 ## Our desks: why they miss moves
 6. `confirmed` **The desks cannot go short SPY/QQQ directly; only the inverse ETFs give a short.**
@@ -23,7 +23,7 @@ This is the system's memory of what works, what doesn't, and why. Every lesson c
    - Fixed take-profits lost to baseline, and the ATR trail failed walk-forward. (exit study)
 8. `tentative` **Entries that are already extended do worse,** as does very low ATR. Both held in both halves of the entry study, but neither passed as a filter. (research/entries/REPORT.md)
 
-8b. `tentative` **Late entries lose.** Every paper entry after 13:00 ET lost: 3 of 3, -$1.77, -$4.23, -$2.04 (Oct 27 ema_vol TQQQ 15:00, Oct 28 ema_vol SPXU 13:35, Nov 3 orb_vol QQQ 13:50 into an existing down-leg). n=3, so a lead only, not a rule. (coach 2026-11-03)
+8b. `tentative` (see 23, 2026-11-04) **Late entries lose.** Every paper entry after 13:00 ET lost: 3 of 3, -$1.77, -$4.23, -$2.04 (Oct 27 ema_vol TQQQ 15:00, Oct 28 ema_vol SPXU 13:35, Nov 3 orb_vol QQQ 13:50 into an existing down-leg). n=3, so a lead only, not a rule. (coach 2026-11-03)
 
 ## Rule families tested (foundry batch 1, 5-min bars, 26 sessions, SPY+QQQ, costs 0.046% round trip)
 9. `refuted` **Simple trend rules lose after costs:** Ripster cloud ride (F1 slow exit, F2 tight exit) and VWAP trend (F3).
@@ -38,6 +38,27 @@ This is the system's memory of what works, what doesn't, and why. Every lesson c
    - The small first sample flattered it.
 11. `refuted` **Fibonacci 38.2-50% pullbacks (F6) lose:** −0.061%/trade on both samples (37 and 73 trades). The 5-min CI is entirely below zero [−0.115, −0.006].
 12. `refuted` **The VWAP trend-break reversal (F4) as written:** −0.015%/trade on both samples (39 and 63 trades). Its short side was positive (+0.04%) and its long side negative, which is regime again.
+
+## Foundry batch 2 + condor study 1 (2026-11-04, `research/foundry/batch2_REPORT.md`)
+19. `refuted` **A 1-day SPY iron condor at ±1 priced sigma with $5 wings loses after costs.**
+   - 21 trades (Oct 5-Nov 2), real Skylit last prices: −$12.52 per condor at $0.02/leg, −$4.04 even with no slippage.
+   - It won 81% of the time, but the average credit was $0.48 against a $4.52 max loss, and the 4 breaches (−$139 to −$427) erased it.
+   - Its max loss is about 45% of a $1,000 account, so the 5% cap forbids it anyway.
+   - Retest only with a new reason: wider short strikes with the credit ≥ 20% of the width, or $1 wings sized under the cap.
+20. `refuted` **A giveback trail (exit at half of the best open profit, armed at +0.3% x leverage) doesn't fix lesson 7's leak.**
+   - Desk entries: +0.0015% per trade, CI [−0.046, +0.054], with the two halves of opposite sign.
+   - Random entries: worse than holding on both archives (−0.051 / −0.027).
+   - It helped volspike (+0.18) and hurt ema_vol (−0.14): desk-specific, not a general exit.
+21. `refuted` **The first hour's direction does not continue on "trend days" (range ≥ 1.2x, RVol ≥ 1x, VWAP slope agrees, measured at 10:30 ET).**
+   - G1/G2/G3 were negative on both archives, worse than ungated.
+   - The 5-17 gated days were too few for a strong verdict either way, but there is no sign of edge.
+22. `refuted` **Reversal-day VWAP cross after a 0.6% leg:** +0.04 / +0.01% per trade (31 / 34 trades), below the random control, negative at 2x costs. Only its short side won (regime).
+23. `tentative` **No new entries from 13:00 ET.**
+   - Foundry entries from 13:00 lose −0.07% per trade on both archives (88 and 166 trades; CI below 0 on B).
+   - Desk backtest entries from 13:00: 5 of 5 lost, but that is only 4 independent trades. Paper: 3 of 3 lost.
+   - Entries before 11:30 are about 0, so the cutoff saves money; it does not make any.
+   - Forward test from Nov 5 on the existing paper ledger: wrong if 10 paper entries from 13:00 average ≥ 0. Upgrades lesson 8b.
+24. `confirmed` **Five rule families in two batches show the same pattern:** shorts won and longs lost. Short-side "edge" from Sep-Nov 2026 must not be read as edge until a rising regime is in the sample. (batches 1-2)
 
 ## Data and infrastructure
 13. `confirmed` **The Yahoo real-time feed can freeze silently.** Oct 30 it froze for 74 minutes and a paper exit used the stale price. PR #2 fixes this but awaits Vivek. (research/weekly/2026-W44.md)
