@@ -1,19 +1,19 @@
 {
-  "as_of": "2026-11-04T16:00:11+00:00",
+  "as_of": "2026-11-04T16:15:11+00:00",
   "mode": "paper",
-  "equity": 982.37,
-  "settled_cash": 100.85,
+  "equity": 981.35,
+  "settled_cash": -780.97,
   "peak_equity": 1056.64,
   "start_of_day_equity": 996.18,
-  "drawdown": 0.0703,
+  "drawdown": 0.0713,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
     {
-      "cost_basis": 884.52,
+      "cost_basis": 1766.34,
       "date_acquired": "2026-11-04T15:13:11.652Z",
       "id": 2714156,
-      "quantity": 6.0,
+      "quantity": 12.0,
       "symbol": "UPRO"
     }
   ],
@@ -41,8 +41,15 @@
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 1023.37,
-      "position": null
+      "cash": 139.9,
+      "position": {
+        "sym": "UPRO",
+        "qty": 6,
+        "entry_px": 147.24358499999997,
+        "stop": 143.56249537499997,
+        "target": 154.60576424999996,
+        "entry_t": "2026-11-04T11:01:11.111795-05:00"
+      }
     },
     {
       "desk": "ema_vol_v2",
