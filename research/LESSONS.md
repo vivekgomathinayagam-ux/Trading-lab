@@ -63,6 +63,8 @@ This is the system's memory of what works, what doesn't, and why. Every lesson c
 ## Data and infrastructure
 13. `confirmed` **The Yahoo real-time feed can freeze silently.** Oct 30 it froze for 74 minutes and a paper exit used the stale price. PR #2 fixes this but awaits Vivek. (research/weekly/2026-W44.md)
 14. `confirmed` **Only 26 sessions of 1-minute history exist** (Sep 28 onward, Yahoo's 30-day limit), so every intraday verdict is low-power. The fix is a long-history source: Alpaca's free plan has minute bars since 2016. (2026-11-03)
+25. `confirmed` **One bad 1-minute bar can fake a trend leg.** SPY 10:00 ET on 2026-11-04 has a high of 775.64 (0.99% wick; the open/close were 767.26/768.02). The post-mortem then reported a 1.705% SPY up-leg and a 1.577% down-leg; from closes SPY's range was 0.8% (UPRO, QQQ and TQQQ legs agree with that, not with the post-mortem). It is the only bar in 10,920 SPY and 10,919 QQQ minutes with a wick over 0.4%. Check any SPY rule that uses bar highs/lows (breakout, range, stop) around that bar, and clean wicks before computing legs. (coach 2026-11-04, `research/coach/2026-11-04.md`)
+
 15. `confirmed` **Position size makes the P&L tiny.** A $1,000 desk buys 1 SPY share, so even a perfect 0.8% SPY day pays about $6. Edge has to be proven in % terms first; dollars come from size, 3x ETFs or options, under the money rules.
 
 ## How we work (process lessons)

@@ -42,5 +42,10 @@ Rank by: expected edge × testability with our data ÷ cost.
 - [ ] Prior-day high/low break: next on the list (chartable; no history problem; both sides)
 - [ ] volspike-only giveback trail (`volspike_gb`): +0.18% per trade over 24 backtest entries; picked after the fact, so a lead only. Test only on sessions after Nov 4
 
+## From the Coach, 2026-11-04 (hindsight leads only; the Researcher pre-registers)
+- [ ] Extended-impulse filter: skip new long entries when QQQ/SPY is up 1.5% or more from the open (or from the low) inside 45 minutes; mirror: skip new shorts after a drop of 1.5% or more. Evidence: Nov 4 QQQ +1.83% in 40 minutes, then orb_vol UPRO 10:13 (-0.71%), F1/F2 QQQ 10:00 (-0.546% stop). Ties to LESSON 8 (tentative). Count qualifying days in the 41-session archive first; expect few.
+- [ ] Impulse fade, both sides: after an impulse of 1.5% or more, short (SQQQ/SPXU) on the first lower low after the peak; after a drop of 1.5% or more, long (TQQQ/UPRO) on the first higher high. Different from LESSON 22 (0.6% leg, VWAP cross, refuted): bigger leg, price-structure trigger.
+- [ ] Split LESSON 23's 13:00+ bucket by side and by whether the day is above its open. Nov 4: QQQ shorts from 13:45-14:45 won +0.31/+0.27%, all late longs lost. If late shorts win and late longs lose in both archives, 23 is partly regime (lesson 24).
+
 ## Data upgrades
 - [ ] Long history: Alpaca free minute bars since 2016 (needs Vivek's free key as a GitHub Actions secret)
