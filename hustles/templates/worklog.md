@@ -47,3 +47,8 @@
 - Promote: new free search page `promo/pages/what-to-track-in-an-options-trading-journal.md` (targets "options trading journal spreadsheet"; 10-trade example recomputed by script). One change only; listing and price untouched.
 - Observation (plain): 8 repo pages so far, but the repo pages are not a search channel until they are on a public site. Highest-value queued Chrome work, in order: (1) enable GitHub Pages for promo/pages, (2) publish Drawdown Tracker, (3) community drafts A/B where rules allow, (4) read Gumroad analytics.
 - Slots: 2 of 3 in use. No third idea started: every candidate still needs a store listing that only a Chrome session can publish, so it would only lengthen the queue.
+
+## 2026-11-06 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search for the store still returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 11 of 45.
+- Promote: new free search page `promo/pages/breakeven-win-rate-by-reward-to-risk.md` (targets "breakeven win rate reward to risk"; table computed by script). One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.

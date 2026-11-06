@@ -296,3 +296,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-05 (Hustle run)
 - Promotion: added free page what-to-track-in-an-options-trading-journal (example computed by script). Cadence unchanged (daily 8:43 PT): promotion/building work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing. Third slot left empty on purpose (a new product would also need Chrome to list).
+
+## 2026-11-06 (Hustle run)
+- Promotion: added free page breakeven-win-rate-by-reward-to-risk (table computed by script). Cadence unchanged (daily 8:43 PT): promotion work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
