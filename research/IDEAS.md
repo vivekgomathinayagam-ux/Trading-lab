@@ -49,3 +49,9 @@ Rank by: expected edge × testability with our data ÷ cost.
 
 ## Data upgrades
 - [ ] Long history: Alpaca free minute bars since 2016 (needs Vivek's free key as a GitHub Actions secret)
+
+## From the Coach, 2026-11-05 (hindsight leads only; the Researcher pre-registers)
+- [ ] Opening-range break, both sides: after the 09:30-09:45 range, a close beyond it by 0.3% or more, trade SQQQ/SPXU on a break down and TQQQ/UPRO on a break up, flat by 15:55. Nov 5: SPY was -1.37% by 10:00 and kept falling to -4.2% (the ORB desk is long-only and took no setup). Check it on non-trend days: it must not be a regime bet (LESSON 24).
+- [ ] Dip-buy filter for CVD longs (mirror for CVD sells): skip a long when the index is 1% or more under its open at entry; skip a short when 1% or more over. Nov 5: both CVD longs at 10:09 were bought 1.4% under the open and lost (-2.98% stop, -1.63%). Counter: Oct 30 (SPY -0.74%) CVD longs won +1.56/+0.22%, so count qualifying days first.
+- [ ] Hard stop for 3x-ETF longs (e.g. -1.5%): cvd_tqqq's stop fired at -2.98% on Nov 5. Test the stop level for the CVD desks both sides, with the stop gap risk of a fast move.
+- [ ] Late-entry bucket by side (extends the 2026-11-04 idea): Nov 5 ema_vol QQQ long at 14:45 into a falling tape lost -1.21%. Forward count of 13:00+ paper entries is 1 of 10.
