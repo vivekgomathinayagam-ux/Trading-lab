@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-06T15:00:12+00:00",
+  "as_of": "2026-11-06T15:15:13+00:00",
   "mode": "paper",
   "equity": 999.03,
   "settled_cash": 999.03,
@@ -44,8 +44,15 @@
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 976.82,
-      "position": null
+      "cash": 14.6,
+      "position": {
+        "sym": "TQQQ",
+        "qty": 18,
+        "entry_px": 53.456714999999996,
+        "stop": 52.12029712499999,
+        "target": 56.12955075,
+        "entry_t": "2026-11-06T10:15:11.526459-05:00"
+      }
     }
   ]
 }
