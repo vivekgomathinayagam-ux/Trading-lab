@@ -8,9 +8,9 @@
    "c": 733.1300048828125,
    "day_pct": -4.225,
    "up": [
-    1.397,
-    "13:04:00",
-    "13:10:00"
+    1.271,
+    "10:53:00",
+    "11:35:00"
    ],
    "down": [
     4.342,
@@ -36,7 +36,7 @@
    ]
   },
   "TQQQ": {
-   "o": 59.849998474121094,
+   "o": 59.84999847412109,
    "h": 59.9900016784668,
    "l": 50.25,
    "c": 50.48619842529297,
@@ -55,7 +55,7 @@
   "UPRO": {
    "o": 146.47999572753906,
    "h": 146.77999877929688,
-   "l": 127.66999816894531,
+   "l": 127.66999816894533,
    "c": 128.0500030517578,
    "day_pct": -12.582,
    "up": [
@@ -313,6 +313,6 @@
   "cvd_spy SPY gave back 1.587% from its best open profit (exit cvd_sell).",
   "ema_vol QQQ gave back 1.478% from its best open profit (exit eod).",
   "ema_vol_v2 QQQ gave back 1.478% from its best open profit (exit eod).",
-  "SPY best up-leg 1.397%, best down-leg 4.342%; desks on SPY-family: 2 trades."
+  "SPY best up-leg 1.271%, best down-leg 4.342%; desks on SPY-family: 2 trades."
  ]
 }
