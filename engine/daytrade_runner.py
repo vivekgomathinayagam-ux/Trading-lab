@@ -309,7 +309,10 @@ class DayTradeRunner:
                     self._exit(d, ex[0], px, now, rule_px=ex[1], bar_t=b.t)
             self.hub[s].update(b)                               # features
             self.last_t[s] = b.t
-            fresh = is_latest and (now - b.t) <= timedelta(minutes=3)
+            # A signal bar is fresh when it completed at most 3 minutes ago, even if a newer bar
+            # arrived in the same step (Yahoo often delivers two bars at once; 2026-11-05 cvd_tqqq's
+            # 09:53 signal was skipped that way). Outage catch-up bars stay stale.
+            fresh = (now - (b.t + timedelta(minutes=1))) <= timedelta(minutes=2)
             for d in self.desks.values():                       # entries (fresh bars only)
                 if d.wants_entry(s, b, self.hub[s]):
                     if entries_paused:
