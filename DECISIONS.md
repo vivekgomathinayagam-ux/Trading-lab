@@ -299,3 +299,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-06 (Hustle run)
 - Promotion: added free page breakeven-win-rate-by-reward-to-risk (table computed by script). Cadence unchanged (daily 8:43 PT): promotion work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
+
+## 2026-11-07 (Hustle run)
+- Promotion: added free page profit-factor-from-win-rate-and-reward-to-risk (table computed by script). Cadence unchanged (daily 8:43 PT): promotion work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
