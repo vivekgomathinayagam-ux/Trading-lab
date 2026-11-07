@@ -10,15 +10,13 @@ _Read this first. Updated by every session and scheduled task. Times are America
 - Foundry batch 1 tested 6 trend/Fibonacci rules on 2 samples: all refuted (`research/foundry/batch1_REPORT.md`).
 - Waiting on Vivek: an Alpaca data key, and one bundled yes for the 4 paper-engine fixes.
 
-**Researcher as of 2026-11-04 17:00 PT (Wed build run):**
-- Batch 2 and condor study 1, 5 tests, all pre-registered (`research/foundry/batch2_REPORT.md`):
-  - giveback trail: refuted (desk entries +0.0015%/trade, CI [−0.05, +0.05]; worse than holding on random entries)
-  - 10:30 trend-day gate: refuted
-  - reversal day: refuted
-  - 1-day SPY iron condor at ±1 sigma: refuted (21 trades, −$12.52 per condor; 81% wins, but 4 breaches erased them; max loss ~$450, over the 5% cap at $1k)
-  - no entries from 13:00 ET: weakly supported (LESSONS 23), forward-tested on the paper ledger
-- No desk added or retired: nothing passed, and no desk has 20+ paper trades. Variants 156. Skylit 424 credits (balance 104,533).
+**Researcher as of 2026-11-07 16:45 PT (Sat review run):**
+- Paper, 43 trades in 10 sessions: no desk has 20, so no verdicts or retirements. Only volspike is positive (+0.49%/trade, CI [−0.29, +1.38]), mostly inverse-ETF shorts on down days. orb_vol and ema_vol CIs are below 0 at n=7-8.
+- Batch 3 (pre-registered, `research/foundry/batch3_REPORT.md`): two-sided ORB, prior-day high/low hold and reject refuted; failed opening drive untestable (2 drive days per symbol in 44 sessions); stale-high filter not supported. No new desk.
+- Parity 17/29. Cause found: the bot skips a signal when Yahoo delivers two bars at once (Nov 5 CVD 09:53). Draft PR #3 + City Hall `d-fresh-signal`, waiting on Vivek.
+- Post-mortems now clean bad wicks at ingest; Nov 4-5 rebuilt. Variants 169. Skylit 25 credits (balance 104,486). Note `research/weekly/2026-W45.md`.
 
+**Researcher (previous) as of 2026-11-04 17:00 PT:** batch 2 + condor study 1: giveback trail, trend-day gate, reversal day, 1-day ±1σ condor refuted; 13:00 cutoff tentative (LESSONS 23).
 **Researcher (previous) as of 2026-10-31 16:30 PT:** Saturday review: no desk has an edge (2-5 trades each); parity 10/16; Oct 30 Yahoo froze at 14:44 ET and volspike's SPXU exit used a 74-min-old price (+$24.10 logged, ~+$9.27 real) -> PR #2 awaiting Vivek; Skylit pilot 2: no intraday GEX effect, variance premium in Tempest. Note `research/weekly/2026-W44.md`.
 **As of:** 2026-11-06 14:50 PT. Accountant daily close, paper day 10: 6 trades, 3 wins, all small (CVD SPY +$2.44, EMA and EMA v2 SQQQ +$1.45 each); losses: ORB UPRO −$16.87, CVD TQQQ −$5.64, Volume spike QQQ −$5.10; no +5% hits, no stops. Bot healthy (heartbeat 14:00 PT, kill switch off). SPY −3.50% since start. Researcher's Nov 4 build run is described above.
 **Previously:** 2026-11-03 14:50 PT (daily close, paper day 7: 6 trades, 1 win (CVD TQQQ +$2.98), 5 small losses; EMA v2 took its first paper trade; no +5% hits; bot healthy, kill switch off; SPY hold −1.02% since start)
@@ -76,6 +74,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 - Paper report `lab/floor/paper_report.py` and parity replay `lab/floor/replay.py` exist (2026-10-28). Parity Oct 26-27: 4/5 trades match; 1 explained (`research/parity/2026-10-28.md`).
 - **Foundry batch 1 (2026-11-03):** 6 rules, each long and short: Ripster cloud ride ×2, VWAP trend, trend break, Fib 61.8, Fib 38.2. Tested on 26 sessions of 1-min and 41 of 5-min. All refuted (`research/foundry/batch1_REPORT.md`). Next: a trend-day gate (BOARD).
 - **Foundry batch 2 + condor study 1 (2026-11-04):** giveback trail, trend-day gate, reversal day, 1-day ±1σ iron condor: all refuted. 13:00 ET entry cutoff: tentative, forward test on the paper ledger (wrong if 10 late paper entries average ≥ 0). foundry-lab now runs batch 2 each weekday. Next Wed: prior-day high/low and opening-drive rules (`research/QUEUE.md`).
+- **Saturday review 2026-11-07 + foundry batch 3** (`research/weekly/2026-W45.md`): 43 paper trades, no desk at 20; parity 17/29 (stale-signal skip found, PR #3); two-sided ORB, prior-day levels refuted, opening drive untestable, stale-high filter not supported (LESSONS 26-31). No desk added or retired (6 of 8). Next Wed: CVD 1%-from-open filter, fail-fast exit, ORB first-break-only.
 - Combos (portfolio, confluence and gating, sequencing) are pre-registered in `research/combos.md` and judged on forward days only. Variant count: `research/VARIANTS.md`. Queue: `research/QUEUE.md`.
 
 ### Other setups
@@ -110,6 +109,7 @@ Claude runs the department alone: ideas, building, launching, killing, scaling. 
 Ledger: `hustles/LEDGER.csv` (no rows yet). Nov 7 run: $0 known revenue, day 12 of 45; no sales data reachable; new page profit-factor-from-win-rate-and-reward-to-risk.md. Prior, Nov 6 run: $0 known revenue, day 11 of 45; no sales data reachable; new page breakeven-win-rate-by-reward-to-risk.md. Prior, Nov 5 run: $0 known revenue, day 10 of 45; no sales data reachable; new page what-to-track-in-an-options-trading-journal.md; repo pages are not searchable until GitHub Pages is on (Chrome queue). Prior, Nov 2 run: $0 known revenue, day 7 of 45; no sales data reachable; new page options-breakeven-with-fees.md. Prior, Nov 1 run: $0 known revenue, day 6 of 45; no sales data reachable; new page daily-loss-limit-and-pre-trade-checklist.md. Prior, Oct 31 run: $0 known revenue, day 5 of 45 for the Toolkit; no sales data reachable; new page r-multiple-expectancy-explained.md. Prior, Oct 30 run: $0 known revenue, day 4 of 45 for the Toolkit; no sales data reachable; new page vertical-spread-max-loss-calculator.md. Prior note: Hustle table as of 2026-10-29 09:10 PT (Oct 29 run: no sales data reachable; second experiment built). Trader Toolkit: $0 revenue, 0 known sales (day 2 of 45); sales data not reachable from cloud runs, so a sale will show up when Vivek's Gumroad email is seen or an interactive session checks the dashboard.
 
 ## Waiting on Vivek (City Hall)
+- Draft PR #3: paper bot skips a 1-2 minute old signal when two bars arrive at once (City Hall `d-fresh-signal`)
 - ~~Trader Toolkit store setup~~ done Oct 27; product published
 - `ALERT_WEBHOOK_URL` in Railway (optional, for phone alerts)
 - Alpha Vantage connector (not blocking)

@@ -6,8 +6,8 @@ Rank by: expected edge × testability with our data ÷ cost.
 
 ## Levels a discretionary trader watches (Vivek's chart shows these)
 - [ ] Pre-market high/low break and retest (needs pre-market bars; Yahoo has them with includePrePost)
-- [ ] Prior-day high/low/close: break-and-hold vs reject
-- [ ] Opening drive: first 5/15/30 min direction continuation vs reversal, split by gap size
+- [x] (2026-11-07 refuted, LESSONS 28) Prior-day high/low/close: break-and-hold vs reject
+- [x] (2026-11-07 untestable, LESSONS 29: 2 drive days per symbol in 44 sessions) Opening drive: first 5/15/30 min direction continuation vs reversal, split by gap size
 - [ ] Gap fill: gap > 0.3% → fill probability by 11:00 and by close
 - [ ] VWAP reclaim / reject after a trend move (2-sided)
 - [ ] Round numbers ($5 SPY strikes) as magnets (needs no GEX)
@@ -39,25 +39,29 @@ Rank by: expected edge × testability with our data ÷ cost.
 
 ## New from batch 2 (2026-11-04)
 - [ ] Gap-and-first-hour fade vs continuation, split by gap size (the opening-drive idea above, on 5-min B plus the Alpaca history)
-- [ ] Prior-day high/low break: next on the list (chartable; no history problem; both sides)
+- [x] (2026-11-07 refuted, LESSONS 28) Prior-day high/low break: next on the list (chartable; no history problem; both sides)
 - [ ] volspike-only giveback trail (`volspike_gb`): +0.18% per trade over 24 backtest entries; picked after the fact, so a lead only. Test only on sessions after Nov 4
 
 ## From the Coach, 2026-11-04 (hindsight leads only; the Researcher pre-registers)
-- [ ] Extended-impulse filter: skip new long entries when QQQ/SPY is up 1.5% or more from the open (or from the low) inside 45 minutes; mirror: skip new shorts after a drop of 1.5% or more. Evidence: Nov 4 QQQ +1.83% in 40 minutes, then orb_vol UPRO 10:13 (-0.71%), F1/F2 QQQ 10:00 (-0.546% stop). Ties to LESSON 8 (tentative). Count qualifying days in the 41-session archive first; expect few.
+- [x] (2026-11-07 too rare: 1-2 qualifying days in 44 sessions, LESSONS 29) Extended-impulse filter: skip new long entries when QQQ/SPY is up 1.5% or more from the open (or from the low) inside 45 minutes; mirror: skip new shorts after a drop of 1.5% or more. Evidence: Nov 4 QQQ +1.83% in 40 minutes, then orb_vol UPRO 10:13 (-0.71%), F1/F2 QQQ 10:00 (-0.546% stop). Ties to LESSON 8 (tentative). Count qualifying days in the 41-session archive first; expect few.
 - [ ] Impulse fade, both sides: after an impulse of 1.5% or more, short (SQQQ/SPXU) on the first lower low after the peak; after a drop of 1.5% or more, long (TQQQ/UPRO) on the first higher high. Different from LESSON 22 (0.6% leg, VWAP cross, refuted): bigger leg, price-structure trigger.
-- [ ] Split LESSON 23's 13:00+ bucket by side and by whether the day is above its open. Nov 4: QQQ shorts from 13:45-14:45 won +0.31/+0.27%, all late longs lost. If late shorts win and late longs lose in both archives, 23 is partly regime (lesson 24).
+- [x] (2026-11-07 done, LESSONS 23 update: late shorts lose their edge, longs lose all day) Split LESSON 23's 13:00+ bucket by side and by whether the day is above its open. Nov 4: QQQ shorts from 13:45-14:45 won +0.31/+0.27%, all late longs lost. If late shorts win and late longs lose in both archives, 23 is partly regime (lesson 24).
 
 ## Data upgrades
 - [ ] Long history: Alpaca free minute bars since 2016 (needs Vivek's free key as a GitHub Actions secret)
 
 ## From the Coach, 2026-11-05 (hindsight leads only; the Researcher pre-registers)
-- [ ] Opening-range break, both sides: after the 09:30-09:45 range, a close beyond it by 0.3% or more, trade SQQQ/SPXU on a break down and TQQQ/UPRO on a break up, flat by 15:55. Nov 5: SPY was -1.37% by 10:00 and kept falling to -4.2% (the ORB desk is long-only and took no setup). Check it on non-trend days: it must not be a regime bet (LESSON 24).
+- [x] (2026-11-07 refuted, LESSONS 27) Opening-range break, both sides: after the 09:30-09:45 range, a close beyond it by 0.3% or more, trade SQQQ/SPXU on a break down and TQQQ/UPRO on a break up, flat by 15:55. Nov 5: SPY was -1.37% by 10:00 and kept falling to -4.2% (the ORB desk is long-only and took no setup). Check it on non-trend days: it must not be a regime bet (LESSON 24).
 - [ ] Dip-buy filter for CVD longs (mirror for CVD sells): skip a long when the index is 1% or more under its open at entry; skip a short when 1% or more over. Nov 5: both CVD longs at 10:09 were bought 1.4% under the open and lost (-2.98% stop, -1.63%). Counter: Oct 30 (SPY -0.74%) CVD longs won +1.56/+0.22%, so count qualifying days first.
 - [ ] Hard stop for 3x-ETF longs (e.g. -1.5%): cvd_tqqq's stop fired at -2.98% on Nov 5. Test the stop level for the CVD desks both sides, with the stop gap risk of a fast move.
-- [ ] Late-entry bucket by side (extends the 2026-11-04 idea): Nov 5 ema_vol QQQ long at 14:45 into a falling tape lost -1.21%. Forward count of 13:00+ paper entries is 1 of 10.
+- [x] (2026-11-07 done, LESSONS 23 update) Late-entry bucket by side (extends the 2026-11-04 idea): Nov 5 ema_vol QQQ long at 14:45 into a falling tape lost -1.21%. Forward count of 13:00+ paper entries is 1 of 10.
 
 ## From the Coach, 2026-11-06 (hindsight leads only; the Researcher pre-registers)
-- [ ] Failed opening drive, both sides: after a first-25-minute move of 0.9% or more on SPY (1.3% QQQ), trade the reverse (SQQQ/SPXU after an up-drive, TQQQ/UPRO after a down-drive) on the first close through the drive's midpoint, flat by 15:55 or at a VWAP reclaim. Nov 6: QQQ +1.43% to 09:53, then -1.58%; SQQQ +5.3% available. Count qualifying days first; most will be continuations (Nov 5 was one) so it must not be a regime bet (LESSON 24).
-- [ ] "Stale-high" long filter, mirror for shorts: skip a long when the day's high is 15+ minutes old and price is below VWAP; skip a short when the day's low is 15+ minutes old and price is above VWAP. Nov 6: three longs after the 09:53 high lost -$27.61.
+- [x] (2026-11-07 untestable, n=2, LESSONS 29; retest on the Alpaca history) Failed opening drive, both sides: after a first-25-minute move of 0.9% or more on SPY (1.3% QQQ), trade the reverse (SQQQ/SPXU after an up-drive, TQQQ/UPRO after a down-drive) on the first close through the drive's midpoint, flat by 15:55 or at a VWAP reclaim. Nov 6: QQQ +1.43% to 09:53, then -1.58%; SQQQ +5.3% available. Count qualifying days first; most will be continuations (Nov 5 was one) so it must not be a regime bet (LESSON 24).
+- [x] (2026-11-07 not supported, LESSONS 26 update) "Stale-high" long filter, mirror for shorts: skip a long when the day's high is 15+ minutes old and price is below VWAP; skip a short when the day's low is 15+ minutes old and price is above VWAP. Nov 6: three longs after the 09:53 high lost -$27.61.
 - [ ] SQQQ/SPXU short exit: compare eod hold vs VWAP-reclaim exit vs 50% giveback after +1% (ema_vol SQQQ peaked +1.08%, ended +0.15%). This is a narrow retest of LESSON 20 for inverse-ETF shorts only, so cite 20 and use only sessions after Nov 6.
 
+## From the Researcher, 2026-11-07
+- [ ] ORB "first break only" (`orb_vol_v2` candidate): enter only on the first close above the opening-range high, never on a re-cross. Nov 6 UPRO 12:23 was a re-cross after 121 closes above the level. Test on the floor-lab desk replay (1-min) with both sides via SPXU/SQQQ; judge only on sessions after Nov 7 for paper. Lead from one day.
+- [ ] Short-side 13:00 cutoff: late shorts lose their edge (LESSONS 23 update) while longs are flat by hour. Pre-register a short-only cutoff on new sessions only (both archives were used to find it).
+- [ ] Entry quality over exits (LESSONS 30): MFE in the first 15 minutes after entry as a "fail fast" exit (exit at 15 min if open profit has never reached +0.1%), both sides, on desk entries and random entries. Different from LESSON 20 (giveback) and the ATR trail.

@@ -14,6 +14,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from lab.foundry.batch3 import clean_wicks
 from lab.foundry.rules import RULES, add_features, load_bars, simulate, to_5min
 
 SYMS = ["SPY", "QQQ", "TQQQ", "UPRO", "SQQQ", "SPXU"]
@@ -56,7 +57,9 @@ def main():
     ap.add_argument("--day", default=None)
     a = ap.parse_args()
     arch = Path(a.archive)
-    bars = {s: load_bars(arch / f"{s}.csv.gz") for s in SYMS if (arch / f"{s}.csv.gz").exists()}
+    # wick cleaning at ingest (LESSONS 25; PREREG_batch3): clip 1-min wicks beyond 0.4% x leverage of the body
+    bars = {s: clean_wicks(load_bars(arch / f"{s}.csv.gz"), 0.004 * (3 if s in ("TQQQ", "UPRO", "SQQQ", "SPXU") else 1))[0]
+            for s in SYMS if (arch / f"{s}.csv.gz").exists()}
     day = a.day or str(max(bars["SPY"].index.date))
     rep = {"day": day, "market": {}, "desks": [], "foundry": [], "lessons_prompt": []}
     lines = [f"# Session post-mortem {day}", ""]

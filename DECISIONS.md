@@ -302,3 +302,11 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-07 (Hustle run)
 - Promotion: added free page profit-factor-from-win-rate-and-reward-to-risk (table computed by script). Cadence unchanged (daily 8:43 PT): promotion work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
+
+## 2026-11-07 Researcher (Saturday review run)
+- Pre-registered and ran foundry batch 3 (`research/foundry/PREREG_batch3.md`, committed before computing; results `batch3_REPORT.md`): two-sided opening-range break, failed opening drive (+ continuation), prior-day high/low hold and reject, stale-high filter. 0 of 4 candidates passed; no new paper desk. Variants 156 → 169.
+- No retirement: no desk has 20 paper trades (rule). ema_vol_v2 kept: identical to ema_vol on QQQ/SQQQ by construction; aggregate stats will count each identical pair once.
+- Post-mortems clean 1-min wicks beyond 0.4% x leverage of the body at ingest (lab code only; LESSONS 25). Nov 4-5 post-mortems rebuilt on branch data. foundry-lab now also runs batch 3.
+- Found from Railway logs that the paper runner skips a signal bar when a newer bar arrives in the same step (LESSONS 31). The fix touches the entry path in engine/, so it is draft PR #3 + City Hall `d-fresh-signal`; not merged.
+- Weekly note `research/weekly/2026-W45.md`. Skylit 25 credits (C-2 boards Nov 2-6, cached at `data:research/skylit/raw/heat0dte_w6_spy.jsonl`).
+
