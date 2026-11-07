@@ -55,3 +55,9 @@ Rank by: expected edge × testability with our data ÷ cost.
 - [ ] Dip-buy filter for CVD longs (mirror for CVD sells): skip a long when the index is 1% or more under its open at entry; skip a short when 1% or more over. Nov 5: both CVD longs at 10:09 were bought 1.4% under the open and lost (-2.98% stop, -1.63%). Counter: Oct 30 (SPY -0.74%) CVD longs won +1.56/+0.22%, so count qualifying days first.
 - [ ] Hard stop for 3x-ETF longs (e.g. -1.5%): cvd_tqqq's stop fired at -2.98% on Nov 5. Test the stop level for the CVD desks both sides, with the stop gap risk of a fast move.
 - [ ] Late-entry bucket by side (extends the 2026-11-04 idea): Nov 5 ema_vol QQQ long at 14:45 into a falling tape lost -1.21%. Forward count of 13:00+ paper entries is 1 of 10.
+
+## From the Coach, 2026-11-06 (hindsight leads only; the Researcher pre-registers)
+- [ ] Failed opening drive, both sides: after a first-25-minute move of 0.9% or more on SPY (1.3% QQQ), trade the reverse (SQQQ/SPXU after an up-drive, TQQQ/UPRO after a down-drive) on the first close through the drive's midpoint, flat by 15:55 or at a VWAP reclaim. Nov 6: QQQ +1.43% to 09:53, then -1.58%; SQQQ +5.3% available. Count qualifying days first; most will be continuations (Nov 5 was one) so it must not be a regime bet (LESSON 24).
+- [ ] "Stale-high" long filter, mirror for shorts: skip a long when the day's high is 15+ minutes old and price is below VWAP; skip a short when the day's low is 15+ minutes old and price is above VWAP. Nov 6: three longs after the 09:53 high lost -$27.61.
+- [ ] SQQQ/SPXU short exit: compare eod hold vs VWAP-reclaim exit vs 50% giveback after +1% (ema_vol SQQQ peaked +1.08%, ended +0.15%). This is a narrow retest of LESSON 20 for inverse-ETF shorts only, so cite 20 and use only sessions after Nov 6.
+
