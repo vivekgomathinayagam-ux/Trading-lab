@@ -92,6 +92,12 @@ class RunnerTests(unittest.TestCase):
         r.step(DAY + timedelta(minutes=40, seconds=5))   # bot was down while the breakout happened
         self.assertEqual(self.broker.orders, [])
 
+    def test_signal_bar_not_latest_but_recent_is_traded(self):
+        r = self.runner()
+        r.step(DAY + timedelta(minutes=20, seconds=5))   # sees bars to 09:49
+        r.step(DAY + timedelta(minutes=22, seconds=5))   # 09:50 (breakout) and 09:51 arrive together
+        self.assertEqual([o.side for o in self.broker.orders], ["buy"])
+
     def test_safety_flat_before_close(self):
         r = self.runner()
         for i in range(1, 25):
