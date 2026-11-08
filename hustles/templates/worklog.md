@@ -57,3 +57,8 @@
 - Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 12 of 45.
 - Promote: new free search page `promo/pages/profit-factor-from-win-rate-and-reward-to-risk.md` (targets "profit factor calculator trading"; 16-row table computed by script). One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-08 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 13 of 45.
+- Promote: new free search page `promo/pages/drawdown-recovery-gain-needed.md` (targets "drawdown recovery calculator", "gain needed to recover loss"; tables computed by script and checked by hand). One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.

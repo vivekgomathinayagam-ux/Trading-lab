@@ -21,7 +21,7 @@ _Read this first. Updated by every session and scheduled task. Times are America
 **As of:** 2026-11-06 14:50 PT. Accountant daily close, paper day 10: 6 trades, 3 wins, all small (CVD SPY +$2.44, EMA and EMA v2 SQQQ +$1.45 each); losses: ORB UPRO −$16.87, CVD TQQQ −$5.64, Volume spike QQQ −$5.10; no +5% hits, no stops. Bot healthy (heartbeat 14:00 PT, kill switch off). SPY −3.50% since start. Researcher's Nov 4 build run is described above.
 **Previously:** 2026-11-03 14:50 PT (daily close, paper day 7: 6 trades, 1 win (CVD TQQQ +$2.98), 5 small losses; EMA v2 took its first paper trade; no +5% hits; bot healthy, kill switch off; SPY hold −1.02% since start)
 **Earlier:** 2026-11-02 14:45 PT (daily close, paper day 6: 4 trades, all losses)
-**Hustles as of 2026-11-07 08:50 PT:** no sales data reachable; ledger unchanged ($0, day 12 of 45); new free profit-factor page published to repo.
+**Hustles as of 2026-11-08 08:50 PT:** no sales data reachable; ledger unchanged ($0, day 13 of 45); new free drawdown-recovery page published to repo.
 
 ## Phase
 Phase 0 — building from zero. See the Phase 0 checklist below.

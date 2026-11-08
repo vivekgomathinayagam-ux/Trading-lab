@@ -22,3 +22,4 @@ Update 2026-11-04 08:50 PT: still no reachable sales data; Sales 0 known, Revenu
 Update 2026-11-05 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 10 of 45. New free page: what-to-track-in-an-options-trading-journal.md.
 Update 2026-11-06 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 11 of 45. New free page: breakeven-win-rate-by-reward-to-risk.md.
 Update 2026-11-07 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 12 of 45. New free page: profit-factor-from-win-rate-and-reward-to-risk.md.
+Update 2026-11-08 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 13 of 45. New free page: drawdown-recovery-gain-needed.md.

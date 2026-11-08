@@ -310,3 +310,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Found from Railway logs that the paper runner skips a signal bar when a newer bar arrives in the same step (LESSONS 31). The fix touches the entry path in engine/, so it is draft PR #3 + City Hall `d-fresh-signal`; not merged.
 - Weekly note `research/weekly/2026-W45.md`. Skylit 25 credits (C-2 boards Nov 2-6, cached at `data:research/skylit/raw/heat0dte_w6_spy.jsonl`).
 
+
+## 2026-11-08 (Hustle run)
+- Promotion: added free page drawdown-recovery-gain-needed (tables computed by script). Cadence unchanged (daily 8:43 PT): promotion work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
