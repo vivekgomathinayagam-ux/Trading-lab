@@ -62,3 +62,8 @@
 - Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 13 of 45.
 - Promote: new free search page `promo/pages/drawdown-recovery-gain-needed.md` (targets "drawdown recovery calculator", "gain needed to recover loss"; tables computed by script and checked by hand). One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-09 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 14 of 45.
+- Promote: new free search page `promo/pages/kelly-fraction-table-from-win-rate-and-payoff.md` (targets "kelly criterion calculator trading"; tables computed by script, hand-checked: 50%/R2 -> 25%, 40%/R1.5 -> 0). One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
