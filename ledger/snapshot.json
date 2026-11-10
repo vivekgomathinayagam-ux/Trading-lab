@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-11-10T19:00:12+00:00",
+  "as_of": "2026-11-10T19:15:13+00:00",
   "mode": "paper",
-  "equity": 969.91,
+  "equity": 970.84,
   "settled_cash": -2272.73,
   "peak_equity": 1056.64,
   "start_of_day_equity": 995.23,
-  "drawdown": 0.0821,
+  "drawdown": 0.0812,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
