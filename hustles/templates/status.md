@@ -24,3 +24,4 @@ Update 2026-11-06 08:50 PT: still no reachable sales data; Sales 0 known, Revenu
 Update 2026-11-07 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 12 of 45. New free page: profit-factor-from-win-rate-and-reward-to-risk.md.
 Update 2026-11-08 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 13 of 45. New free page: drawdown-recovery-gain-needed.md.
 Update 2026-11-09 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 14 of 45. New free page: kelly-fraction-table-from-win-rate-and-payoff.md.
+Update 2026-11-10 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 15 of 45. New free page: credit-spread-break-even-win-rate.md.

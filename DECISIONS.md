@@ -316,3 +316,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-09 (Hustle run)
 - Promotion: added free page kelly-fraction-table-from-win-rate-and-payoff (tables computed by script). Cadence unchanged (daily 8:43 PT): promotion work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
+
+## 2026-11-10 (Hustle run)
+- Promotion: added free page credit-spread-break-even-win-rate (table computed by script). Cadence unchanged (daily 8:43 PT): promotion work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.

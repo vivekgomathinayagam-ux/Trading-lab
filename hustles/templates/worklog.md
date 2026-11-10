@@ -67,3 +67,8 @@
 - Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 14 of 45.
 - Promote: new free search page `promo/pages/kelly-fraction-table-from-win-rate-and-payoff.md` (targets "kelly criterion calculator trading"; tables computed by script, hand-checked: 50%/R2 -> 25%, 40%/R1.5 -> 0). One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-10 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 15 of 45.
+- Promote: new free search page `promo/pages/credit-spread-break-even-win-rate.md` (targets "credit spread break even probability"; table computed by script, hand-checked: $1 wide/$0.30 credit -> 70%). One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
