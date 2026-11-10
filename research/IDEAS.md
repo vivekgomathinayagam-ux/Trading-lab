@@ -65,3 +65,6 @@ Rank by: expected edge × testability with our data ÷ cost.
 - [ ] ORB "first break only" (`orb_vol_v2` candidate): enter only on the first close above the opening-range high, never on a re-cross. Nov 6 UPRO 12:23 was a re-cross after 121 closes above the level. Test on the floor-lab desk replay (1-min) with both sides via SPXU/SQQQ; judge only on sessions after Nov 7 for paper. Lead from one day.
 - [ ] Short-side 13:00 cutoff: late shorts lose their edge (LESSONS 23 update) while longs are flat by hour. Pre-register a short-only cutoff on new sessions only (both archives were used to find it).
 - [ ] Entry quality over exits (LESSONS 30): MFE in the first 15 minutes after entry as a "fail fast" exit (exit at 15 min if open profit has never reached +0.1%), both sides, on desk entries and random entries. Different from LESSON 20 (giveback) and the ATR trail.
+
+## From the Coach, 2026-11-09 (hindsight leads only; the Researcher pre-registers)
+- [ ] CVD long exit variants, split by day direction: first CVD sell vs hold until close below VWAP vs hold until 15:55, for CVD longs; mirror for CVD shorts via SQQQ/SPXU (falling-day version). Nov 9: cvd_tqqq sold at 10:15 (+0.80%) and TQQQ ran to 15:29 (+8.75% leg); on Nov 5/6 the same early exits were the lesser loss. Report separately for days above and below the open (LESSON 24) and cite LESSON 20.
