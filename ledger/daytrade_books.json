@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-10T15:00:14+00:00",
+ "as_of": "2026-11-10T15:15:19+00:00",
  "peak": {
   "orb_vol": 1003.0591364,
   "ema_vol": 1000.4176900000002,
@@ -39,12 +39,12 @@
   "skylit": "ok"
  },
  "marks": {
-  "SPY": 750.92,
-  "QQQ": 679.08,
-  "TQQQ": 57.65,
-  "UPRO": 136.88,
-  "SQQQ": 42.72,
-  "SPXU": 36.291
+  "SPY": 751.05,
+  "QQQ": 679.01,
+  "TQQQ": 57.6,
+  "UPRO": 136.949,
+  "SQQQ": 42.82,
+  "SPXU": 36.29
  },
  "desks": {
   "orb_vol": {
@@ -56,12 +56,19 @@
    "equity": 963.5
   },
   "ema_vol": {
-   "cash": 972.9020348000004,
+   "cash": 293.75623280000036,
    "start_equity": 1000.0,
-   "last_entry_day": "2026-11-06",
-   "pos": null,
+   "last_entry_day": "2026-11-10",
+   "pos": {
+    "sym": "QQQ",
+    "qty": 1,
+    "entry_px": 679.145802,
+    "stop": 662.1671569499999,
+    "target": 713.1030921,
+    "entry_t": "2026-11-10T10:15:12.349528-05:00"
+   },
    "label": "EMA 9/21 + volume",
-   "equity": 972.9
+   "equity": 972.77
   },
   "volspike": {
    "cash": 92.94186620000107,
@@ -76,30 +83,30 @@
     "entry_t": "2026-11-10T10:00:12.348064-05:00"
    },
    "label": "Volume spike",
-   "equity": 1051.1
+   "equity": 1051.58
   },
   "ema_vol_v2": {
-   "cash": 987.7123398000001,
-   "start_equity": 1000.0,
-   "last_entry_day": "2026-11-06",
-   "pos": null,
-   "label": "EMA 9/21 + volume v2",
-   "equity": 987.71
-  },
-  "cvd_spy": {
-   "cash": 240.97823060000053,
+   "cash": 308.5665378000001,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-10",
    "pos": {
-    "sym": "SPY",
+    "sym": "QQQ",
     "qty": 1,
-    "entry_px": 749.879946,
-    "stop": 731.13294735,
-    "target": 787.3739433000001,
-    "entry_t": "2026-11-10T09:57:12.347776-05:00"
+    "entry_px": 679.145802,
+    "stop": 662.1671569499999,
+    "target": 713.1030921,
+    "entry_t": "2026-11-10T10:15:12.349528-05:00"
    },
+   "label": "EMA 9/21 + volume v2",
+   "equity": 987.58
+  },
+  "cvd_spy": {
+   "cash": 992.3879186000005,
+   "start_equity": 1000.0,
+   "last_entry_day": "2026-11-10",
+   "pos": null,
    "label": "CVD turn 3-min (SPY)",
-   "equity": 991.9
+   "equity": 992.39
   },
   "cvd_tqqq": {
    "cash": 978.7711570000008,
