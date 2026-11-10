@@ -1,89 +1,39 @@
 {
-  "as_of": "2026-11-10T20:45:13+00:00",
+  "as_of": "2026-11-10T20:59:13+00:00",
   "mode": "paper",
-  "equity": 976.09,
-  "settled_cash": -2272.73,
+  "equity": 975.38,
+  "settled_cash": 975.38,
   "peak_equity": 1056.64,
   "start_of_day_equity": 995.23,
-  "drawdown": 0.0762,
+  "drawdown": 0.0769,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 1358.73,
-      "date_acquired": "2026-11-10T15:15:18.267Z",
-      "id": 2731168,
-      "quantity": 2.0,
-      "symbol": "QQQ"
-    },
-    {
-      "cost_basis": 947.7,
-      "date_acquired": "2026-11-10T15:51:12.728Z",
-      "id": 2731805,
-      "quantity": 26.0,
-      "symbol": "SPXU"
-    },
-    {
-      "cost_basis": 951.16,
-      "date_acquired": "2026-11-10T15:00:13.509Z",
-      "id": 2730683,
-      "quantity": 7.0,
-      "symbol": "UPRO"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 3.36,
-      "position": {
-        "sym": "SPXU",
-        "qty": 26,
-        "entry_px": 36.92845499999999,
-        "stop": 36.00524362499999,
-        "target": 38.774877749999995,
-        "entry_t": "2026-11-10T10:51:12.355191-05:00"
-      }
+      "cash": 948.12,
+      "position": null
     },
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 293.76,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 679.145802,
-        "stop": 662.1671569499999,
-        "target": 713.1030921,
-        "entry_t": "2026-11-10T10:15:12.349528-05:00"
-      }
+      "cash": 968.83,
+      "position": null
     },
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 92.94,
-      "position": {
-        "sym": "UPRO",
-        "qty": 7,
-        "entry_px": 136.94843999999998,
-        "stop": 133.52472899999998,
-        "target": 143.79586199999997,
-        "entry_t": "2026-11-10T10:00:12.348064-05:00"
-      }
+      "cash": 1048.35,
+      "position": null
     },
     {
       "desk": "ema_vol_v2",
       "label": "EMA 9/21 + volume v2",
-      "cash": 308.57,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 679.145802,
-        "stop": 662.1671569499999,
-        "target": 713.1030921,
-        "entry_t": "2026-11-10T10:15:12.349528-05:00"
-      }
+      "cash": 983.64,
+      "position": null
     },
     {
       "desk": "cvd_spy",
