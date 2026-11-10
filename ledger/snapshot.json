@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-11-10T15:45:12+00:00",
+  "as_of": "2026-11-10T16:15:12+00:00",
   "mode": "paper",
-  "equity": 980.53,
-  "settled_cash": -2297.94,
+  "equity": 974.14,
+  "settled_cash": -2272.73,
   "peak_equity": 1056.64,
   "start_of_day_equity": 995.23,
-  "drawdown": 0.072,
+  "drawdown": 0.0781,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
@@ -17,11 +17,11 @@
       "symbol": "QQQ"
     },
     {
-      "cost_basis": 983.11,
-      "date_acquired": "2026-11-10T15:21:12.880Z",
-      "id": 2731284,
-      "quantity": 17.0,
-      "symbol": "TQQQ"
+      "cost_basis": 947.7,
+      "date_acquired": "2026-11-10T15:51:12.728Z",
+      "id": 2731805,
+      "quantity": 26.0,
+      "symbol": "SPXU"
     },
     {
       "cost_basis": 951.16,
@@ -36,8 +36,15 @@
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 963.5,
-      "position": null
+      "cash": 3.36,
+      "position": {
+        "sym": "SPXU",
+        "qty": 26,
+        "entry_px": 36.92845499999999,
+        "stop": 36.00524362499999,
+        "target": 38.774877749999995,
+        "entry_t": "2026-11-10T10:51:12.355191-05:00"
+      }
     },
     {
       "desk": "ema_vol",
@@ -87,15 +94,8 @@
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 0.99,
-      "position": {
-        "sym": "TQQQ",
-        "qty": 17,
-        "entry_px": 57.516743999999996,
-        "stop": 56.07882539999999,
-        "target": 60.392581199999995,
-        "entry_t": "2026-11-10T10:21:12.350183-05:00"
-      }
+      "cash": 955.99,
+      "position": null
     }
   ]
 }
