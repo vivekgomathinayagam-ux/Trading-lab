@@ -1,20 +1,20 @@
 {
-  "as_of": "2026-11-10T15:00:14+00:00",
+  "as_of": "2026-11-10T15:15:19+00:00",
   "mode": "paper",
-  "equity": 996.04,
-  "settled_cash": 247.05,
+  "equity": 1002.01,
+  "settled_cash": 43.9,
   "peak_equity": 1056.64,
   "start_of_day_equity": 995.23,
-  "drawdown": 0.0574,
+  "drawdown": 0.0517,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
     {
-      "cost_basis": 748.18,
-      "date_acquired": "2026-11-10T14:57:12.762Z",
-      "id": 2730595,
-      "quantity": 1.0,
-      "symbol": "SPY"
+      "cost_basis": 951.16,
+      "date_acquired": "2026-11-10T15:00:13.509Z",
+      "id": 2730683,
+      "quantity": 7.0,
+      "symbol": "UPRO"
     }
   ],
   "strategies": [],
@@ -28,8 +28,15 @@
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 972.9,
-      "position": null
+      "cash": 293.76,
+      "position": {
+        "sym": "QQQ",
+        "qty": 1,
+        "entry_px": 679.145802,
+        "stop": 662.1671569499999,
+        "target": 713.1030921,
+        "entry_t": "2026-11-10T10:15:12.349528-05:00"
+      }
     },
     {
       "desk": "volspike",
@@ -47,21 +54,21 @@
     {
       "desk": "ema_vol_v2",
       "label": "EMA 9/21 + volume v2",
-      "cash": 987.71,
-      "position": null
+      "cash": 308.57,
+      "position": {
+        "sym": "QQQ",
+        "qty": 1,
+        "entry_px": 679.145802,
+        "stop": 662.1671569499999,
+        "target": 713.1030921,
+        "entry_t": "2026-11-10T10:15:12.349528-05:00"
+      }
     },
     {
       "desk": "cvd_spy",
       "label": "CVD turn 3-min (SPY)",
-      "cash": 240.98,
-      "position": {
-        "sym": "SPY",
-        "qty": 1,
-        "entry_px": 749.879946,
-        "stop": 731.13294735,
-        "target": 787.3739433000001,
-        "entry_t": "2026-11-10T09:57:12.347776-05:00"
-      }
+      "cash": 992.39,
+      "position": null
     },
     {
       "desk": "cvd_tqqq",
