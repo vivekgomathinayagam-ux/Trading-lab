@@ -53,6 +53,8 @@ jobs:
           fi
       - name: Batch 3 (two-sided ORB, opening drive, prior-day levels, stale-high filter) on both archives
         run: python -m lab.foundry.batch3 --archive1m backtests/data/etf1m --archive5m backtests/data/etf5m --desk-trades ledger/floor_trades_1m.csv --out out/foundry/batch3 > /dev/null
+      - name: Batch 4 (distance filters, fail-fast exit, exits by day shape, H13 1%-from-open continuation) on both archives
+        run: python -m lab.foundry.batch4 --archive1m backtests/data/etf1m --archive5m backtests/data/etf5m --desk-trades ledger/floor_trades_1m.csv --out out/foundry/batch4
       - name: Session post-mortem (latest archived day)
         run: python -m lab.foundry.postmortem --archive backtests/data/etf1m --trades ledger/daytrade_trades.csv --out out/postmortem
       - name: Summary

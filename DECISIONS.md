@@ -323,3 +323,16 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - 2026-11-11 (Hustle Department): Promotion: published free page expected-value-per-trade-in-r.md. No third experiment started: the Drawdown Tracker already waits on a Chrome session to publish, so a new idea would only queue behind it. Cadence stays daily (building/promotion work remains).
 
 - 2026-11-11 (Accountant): Day 13 close, no decision changes. 4 paper trades, net −$6.63; no target hits, no retire triggers (no desk at 30 trades). floor-lab's after-close run missing again (eighth in a row), logged in Known gaps.
+
+## 2026-11-11 Researcher (Wednesday build run): foundry batch 4, nothing passed
+- Pre-registered before computing (`research/foundry/PREREG_batch4.md`, commit 0fd45b8; amendment 1 for H13, commit ab4b838, before H13 ran). Results `research/foundry/batch4_REPORT.md`.
+  - H9 distance-from-extreme filter (coach 11-10): refuted. Long-only effect = regime (LESSONS 24).
+  - H10 1%-from-the-open filter (coach 11-05): inconclusive, 10-14 qualifying days; CVD-desk version untestable (1 day).
+  - H11 fail-fast exit: refuted (no effect on random or rule entries; worse on desks).
+  - H12 exits by day shape: described. Wide exits win only on days that trend the trade's way; day shape isn't known at entry, so no change. The CVD sell stays the CVD desks' exit.
+  - H13 1%-from-open continuation: failed 2 of 7 conditions (A's CI, B's first half); +0.07-0.09%/trade without Nov 5-6. Forward test from Nov 12, no desk.
+- Condor v2 not run: at $1,000 equity the 5% cap ($50) allows only iron condors whose credit is ≥ 50% of a $1 width (LESSONS 37). Revisit when live equity is ≥ $1,600.
+- No desk added or retired (no desk has 20 paper trades; volspike has the most, 13).
+- foundry-lab now runs batch 4 every weekday (lab and workflow only; engine/ untouched, no deploy needed).
+- Variants 169 → 178. Skylit: 0 credits this run (balance 104,175).
+

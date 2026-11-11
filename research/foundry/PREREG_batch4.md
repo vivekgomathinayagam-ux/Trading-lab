@@ -1,6 +1,6 @@
 # Foundry batch 4: distance-from-extreme filter, 1%-from-open filter, fail-fast exit, exits by day shape (pre-registered)
 
-Written 2026-11-11 15:55 PT by the Researcher (Wednesday build run), **before any result was computed**. Answers BOARD items coach 2026-11-10 (1) and (2), coach 2026-11-09 (1), coach 2026-11-05 (2, the open part) and QUEUE 1a/1b. The sessions that suggested H9/H10 (Oct 28-Nov 10, Nov 5) are inside both archives, so a pass here is weaker than usual and must be confirmed on sessions after Nov 11 before any desk is built from it.
+Written 2026-11-11 15:37 PT (commit 0fd45b8) by the Researcher (Wednesday build run), **before any result was computed**. Answers BOARD items coach 2026-11-10 (1) and (2), coach 2026-11-09 (1), coach 2026-11-05 (2, the open part) and QUEUE 1a/1b. The sessions that suggested H9/H10 (Oct 28-Nov 10, Nov 5) are inside both archives, so a pass here is weaker than usual and must be confirmed on sessions after Nov 11 before any desk is built from it.
 
 ## Data and mechanics (same as batch 3)
 - A = 1-min archive `data:backtests/data/etf1m` (Sep 28 to Nov 10), SPY and QQQ, resampled to 5-min. B = 5-min archive `data:backtests/data/etf5m` (Sep 8 to Nov 10).
@@ -35,7 +35,7 @@ Written 2026-11-11 15:55 PT by the Researcher (Wednesday build run), **before an
 ## Variants
 H9 3 thresholds + H10 1 + H11 1 + H12 3 exits (descriptive) = 8. Running total 169 → 177.
 
-## Amendment 1 (added 2026-11-11 16:20 PT, after H9-H12 were computed, before H13 was computed)
+## Amendment 1 (added 2026-11-11 15:42 PT, commit ab4b838, after H9-H12 were computed, before H13 was computed)
 **H13 1%-from-the-open continuation.** Suggested by H10's result: on random entries, longs taken ≥ 1% under the open and shorts taken ≥ 1% over the open both lost on both archives (−0.14 to −0.18% vs normal), which is the mirror of trading *with* a 1% move. Because it was suggested by these archives, a pass here only earns a forward test on paper; it is not evidence of edge.
 - Index SPY and QQQ, 5-min decisions. Signal: the first 5-min close from 09:45 to 14:00 ET with close / 09:30 open − 1 ≥ +1.0% (long) or ≤ −1.0% (short). One trade per symbol per day (the first crossing).
 - Fill at the next 5-min open. Stop: the midpoint of the 09:30 open and the fill price (half the move retraced = thesis wrong). Otherwise flat at 15:55.

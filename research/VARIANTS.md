@@ -20,3 +20,4 @@ Every rule, parameter set and combination looked at, kept or not. Add a row each
 | 2026-11-04 | Foundry batch 2 | GB trail exit (on 3 entry sets) + hold-to-15:55, G1/G2/G3 trend-day gate + G3x contrast, R1 reversal day, 13:00 and 11:30 cutoffs; both archives, both sides | none passed; 13:00 cutoff weak support (forward test) | 155 |
 | 2026-11-04 | Condor study 1 | 1-day SPY iron condor ±1 sigma, $5 wings, real Skylit last prices | refuted | 156 |
 | 2026-11-07 | Foundry batch 3 | ORB2 grid 6 (2 buffers x 3 windows, primary b10/<11:00), FOD x2 thresholds, CONT x2, PD hold, PD reject, stale-high filter; both archives, both sides, random control | none passed | 169 |
+| 2026-11-11 | Foundry batch 4 | H9 distance-from-extreme filter x3 thresholds, H10 1%-from-open filter, H11 fail-fast exit, H12 exit-by-day-shape (F1, F2, CVD/hold/VWAP: 3), H13 1%-from-open continuation (amendment); both archives, both sides, random control | none passed; H13 forward lead | 178 |

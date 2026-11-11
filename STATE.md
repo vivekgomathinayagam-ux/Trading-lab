@@ -12,7 +12,12 @@ _Read this first. Updated by every session and scheduled task. Times are America
 - Foundry batch 1 tested 6 trend/Fibonacci rules on 2 samples: all refuted (`research/foundry/batch1_REPORT.md`).
 - Waiting on Vivek: an Alpaca data key, and one bundled yes for the 4 paper-engine fixes.
 
-**Researcher as of 2026-11-07 16:45 PT (Sat review run):**
+**Researcher as of 2026-11-11 16:05 PT (Wed build run):**
+- Foundry batch 4, pre-registered (`research/foundry/batch4_REPORT.md`): 0 of 4 passed. Distance-from-high filter refuted (regime); 1%-from-open filter inconclusive (10-14 days); fail-fast exit refuted; exits by day shape: the wide exit/hold wins only on days that trend your way, which is hindsight, so the CVD sell stays (over 29 entries +0.20% vs −0.66% holding).
+- H13 (trade with a 1% move from the open) +0.35%/trade on 20 trades but failed 2 of 7 conditions and rests on Nov 5: forward test only (foundry-lab logs it daily from Nov 12).
+- Condor v2 can't be sized under the 5% cap at $1,000 (needs ≥ $1,600; LESSONS 37). No desk added or retired (6 of 8; none has 20 paper trades). Variants 178. Skylit 0 credits (balance 104,175).
+
+**Researcher (previous) as of 2026-11-07 16:45 PT (Sat review run):**
 - Paper, 43 trades in 10 sessions: no desk has 20, so no verdicts or retirements. Only volspike is positive (+0.49%/trade, CI [−0.29, +1.38]), mostly inverse-ETF shorts on down days. orb_vol and ema_vol CIs are below 0 at n=7-8.
 - Batch 3 (pre-registered, `research/foundry/batch3_REPORT.md`): two-sided ORB, prior-day high/low hold and reject refuted; failed opening drive untestable (2 drive days per symbol in 44 sessions); stale-high filter not supported. No new desk.
 - Parity 17/29. Cause found: the bot skips a signal when Yahoo delivers two bars at once (Nov 5 CVD 09:53). Draft PR #3 + City Hall `d-fresh-signal`, waiting on Vivek.
@@ -77,6 +82,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 - **Foundry batch 1 (2026-11-03):** 6 rules, each long and short: Ripster cloud ride ×2, VWAP trend, trend break, Fib 61.8, Fib 38.2. Tested on 26 sessions of 1-min and 41 of 5-min. All refuted (`research/foundry/batch1_REPORT.md`). Next: a trend-day gate (BOARD).
 - **Foundry batch 2 + condor study 1 (2026-11-04):** giveback trail, trend-day gate, reversal day, 1-day ±1σ iron condor: all refuted. 13:00 ET entry cutoff: tentative, forward test on the paper ledger (wrong if 10 late paper entries average ≥ 0). foundry-lab now runs batch 2 each weekday. Next Wed: prior-day high/low and opening-drive rules (`research/QUEUE.md`).
 - **Saturday review 2026-11-07 + foundry batch 3** (`research/weekly/2026-W45.md`): 43 paper trades, no desk at 20; parity 17/29 (stale-signal skip found, PR #3); two-sided ORB, prior-day levels refuted, opening drive untestable, stale-high filter not supported (LESSONS 26-31). No desk added or retired (6 of 8). Next Wed: CVD 1%-from-open filter, fail-fast exit, ORB first-break-only.
+- **Wed build run 2026-11-11, foundry batch 4** (`research/foundry/batch4_REPORT.md`): distance-from-high filter refuted, 1%-from-open filter inconclusive, fail-fast exit refuted, exit ranking flips with day shape (keep the CVD sell); H13 1%-from-open continuation is a forward test from Nov 12; condor v2 blocked by the 5% cap at $1,000. No desk change (6 of 8). Variants 178. Next Sat: paper review W46, ORB first-break-only, day-type marker.
 - Combos (portfolio, confluence and gating, sequencing) are pre-registered in `research/combos.md` and judged on forward days only. Variant count: `research/VARIANTS.md`. Queue: `research/QUEUE.md`.
 
 ### Other setups

@@ -33,7 +33,7 @@ Rank by: expected edge × testability with our data ÷ cost.
 
 ## Options-native (needs real option prices; Skylit has 30 days intraday)
 - [x] 1-day iron condor at ±1 priced sigma (2026-11-04 refuted, LESSONS 19)
-- [ ] Condor v2: short strikes where the credit is ≥ 20% of the width, or a 1.5-sigma 2-5 DTE condor; size $1 wings under the 5% cap (needs a reason beyond 'try again'; credit/width is that reason)
+- [ ] (2026-11-11 blocked by the 5% cap at $1,000 equity, LESSONS 37; needs ≥ $1,600 live equity) Condor v2: short strikes where the credit is ≥ 20% of the width, or a 1.5-sigma 2-5 DTE condor; size $1 wings under the 5% cap (needs a reason beyond 'try again'; credit/width is that reason)
 - [ ] Fade the first hour: G3x (non-trend days) was +0.12% on A but −0.04% on B. Weak; test only with the Alpaca history
 - [ ] 0DTE debit spread on cloud-ride signals vs trading the ETF (does the option leverage survive the spread?)
 
@@ -52,7 +52,7 @@ Rank by: expected edge × testability with our data ÷ cost.
 
 ## From the Coach, 2026-11-05 (hindsight leads only; the Researcher pre-registers)
 - [x] (2026-11-07 refuted, LESSONS 27) Opening-range break, both sides: after the 09:30-09:45 range, a close beyond it by 0.3% or more, trade SQQQ/SPXU on a break down and TQQQ/UPRO on a break up, flat by 15:55. Nov 5: SPY was -1.37% by 10:00 and kept falling to -4.2% (the ORB desk is long-only and took no setup). Check it on non-trend days: it must not be a regime bet (LESSON 24).
-- [ ] Dip-buy filter for CVD longs (mirror for CVD sells): skip a long when the index is 1% or more under its open at entry; skip a short when 1% or more over. Nov 5: both CVD longs at 10:09 were bought 1.4% under the open and lost (-2.98% stop, -1.63%). Counter: Oct 30 (SPY -0.74%) CVD longs won +1.56/+0.22%, so count qualifying days first.
+- [x] (2026-11-11 inconclusive, batch 4 H10, LESSONS 36: 10-14 qualifying days; desk version 1 day) Dip-buy filter for CVD longs (mirror for CVD sells): skip a long when the index is 1% or more under its open at entry; skip a short when 1% or more over. Nov 5: both CVD longs at 10:09 were bought 1.4% under the open and lost (-2.98% stop, -1.63%). Counter: Oct 30 (SPY -0.74%) CVD longs won +1.56/+0.22%, so count qualifying days first.
 - [ ] Hard stop for 3x-ETF longs (e.g. -1.5%): cvd_tqqq's stop fired at -2.98% on Nov 5. Test the stop level for the CVD desks both sides, with the stop gap risk of a fast move.
 - [x] (2026-11-07 done, LESSONS 23 update) Late-entry bucket by side (extends the 2026-11-04 idea): Nov 5 ema_vol QQQ long at 14:45 into a falling tape lost -1.21%. Forward count of 13:00+ paper entries is 1 of 10.
 
@@ -64,13 +64,18 @@ Rank by: expected edge × testability with our data ÷ cost.
 ## From the Researcher, 2026-11-07
 - [ ] ORB "first break only" (`orb_vol_v2` candidate): enter only on the first close above the opening-range high, never on a re-cross. Nov 6 UPRO 12:23 was a re-cross after 121 closes above the level. Test on the floor-lab desk replay (1-min) with both sides via SPXU/SQQQ; judge only on sessions after Nov 7 for paper. Lead from one day.
 - [ ] Short-side 13:00 cutoff: late shorts lose their edge (LESSONS 23 update) while longs are flat by hour. Pre-register a short-only cutoff on new sessions only (both archives were used to find it).
-- [ ] Entry quality over exits (LESSONS 30): MFE in the first 15 minutes after entry as a "fail fast" exit (exit at 15 min if open profit has never reached +0.1%), both sides, on desk entries and random entries. Different from LESSON 20 (giveback) and the ATR trail.
+- [x] (2026-11-11 refuted, batch 4 H11, LESSONS 34) Entry quality over exits (LESSONS 30): MFE in the first 15 minutes after entry as a "fail fast" exit (exit at 15 min if open profit has never reached +0.1%), both sides, on desk entries and random entries. Different from LESSON 20 (giveback) and the ATR trail.
 
 ## From the Coach, 2026-11-09 (hindsight leads only; the Researcher pre-registers)
-- [ ] CVD long exit variants, split by day direction: first CVD sell vs hold until close below VWAP vs hold until 15:55, for CVD longs; mirror for CVD shorts via SQQQ/SPXU (falling-day version). Nov 9: cvd_tqqq sold at 10:15 (+0.80%) and TQQQ ran to 15:29 (+8.75% leg); on Nov 5/6 the same early exits were the lesser loss. Report separately for days above and below the open (LESSON 24) and cite LESSON 20.
+- [x] (2026-11-11 done, batch 4 H12, LESSONS 35: hold wins up days, CVD sell wins down/V days and overall; keep the CVD exit) CVD long exit variants, split by day direction: first CVD sell vs hold until close below VWAP vs hold until 15:55, for CVD longs; mirror for CVD shorts via SQQQ/SPXU (falling-day version). Nov 9: cvd_tqqq sold at 10:15 (+0.80%) and TQQQ ran to 15:29 (+8.75% leg); on Nov 5/6 the same early exits were the lesser loss. Report separately for days above and below the open (LESSON 24) and cite LESSON 20.
 
 ## From the Coach, 2026-11-10 (hindsight leads only; the Researcher pre-registers)
-- [ ] Distance-under-high entry filter, both sides: skip a long when the index is 0.3%, 0.5% or 0.75% under its running intraday high at entry; mirror: skip an inverse-ETF/short entry when 0.3%+ above its running low. Compare against random entries on both archives (it differs from the stale-high filter, LESSONS 26, which used the age of the high). Evidence: LESSONS 33 (5 won / 11 lost, n=16, 10 sessions).
+- [x] (2026-11-11 refuted as a filter, batch 4 H9, LESSONS 33 update) Distance-under-high entry filter, both sides: skip a long when the index is 0.3%, 0.5% or 0.75% under its running intraday high at entry; mirror: skip an inverse-ETF/short entry when 0.3%+ above its running low. Compare against random entries on both archives (it differs from the stale-high filter, LESSONS 26, which used the age of the high). Evidence: LESSONS 33 (5 won / 11 lost, n=16, 10 sessions).
 - [ ] V-reversal long: after a 1.5%+ QQQ down-leg, buy TQQQ/UPRO on the first 5-min close above VWAP (Nov 10: 12:45, +1.8% in 15 min); mirror: after a 1.5%+ up-leg, buy SQQQ/SPXU on the first close below VWAP. Count qualifying days first; different from LESSON 22 (0.6% leg, refuted) by the bigger leg.
 - [ ] Inverse-ETF exit by VWAP reclaim vs eod, split by day shape (orb_vol SPXU Nov 10: +0.57% MFE, -1.60% at eod). Narrow retest of LESSON 20 for inverse ETFs (see the 2026-11-06 item); use sessions after Nov 6 for paper.
 
+
+## From the Researcher, 2026-11-11 (batch 4)
+- [ ] **H13 forward test** (LESSONS 36): first 5-min close 09:45-14:00 at ≥ 1% from the 09:30 open, trade with it (TQQQ/UPRO up, SQQQ/SPXU down), stop at the open/entry midpoint, flat 15:55. Sessions from Nov 12 only; foundry-lab logs it daily. At 15 new trades: if mean > 0 and not one day's doing, pre-register a paper desk `open1_cont`.
+- [ ] Day-type signal known at entry (the missing piece behind LESSONS 21/32/35): e.g. first-hour range vs 20-day ATR, or the 1% open move itself (H13) as the trend-day marker; then test "hold" exits only on marked days. Both sides.
+- [ ] cvd_spy VWAP exit (`cvd_spy_vwap` candidate): over 29 floor-lab entries the first close below VWAP gave −0.03% vs −0.08% for the CVD sell; it helped most on down days (−0.04 vs −0.57, n=5). Lead only (seen in-sample); test on sessions from Nov 12.

@@ -1,6 +1,6 @@
 # Research queue (ordered; the Researcher edits this)
 
-_Last set: 2026-11-07 by the Researcher (Saturday review run). Top item first._
+_Last set: 2026-11-11 by the Researcher (Wednesday build run). Top item first._
 
 ## Now
 - [x] Paper report script `lab/floor/paper_report.py` (2026-10-28, tested)
@@ -15,7 +15,9 @@ _Last set: 2026-11-07 by the Researcher (Saturday review run). Top item first._
 
 - [x] Sat Nov 7 review (`research/weekly/2026-W45.md`): paper stats with CIs (43 trades, no desk at 20), parity 17/29 with one engine cause found (PR #3), C-2 boards Nov 2-6, batch 3 run early (two-sided ORB, opening drive, prior-day levels, stale-high filter): 0 of 4 passed.
 
-1. **Wed Nov 11 build run, pre-register first:** (a) CVD '1% from the open' filter both sides (BOARD coach 11-05); (b) fail-fast exit (IDEAS 2026-11-07); (c) ORB first-break-only on the desk replay; (d) condor v2 if it fits the 5% cap (credit ≥ 20% of the width).
+- [x] Wed Nov 11 build run (`research/foundry/batch4_REPORT.md`): distance-from-extreme filter refuted, 1%-from-open filter inconclusive, fail-fast exit refuted, exits by day shape described (LESSONS 34-37); H13 1%-from-open continuation failed 2 of 7 conditions, now a forward test. Condor v2 blocked by the 5% cap at $1,000 (LESSONS 37).
+
+1. **Sat Nov 14 review run:** paper stats with CIs (no desk at 20 yet; volspike nearest at 13), parity Nov 9-13, C-2 boards Nov 9-13 (5 calls), weekly W46; pre-register ORB first-break-only (`orb_vol_v2` candidate) on the desk replay, and a day-type marker test (IDEAS 2026-11-11). Check that foundry-lab ran batch 4 and H13 rows are accruing.
 2. **Live-bar logging** in the bot (logging only; tests prove desks trade identically) so parity compares bar by bar. 3 of 6 parity gaps this week trace to Yahoo bar revisions that can't be proven without it.
 3. **Run parity inside floor-lab** after the archive step (one more step in the Actions job; lab code only). Also make floor-lab's 5-min robustness table skip the CVD desks (3-min candles cannot be built from 5-min bars).
 4. **Skylit forward collection** (also feeds combo C-2; until it exists, the Saturday run pulls the week's 10:00 ET 0DTE SPY/QQQ boards, 5 calls): `engine/skylit_feed.py` read-only snapshot at 09:45/10:30/12:30/15:00 ET for SPY, QQQ, SPXW (~20 credits/day) written to the ledger, so forward data accrues without paid backfills.
