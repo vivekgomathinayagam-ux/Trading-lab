@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-11-11T17:00:13+00:00",
+  "as_of": "2026-11-11T17:15:13+00:00",
   "mode": "paper",
-  "equity": 984.56,
-  "settled_cash": 292.2,
+  "equity": 987.94,
+  "settled_cash": -698.86,
   "peak_equity": 1056.64,
   "start_of_day_equity": 975.38,
-  "drawdown": 0.0682,
+  "drawdown": 0.065,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
@@ -15,6 +15,13 @@
       "id": 2736253,
       "quantity": 1.0,
       "symbol": "QQQ"
+    },
+    {
+      "cost_basis": 991.06,
+      "date_acquired": "2026-11-11T17:01:13.633Z",
+      "id": 2737290,
+      "quantity": 7.0,
+      "symbol": "UPRO"
     }
   ],
   "strategies": [],
@@ -41,8 +48,15 @@
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 1048.35,
-      "position": null
+      "cash": 53.78,
+      "position": {
+        "sym": "UPRO",
+        "qty": 7,
+        "entry_px": 142.08100499999998,
+        "stop": 138.52897987499998,
+        "target": 149.18505524999998,
+        "entry_t": "2026-11-11T12:01:12.551724-05:00"
+      }
     },
     {
       "desk": "ema_vol_v2",
