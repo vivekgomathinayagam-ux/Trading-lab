@@ -68,3 +68,9 @@ Rank by: expected edge × testability with our data ÷ cost.
 
 ## From the Coach, 2026-11-09 (hindsight leads only; the Researcher pre-registers)
 - [ ] CVD long exit variants, split by day direction: first CVD sell vs hold until close below VWAP vs hold until 15:55, for CVD longs; mirror for CVD shorts via SQQQ/SPXU (falling-day version). Nov 9: cvd_tqqq sold at 10:15 (+0.80%) and TQQQ ran to 15:29 (+8.75% leg); on Nov 5/6 the same early exits were the lesser loss. Report separately for days above and below the open (LESSON 24) and cite LESSON 20.
+
+## From the Coach, 2026-11-10 (hindsight leads only; the Researcher pre-registers)
+- [ ] Distance-under-high entry filter, both sides: skip a long when the index is 0.3%, 0.5% or 0.75% under its running intraday high at entry; mirror: skip an inverse-ETF/short entry when 0.3%+ above its running low. Compare against random entries on both archives (it differs from the stale-high filter, LESSONS 26, which used the age of the high). Evidence: LESSONS 33 (5 won / 11 lost, n=16, 10 sessions).
+- [ ] V-reversal long: after a 1.5%+ QQQ down-leg, buy TQQQ/UPRO on the first 5-min close above VWAP (Nov 10: 12:45, +1.8% in 15 min); mirror: after a 1.5%+ up-leg, buy SQQQ/SPXU on the first close below VWAP. Count qualifying days first; different from LESSON 22 (0.6% leg, refuted) by the bigger leg.
+- [ ] Inverse-ETF exit by VWAP reclaim vs eod, split by day shape (orb_vol SPXU Nov 10: +0.57% MFE, -1.60% at eod). Narrow retest of LESSON 20 for inverse ETFs (see the 2026-11-06 item); use sessions after Nov 6 for paper.
+
