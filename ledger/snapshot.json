@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-11-11T15:00:14+00:00",
+  "as_of": "2026-11-11T15:15:13+00:00",
   "mode": "paper",
-  "equity": 975.38,
-  "settled_cash": 975.38,
+  "equity": 980.66,
+  "settled_cash": 980.66,
   "peak_equity": 1056.64,
   "start_of_day_equity": 975.38,
-  "drawdown": 0.0769,
+  "drawdown": 0.0719,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [],
@@ -44,7 +44,7 @@
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 955.99,
+      "cash": 953.48,
       "position": null
     }
   ]
