@@ -72,3 +72,8 @@
 - Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 15 of 45.
 - Promote: new free search page `promo/pages/credit-spread-break-even-win-rate.md` (targets "credit spread break even probability"; table computed by script, hand-checked: $1 wide/$0.30 credit -> 70%). One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-11 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 16 of 45.
+- Promote: new free search page `promo/pages/expected-value-per-trade-in-r.md` (targets "expected value per trade calculator", "trading expectancy formula"; table computed by script, hand-checked: 50%/R:R 1.5 -> +0.25R, 45%/R:R 2 -> +0.35R). One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
