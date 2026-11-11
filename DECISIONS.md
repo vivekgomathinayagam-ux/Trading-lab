@@ -321,3 +321,5 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Promotion: added free page credit-spread-break-even-win-rate (table computed by script). Cadence unchanged (daily 8:43 PT): promotion work remains, 2 of 3 slots used. No start/kill/scale decisions; both products still await Chrome-session publishing.
 
 - 2026-11-11 (Hustle Department): Promotion: published free page expected-value-per-trade-in-r.md. No third experiment started: the Drawdown Tracker already waits on a Chrome session to publish, so a new idea would only queue behind it. Cadence stays daily (building/promotion work remains).
+
+- 2026-11-11 (Accountant): Day 13 close, no decision changes. 4 paper trades, net −$6.63; no target hits, no retire triggers (no desk at 30 trades). floor-lab's after-close run missing again (eighth in a row), logged in Known gaps.
