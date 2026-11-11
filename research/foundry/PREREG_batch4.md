@@ -34,3 +34,11 @@ Written 2026-11-11 15:55 PT by the Researcher (Wednesday build run), **before an
 
 ## Variants
 H9 3 thresholds + H10 1 + H11 1 + H12 3 exits (descriptive) = 8. Running total 169 → 177.
+
+## Amendment 1 (added 2026-11-11 16:20 PT, after H9-H12 were computed, before H13 was computed)
+**H13 1%-from-the-open continuation.** Suggested by H10's result: on random entries, longs taken ≥ 1% under the open and shorts taken ≥ 1% over the open both lost on both archives (−0.14 to −0.18% vs normal), which is the mirror of trading *with* a 1% move. Because it was suggested by these archives, a pass here only earns a forward test on paper; it is not evidence of edge.
+- Index SPY and QQQ, 5-min decisions. Signal: the first 5-min close from 09:45 to 14:00 ET with close / 09:30 open − 1 ≥ +1.0% (long) or ≤ −1.0% (short). One trade per symbol per day (the first crossing).
+- Fill at the next 5-min open. Stop: the midpoint of the 09:30 open and the fill price (half the move retraced = thesis wrong). Otherwise flat at 15:55.
+- Pass bar (as batch 3): net mean > 0 on both archives; A CI lower bound > −0.02%; both halves of B positive; above the random control's 95th percentile on B; > 0 at 2x costs on B; long and short each ≥ 0 on B, and a side with < 5 trades is untested and cannot carry a pass; still > 0 on B without Nov 5-6.
+- If it passes: a paper desk `open1_cont` (QQQ signal → TQQQ long / SQQQ long; SPY signal → UPRO long / SPXU long), sized and capped like the other desks, judged only on sessions after it deploys. Wrong on paper if its first 20 paper trades average < 0.
+- Variants +1 (running 178).
