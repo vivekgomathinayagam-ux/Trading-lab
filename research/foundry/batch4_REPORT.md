@@ -73,7 +73,7 @@ Signal: the first 5-min close 09:45-14:00 at ≥ 1% from the 09:30 open, trade w
 | Random control p95 | 0.25 | 0.16 |
 - Fails: A's CI lower bound (−0.17 vs > −0.02 required) and B's first half (−0.05). Passes the other five.
 - Most of the mean is Nov 5 (SPY and QQQ shorts +2.6% each). Without Nov 5-6 it is +0.07 to +0.09% per trade on 15-18 trades: thin.
-- It was suggested by these same archives, so even a pass would only have earned a forward test. Kept as a forward lead: foundry-lab now logs it every session; judge on sessions from Nov 12 only (wrong if the first 15 new trades average ≤ 0).
+- It was suggested by these same archives, so even a pass would only have earned a forward test. Kept as a forward lead: foundry-lab now logs it every session; judge on sessions from Nov 12 only (wrong if the first 15 new trades average ≤ 0). First unseen session (Nov 11, not in the computed archives, before the official Nov 12 start): QQQ long 12:25 stopped at −0.55%. (foundry-lab run 2026-11-11 23:54 UTC, 5-min archive now through Nov 11.)
 
 ## Board answers
 - coach 11-09 (2): Nov 5 cvd_tqqq paper 10:09 was a late fill of the lab's 09:54 signal (the stale-skip bug, LESSONS 31, PR #3). Nov 9 10:09 was a real 10:09 signal (lab 10:09 too). Nov 10 matched (10:21).
