@@ -1,43 +1,21 @@
 {
-  "as_of": "2026-11-11T20:45:13+00:00",
+  "as_of": "2026-11-11T20:59:12+00:00",
   "mode": "paper",
-  "equity": 985.7,
-  "settled_cash": -698.86,
+  "equity": 984.94,
+  "settled_cash": 984.94,
   "peak_equity": 1056.64,
   "start_of_day_equity": 975.38,
-  "drawdown": 0.0671,
+  "drawdown": 0.0679,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 687.84,
-      "date_acquired": "2026-11-11T15:44:12.972Z",
-      "id": 2736253,
-      "quantity": 1.0,
-      "symbol": "QQQ"
-    },
-    {
-      "cost_basis": 991.06,
-      "date_acquired": "2026-11-11T17:01:13.633Z",
-      "id": 2737290,
-      "quantity": 7.0,
-      "symbol": "UPRO"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 258.8,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 689.3178359999999,
-        "stop": 672.0848900999999,
-        "target": 723.7837278,
-        "entry_t": "2026-11-11T10:44:12.536639-05:00"
-      }
+      "cash": 948.5,
+      "position": null
     },
     {
       "desk": "ema_vol",
@@ -48,15 +26,8 @@
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 53.78,
-      "position": {
-        "sym": "UPRO",
-        "qty": 7,
-        "entry_px": 142.08100499999998,
-        "stop": 138.52897987499998,
-        "target": 149.18505524999998,
-        "entry_t": "2026-11-11T12:01:12.551724-05:00"
-      }
+      "cash": 1044.07,
+      "position": null
     },
     {
       "desk": "ema_vol_v2",
