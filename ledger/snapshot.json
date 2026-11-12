@@ -1,14 +1,22 @@
 {
-  "as_of": "2026-11-12T15:00:13+00:00",
+  "as_of": "2026-11-12T15:15:13+00:00",
   "mode": "paper",
-  "equity": 984.94,
-  "settled_cash": 984.94,
+  "equity": 991.18,
+  "settled_cash": 36.14,
   "peak_equity": 1056.64,
   "start_of_day_equity": 984.94,
-  "drawdown": 0.0679,
+  "drawdown": 0.062,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [],
+  "positions": [
+    {
+      "cost_basis": 948.8,
+      "date_acquired": "2026-11-12T15:12:13.254Z",
+      "id": 2740514,
+      "quantity": 16.0,
+      "symbol": "TQQQ"
+    }
+  ],
   "strategies": [],
   "daytrade_desks": [
     {
@@ -44,8 +52,15 @@
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 953.48,
-      "position": null
+      "cash": 8.2,
+      "position": {
+        "sym": "TQQQ",
+        "qty": 16,
+        "entry_px": 59.079525,
+        "stop": 57.602536875,
+        "target": 62.03350125,
+        "entry_t": "2026-11-12T10:12:12.728064-05:00"
+      }
     }
   ]
 }
