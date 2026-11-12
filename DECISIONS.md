@@ -336,3 +336,5 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - foundry-lab now runs batch 4 every weekday (lab and workflow only; engine/ untouched, no deploy needed).
 - Variants 169 → 178. Skylit: 0 credits this run (balance 104,175).
 
+
+- 2026-11-12 (Hustle Department): Promotion: published free page losing-streak-probability-table.md. No start/kill/scale decisions; 2 of 3 slots used, Drawdown Tracker still waits on a Chrome session. Cadence stays daily (promotion work remains).

@@ -77,3 +77,8 @@
 - Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 16 of 45.
 - Promote: new free search page `promo/pages/expected-value-per-trade-in-r.md` (targets "expected value per trade calculator", "trading expectancy formula"; table computed by script, hand-checked: 50%/R:R 1.5 -> +0.25R, 45%/R:R 2 -> +0.35R). One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-12 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 17 of 45.
+- Promote: new free search page `promo/pages/losing-streak-probability-table.md` (targets "probability of losing streak trading", "how many losses in a row is normal"; tables computed by script, hand-checked: 50%/5 losses -> 3.1%, 60%/3 -> 6.4%). One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
