@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-11-12T15:45:13+00:00",
+  "as_of": "2026-11-12T16:00:13+00:00",
   "mode": "paper",
-  "equity": 976.84,
-  "settled_cash": 219.51,
+  "equity": 984.94,
+  "settled_cash": -668.04,
   "peak_equity": 1056.64,
   "start_of_day_equity": 984.94,
-  "drawdown": 0.0755,
+  "drawdown": 0.0679,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
@@ -15,6 +15,13 @@
       "id": 2740735,
       "quantity": 1.0,
       "symbol": "SPY"
+    },
+    {
+      "cost_basis": 887.55,
+      "date_acquired": "2026-11-12T15:52:13.562Z",
+      "id": 2740514,
+      "quantity": 15.0,
+      "symbol": "TQQQ"
     }
   ],
   "strategies": [],
@@ -22,8 +29,15 @@
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 948.5,
-      "position": null
+      "cash": 47.75,
+      "position": {
+        "sym": "TQQQ",
+        "qty": 15,
+        "entry_px": 60.05001,
+        "stop": 58.54875975,
+        "target": 63.052510500000004,
+        "entry_t": "2026-11-12T10:52:12.743318-05:00"
+      }
     },
     {
       "desk": "ema_vol",
