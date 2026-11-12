@@ -1,6 +1,6 @@
 # Trading Floor day-trade lab
 
-Run 2026-11-12T02:15+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
+Run 2026-11-12T02:22+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
 
 **1-minute backtest window:** 2026-10-01 to 2026-11-11, 30 trading sessions after a 3-session warm-up. Each desk starts with $1,000, trades whole shares, risks 2.5% per trade (stop) to make 5% (target), at most one trade a day, flat by 15:55 ET.
 
@@ -8,45 +8,45 @@ Run 2026-11-12T02:15+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec:
 
 | Desk | Paper? | Trades | Win rate | Avg win | Avg loss | Expectancy / trade | Profit factor | Total return | Max drawdown | +5% targets hit | Verdict |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ORB + volume | yes | 21 | 33.3% | 1.11% | -0.75% | -0.134% | 0.73 | -2.97% | -3.85% | 1 | loses or too thin after costs |
-| EMA 9/21 + volume | yes | 22 | 31.8% | 0.6% | -0.44% | -0.11% | 0.63 | -2.46% | -4.2% | 0 | loses or too thin after costs |
-| Volume spike | yes | 30 | 50.0% | 0.88% | -0.68% | 0.099% | 1.29 | 2.81% | -3.27% | 0 | promising, keep collecting |
-| EMA 9/21 + volume v2 | yes | 21 | 38.1% | 0.58% | -0.35% | 0.002% | 1.01 | -0.01% | -2.37% | 0 | loses or too thin after costs |
-| CVD turn 3-min (SPY) | yes | 30 | 43.3% | 0.13% | -0.2% | -0.056% | 0.51 | -1.69% | -2.07% | 0 | loses or too thin after costs |
-| CVD turn 3-min (TQQQ) | yes | 30 | 53.3% | 0.78% | -0.52% | 0.175% | 1.73 | 5.24% | -5.09% | 0 | promising, keep collecting |
-| ORB (no volume filter) | compare | 30 | 30.0% | 1.64% | -0.77% | -0.044% | 0.92 | -1.71% | -6.64% | 2 | loses or too thin after costs |
-| EMA 9/21 (no volume filter) | compare | 25 | 32.0% | 1.23% | -0.67% | -0.061% | 0.87 | -1.76% | -5.78% | 1 | loses or too thin after costs |
-| Volume spike (2x) | compare | 30 | 50.0% | 1.26% | -0.91% | 0.178% | 1.39 | 5.13% | -4.73% | 1 | promising, keep collecting |
+| ORB + volume | yes | 21 | 28.6% | 0.47% | -0.73% | -0.383% | 0.26 | -7.83% | -7.59% | 0 | loses or too thin after costs |
+| EMA 9/21 + volume | yes | 22 | 36.4% | 0.56% | -0.43% | -0.074% | 0.73 | -1.68% | -3.6% | 0 | loses or too thin after costs |
+| Volume spike | yes | 30 | 43.3% | 0.92% | -0.59% | 0.06% | 1.18 | 1.62% | -3.27% | 0 | loses or too thin after costs |
+| EMA 9/21 + volume v2 | yes | 22 | 40.9% | 0.54% | -0.34% | 0.022% | 1.11 | 0.43% | -2.09% | 0 | loses or too thin after costs |
+| CVD turn 3-min (SPY) | yes | 30 | 53.3% | 0.12% | -0.22% | -0.041% | 0.61 | -1.24% | -1.97% | 0 | loses or too thin after costs |
+| CVD turn 3-min (TQQQ) | yes | 30 | 53.3% | 0.78% | -0.62% | 0.126% | 1.43 | 3.68% | -5.17% | 0 | promising, keep collecting |
+| ORB (no volume filter) | compare | 30 | 30.0% | 1.64% | -0.77% | -0.044% | 0.92 | -1.7% | -6.64% | 2 | loses or too thin after costs |
+| EMA 9/21 (no volume filter) | compare | 25 | 32.0% | 1.23% | -0.67% | -0.06% | 0.87 | -1.73% | -5.78% | 1 | loses or too thin after costs |
+| Volume spike (2x) | compare | 30 | 46.7% | 1.26% | -0.83% | 0.143% | 1.32 | 4.03% | -5.22% | 1 | promising, keep collecting |
 
-Buy-and-hold over the same window: SPY -0.60%, QQQ -7.03%, TQQQ -23.33%, UPRO -4.20%, SQQQ +18.99%, SPXU +1.19%
+Buy-and-hold over the same window: SPY -0.60%, QQQ -7.03%, TQQQ -23.33%, UPRO -4.20%, SQQQ +18.99%, SPXU +1.16%
 
 ## Same rules, 3x slippage (stress test)
 
 | Desk | Trades | Expectancy / trade | Total return |
 |---|---|---|---|
-| ORB + volume | 21 | -0.272% | -5.76% |
-| EMA 9/21 + volume | 22 | -0.278% | -6.0% |
-| Volume spike | 30 | -0.063% | -2.07% |
-| EMA 9/21 + volume v2 | 21 | -0.162% | -3.39% |
-| CVD turn 3-min (SPY) | 30 | -0.118% | -3.5% |
-| CVD turn 3-min (TQQQ) | 30 | -0.007% | -0.33% |
-| ORB (no volume filter) | 30 | -0.154% | -4.92% |
-| EMA 9/21 (no volume filter) | 25 | -0.187% | -4.82% |
-| Volume spike (2x) | 30 | 0.017% | 0.17% |
+| ORB + volume | 21 | -0.51% | -10.25% |
+| EMA 9/21 + volume | 22 | -0.226% | -4.92% |
+| Volume spike | 30 | -0.097% | -3.07% |
+| EMA 9/21 + volume v2 | 22 | -0.119% | -2.63% |
+| CVD turn 3-min (SPY) | 30 | -0.102% | -3.04% |
+| CVD turn 3-min (TQQQ) | 30 | -0.062% | -1.99% |
+| ORB (no volume filter) | 30 | -0.154% | -4.91% |
+| EMA 9/21 (no volume filter) | 25 | -0.186% | -4.79% |
+| Volume spike (2x) | 30 | -0.019% | -0.89% |
 
 ## Robustness check: 5-minute bars, 2026-09-17 to 2026-11-11 (40 sessions)
 
 | Desk | Trades | Win rate | Expectancy / trade | Profit factor | Total return | Max drawdown |
 |---|---|---|---|---|---|---|
-| ORB + volume | 20 | 35.0% | -0.318% | 0.55 | -6.4% | -11.58% |
-| EMA 9/21 + volume | 13 | 46.2% | -0.089% | 0.49 | -1.16% | -1.99% |
-| Volume spike | 37 | 35.1% | -0.243% | 0.55 | -8.89% | -16.32% |
-| EMA 9/21 + volume v2 | 13 | 46.2% | -0.089% | 0.49 | -1.16% | -1.99% |
-| CVD turn 3-min (SPY) | 40 | 52.5% | -0.019% | 0.69 | -0.77% | -1.21% |
-| CVD turn 3-min (TQQQ) | 40 | 52.5% | -0.106% | 0.7 | -4.28% | -5.5% |
-| ORB (no volume filter) | 40 | 37.5% | -0.081% | 0.84 | -3.59% | -7.02% |
-| EMA 9/21 (no volume filter) | 34 | 38.2% | -0.059% | 0.86 | -2.27% | -5.64% |
-| Volume spike (2x) | 40 | 37.5% | -0.264% | 0.53 | -10.29% | -16.72% |
+| ORB + volume | 21 | 38.1% | -0.17% | 0.7 | -3.73% | -9.62% |
+| EMA 9/21 + volume | 16 | 43.8% | -0.22% | 0.28 | -3.49% | -4.3% |
+| Volume spike | 37 | 45.9% | -0.14% | 0.71 | -5.35% | -13.75% |
+| EMA 9/21 + volume v2 | 16 | 43.8% | -0.22% | 0.28 | -3.49% | -4.3% |
+| CVD turn 3-min (SPY) | 40 | 55.0% | -0.023% | 0.66 | -0.91% | -1.35% |
+| CVD turn 3-min (TQQQ) | 40 | 52.5% | -0.118% | 0.67 | -4.74% | -5.56% |
+| ORB (no volume filter) | 40 | 37.5% | -0.077% | 0.85 | -3.46% | -7.01% |
+| EMA 9/21 (no volume filter) | 34 | 38.2% | -0.056% | 0.87 | -2.18% | -5.64% |
+| Volume spike (2x) | 40 | 42.5% | -0.131% | 0.74 | -5.43% | -12.17% |
 
 ## How realistic is +5% in one day? (daily bars since 2010)
 
@@ -61,12 +61,12 @@ Buy-and-hold over the same window: SPY -0.60%, QQQ -7.03%, TQQQ -23.33%, UPRO -4
 
 ## Per-ETF breakdown (1-minute, paper desks)
 
-- **ORB + volume:** QQQ 4 trades, $-0.82; SPXU 5 trades, $-32.71; SPY 4 trades, $-1.85; SQQQ 2 trades, $+68.75; TQQQ 1 trades, $-9.44; UPRO 5 trades, $-53.62 · exits {'eod': 19, 'stop': 1, 'target': 1}
-- **EMA 9/21 + volume:** QQQ 4 trades, $-16.36; SPXU 12 trades, $+6.13; SPY 1 trades, $+2.66; SQQQ 1 trades, $+1.05; TQQQ 1 trades, $-0.79; UPRO 3 trades, $-17.31 · exits {'eod': 22}
-- **Volume spike:** QQQ 4 trades, $+0.51; SPXU 10 trades, $+52.73; SPY 3 trades, $+0.84; SQQQ 1 trades, $-16.43; TQQQ 1 trades, $+18.34; UPRO 11 trades, $-27.84 · exits {'eod': 28, 'stop': 2}
-- **EMA 9/21 + volume v2:** QQQ 4 trades, $-16.36; SPXU 9 trades, $+25.28; SPY 1 trades, $+2.66; SQQQ 4 trades, $+1.85; TQQQ 1 trades, $-0.85; UPRO 2 trades, $-12.66 · exits {'eod': 21}
-- **CVD turn 3-min (SPY):** SPY 30 trades, $-16.88 · exits {'cvd_sell': 29, 'stop': 1}
-- **CVD turn 3-min (TQQQ):** TQQQ 30 trades, $+52.41 · exits {'cvd_sell': 28, 'stop': 2}
+- **ORB + volume:** QQQ 5 trades, $-1.32; SPXU 5 trades, $-32.03; SPY 5 trades, $-9.24; SQQQ 1 trades, $+21.67; TQQQ 1 trades, $-9.44; UPRO 4 trades, $-47.88 · exits {'eod': 20, 'stop': 1}
+- **EMA 9/21 + volume:** QQQ 6 trades, $-16.57; SPXU 10 trades, $+12.31; SPY 2 trades, $+1.64; SQQQ 1 trades, $+1.05; TQQQ 1 trades, $-0.79; UPRO 2 trades, $-14.48 · exits {'eod': 22}
+- **Volume spike:** QQQ 7 trades, $+11.68; SPXU 10 trades, $+54.08; SPY 3 trades, $-4.16; SQQQ 1 trades, $-16.43; UPRO 9 trades, $-28.94 · exits {'eod': 28, 'stop': 2}
+- **EMA 9/21 + volume v2:** QQQ 7 trades, $-19.78; SPXU 7 trades, $+31.46; SPY 2 trades, $+1.64; SQQQ 4 trades, $+1.85; TQQQ 1 trades, $-0.79; UPRO 1 trades, $-10.07 · exits {'eod': 22}
+- **CVD turn 3-min (SPY):** SPY 30 trades, $-12.36 · exits {'cvd_sell': 29, 'stop': 1}
+- **CVD turn 3-min (TQQQ):** TQQQ 30 trades, $+36.78 · exits {'cvd_sell': 28, 'stop': 2}
 
 ## How to read this
 - About 20 sessions gives each desk at most about 20 trades. That's enough to spot a broken rule, not enough to prove an edge. The gate for live is 50+ trades over 4+ weeks. The 1-minute archive grows every trading day, so each run has more history.
