@@ -1,20 +1,20 @@
 {
-  "as_of": "2026-11-12T15:15:13+00:00",
+  "as_of": "2026-11-12T15:30:13+00:00",
   "mode": "paper",
-  "equity": 991.18,
-  "settled_cash": 36.14,
+  "equity": 976.63,
+  "settled_cash": 219.93,
   "peak_equity": 1056.64,
   "start_of_day_equity": 984.94,
-  "drawdown": 0.062,
+  "drawdown": 0.0757,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
     {
-      "cost_basis": 948.8,
-      "date_acquired": "2026-11-12T15:12:13.254Z",
-      "id": 2740514,
-      "quantity": 16.0,
-      "symbol": "TQQQ"
+      "cost_basis": 756.69,
+      "date_acquired": "2026-11-12T15:21:13.265Z",
+      "id": 2740735,
+      "quantity": 1.0,
+      "symbol": "SPY"
     }
   ],
   "strategies": [],
@@ -46,21 +46,21 @@
     {
       "desk": "cvd_spy",
       "label": "CVD turn 3-min (SPY)",
-      "cash": 992.18,
-      "position": null
+      "cash": 235.88,
+      "position": {
+        "sym": "SPY",
+        "qty": 1,
+        "entry_px": 756.2912279999999,
+        "stop": 737.3839472999999,
+        "target": 794.1057893999999,
+        "entry_t": "2026-11-12T10:21:12.729836-05:00"
+      }
     },
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 8.2,
-      "position": {
-        "sym": "TQQQ",
-        "qty": 16,
-        "entry_px": 59.079525,
-        "stop": 57.602536875,
-        "target": 62.03350125,
-        "entry_t": "2026-11-12T10:12:12.728064-05:00"
-      }
+      "cash": 955.25,
+      "position": null
     }
   ]
 }
