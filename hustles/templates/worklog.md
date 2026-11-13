@@ -82,3 +82,9 @@
 - Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 17 of 45.
 - Promote: new free search page `promo/pages/losing-streak-probability-table.md` (targets "probability of losing streak trading", "how many losses in a row is normal"; tables computed by script, hand-checked: 50%/5 losses -> 3.1%, 60%/3 -> 6.4%). One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-13 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (page still not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 18 of 45.
+- Promote: new free search page `promo/pages/expected-move-from-implied-volatility.md` (targets "expected move calculator", "implied volatility to price range"; table computed by script, hand-checked: IV 20%/1 DTE -> 1.0%, 7 DTE -> 2.8%, $500 stock -> $13.85). One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
+- Observation: 18 free pages now exist but the repo is not publicly searchable, so more pages add little until Pages/community posts are done in a Chrome session. Next runs will keep pages to a slower cadence once cadence is switched.

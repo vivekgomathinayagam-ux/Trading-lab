@@ -27,3 +27,4 @@ Update 2026-11-09 08:50 PT: still no reachable sales data; Sales 0 known, Revenu
 Update 2026-11-10 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 15 of 45. New free page: credit-spread-break-even-win-rate.md.
 Update 2026-11-11 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 16 of 45. New free page: expected-value-per-trade-in-r.md.
 Update 2026-11-12 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 17 of 45. New free page: losing-streak-probability-table.md.
+Update 2026-11-13 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 18 of 45. New free page: expected-move-from-implied-volatility.md.

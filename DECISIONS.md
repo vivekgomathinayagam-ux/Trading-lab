@@ -338,3 +338,4 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 
 - 2026-11-12 (Hustle Department): Promotion: published free page losing-streak-probability-table.md. No start/kill/scale decisions; 2 of 3 slots used, Drawdown Tracker still waits on a Chrome session. Cadence stays daily (promotion work remains).
+- 2026-11-13 (Hustle Department): Promotion: published free page expected-move-from-implied-volatility.md. No start/kill/scale decisions; 2 of 3 slots used, no new idea can be published without Chrome, so none started. Cadence stays daily.
