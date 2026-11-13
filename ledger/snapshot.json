@@ -1,22 +1,14 @@
 {
-  "as_of": "2026-11-13T15:30:14+00:00",
+  "as_of": "2026-11-13T15:45:13+00:00",
   "mode": "paper",
-  "equity": 962.76,
-  "settled_cash": 213.74,
+  "equity": 962.02,
+  "settled_cash": 962.02,
   "peak_equity": 1056.64,
   "start_of_day_equity": 983.89,
-  "drawdown": 0.0888,
+  "drawdown": 0.0895,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 756.87,
-      "date_acquired": "2026-11-13T14:54:13.936Z",
-      "id": 2744888,
-      "quantity": 1.0,
-      "symbol": "SPY"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
@@ -46,15 +38,8 @@
     {
       "desk": "cvd_spy",
       "label": "CVD turn 3-min (SPY)",
-      "cash": 236.78,
-      "position": {
-        "sym": "SPY",
-        "qty": 1,
-        "entry_px": 755.741118,
-        "stop": 736.84759005,
-        "target": 793.5281739000001,
-        "entry_t": "2026-11-13T09:54:12.963274-05:00"
-      }
+      "cash": 986.68,
+      "position": null
     },
     {
       "desk": "cvd_tqqq",
