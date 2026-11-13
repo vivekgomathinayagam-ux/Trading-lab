@@ -124,3 +124,4 @@ ts,event,mode,strategy,symbol,side,qty,price,source,order_id,max_loss,cost,note
 2026-11-13T15:03:13+00:00,exit,paper,cvd_tqqq,TQQQ,sell,16,57.3333,yahoo_rt+slip,,,,stop; pnl $-26.10; sandbox ok 41693806
 2026-11-13T15:36:13+00:00,exit,paper,cvd_spy,SPY,sell,1,749.9,yahoo_rt+slip,,,,cvd_sell; pnl $-5.84; sandbox ok 41700108
 2026-11-13T17:07:13+00:00,entry,paper,volspike,TQQQ,buy,18,56.8984,yahoo_rt+slip,,25.6,1024.17,sandbox ok 41711815
+2026-11-13T20:56:13+00:00,exit,paper,volspike,TQQQ,sell,18,57.7111,yahoo_rt+slip,,,,eod; pnl $+14.63; sandbox ok 41727615
