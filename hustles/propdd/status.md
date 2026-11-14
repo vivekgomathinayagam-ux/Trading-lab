@@ -7,3 +7,4 @@
 - Create Gumroad product, original cover, upload file, publish; then swap the explainer's link to the new product page.
 ## Metrics
 Not live. Revenue $0 (as of 2026-10-29).
+- 2026-11-14 (cloud run): no change; listing still queued for a Chrome session.

@@ -88,3 +88,9 @@
 - Promote: new free search page `promo/pages/expected-move-from-implied-volatility.md` (targets "expected move calculator", "implied volatility to price range"; table computed by script, hand-checked: IV 20%/1 DTE -> 1.0%, 7 DTE -> 2.8%, $500 stock -> $13.85). One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
 - Observation: 18 free pages now exist but the repo is not publicly searchable, so more pages add little until Pages/community posts are done in a Chrome session. Next runs will keep pages to a slower cadence once cadence is switched.
+
+## 2026-11-14 (cloud run)
+- Measure: Gumroad not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 19 of 45.
+- Promote: new free page `promo/pages/account-drawdown-after-a-losing-streak-by-risk-per-trade.md` (table computed by script, hand-checked: 2%/10 losses -> -18.3%, 5%/5 -> -22.6%, 10%/8 -> -57.0%). One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
+- Note: the 19 pages are not publicly searchable until Pages is on; further pages have low yield, so only the Chrome-queue items move sales now. Cadence stays daily because the Drawdown Tracker is not yet live.
