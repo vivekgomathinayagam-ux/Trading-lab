@@ -339,3 +339,11 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 - 2026-11-12 (Hustle Department): Promotion: published free page losing-streak-probability-table.md. No start/kill/scale decisions; 2 of 3 slots used, Drawdown Tracker still waits on a Chrome session. Cadence stays daily (promotion work remains).
 - 2026-11-13 (Hustle Department): Promotion: published free page expected-move-from-implied-volatility.md. No start/kill/scale decisions; 2 of 3 slots used, no new idea can be published without Chrome, so none started. Cadence stays daily.
+
+## 2026-11-14 — Researcher, Saturday review (W46)
+- Paper review (63 trades, 15 sessions): no desk retired. No desk has 20 paper trades, the retire rule's minimum. orb_vol (CI wholly below 0 at n=10) and ema_vol are flagged to the Accountant for the 20-trade check.
+- Foundry batch 5, pre-registered (commit b7c1217) before computing: H14 profit lock refuted, H17 ORB first-break-only refuted, H15 CVD down-morning gate inconclusive, H16/H18 descriptive. No rule cleared its bar, so no new paper desk. Batch 5 added to the foundry-lab workflow (lab code only; engine/ untouched).
+- Parity Nov 9-13: 17/24; gaps attributed to Yahoo bar revisions (LESSONS 43). PR #3 still waits on Vivek; it would not have changed this week's gaps.
+- Skylit connector needs reconnecting: no credits used, C-2 boards for Nov 9-13 not pulled (catch up when it is back).
+- New forward test registered: morning 0.5% QQQ continuation, sessions from Nov 16 (LESSONS 42, IDEAS 2026-11-14). Variants 186.
+

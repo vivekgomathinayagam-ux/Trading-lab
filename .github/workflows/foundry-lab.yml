@@ -55,6 +55,8 @@ jobs:
         run: python -m lab.foundry.batch3 --archive1m backtests/data/etf1m --archive5m backtests/data/etf5m --desk-trades ledger/floor_trades_1m.csv --out out/foundry/batch3 > /dev/null
       - name: Batch 4 (distance filters, fail-fast exit, exits by day shape, H13 1%-from-open continuation) on both archives
         run: python -m lab.foundry.batch4 --archive1m backtests/data/etf1m --archive5m backtests/data/etf5m --desk-trades ledger/floor_trades_1m.csv --out out/foundry/batch4
+      - name: Batch 5 (profit-lock exit, CVD down-morning gate, H13 diagnostics, ORB first break, regime check) on both archives
+        run: python -m lab.foundry.batch5 --archive1m backtests/data/etf1m --archive5m backtests/data/etf5m --desk-trades ledger/floor_trades_1m.csv --out out/foundry/batch5
       - name: Session post-mortem (latest archived day)
         run: python -m lab.foundry.postmortem --archive backtests/data/etf1m --trades ledger/daytrade_trades.csv --out out/postmortem
       - name: Summary

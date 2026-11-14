@@ -1,6 +1,6 @@
 # Research queue (ordered; the Researcher edits this)
 
-_Last set: 2026-11-11 by the Researcher (Wednesday build run). Top item first._
+_Last set: 2026-11-14 by the Researcher (Saturday review run). Top item first._
 
 ## Now
 - [x] Paper report script `lab/floor/paper_report.py` (2026-10-28, tested)
@@ -17,7 +17,9 @@ _Last set: 2026-11-11 by the Researcher (Wednesday build run). Top item first._
 
 - [x] Wed Nov 11 build run (`research/foundry/batch4_REPORT.md`): distance-from-extreme filter refuted, 1%-from-open filter inconclusive, fail-fast exit refuted, exits by day shape described (LESSONS 34-37); H13 1%-from-open continuation failed 2 of 7 conditions, now a forward test. Condor v2 blocked by the 5% cap at $1,000 (LESSONS 37).
 
-1. **Sat Nov 14 review run:** paper stats with CIs (no desk at 20 yet; volspike nearest at 13), parity Nov 9-13, C-2 boards Nov 9-13 (5 calls), weekly W46; pre-register ORB first-break-only (`orb_vol_v2` candidate) on the desk replay, and a day-type marker test (IDEAS 2026-11-11). Check that foundry-lab ran batch 4 and H13 rows are accruing.
+- [x] Sat Nov 14 review (`research/weekly/2026-W46.md`, `research/foundry/batch5_REPORT.md`): paper 63 trades, no desk at 20; parity 17/24 (gaps = bar revisions); batch 5: profit lock and ORB first-break refuted, CVD down-morning gate inconclusive, H13 forward 0/4; long/short flipped with the tape (LESSONS 24). C-2 boards skipped (Skylit connector needs reconnecting). No desk change.
+
+1. **Wed Nov 18 build run:** pre-register and run the day-type marker test (IDEAS 2026-11-14): first-hour range / 20-day ATR, gap size, morning move as a switch between hold-to-close and the tight/CVD exit, both sides, both archives, random control. Check that foundry-lab ran batch 5 and that the morning-0.5% forward rows and H13 rows are accruing. If Skylit is reconnected: pull the missing C-2 boards (Nov 9-20, 10 calls).
 2. **Live-bar logging** in the bot (logging only; tests prove desks trade identically) so parity compares bar by bar. 3 of 6 parity gaps this week trace to Yahoo bar revisions that can't be proven without it.
 3. **Run parity inside floor-lab** after the archive step (one more step in the Actions job; lab code only). Also make floor-lab's 5-min robustness table skip the CVD desks (3-min candles cannot be built from 5-min bars).
 4. **Skylit forward collection** (also feeds combo C-2; until it exists, the Saturday run pulls the week's 10:00 ET 0DTE SPY/QQQ boards, 5 calls): `engine/skylit_feed.py` read-only snapshot at 09:45/10:30/12:30/15:00 ET for SPY, QQQ, SPXW (~20 credits/day) written to the ledger, so forward data accrues without paid backfills.
@@ -30,6 +32,7 @@ _Last set: 2026-11-11 by the Researcher (Wednesday build run). Top item first._
 6. **Skylit paper desks**: pre-register 1-3 ETF day-trade setups built from what step 5 found, back-test once, then build `engine/skylit_feed.py` (read-only) and put them on paper.
 
 ## Next
+- **Month-1 report, Sat Nov 28** (`research/reports/2026-11-month1.md`), with a separate agent re-deriving every number from the raw ledger and `data:validate-data`. Apply the retirement rule to any desk at 20+ trades.
 7. First pre-registered combos (`research/combos.md`): portfolio of the three paper desks, drop-one, GEX regime as a gate on each day-trade desk. Judged on forward days only.
 8. Option spreads from Skylit signals: model-priced first (2x cost stress). Paper needs real-time option prices and an options order path; the order path is `engine/` order code, so it goes to Vivek as one PR plus one City Hall item.
 9. New-setup ideas from the CHARTER list, one per week, pre-registered.
