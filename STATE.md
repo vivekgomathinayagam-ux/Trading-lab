@@ -12,7 +12,12 @@ _Read this first. Updated by every session and scheduled task. Times are America
 - Foundry batch 1 tested 6 trend/Fibonacci rules on 2 samples: all refuted (`research/foundry/batch1_REPORT.md`).
 - Waiting on Vivek: an Alpaca data key, and one bundled yes for the 4 paper-engine fixes.
 
-**Researcher as of 2026-11-11 16:05 PT (Wed build run):**
+**Researcher as of 2026-11-14 16:30 PT (Sat review run, `research/weekly/2026-W46.md`):**
+- Paper, 63 trades in 15 sessions: still no edge. volspike only positive (+0.37%/trade, CI [−0.17, +1.00], n=15); orb_vol's CI is wholly below 0 (−0.60 [−0.98, −0.25], n=10) but the retire rule needs 20 trades. W46: SPY +2.6%, desks −$66.75 on 20 trades.
+- Batch 5 (pre-registered, `research/foundry/batch5_REPORT.md`): profit-lock exit refuted, ORB first-break-only refuted (first breaks were worse), CVD down-morning gate inconclusive (longs only), H13 forward 0 for 4 (−0.48%). In the first up week, rule long sides won and shorts lost: the earlier short "edge" was regime (LESSONS 24).
+- Parity 17/24; the gaps look like Yahoo bar revisions, not the stale-skip bug. No desk added or retired (6 of 8). Variants 186. Skylit 0 credits: the Skylit connector needs reconnecting, so the C-2 boards were skipped.
+
+**Researcher (previous) as of 2026-11-11 16:05 PT (Wed build run):**
 - Foundry batch 4, pre-registered (`research/foundry/batch4_REPORT.md`): 0 of 4 passed. Distance-from-high filter refuted (regime); 1%-from-open filter inconclusive (10-14 days); fail-fast exit refuted; exits by day shape: the wide exit/hold wins only on days that trend your way, which is hindsight, so the CVD sell stays (over 29 entries +0.20% vs −0.66% holding).
 - H13 (trade with a 1% move from the open) +0.35%/trade on 20 trades but failed 2 of 7 conditions and rests on Nov 5: forward test only (foundry-lab logs it daily from Nov 12).
 - Condor v2 can't be sized under the 5% cap at $1,000 (needs ≥ $1,600; LESSONS 37). No desk added or retired (6 of 8; none has 20 paper trades). Variants 178. Skylit 0 credits (balance 104,175).
@@ -83,6 +88,7 @@ Backtests: GitHub Actions `floor-lab` after each weekday close; results `data:ba
 - **Foundry batch 2 + condor study 1 (2026-11-04):** giveback trail, trend-day gate, reversal day, 1-day ±1σ iron condor: all refuted. 13:00 ET entry cutoff: tentative, forward test on the paper ledger (wrong if 10 late paper entries average ≥ 0). foundry-lab now runs batch 2 each weekday. Next Wed: prior-day high/low and opening-drive rules (`research/QUEUE.md`).
 - **Saturday review 2026-11-07 + foundry batch 3** (`research/weekly/2026-W45.md`): 43 paper trades, no desk at 20; parity 17/29 (stale-signal skip found, PR #3); two-sided ORB, prior-day levels refuted, opening drive untestable, stale-high filter not supported (LESSONS 26-31). No desk added or retired (6 of 8). Next Wed: CVD 1%-from-open filter, fail-fast exit, ORB first-break-only.
 - **Wed build run 2026-11-11, foundry batch 4** (`research/foundry/batch4_REPORT.md`): distance-from-high filter refuted, 1%-from-open filter inconclusive, fail-fast exit refuted, exit ranking flips with day shape (keep the CVD sell); H13 1%-from-open continuation is a forward test from Nov 12; condor v2 blocked by the 5% cap at $1,000. No desk change (6 of 8). Variants 178. Next Sat: paper review W46, ORB first-break-only, day-type marker.
+- **Saturday review 2026-11-14 + foundry batch 5** (`research/weekly/2026-W46.md`): 63 paper trades, no desk at 20; parity 17/24 (bar revisions); profit lock and ORB first-break refuted, CVD down-morning gate inconclusive, H13 forward 0/4; regime flip confirms LESSONS 24. No desk change (6 of 8). Variants 186. Next Wed: day-type marker test; forward test of the morning 0.5% continuation from Nov 16.
 - Combos (portfolio, confluence and gating, sequencing) are pre-registered in `research/combos.md` and judged on forward days only. Variant count: `research/VARIANTS.md`. Queue: `research/QUEUE.md`.
 
 ### Other setups
