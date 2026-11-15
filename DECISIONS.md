@@ -347,3 +347,5 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Skylit connector needs reconnecting: no credits used, C-2 boards for Nov 9-13 not pulled (catch up when it is back).
 - New forward test registered: morning 0.5% QQQ continuation, sessions from Nov 16 (LESSONS 42, IDEAS 2026-11-14). Variants 186.
 
+
+- 2026-11-15 (Hustle Department): Promotion: replaced the daily page with a hub index for the 19 free pages. No start/kill/scale decisions; 2 of 3 slots used, Drawdown Tracker waits on Chrome. Cadence stays daily (building/publishing work remains queued).

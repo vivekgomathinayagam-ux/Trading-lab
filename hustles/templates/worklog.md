@@ -94,3 +94,8 @@
 - Promote: new free page `promo/pages/account-drawdown-after-a-losing-streak-by-risk-per-trade.md` (table computed by script, hand-checked: 2%/10 losses -> -18.3%, 5%/5 -> -22.6%, 10%/8 -> -57.0%). One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, community drafts A/B, Gumroad views/sales check.
 - Note: the 19 pages are not publicly searchable until Pages is on; further pages have low yield, so only the Chrome-queue items move sales now. Cadence stays daily because the Drawdown Tracker is not yet live.
+
+## 2026-11-15 (cloud run)
+- Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 20 of 45.
+- Promote: instead of a 20th page, built a hub index `promo/pages/README.md` (all pages + offline calculator, each honestly linking to the product). One change only; listing and price untouched. Pages still need Pages/community posts (Chrome queue) to be findable.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, add Plan Pack to Toolkit, community drafts A/B, Gumroad views/sales check.
