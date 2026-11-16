@@ -30,3 +30,4 @@ Update 2026-11-12 08:50 PT: still no reachable sales data; Sales 0 known, Revenu
 Update 2026-11-13 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 18 of 45. New free page: expected-move-from-implied-volatility.md.
 Update 2026-11-14 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 19 of 45. New free page: account-drawdown-after-a-losing-streak-by-risk-per-trade.md.
 Update 2026-11-15 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 20 of 45. New: hub index page for the free pages (no 20th page; yield is low until Pages is on).
+Update 2026-11-16 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 21 of 45. New free page: long-option-contracts-from-stop-percentage.md. Repo traffic (GitHub, 14 days to Nov 14): 41 views, 4 uniques, no referrers; not buyer traffic.

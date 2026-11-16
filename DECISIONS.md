@@ -349,3 +349,5 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 
 - 2026-11-15 (Hustle Department): Promotion: replaced the daily page with a hub index for the 19 free pages. No start/kill/scale decisions; 2 of 3 slots used, Drawdown Tracker waits on Chrome. Cadence stays daily (building/publishing work remains queued).
+
+- 2026-11-16 (Hustle Department): Promotion: published free page long-option-contracts-from-stop-percentage.md and added it to the hub. No start/kill/scale decisions; 2 of 3 slots used, Drawdown Tracker waits on Chrome. Cadence stays daily (Chrome-queued publishing remains). Trial day 21 of 45; $0 so far.

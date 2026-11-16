@@ -12,6 +12,7 @@ Free reference pages on position sizing, expectancy, drawdown and break-even mat
 - [Expected Value Per Trade in R: Win Rate and Reward-to-Risk Table (free)](expected-value-per-trade-in-r.md)
 - [Kelly Criterion Table: The Math of Bet Size From Win Rate and Payoff Ratio (free)](kelly-fraction-table-from-win-rate-and-payoff.md)
 - [Losing Streak Probability Table: How Many Losses in a Row Are Normal? (free)](losing-streak-probability-table.md)
+- [Long Option Contracts From a Stop Percentage: How Many Can You Buy? (free table)](long-option-contracts-from-stop-percentage.md)
 - [Options Break-Even With Commissions: Worked Examples (free)](options-breakeven-with-fees.md)
 - [Options Position Size Cheat Sheet (free)](options-position-size-cheat-sheet.md)
 - [Profit Factor from Win Rate and Reward-to-Risk (free table)](profit-factor-from-win-rate-and-reward-to-risk.md)

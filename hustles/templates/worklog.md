@@ -99,3 +99,8 @@
 - Measure: Gumroad not reachable from unattended run; web search for the store returns only other sellers (not indexed). No sales or analytics. Ledger unchanged, nothing estimated. Day 20 of 45.
 - Promote: instead of a 20th page, built a hub index `promo/pages/README.md` (all pages + offline calculator, each honestly linking to the product). One change only; listing and price untouched. Pages still need Pages/community posts (Chrome queue) to be findable.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, add Plan Pack to Toolkit, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-16 (cloud run)
+- Measure: Gumroad not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 21 of 45. GitHub traffic API: 41 views / 4 uniques over 14 days, referrers empty (mostly internal).
+- Promote: new free page `promo/pages/long-option-contracts-from-stop-percentage.md` (targets "how many option contracts to buy", "option stop loss position size"; tables computed by script, hand-checked: $1,000/5%/$2.00 premium/25% stop -> 1; 100% stop -> 0). Added to hub index. One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, add Plan Pack to Toolkit, community drafts A/B, Gumroad views/sales check.
