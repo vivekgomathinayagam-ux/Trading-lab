@@ -1,21 +1,43 @@
 {
-  "as_of": "2026-11-16T15:00:14+00:00",
+  "as_of": "2026-11-16T15:15:14+00:00",
   "mode": "paper",
-  "equity": 984.52,
-  "settled_cash": 984.52,
+  "equity": 1020.34,
+  "settled_cash": -1659.76,
   "peak_equity": 1056.64,
   "start_of_day_equity": 984.52,
-  "drawdown": 0.0683,
+  "drawdown": 0.0344,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [],
+  "positions": [
+    {
+      "cost_basis": 747.55,
+      "date_acquired": "2026-11-16T15:09:14.396Z",
+      "id": 2749488,
+      "quantity": 1.0,
+      "symbol": "SPY"
+    },
+    {
+      "cost_basis": 1896.73,
+      "date_acquired": "2026-11-16T15:01:14.262Z",
+      "id": 2749261,
+      "quantity": 43.0,
+      "symbol": "SQQQ"
+    }
+  ],
   "strategies": [],
   "daytrade_desks": [
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 941.9,
-      "position": null
+      "cash": 41.65,
+      "position": {
+        "sym": "SQQQ",
+        "qty": 20,
+        "entry_px": 45.012495,
+        "stop": 43.887182625,
+        "target": 47.26311975,
+        "entry_t": "2026-11-16T10:01:13.572334-05:00"
+      }
     },
     {
       "desk": "ema_vol",
@@ -26,8 +48,15 @@
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 1056.53,
-      "position": null
+      "cash": 21.24,
+      "position": {
+        "sym": "SQQQ",
+        "qty": 23,
+        "entry_px": 45.012495,
+        "stop": 43.887182625,
+        "target": 47.26311975,
+        "entry_t": "2026-11-16T10:01:13.572334-05:00"
+      }
     },
     {
       "desk": "ema_vol_v2",
@@ -38,14 +67,28 @@
     {
       "desk": "cvd_spy",
       "label": "CVD turn 3-min (SPY)",
-      "cash": 986.68,
-      "position": null
+      "cash": 241.53,
+      "position": {
+        "sym": "SPY",
+        "qty": 1,
+        "entry_px": 745.149,
+        "stop": 726.520275,
+        "target": 782.4064500000001,
+        "entry_t": "2026-11-16T10:09:13.573878-05:00"
+      }
     },
     {
       "desk": "cvd_tqqq",
       "label": "CVD turn 3-min (TQQQ)",
-      "cash": 929.15,
-      "position": null
+      "cash": 12.58,
+      "position": {
+        "sym": "TQQQ",
+        "qty": 17,
+        "entry_px": 53.9159445,
+        "stop": 52.5680458875,
+        "target": 56.611741725,
+        "entry_t": "2026-11-16T10:15:13.574386-05:00"
+      }
     }
   ]
 }
