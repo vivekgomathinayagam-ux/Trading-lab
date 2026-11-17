@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-17T21:14+00:00",
+ "run_at": "2026-11-17T21:46+00:00",
  "data_source": "Yahoo Finance 1m (archived), 5m, 1d",
  "bars_1m": {
   "SPY": 14430,
@@ -197,56 +197,6 @@
      "UPRO": {
       "trades": 3,
       "pnl_usd": -29.33
-     }
-    },
-    "targets_hit": 0
-   },
-   {
-    "desk": "cvd_spy",
-    "label": "CVD turn 3-min (SPY)",
-    "trades": 34,
-    "win_rate_pct": 41.2,
-    "avg_win_pct": 0.12,
-    "avg_loss_pct": -0.26,
-    "expectancy_pct": -0.105,
-    "profit_factor": 0.32,
-    "total_return_pct": -3.55,
-    "end_equity": 964.51,
-    "max_dd_pct": -3.36,
-    "sharpe_daily_ann": -3.96,
-    "exits": {
-     "cvd_sell": 33,
-     "stop": 1
-    },
-    "by_symbol": {
-     "SPY": {
-      "trades": 34,
-      "pnl_usd": -35.47
-     }
-    },
-    "targets_hit": 0
-   },
-   {
-    "desk": "cvd_tqqq",
-    "label": "CVD turn 3-min (TQQQ)",
-    "trades": 34,
-    "win_rate_pct": 50.0,
-    "avg_win_pct": 0.74,
-    "avg_loss_pct": -0.73,
-    "expectancy_pct": 0.003,
-    "profit_factor": 1.01,
-    "total_return_pct": -0.1,
-    "end_equity": 998.96,
-    "max_dd_pct": -8.77,
-    "sharpe_daily_ann": 0.04,
-    "exits": {
-     "cvd_sell": 31,
-     "stop": 3
-    },
-    "by_symbol": {
-     "TQQQ": {
-      "trades": 34,
-      "pnl_usd": -1.05
      }
     },
     "targets_hit": 0
@@ -572,56 +522,6 @@
     "targets_hit": 0
    },
    {
-    "desk": "cvd_spy",
-    "label": "CVD turn 3-min (SPY)",
-    "trades": 34,
-    "win_rate_pct": 29.4,
-    "avg_win_pct": 0.11,
-    "avg_loss_pct": -0.28,
-    "expectancy_pct": -0.168,
-    "profit_factor": 0.16,
-    "total_return_pct": -5.6,
-    "end_equity": 944.04,
-    "max_dd_pct": -5.23,
-    "sharpe_daily_ann": -6.45,
-    "exits": {
-     "cvd_sell": 33,
-     "stop": 1
-    },
-    "by_symbol": {
-     "SPY": {
-      "trades": 34,
-      "pnl_usd": -55.94
-     }
-    },
-    "targets_hit": 0
-   },
-   {
-    "desk": "cvd_tqqq",
-    "label": "CVD turn 3-min (TQQQ)",
-    "trades": 34,
-    "win_rate_pct": 44.1,
-    "avg_win_pct": 0.63,
-    "avg_loss_pct": -0.82,
-    "expectancy_pct": -0.183,
-    "profit_factor": 0.6,
-    "total_return_pct": -6.2,
-    "end_equity": 937.98,
-    "max_dd_pct": -10.53,
-    "sharpe_daily_ann": -2.73,
-    "exits": {
-     "cvd_sell": 31,
-     "stop": 3
-    },
-    "by_symbol": {
-     "TQQQ": {
-      "trades": 34,
-      "pnl_usd": -62.02
-     }
-    },
-    "targets_hit": 0
-   },
-   {
     "desk": "orb_plain",
     "label": "ORB (no volume filter)",
     "trades": 34,
@@ -930,55 +830,6 @@
      "TQQQ": {
       "trades": 1,
       "pnl_usd": -10.86
-     }
-    },
-    "targets_hit": 0
-   },
-   {
-    "desk": "cvd_spy",
-    "label": "CVD turn 3-min (SPY)",
-    "trades": 39,
-    "win_rate_pct": 53.8,
-    "avg_win_pct": 0.08,
-    "avg_loss_pct": -0.16,
-    "expectancy_pct": -0.031,
-    "profit_factor": 0.59,
-    "total_return_pct": -1.2,
-    "end_equity": 988.01,
-    "max_dd_pct": -1.32,
-    "sharpe_daily_ann": -2.07,
-    "exits": {
-     "cvd_sell": 39
-    },
-    "by_symbol": {
-     "SPY": {
-      "trades": 39,
-      "pnl_usd": -12.0
-     }
-    },
-    "targets_hit": 0
-   },
-   {
-    "desk": "cvd_tqqq",
-    "label": "CVD turn 3-min (TQQQ)",
-    "trades": 39,
-    "win_rate_pct": 53.8,
-    "avg_win_pct": 0.5,
-    "avg_loss_pct": -0.94,
-    "expectancy_pct": -0.161,
-    "profit_factor": 0.63,
-    "total_return_pct": -6.24,
-    "end_equity": 937.58,
-    "max_dd_pct": -6.97,
-    "sharpe_daily_ann": -2.67,
-    "exits": {
-     "cvd_sell": 36,
-     "stop": 3
-    },
-    "by_symbol": {
-     "TQQQ": {
-      "trades": 39,
-      "pnl_usd": -62.42
      }
     },
     "targets_hit": 0
