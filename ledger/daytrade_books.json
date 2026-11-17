@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-17T20:45:14+00:00",
+ "as_of": "2026-11-17T20:59:14+00:00",
  "peak": {
   "orb_vol": 1003.0591364,
   "ema_vol": 1000.4176900000002,
@@ -39,12 +39,12 @@
   "skylit": "ok"
  },
  "marks": {
-  "SPY": 731.01,
-  "QQQ": 654.59,
-  "TQQQ": 51.288,
-  "UPRO": 125.79,
-  "SQQQ": 47.41,
-  "SPXU": 39.26
+  "SPY": 731.447,
+  "QQQ": 656.21,
+  "TQQQ": 51.625,
+  "UPRO": 126.02,
+  "SQQQ": 47.055,
+  "SPXU": 39.21
  },
  "desks": {
   "orb_vol": {
@@ -56,49 +56,28 @@
    "equity": 959.89
   },
   "ema_vol": {
-   "cash": 39.206610800000476,
+   "cash": 963.0444608000005,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-17",
-   "pos": {
-    "sym": "TQQQ",
-    "qty": 18,
-    "entry_px": 51.64581,
-    "stop": 50.35466475,
-    "target": 54.2281005,
-    "entry_t": "2026-11-17T12:30:13.779646-05:00"
-   },
+   "pos": null,
    "label": "EMA 9/21 + volume",
-   "equity": 962.39
+   "equity": 963.04
   },
   "volspike": {
-   "cash": 45.78599520000171,
+   "cash": 1086.9651452000019,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-17",
-   "pos": {
-    "sym": "SQQQ",
-    "qty": 22,
-    "entry_px": 46.88343,
-    "stop": 45.711344249999996,
-    "target": 49.2276015,
-    "entry_t": "2026-11-17T10:32:13.768794-05:00"
-   },
+   "pos": null,
    "label": "Volume spike",
-   "equity": 1088.81
+   "equity": 1086.97
   },
   "ema_vol_v2": {
-   "cash": 2.3711058000002367,
+   "cash": 977.5332808000003,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-17",
-   "pos": {
-    "sym": "TQQQ",
-    "qty": 19,
-    "entry_px": 51.64581,
-    "stop": 50.35466475,
-    "target": 54.2281005,
-    "entry_t": "2026-11-17T12:30:13.779646-05:00"
-   },
+   "pos": null,
    "label": "EMA 9/21 + volume v2",
-   "equity": 976.84
+   "equity": 977.53
   },
   "cvd_spy": {
    "cash": 980.8599886000007,
