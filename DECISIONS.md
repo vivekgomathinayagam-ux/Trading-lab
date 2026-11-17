@@ -359,3 +359,8 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Effect on paper: PR #3 can add real signals the bot used to skip (LESSONS 31), so paper from Nov 18 is not exactly comparable to Oct 26-Nov 17 on entry timing. Desk rules unchanged. Logged for parity.
 - Alpaca: Vivek added ALPACA_KEY_ID / ALPACA_SECRET_KEY as GitHub Actions secrets (typed by him; never seen by me). New `lab/foundry/fetch_alpaca.py` and workflow `alpaca-history` (research only) build a 2020-on 5-minute SPY/QQQ archive on branch data. Exception to the Railway-only secrets rule, approved by Vivek.
 - Skylit "needs reconnecting" (Researcher W46) was a tool-loading gap in that scheduled run, not a broken connector: account_usage works (103,888 credits).
+
+## 2026-11-17 — CVD desks retired (Vivek); Skylit plan; Coach and Researcher own daily learning
+- Retired cvd_spy (14 trades, 6 wins, -$19.14) and cvd_tqqq (14 trades, 6 wins, -$82.70) on Vivek's order. PAPER_RULES now orb_vol, ema_vol, volspike, ema_vol_v2. Final books kept under `retired`. Deployed 21:34 UTC, healthy.
+- Alpaca secrets now reach Actions; alpaca-history fetched SPY/QQQ 5-min bars from 2020.
+- Skylit plan `research/skylit/PLAN.md`: gamma boards retired as a standalone signal; Flux Field and market tide are next; Coach builds a daily Flux Field archive (2 credits/day).
