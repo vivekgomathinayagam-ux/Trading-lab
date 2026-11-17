@@ -1,0 +1,53 @@
+# Long-history research data: 5-minute SPY/QQQ bars from Alpaca (2020 on), then the foundry rules
+# on that long sample. Research only: nothing here trades. Keys are GitHub Actions secrets that
+# Vivek typed (ALPACA_KEY_ID, ALPACA_SECRET_KEY); they are never printed.
+name: alpaca-history
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 22 * * 0"       # Sundays 22:40 UTC
+  push:
+    branches: ["lab/**"]
+    paths: ["lab/foundry/fetch_alpaca.py", ".github/workflows/alpaca-history.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-branch-writer
+  cancel-in-progress: false
+
+jobs:
+  history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -r lab/requirements.txt pandas numpy
+      - name: Restore the long archive from the data branch
+        run: |
+          mkdir -p backtests/data/alpaca5m
+          git fetch origin data --depth=1 || true
+          for s in SPY QQQ; do
+            git show "origin/data:backtests/data/alpaca5m/$s.csv.gz" > "backtests/data/alpaca5m/$s.csv.gz" 2>/dev/null || rm -f "backtests/data/alpaca5m/$s.csv.gz"
+          done
+      - name: Fetch Alpaca 5-minute bars (SPY, QQQ)
+        run: python -m lab.foundry.fetch_alpaca backtests/data/alpaca5m SPY,QQQ 2020-01-01
+      - name: Foundry batch 1 rules on the long sample
+        run: |
+          if ls backtests/data/alpaca5m/*.csv.gz >/dev/null 2>&1; then
+            python -m lab.foundry.rules --archive backtests/data/alpaca5m --syms SPY,QQQ --out out/foundry/long_5m
+          fi
+      - name: Save to the data branch
+        run: |
+          stamp=$(date -u +%Y-%m-%d)
+          bash scripts/save_to_data_branch.sh "alpaca-history: $stamp (from ${{ github.ref_name }})" \
+            backtests/data/alpaca5m:backtests/data/alpaca5m out/foundry/long_5m:backtests/foundry/long_5m
