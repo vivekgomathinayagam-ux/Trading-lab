@@ -43,7 +43,8 @@ jobs:
         run: python -m lab.foundry.fetch_alpaca backtests/data/alpaca5m SPY,QQQ 2020-01-01
       - name: Save the archive to the data branch (before the slow rules)
         if: ${{ hashFiles('backtests/data/alpaca5m/*.csv.gz') != '' }}
-        run: bash scripts/save_to_data_branch.sh "alpaca-history archive: $(date -u +%Y-%m-%d)" backtests/data/alpaca5m:backtests/data/alpaca5m
+        run: |
+          bash scripts/save_to_data_branch.sh "alpaca-history archive $(date -u +%Y-%m-%d)" backtests/data/alpaca5m:backtests/data/alpaca5m
       - name: Foundry batch 1 rules on the long sample
         continue-on-error: true
         timeout-minutes: 60
@@ -53,4 +54,5 @@ jobs:
           fi
       - name: Save rule results
         if: ${{ hashFiles('out/foundry/long_5m/*') != '' }}
-        run: bash scripts/save_to_data_branch.sh "alpaca-history results: $(date -u +%Y-%m-%d)" out/foundry/long_5m:backtests/foundry/long_5m
+        run: |
+          bash scripts/save_to_data_branch.sh "alpaca-history results $(date -u +%Y-%m-%d)" out/foundry/long_5m:backtests/foundry/long_5m
