@@ -50,5 +50,26 @@ class BarLogTests(unittest.TestCase):
         bl.entry("x", "SPY", T0, 100.0, T0)
 
 
+class RetiredDesks(unittest.TestCase):
+    def test_cvd_not_in_paper_and_books_kept(self):
+        import json
+        from unittest import mock
+        from engine.daytrade_runner import DayTradeRunner
+        from strategies.daytrade.core import PAPER_RULES, RETIRED_RULES
+        keys = [r.key for r in PAPER_RULES]
+        for k in RETIRED_RULES:
+            self.assertNotIn(k, keys)
+        d = Path(tempfile.mkdtemp())
+        (d / "daytrade_books.json").write_text(json.dumps({"desks": {
+            "orb_vol": {"cash": 950.0}, "cvd_tqqq": {"cash": 917.32, "equity": 917.32}}}))
+        r = DayTradeRunner(mock.Mock(), mock.Mock(), mock.Mock(), mock.Mock(), d)
+        r.load(); r.save({})
+        out = json.loads((d / "daytrade_books.json").read_text())
+        self.assertNotIn("cvd_tqqq", out["desks"])
+        self.assertEqual(out["retired"]["cvd_tqqq"]["equity"], 917.32)
+        r.load(); r.save({})                                   # survives a second restart
+        self.assertIn("cvd_tqqq", json.loads((d / "daytrade_books.json").read_text())["retired"])
+
+
 if __name__ == "__main__":
     unittest.main()

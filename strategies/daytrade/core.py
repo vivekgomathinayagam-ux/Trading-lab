@@ -374,7 +374,10 @@ SIGNAL_EXITS = {"cvd_sell"}
 
 PAPER_RULES = [ORB(), EMACross(), VolSpike(),
                # added by the Researcher 2026-10-28 (pre-registered: strategies/cvd_turn/spec.md, daytrade spec addendum)
-               EMACrossV2(), CVDTurn("SPY"), CVDTurn("TQQQ")]
+               EMACrossV2()]
+# Retired 2026-11-17 by Vivek (paper results: cvd_spy 14 trades -$19, cvd_tqqq 14 trades -$83).
+# Code kept for the lab; books stay in daytrade_books.json under "retired".
+RETIRED_RULES = ["cvd_spy", "cvd_tqqq"]
 COMPARISON_RULES = [ORB(None), EMACross(None), VolSpike(2.0)]
 
 
