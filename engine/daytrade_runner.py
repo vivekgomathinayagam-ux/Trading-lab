@@ -93,9 +93,12 @@ class DayTradeRunner:
         except (OSError, ValueError):
             log.error("daytrade_books.json unreadable; starting fresh books")
             return
+        self.retired = dict(d.get("retired") or {})          # retired desks' final books, kept as-is
         for k, v in (d.get("desks") or {}).items():
             if k in self.desks:
                 self.desks[k].load(v)
+            else:
+                self.retired[k] = {**v, "retired": True}
         for k in ("peak", "sod", "sod_date", "benchmark", "started"):
             if k in d:
                 self.meta[k] = d[k]
@@ -107,7 +110,8 @@ class DayTradeRunner:
                         "skylit": self.spot.status if self.spot else "unconfigured"},
                "marks": {k: round(v, 4) for k, v in (marks or {}).items()},
                "desks": {k: {**d.to_dict(), "label": d.rule.label, "equity": round(d.equity(marks), 2)}
-                         for k, d in self.desks.items()}}
+                         for k, d in self.desks.items()},
+               "retired": getattr(self, "retired", {})}
         self.books_path.write_text(json.dumps(out, indent=1))
 
     def _record(self, tr: dict) -> None:
