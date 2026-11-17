@@ -16,10 +16,11 @@ Balance 103,885 credits (~$104). Credits are cheap; the limit is how much HISTOR
 4. **Tempest VRP / term structure as a day filter**: high realized-vs-implied days as a gate for trend rules (cheap, daily).
 5. **Dark-pool top prints** as levels: last; level tests have failed before (LESSONS 26-28).
 
-## Study window (Vivek, 2026-11-17)
-- **Nov 18 to Dec 1: open budget** (up to 20,000 credits/week, balance stays above 50,000). Pull broadly: Flux Field 1-min (30 days, SPY/QQQ/TQQQ/SPXU/SQQQ/UPRO), market tide 5-min and daily, flow tide + sweeps for SPY/QQQ, Tempest VRP/skew/term daily, and rebuild a 30-day 0DTE heatmap history at 3-4 times a day if the cost per board allows. Cache everything.
-- Goal: one Skylit-driven strategy that passes the pre-registered bar and goes on paper as desk `skylit_v1` (the first replacement slot).
-- **From Dec 2: minimum mode.** Keep only the feeds the passing strategy (or the Coach's daily archive) needs; target < 100 credits/week. If nothing passes, Skylit drops to the Coach's 2-credit daily Flux Field pull and the Tempest VRP check.
+## Study window (Vivek 2026-11-17; total budget pending his approval)
+- **Interim cap: 2,000 credits until Vivek approves** (Flux Field history and market tide history fit inside it).
+- Proposed: one study week, Nov 18-24, total cap 10,000 credits, front-loaded on history pulls (Flux Field 30-day 1-min, market tide 360-day daily and 5-min, flow tide, Tempest dailies), all cached. Nov 25-Dec 1: analysis on the cache only (~0 credits).
+- Goal: one Skylit-driven strategy that clears a pre-registered bar -> desk `skylit_v1`.
+- **From Dec 2: minimum mode**, < 100 credits/week (the desk's needs + the Coach's 2-credit daily Flux Field archive).
 
 ## Rules of use
 - Cache every pull on branch data under research/skylit/; never pay twice.

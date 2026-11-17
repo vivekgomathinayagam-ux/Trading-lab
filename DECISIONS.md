@@ -371,3 +371,8 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - News scalper: spec v0 `strategies/news_scalp/spec.md`, research stage. Alpaca probe: ticks/quotes history, IEX real-time, news, screeners and the paper account all work; recent SIP needs a paid plan.
 - X: not used. Its API costs about $200/month, above the $50 budget; Alpaca News (Benzinga, free with the same key) and SEC EDGAR cover it with timestamps.
 - Waiting on Vivek: Alpaca keys in Railway, and a yes for an Alpaca paper broker adapter (engine/brokers, rule 9).
+
+## 2026-11-17 — Alpaca paper adapter shipped (Vivek's yes)
+- `engine/brokers/alpaca_paper.py`: paper endpoint only (constructor refuses any other URL; no live flag), whole-share equities only, client_order_id on every order, marketable-limit entries, cancel, flatten_all. 7 tests; 107 bot + lab suites pass. Not wired to a desk yet. Startup check is read-only.
+- Deploy 22:21 UTC: `alpaca_keys: absent` (Railway variables not deployed yet; Vivek to click Deploy).
+- Skylit study budget pending Vivek: interim cap 2,000 credits; proposal 10,000 total in one week.
