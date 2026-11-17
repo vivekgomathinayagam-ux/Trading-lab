@@ -36,7 +36,7 @@ class BarLogTests(unittest.TestCase):
             bl.bar("SPY", b, T0 + timedelta(minutes=i, seconds=5), True, True)
             px += 0.1
         bl.entry("cvd_spy", "SPY", b.t, 102.0, T0 + timedelta(minutes=20))
-        bars = list(csv.DictReader((d / "daytrade_bars.csv").open()))
+        bars = list(csv.DictReader((d / "daytrade_bars_2026-11-17.csv").open()))
         self.assertEqual(len(bars), 20)
         ctx = list(csv.DictReader((d / "daytrade_entry_context.csv").open()))
         self.assertEqual(len(ctx), 1)

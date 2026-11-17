@@ -1,6 +1,6 @@
 """Read-only paper-desk logging (2026-11-17). Writes two CSVs next to the other ledger files:
 
-- daytrade_bars.csv: every 1-minute bar the bot acts on, with the time it saw it, so parity
+- daytrade_bars_<day>.csv: every 1-minute bar the bot acts on, with the time it saw it, so parity
   replays compare bar by bar (Yahoo revises bars after the fact; QUEUE 2).
 - daytrade_entry_context.csv: market context at each paper entry (extension from the open,
   distance from the session high/low, ATR %, VWAP distance) for the entry-quality shadow tests
@@ -23,7 +23,7 @@ CTX_COLS = ["desk", "sym", "bar_start", "entered_at", "fill_px", "ret_open_pct",
 
 class BarLog:
     def __init__(self, ledger_dir: Path):
-        self.bars_path = ledger_dir / "daytrade_bars.csv"
+        self.dir = ledger_dir                   # bars go to one file per day (keeps pushes small)
         self.ctx_path = ledger_dir / "daytrade_entry_context.csv"
         self.sess: dict[str, list] = {}          # sym -> today's bars (o, h, l, c, v)
         self.day: dict[str, str] = {}
@@ -45,7 +45,7 @@ class BarLog:
             if self.day.get(sym) != d:
                 self.day[sym], self.sess[sym] = d, []
             self.sess[sym].append((b.o, b.h, b.l, b.c, b.v))
-            self._append(self.bars_path, BAR_COLS, {
+            self._append(self.dir / f"daytrade_bars_{d}.csv", BAR_COLS, {
                 "sym": sym, "bar_start": b.t.isoformat(), "o": b.o, "h": b.h, "l": b.l, "c": b.c,
                 "v": b.v, "seen_at": seen_at.isoformat(timespec="seconds"), "fresh": bool(fresh),
                 "latest_in_step": bool(latest)})
