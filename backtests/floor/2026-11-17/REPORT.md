@@ -1,6 +1,6 @@
 # Trading Floor day-trade lab
 
-Run 2026-11-17T02:14+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
+Run 2026-11-17T04:00+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
 
 **1-minute backtest window:** 2026-10-01 to 2026-11-16, 33 trading sessions after a 3-session warm-up. Each desk starts with $1,000, trades whole shares, risks 2.5% per trade (stop) to make 5% (target), at most one trade a day, flat by 15:55 ET.
 
@@ -40,24 +40,24 @@ Buy-and-hold over the same window: SPY -3.18%, QQQ -10.87%, TQQQ -32.75%, UPRO -
 |---|---|---|---|---|---|---|
 | ORB + volume | 20 | 35.0% | -0.181% | 0.69 | -3.78% | -9.62% |
 | EMA 9/21 + volume | 14 | 35.7% | -0.282% | 0.19 | -3.91% | -4.32% |
-| Volume spike | 35 | 42.9% | -0.183% | 0.65 | -6.5% | -13.87% |
+| Volume spike | 35 | 45.7% | -0.116% | 0.77 | -4.3% | -13.87% |
 | EMA 9/21 + volume v2 | 14 | 35.7% | -0.282% | 0.19 | -3.91% | -4.32% |
 | CVD turn 3-min (SPY) | 38 | 57.9% | -0.021% | 0.7 | -0.78% | -1.19% |
 | CVD turn 3-min (TQQQ) | 38 | 55.3% | -0.113% | 0.7 | -4.33% | -5.62% |
 | ORB (no volume filter) | 38 | 36.8% | -0.014% | 0.97 | -0.99% | -7.04% |
 | EMA 9/21 (no volume filter) | 32 | 40.6% | -0.06% | 0.86 | -2.16% | -5.63% |
-| Volume spike (2x) | 38 | 36.8% | -0.239% | 0.59 | -8.99% | -12.3% |
+| Volume spike (2x) | 38 | 39.5% | -0.177% | 0.68 | -6.85% | -12.3% |
 
 ## How realistic is +5% in one day? (daily bars since 2010)
 
 | ETF | Days | Reached +5% above the open | Fell 2.5% below the open | Both on the same day | Closed +5% above the open |
 |---|---|---|---|---|---|
-| SPY | 4205 | 0.17% | 1.69% | 0.05% | 0.02% |
-| QQQ | 4205 | 0.19% | 3.64% | 0.07% | 0.1% |
-| TQQQ | 4205 | 6.73% | 30.92% | 1.47% | 3.78% |
-| UPRO | 4205 | 3.23% | 21.33% | 0.71% | 1.83% |
-| SQQQ | 4205 | 9.99% | 28.97% | 1.52% | 5.02% |
-| SPXU | 4205 | 5.71% | 18.81% | 0.69% | 2.78% |
+| SPY | 4206 | 0.17% | 1.69% | 0.05% | 0.02% |
+| QQQ | 4206 | 0.19% | 3.64% | 0.07% | 0.1% |
+| TQQQ | 4206 | 6.73% | 30.93% | 1.47% | 3.78% |
+| UPRO | 4206 | 3.23% | 21.35% | 0.71% | 1.83% |
+| SQQQ | 4206 | 9.99% | 28.96% | 1.52% | 5.02% |
+| SPXU | 4206 | 5.71% | 18.81% | 0.69% | 2.78% |
 
 ## Per-ETF breakdown (1-minute, paper desks)
 
