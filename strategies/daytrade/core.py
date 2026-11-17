@@ -436,6 +436,9 @@ class Desk:
     def wants_entry(self, sym: str, bar: Bar, f: Features) -> bool:
         if self.pos or self.pending:
             return False
+        only = getattr(self.rule, "sym", None)     # CVD desks trade only their own symbol (fix 2026-11-17)
+        if only and sym != only:
+            return False
         if self.last_entry_day == bar.t.date().isoformat():
             return False
         if not (ENTRY_START <= bar.t.time() < ENTRY_END):

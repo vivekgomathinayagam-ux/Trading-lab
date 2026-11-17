@@ -29,6 +29,7 @@ from pathlib import Path
 
 import yaml
 
+from engine.barlog import BarLog
 from engine.quotecheck import STALE_QUOTE_S, XCHECK_FLAG_PCT, age_seconds, iso_utc, pct_diff
 from engine.risk import AccountState, Order, RiskEngine
 from strategies.daytrade.core import (PAPER_RULES, SLIP, STOP_PCT, SYMBOLS, Bar, Desk,
@@ -66,6 +67,7 @@ class DayTradeRunner:
         self.ledger, self.broker, self.risk, self.md = ledger, broker, risk, md
         self.spot = spot                      # engine.quotecheck.SkylitSpot or None (checks only)
         self.fills_path = ledger_dir / "daytrade_fills.csv"
+        self.barlog = BarLog(ledger_dir)      # logging only (2026-11-17)
         self.evaluation = str(_config().get("evaluation", "preliminary"))
         self.price_src: dict[str, str] = {}   # where this step's price per symbol came from
         self.feed: dict = {"yahoo_down": [], "entries_paused": False}
@@ -230,6 +232,7 @@ class DayTradeRunner:
         self.ledger.trade("entry", "paper", d.key, sym, "buy", qty, price=round(fill, 4), source=f"{src}+slip",
                           max_loss=round(order.max_loss, 2), cost=round(order.cost, 2), note=note)
         self._log_fill("entry", d, sym, qty, px, fill, "signal", bar_t, None, note)
+        self.barlog.entry(d.key, sym, bar_t, fill, now)
         log.info("ENTRY %s %s x%d @ %.4f (%s)", d.key, sym, qty, fill, note)
 
     def _exit(self, d: Desk, reason: str, px: float, now: datetime,
@@ -322,6 +325,7 @@ class DayTradeRunner:
             # arrived in the same step (Yahoo often delivers two bars at once; 2026-11-05 cvd_tqqq's
             # 09:53 signal was skipped that way). Outage catch-up bars stay stale.
             fresh = (now - (b.t + timedelta(minutes=1))) <= timedelta(minutes=2)
+            self.barlog.bar(s, b, now, fresh, is_latest)
             for d in self.desks.values():                       # entries (fresh bars only)
                 if d.wants_entry(s, b, self.hub[s]):
                     if entries_paused:
