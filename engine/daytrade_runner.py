@@ -37,6 +37,9 @@ from strategies.daytrade.core import (PAPER_RULES, SLIP, STOP_PCT, SYMBOLS, Bar,
 log = logging.getLogger("daytrade")
 CONFIG = Path(__file__).resolve().parent.parent / "strategies" / "daytrade" / "config.yaml"
 SAFETY_FLAT = dtime(15, 58)
+# A Yahoo answer whose quote time is this old counts as a failed feed (Oct 30: Yahoo froze at
+# 14:44 ET and the 15:58 safety exit filled SPXU at a 74-minute-old price).
+FEED_STALE_S = 300
 TRADE_COLS = ["desk", "sym", "qty", "entry_t", "exit_t", "entry_px", "exit_px", "pnl_usd",
               "pnl_pct_equity", "move_pct", "reason", "equity_after"]
 FILL_COLS = ["evaluation", "kind", "desk", "sym", "qty", "reason", "bot_time", "signal_bar_start",
@@ -269,6 +272,12 @@ class DayTradeRunner:
                 log.warning("bars %s failed: %s", s, e)
                 down.append(s)
                 continue
+            meta = (getattr(self.md, "last_meta", {}) or {}).get(s, {})
+            q_age = age_seconds(meta.get("quote_epoch"), meta.get("fetched_at") or now)
+            if px and q_age is not None and q_age > FEED_STALE_S:
+                log.warning("Yahoo quote for %s is %.0fs old: treated as feed down", s, q_age)
+                down.append(s)                      # frozen feed = failed feed (fallback below)
+                continue
             if px:
                 prices[s] = px
                 self.price_src[s] = "yahoo_rt"
@@ -309,7 +318,10 @@ class DayTradeRunner:
                     self._exit(d, ex[0], px, now, rule_px=ex[1], bar_t=b.t)
             self.hub[s].update(b)                               # features
             self.last_t[s] = b.t
-            fresh = is_latest and (now - b.t) <= timedelta(minutes=3)
+            # A signal bar is fresh when it completed at most 3 minutes ago, even if a newer bar
+            # arrived in the same step (Yahoo often delivers two bars at once; 2026-11-05 cvd_tqqq's
+            # 09:53 signal was skipped that way). Outage catch-up bars stay stale.
+            fresh = (now - (b.t + timedelta(minutes=1))) <= timedelta(minutes=2)
             for d in self.desks.values():                       # entries (fresh bars only)
                 if d.wants_entry(s, b, self.hub[s]):
                     if entries_paused:
