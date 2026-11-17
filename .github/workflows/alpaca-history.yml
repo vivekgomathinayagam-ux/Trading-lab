@@ -21,7 +21,7 @@ concurrency:
 jobs:
   history:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 90
     env:
       ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
       ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
@@ -41,14 +41,16 @@ jobs:
           done
       - name: Fetch Alpaca 5-minute bars (SPY, QQQ)
         run: python -m lab.foundry.fetch_alpaca backtests/data/alpaca5m SPY,QQQ 2020-01-01
+      - name: Save the archive to the data branch (before the slow rules)
+        if: ${{ hashFiles('backtests/data/alpaca5m/*.csv.gz') != '' }}
+        run: bash scripts/save_to_data_branch.sh "alpaca-history archive: $(date -u +%Y-%m-%d)" backtests/data/alpaca5m:backtests/data/alpaca5m
       - name: Foundry batch 1 rules on the long sample
+        continue-on-error: true
+        timeout-minutes: 60
         run: |
           if ls backtests/data/alpaca5m/*.csv.gz >/dev/null 2>&1; then
             python -m lab.foundry.rules --archive backtests/data/alpaca5m --syms SPY,QQQ --out out/foundry/long_5m
           fi
-      - name: Save to the data branch
-        if: ${{ hashFiles('backtests/data/alpaca5m/*.csv.gz') != '' }}
-        run: |
-          stamp=$(date -u +%Y-%m-%d)
-          bash scripts/save_to_data_branch.sh "alpaca-history: $stamp (from ${{ github.ref_name }})" \
-            backtests/data/alpaca5m:backtests/data/alpaca5m out/foundry/long_5m:backtests/foundry/long_5m
+      - name: Save rule results
+        if: ${{ hashFiles('out/foundry/long_5m/*') != '' }}
+        run: bash scripts/save_to_data_branch.sh "alpaca-history results: $(date -u +%Y-%m-%d)" out/foundry/long_5m:backtests/foundry/long_5m
