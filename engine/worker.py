@@ -150,6 +150,16 @@ def main() -> int:
     if not all(checks.values()):
         alerts.send(f"Compound City bot: connectivity checks failed {checks}")
 
+    if settings.alpaca_key_id and settings.alpaca_secret_key:   # read-only checks; no orders here
+        try:
+            from engine.brokers.alpaca_paper import AlpacaPaperBroker
+            ap = AlpacaPaperBroker(settings.alpaca_key_id, settings.alpaca_secret_key)
+            p = ap.ping()
+            q = ap.quote("SPY")
+            log.info("CHECK alpaca paper: account %s, positions %d, SPY iex bid %.2f ask %.2f",
+                     p.get("status"), len(ap.positions()), q.bid, q.ask)
+        except Exception as e:  # noqa: BLE001
+            log.error("CHECK alpaca paper FAILED: %s", type(e).__name__)
     risk = RiskEngine()
     shadow = ShadowSimulator(slippage_bps=settings.shadow_slippage_bps)
     strategies = load_runnable()
