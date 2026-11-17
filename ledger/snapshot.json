@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-11-17T15:30:14+00:00",
+  "as_of": "2026-11-17T15:45:14+00:00",
   "mode": "paper",
-  "equity": 1054.71,
-  "settled_cash": 317.19,
+  "equity": 1055.59,
+  "settled_cash": -706.47,
   "peak_equity": 1059.66,
   "start_of_day_equity": 1054.75,
-  "drawdown": 0.0047,
+  "drawdown": 0.0038,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
@@ -15,6 +15,13 @@
       "id": 2753977,
       "quantity": 1.0,
       "symbol": "SPY"
+    },
+    {
+      "cost_basis": 1023.66,
+      "date_acquired": "2026-11-17T15:32:14.264Z",
+      "id": 2754482,
+      "quantity": 22.0,
+      "symbol": "SQQQ"
     }
   ],
   "strategies": [],
@@ -34,8 +41,15 @@
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 1077.22,
-      "position": null
+      "cash": 45.79,
+      "position": {
+        "sym": "SQQQ",
+        "qty": 22,
+        "entry_px": 46.88343,
+        "stop": 45.711344249999996,
+        "target": 49.2276015,
+        "entry_t": "2026-11-17T10:32:13.768794-05:00"
+      }
     },
     {
       "desk": "ema_vol_v2",
