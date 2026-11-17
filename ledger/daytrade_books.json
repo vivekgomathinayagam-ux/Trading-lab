@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-17T15:00:14+00:00",
+ "as_of": "2026-11-17T15:15:14+00:00",
  "peak": {
   "orb_vol": 1003.0591364,
   "ema_vol": 1000.4176900000002,
@@ -39,12 +39,12 @@
   "skylit": "ok"
  },
  "marks": {
-  "SPY": 739.41,
-  "QQQ": 662.542,
-  "TQQQ": 53.17,
-  "UPRO": 130.22,
-  "SQQQ": 45.755,
-  "SPXU": 37.97
+  "SPY": 737.45,
+  "QQQ": 659.915,
+  "TQQQ": 52.56,
+  "UPRO": 129.24,
+  "SQQQ": 46.302,
+  "SPXU": 38.27
  },
  "desks": {
   "orb_vol": {
@@ -80,27 +80,27 @@
    "equity": 983.64
   },
   "cvd_spy": {
-   "cash": 986.0738526000007,
-   "start_equity": 1000.0,
-   "last_entry_day": "2026-11-16",
-   "pos": null,
-   "label": "CVD turn 3-min (SPY)",
-   "equity": 986.07
-  },
-  "cvd_tqqq": {
-   "cash": 22.040395000001126,
+   "cash": 248.8064286000007,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-17",
    "pos": {
-    "sym": "TQQQ",
-    "qty": 17,
-    "entry_px": 53.196585,
-    "stop": 51.866670375,
-    "target": 55.85641425,
-    "entry_t": "2026-11-17T10:00:13.766009-05:00"
+    "sym": "SPY",
+    "qty": 1,
+    "entry_px": 737.267424,
+    "stop": 718.8357384,
+    "target": 774.1307952000001,
+    "entry_t": "2026-11-17T10:09:13.766796-05:00"
    },
+   "label": "CVD turn 3-min (SPY)",
+   "equity": 986.26
+  },
+  "cvd_tqqq": {
+   "cash": 917.322530000001,
+   "start_equity": 1000.0,
+   "last_entry_day": "2026-11-17",
+   "pos": null,
    "label": "CVD turn 3-min (TQQQ)",
-   "equity": 925.93
+   "equity": 917.32
   }
  }
 }
