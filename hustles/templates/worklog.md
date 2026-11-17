@@ -104,3 +104,8 @@
 - Measure: Gumroad not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 21 of 45. GitHub traffic API: 41 views / 4 uniques over 14 days, referrers empty (mostly internal).
 - Promote: new free page `promo/pages/long-option-contracts-from-stop-percentage.md` (targets "how many option contracts to buy", "option stop loss position size"; tables computed by script, hand-checked: $1,000/5%/$2.00 premium/25% stop -> 1; 100% stop -> 0). Added to hub index. One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, add Plan Pack to Toolkit, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-17 (cloud run)
+- Measure: no Vivek answers in City Hall; Gumroad not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 22 of 45.
+- Promote: new free page `promo/pages/options-trade-journal-template-csv.md` plus downloadable `options-trade-journal-template.csv` (3 made-up rows, values recomputed by script and matched to the page table: +118.70/+0.99R, -81.30/-0.54R, +98.70/+0.99R). Added to hub index. One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, add Plan Pack to Toolkit, community drafts A/B, Gumroad views/sales check.
