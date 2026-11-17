@@ -1,225 +1,225 @@
 {
  "meta": {
-  "sessions": 49,
+  "sessions": 50,
   "first": "2026-09-08",
-  "last": "2026-11-13",
+  "last": "2026-11-16",
   "syms": "SPY,QQQ"
  },
  "rules": {
   "F1_cloud_ride": {
-   "trades": 211,
-   "win": 0.313,
-   "exp_pct": -0.0226,
+   "trades": 213,
+   "win": 0.319,
+   "exp_pct": -0.0144,
    "ci": [
-    -0.0965,
-    0.0576
+    -0.0854,
+    0.0675
    ],
-   "pf": 0.86,
-   "exp_2x": -0.0686,
-   "half1": -0.0505,
-   "half2": 0.0025,
-   "n1": 100,
-   "n2": 111,
+   "pf": 0.91,
+   "exp_2x": -0.0604,
+   "half1": -0.0498,
+   "half2": 0.0193,
+   "n1": 104,
+   "n2": 109,
    "longs": 122,
-   "shorts": 89,
+   "shorts": 91,
    "long_exp": -0.0858,
-   "short_exp": 0.064,
-   "rand95": 0.0103,
-   "total_pct": -4.776,
+   "short_exp": 0.0813,
+   "rand95": 0.0153,
+   "total_pct": -3.076,
    "exits": {
     "cloud": 158,
-    "eod": 37,
+    "eod": 39,
     "stop": 16
    },
-   "avg_bars": 25.0,
+   "avg_bars": 25.4,
    "by_sym": {
-    "QQQ": -0.0189,
-    "SPY": -0.0261
+    "QQQ": -0.0112,
+    "SPY": -0.0175
    }
   },
   "F2_cloud_ride_tight": {
-   "trades": 289,
-   "win": 0.294,
-   "exp_pct": -0.0102,
+   "trades": 295,
+   "win": 0.298,
+   "exp_pct": -0.0089,
    "ci": [
-    -0.0548,
-    0.0332
+    -0.0503,
+    0.0331
    ],
-   "pf": 0.9,
-   "exp_2x": -0.0562,
-   "half1": -0.0399,
-   "half2": 0.0186,
-   "n1": 142,
+   "pf": 0.91,
+   "exp_2x": -0.0549,
+   "half1": -0.0397,
+   "half2": 0.022,
+   "n1": 148,
    "n2": 147,
    "longs": 146,
-   "shorts": 143,
+   "shorts": 149,
    "long_exp": -0.0393,
-   "short_exp": 0.0196,
-   "rand95": -0.017,
-   "total_pct": -2.937,
+   "short_exp": 0.0208,
+   "rand95": -0.014,
+   "total_pct": -2.636,
    "exits": {
-    "cloud": 282,
+    "cloud": 288,
     "stop": 6,
     "eod": 1
    },
    "avg_bars": 9.0,
    "by_sym": {
-    "QQQ": 0.0005,
-    "SPY": -0.0209
+    "QQQ": -0.0007,
+    "SPY": -0.0172
    }
   },
   "F3_vwap_trend": {
-   "trades": 180,
-   "win": 0.267,
-   "exp_pct": -0.0297,
+   "trades": 185,
+   "win": 0.27,
+   "exp_pct": -0.0234,
    "ci": [
-    -0.0674,
-    0.0138
+    -0.0625,
+    0.0236
    ],
-   "pf": 0.69,
-   "exp_2x": -0.0757,
-   "half1": -0.0505,
-   "half2": -0.0068,
-   "n1": 94,
-   "n2": 86,
+   "pf": 0.75,
+   "exp_2x": -0.0694,
+   "half1": -0.0511,
+   "half2": 0.0059,
+   "n1": 95,
+   "n2": 90,
    "longs": 88,
-   "shorts": 92,
+   "shorts": 97,
    "long_exp": -0.0409,
-   "short_exp": -0.0189,
-   "rand95": 0.0033,
-   "total_pct": -5.338,
+   "short_exp": -0.0074,
+   "rand95": 0.0024,
+   "total_pct": -4.32,
    "exits": {
-    "vwap": 142,
-    "eod": 34,
+    "vwap": 145,
+    "eod": 36,
     "stop": 4
    },
-   "avg_bars": 14.9,
+   "avg_bars": 15.1,
    "by_sym": {
-    "QQQ": -0.0166,
-    "SPY": -0.0427
+    "QQQ": -0.0124,
+    "SPY": -0.0344
    }
   },
   "F4_trend_break": {
-   "trades": 77,
-   "win": 0.442,
-   "exp_pct": -0.0259,
+   "trades": 78,
+   "win": 0.436,
+   "exp_pct": -0.0325,
    "ci": [
-    -0.0944,
-    0.0463
+    -0.0993,
+    0.0411
    ],
-   "pf": 0.81,
-   "exp_2x": -0.0719,
-   "half1": 0.0052,
-   "half2": -0.0614,
-   "n1": 41,
-   "n2": 36,
-   "longs": 36,
+   "pf": 0.77,
+   "exp_2x": -0.0785,
+   "half1": -0.0035,
+   "half2": -0.068,
+   "n1": 43,
+   "n2": 35,
+   "longs": 37,
    "shorts": 41,
-   "long_exp": -0.0619,
+   "long_exp": -0.0747,
    "short_exp": 0.0057,
-   "rand95": 0.0589,
-   "total_pct": -1.997,
+   "rand95": 0.069,
+   "total_pct": -2.533,
    "exits": {
     "eod": 48,
-    "stop": 29
+    "stop": 30
    },
-   "avg_bars": 27.9,
+   "avg_bars": 27.8,
    "by_sym": {
     "QQQ": 0.0109,
-    "SPY": -0.0583
+    "SPY": -0.0696
    }
   },
   "F5_fib_618": {
-   "trades": 57,
-   "win": 0.404,
-   "exp_pct": -0.0974,
+   "trades": 59,
+   "win": 0.424,
+   "exp_pct": -0.0792,
    "ci": [
-    -0.183,
-    -0.0079
+    -0.1704,
+    0.0166
    ],
-   "pf": 0.45,
-   "exp_2x": -0.1434,
-   "half1": -0.0725,
-   "half2": -0.125,
-   "n1": 30,
-   "n2": 27,
+   "pf": 0.54,
+   "exp_2x": -0.1252,
+   "half1": -0.0645,
+   "half2": -0.0954,
+   "n1": 31,
+   "n2": 28,
    "longs": 32,
-   "shorts": 25,
+   "shorts": 27,
    "long_exp": -0.1225,
-   "short_exp": -0.0652,
-   "rand95": 0.0507,
-   "total_pct": -5.55,
+   "short_exp": -0.0278,
+   "rand95": 0.0417,
+   "total_pct": -4.672,
    "exits": {
-    "target": 21,
+    "target": 23,
     "fib_stop": 16,
     "eod": 15,
     "stop": 5
    },
-   "avg_bars": 18.1,
+   "avg_bars": 18.2,
    "by_sym": {
-    "QQQ": -0.0742,
-    "SPY": -0.1293
+    "QQQ": -0.0559,
+    "SPY": -0.1108
    }
   },
   "F6_fib_382": {
-   "trades": 84,
-   "win": 0.464,
-   "exp_pct": -0.0616,
+   "trades": 86,
+   "win": 0.465,
+   "exp_pct": -0.0624,
    "ci": [
-    -0.1257,
-    0.0113
+    -0.123,
+    0.0069
    ],
    "pf": 0.57,
-   "exp_2x": -0.1076,
-   "half1": -0.0855,
-   "half2": -0.0313,
-   "n1": 47,
-   "n2": 37,
+   "exp_2x": -0.1084,
+   "half1": -0.0801,
+   "half2": -0.0399,
+   "n1": 48,
+   "n2": 38,
    "longs": 42,
-   "shorts": 42,
+   "shorts": 44,
    "long_exp": -0.0764,
-   "short_exp": -0.0468,
-   "rand95": 0.0284,
-   "total_pct": -5.176,
+   "short_exp": -0.0489,
+   "rand95": 0.032,
+   "total_pct": -5.362,
    "exits": {
-    "target": 40,
-    "fib_stop": 23,
+    "target": 41,
+    "fib_stop": 24,
     "eod": 14,
     "stop": 7
    },
-   "avg_bars": 15.2,
+   "avg_bars": 15.0,
    "by_sym": {
-    "QQQ": -0.0588,
-    "SPY": -0.0652
+    "QQQ": -0.0654,
+    "SPY": -0.0585
    }
   },
   "C1_long_0945": {
-   "trades": 98,
-   "win": 0.429,
-   "exp_pct": -0.1242,
+   "trades": 100,
+   "win": 0.42,
+   "exp_pct": -0.1496,
    "ci": [
-    -0.332,
-    0.0626
+    -0.3406,
+    0.0341
    ],
-   "pf": 0.6,
-   "exp_2x": -0.1702,
-   "half1": -0.0016,
-   "half2": -0.242,
-   "n1": 48,
+   "pf": 0.55,
+   "exp_2x": -0.1956,
+   "half1": -0.0118,
+   "half2": -0.2874,
+   "n1": 50,
    "n2": 50,
-   "longs": 98,
+   "longs": 100,
    "shorts": 0,
-   "long_exp": -0.1242,
+   "long_exp": -0.1496,
    "short_exp": null,
    "rand95": null,
-   "total_pct": -12.174,
+   "total_pct": -14.961,
    "exits": {
-    "eod": 98
+    "eod": 100
    },
    "avg_bars": 78.0,
    "by_sym": {
-    "QQQ": -0.1296,
-    "SPY": -0.1189
+    "QQQ": -0.1563,
+    "SPY": -0.1429
    }
   }
  }
