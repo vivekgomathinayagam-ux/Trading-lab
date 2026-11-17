@@ -364,3 +364,10 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Retired cvd_spy (14 trades, 6 wins, -$19.14) and cvd_tqqq (14 trades, 6 wins, -$82.70) on Vivek's order. PAPER_RULES now orb_vol, ema_vol, volspike, ema_vol_v2. Final books kept under `retired`. Deployed 21:34 UTC, healthy.
 - Alpaca secrets now reach Actions; alpaca-history fetched SPY/QQQ 5-min bars from 2020.
 - Skylit plan `research/skylit/PLAN.md`: gamma boards retired as a standalone signal; Flux Field and market tide are next; Coach builds a daily Flux Field archive (2 credits/day).
+
+## 2026-11-17 — New program from Vivek: Skylit desk, volume MA grid, news scalper
+- Skylit: open-budget study Nov 18-Dec 1, then minimum mode (PLAN.md). New desk `skylit_v1` only after a strategy clears a pre-registered bar.
+- Volume spike: pre-registered EMA/SMA grid on Alpaca long history (BOARD).
+- News scalper: spec v0 `strategies/news_scalp/spec.md`, research stage. Alpaca probe: ticks/quotes history, IEX real-time, news, screeners and the paper account all work; recent SIP needs a paid plan.
+- X: not used. Its API costs about $200/month, above the $50 budget; Alpaca News (Benzinga, free with the same key) and SEC EDGAR cover it with timestamps.
+- Waiting on Vivek: Alpaca keys in Railway, and a yes for an Alpaca paper broker adapter (engine/brokers, rule 9).

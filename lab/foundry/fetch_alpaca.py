@@ -2,7 +2,7 @@
 
 Keys come from the environment (GitHub Actions secrets ALPACA_KEY_ID / ALPACA_SECRET_KEY); they
 are never printed or written. Free plan: SIP history older than 15 minutes, IEX as the fallback.
-Usage: python -m lab.foundry.fetch_alpaca <archive dir> SPY,QQQ [start YYYY-MM-DD]
+Usage: python -m lab.foundry.fetch_alpaca <archive dir> SPY,QQQ [start YYYY-MM-DD] [5Min|1Min]
 """
 from __future__ import annotations
 
@@ -31,10 +31,10 @@ def parse_bars(payload: dict, sym: str) -> list[Bar]:
     return out
 
 
-def fetch(sym: str, start: str, end: str, feed: str, headers: dict, session=requests) -> list[Bar]:
+def fetch(sym: str, start: str, end: str, feed: str, headers: dict, session=requests, timeframe: str = "5Min") -> list[Bar]:
     bars, token = [], None
     while True:
-        p = {"symbols": sym, "timeframe": "5Min", "start": start, "end": end, "limit": 10000,
+        p = {"symbols": sym, "timeframe": timeframe, "start": start, "end": end, "limit": 10000,
              "adjustment": "raw", "feed": feed, "sort": "asc"}
         if token:
             p["page_token"] = token
@@ -53,6 +53,7 @@ def fetch(sym: str, start: str, end: str, feed: str, headers: dict, session=requ
 def main(argv: list[str]) -> int:
     out, syms = Path(argv[1]), argv[2].split(",")
     start = argv[3] if len(argv) > 3 else "2020-01-01"
+    tf = argv[4] if len(argv) > 4 else "5Min"          # e.g. 1Min for the long 1-minute ETF archive
     headers = {"APCA-API-KEY-ID": os.environ.get("ALPACA_KEY_ID", ""),
                "APCA-API-SECRET-KEY": os.environ.get("ALPACA_SECRET_KEY", "")}
     if not headers["APCA-API-KEY-ID"]:
@@ -65,10 +66,10 @@ def main(argv: list[str]) -> int:
         have = load_archive(path) if path.exists() else {}
         s = (max(have) - timedelta(days=3)).strftime("%Y-%m-%dT00:00:00Z") if have else f"{start}T00:00:00Z"
         try:
-            new = fetch(sym, s, end, "sip", headers)
+            new = fetch(sym, s, end, "sip", headers, timeframe=tf)
         except requests.HTTPError as e:                     # free plan or entitlement: fall back to IEX
             print(sym, "sip failed", e.response.status_code, "-> iex")
-            new = fetch(sym, s, end, "iex", headers)
+            new = fetch(sym, s, end, "iex", headers, timeframe=tf)
         for b in new:
             have[b.t] = b
         save_archive(path, have)
