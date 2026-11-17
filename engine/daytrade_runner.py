@@ -29,6 +29,7 @@ from pathlib import Path
 
 import yaml
 
+from engine.barlog import BarLog
 from engine.quotecheck import STALE_QUOTE_S, XCHECK_FLAG_PCT, age_seconds, iso_utc, pct_diff
 from engine.risk import AccountState, Order, RiskEngine
 from strategies.daytrade.core import (PAPER_RULES, SLIP, STOP_PCT, SYMBOLS, Bar, Desk,
@@ -37,6 +38,9 @@ from strategies.daytrade.core import (PAPER_RULES, SLIP, STOP_PCT, SYMBOLS, Bar,
 log = logging.getLogger("daytrade")
 CONFIG = Path(__file__).resolve().parent.parent / "strategies" / "daytrade" / "config.yaml"
 SAFETY_FLAT = dtime(15, 58)
+# A Yahoo answer whose quote time is this old counts as a failed feed (Oct 30: Yahoo froze at
+# 14:44 ET and the 15:58 safety exit filled SPXU at a 74-minute-old price).
+FEED_STALE_S = 300
 TRADE_COLS = ["desk", "sym", "qty", "entry_t", "exit_t", "entry_px", "exit_px", "pnl_usd",
               "pnl_pct_equity", "move_pct", "reason", "equity_after"]
 FILL_COLS = ["evaluation", "kind", "desk", "sym", "qty", "reason", "bot_time", "signal_bar_start",
@@ -63,6 +67,7 @@ class DayTradeRunner:
         self.ledger, self.broker, self.risk, self.md = ledger, broker, risk, md
         self.spot = spot                      # engine.quotecheck.SkylitSpot or None (checks only)
         self.fills_path = ledger_dir / "daytrade_fills.csv"
+        self.barlog = BarLog(ledger_dir)      # logging only (2026-11-17)
         self.evaluation = str(_config().get("evaluation", "preliminary"))
         self.price_src: dict[str, str] = {}   # where this step's price per symbol came from
         self.feed: dict = {"yahoo_down": [], "entries_paused": False}
@@ -227,6 +232,7 @@ class DayTradeRunner:
         self.ledger.trade("entry", "paper", d.key, sym, "buy", qty, price=round(fill, 4), source=f"{src}+slip",
                           max_loss=round(order.max_loss, 2), cost=round(order.cost, 2), note=note)
         self._log_fill("entry", d, sym, qty, px, fill, "signal", bar_t, None, note)
+        self.barlog.entry(d.key, sym, bar_t, fill, now)
         log.info("ENTRY %s %s x%d @ %.4f (%s)", d.key, sym, qty, fill, note)
 
     def _exit(self, d: Desk, reason: str, px: float, now: datetime,
@@ -269,6 +275,12 @@ class DayTradeRunner:
                 log.warning("bars %s failed: %s", s, e)
                 down.append(s)
                 continue
+            meta = (getattr(self.md, "last_meta", {}) or {}).get(s, {})
+            q_age = age_seconds(meta.get("quote_epoch"), meta.get("fetched_at") or now)
+            if px and q_age is not None and q_age > FEED_STALE_S:
+                log.warning("Yahoo quote for %s is %.0fs old: treated as feed down", s, q_age)
+                down.append(s)                      # frozen feed = failed feed (fallback below)
+                continue
             if px:
                 prices[s] = px
                 self.price_src[s] = "yahoo_rt"
@@ -309,7 +321,11 @@ class DayTradeRunner:
                     self._exit(d, ex[0], px, now, rule_px=ex[1], bar_t=b.t)
             self.hub[s].update(b)                               # features
             self.last_t[s] = b.t
-            fresh = is_latest and (now - b.t) <= timedelta(minutes=3)
+            # A signal bar is fresh when it completed at most 3 minutes ago, even if a newer bar
+            # arrived in the same step (Yahoo often delivers two bars at once; 2026-11-05 cvd_tqqq's
+            # 09:53 signal was skipped that way). Outage catch-up bars stay stale.
+            fresh = (now - (b.t + timedelta(minutes=1))) <= timedelta(minutes=2)
+            self.barlog.bar(s, b, now, fresh, is_latest)
             for d in self.desks.values():                       # entries (fresh bars only)
                 if d.wants_entry(s, b, self.hub[s]):
                     if entries_paused:
