@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-11-17T17:30:17+00:00",
+  "as_of": "2026-11-17T17:45:14+00:00",
   "mode": "paper",
-  "equity": 1067.04,
-  "settled_cash": 22.32,
+  "equity": 1073.75,
+  "settled_cash": -1872.47,
   "peak_equity": 1100.1,
   "start_of_day_equity": 1054.75,
-  "drawdown": 0.0301,
+  "drawdown": 0.024,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
@@ -15,6 +15,13 @@
       "id": 2754482,
       "quantity": 22.0,
       "symbol": "SQQQ"
+    },
+    {
+      "cost_basis": 1894.78,
+      "date_acquired": "2026-11-17T17:30:14.573Z",
+      "id": 2753752,
+      "quantity": 37.0,
+      "symbol": "TQQQ"
     }
   ],
   "strategies": [],
