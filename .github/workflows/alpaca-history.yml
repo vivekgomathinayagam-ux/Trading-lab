@@ -47,6 +47,7 @@ jobs:
             python -m lab.foundry.rules --archive backtests/data/alpaca5m --syms SPY,QQQ --out out/foundry/long_5m
           fi
       - name: Save to the data branch
+        if: ${{ hashFiles('backtests/data/alpaca5m/*.csv.gz') != '' }}
         run: |
           stamp=$(date -u +%Y-%m-%d)
           bash scripts/save_to_data_branch.sh "alpaca-history: $stamp (from ${{ github.ref_name }})" \
