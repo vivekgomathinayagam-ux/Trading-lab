@@ -16,9 +16,8 @@ Balance 103,885 credits (~$104). Credits are cheap; the limit is how much HISTOR
 4. **Tempest VRP / term structure as a day filter**: high realized-vs-implied days as a gate for trend rules (cheap, daily).
 5. **Dark-pool top prints** as levels: last; level tests have failed before (LESSONS 26-28).
 
-## Study window (Vivek 2026-11-17; total budget pending his approval)
-- **Interim cap: 2,000 credits until Vivek approves** (Flux Field history and market tide history fit inside it).
-- Proposed: one study week, Nov 18-24, total cap 10,000 credits, front-loaded on history pulls (Flux Field 30-day 1-min, market tide 360-day daily and 5-min, flow tide, Tempest dailies), all cached. Nov 25-Dec 1: analysis on the cache only (~0 credits).
+## Study window (approved)
+- **APPROVED by Vivek 2026-11-17 18:15 PT:** total cap 10,000 credits, one study week, Nov 18-24, total cap 10,000 credits, front-loaded on history pulls (Flux Field 30-day 1-min, market tide 360-day daily and 5-min, flow tide, Tempest dailies), all cached. Nov 25-Dec 1: analysis on the cache only (~0 credits).
 - Goal: one Skylit-driven strategy that clears a pre-registered bar -> desk `skylit_v1`.
 - **From Dec 2: minimum mode**, < 100 credits/week (the desk's needs + the Coach's 2-credit daily Flux Field archive).
 
