@@ -205,3 +205,5 @@ Rules for new and changed tasks:
 - No strategy has a validated edge yet. Controls exist so we can tell.
 - Railway has no volume; /ledger and risk_state.json are restored from branch `data` at startup (fixed 2026-10-13).
 - The Tradier sandbox account shows $100,000 equity and is a margin-type account. Paper orders must be sized as if live-size (rule 7), not off $100k. Decision 2026-10-13: paper runs as a virtual $1,000 account, whole shares; each setup also reports 'tradeable at $1,000 live: yes/no' (Vivek's expected real live size at go-live, not the $50 own-money cap). Risk engine already blocks margin and short entries.
+
+- 2026-11-17 scalp backtest finished: indicators-only 1-minute scalping on 23 tickers has no edge (0/480 configs profitable in any split). News/catalyst version untested. See strategies/scalp/RESULT.md.

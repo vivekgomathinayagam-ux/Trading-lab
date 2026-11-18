@@ -379,3 +379,9 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-17 18:15 PT — Skylit budget approved by Vivek
 - 10,000 credits total, study week Nov 18-24, then minimum mode from Dec 2. Alpaca keys are live on Railway; startup check passed (account ACTIVE, IEX quotes).
+
+## 2026-11-17 (evening) scalp backtest: indicators-only intraday scalping has no edge
+- Ran the approved plan (strategies/scalp/PLAN.md): 23 tickers (original 10 + TQQQ SQQQ SOXL UPRO + PFE T CCL SOFI RIOT AAL RIVN F + MARA stress), 1-minute Alpaca SIP bars, 480 configs, train/val/holdout.
+- Result: 0/480 configs profitable net in any split; random-entry control -5.5 bps; median gross edge about 0. Details in strategies/scalp/RESULT.md.
+- Decision: no paper desk for indicator-only scalping. News scalper stays in research: only a news/catalyst-conditioned version is still untested. Alpaca paper adapter stays unwired.
+- Fill logic covered by lab/tests/test_scalp.py (stop-first, gap fills, short mirror, time stop, no cross-day trades).
