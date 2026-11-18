@@ -1,6 +1,6 @@
 # Research queue (ordered; the Researcher edits this)
 
-_Last set: 2026-11-14 by the Researcher (Saturday review run). Top item first._
+_Last set: 2026-11-18 by the Researcher (Wednesday build run). Top item first._
 
 ## Now
 - [x] Paper report script `lab/floor/paper_report.py` (2026-10-28, tested)
@@ -19,11 +19,13 @@ _Last set: 2026-11-14 by the Researcher (Saturday review run). Top item first._
 
 - [x] Sat Nov 14 review (`research/weekly/2026-W46.md`, `research/foundry/batch5_REPORT.md`): paper 63 trades, no desk at 20; parity 17/24 (gaps = bar revisions); batch 5: profit lock and ORB first-break refuted, CVD down-morning gate inconclusive, H13 forward 0/4; long/short flipped with the tape (LESSONS 24). C-2 boards skipped (Skylit connector needs reconnecting). No desk change.
 
-1. **Wed Nov 18 build run:** pre-register and run the day-type marker test (IDEAS 2026-11-14): first-hour range / 20-day ATR, gap size, morning move as a switch between hold-to-close and the tight/CVD exit, both sides, both archives, random control. Check that foundry-lab ran batch 5 and that the morning-0.5% forward rows and H13 rows are accruing. If Skylit is reconnected: pull the missing C-2 boards (Nov 9-20, 10 calls).
-2. **Live-bar logging** in the bot (logging only; tests prove desks trade identically) so parity compares bar by bar. 3 of 6 parity gaps this week trace to Yahoo bar revisions that can't be proven without it.
+- [x] Wed Nov 18 build run (`research/foundry/batch6_REPORT.md`): first tests on the long Alpaca archive (1,729 sessions). H13, the 0.5% morning continuation, the 13:00 cutoff and the first-hour day-type marker all flat over 6 years; Skylit daily market tide refuted; Flux inner-band gate right sign but CI includes 0 (29 sessions). Skylit cache: Flux 1-min 30 sessions SPY/QQQ + market tide 360 days (~200 credits). Volspike MA grid pre-registered; 1-min Alpaca pull added to alpaca-history. 0 of 6 passed; no desk change.
+
+1. **Sat Nov 21 review run:** paper stats with CIs; parity bar by bar from the Nov 18 bar log (before/after PR #3 split); Newsie week shadow (flags, bias) per desk; volspike MA grid if `data:backtests/data/alpaca1m/` landed; re-test batches 2-5 rules (giveback trail, profit lock, fail-fast, ORB variants) on the long archive (LESSONS 47).
+2. ~~**Live-bar logging**~~ (done 2026-11-17, `ledger/daytrade_bars_<day>.csv`) in the bot (logging only; tests prove desks trade identically) so parity compares bar by bar. 3 of 6 parity gaps this week trace to Yahoo bar revisions that can't be proven without it.
 3. **Run parity inside floor-lab** after the archive step (one more step in the Actions job; lab code only). Also make floor-lab's 5-min robustness table skip the CVD desks (3-min candles cannot be built from 5-min bars).
 4. **Skylit forward collection** (also feeds combo C-2; until it exists, the Saturday run pulls the week's 10:00 ET 0DTE SPY/QQQ boards, 5 calls): `engine/skylit_feed.py` read-only snapshot at 09:45/10:30/12:30/15:00 ET for SPY, QQQ, SPXW (~20 credits/day) written to the ledger, so forward data accrues without paid backfills.
-5. **Skylit edge study (continuing)**:
+5. **Skylit edge study (continuing; study week Nov 18-24, 10,000-credit cap, ~200 used by Nov 18)**: next pulls: intraday 5-min market tide (first hour), flow_tide SPY/QQQ, Tempest dailies as a day filter; Flux re-run at 60 sessions.
    - Map which Skylit tools have history and how far back.
    - Build a cached dataset on branch `data` (`research/skylit/`): GEX boards at fixed decision times (09:45, 10:30, 12:30, 15:00 ET) for SPY/QQQ/SPXW, plus Tempest daily rows.
    - Measure what each feature predicts for the next hours on SPY/QQQ and the 3x ETFs: King-node pull and pins, flip distance, gamma sign vs realized range, wall rejections, IV term structure.

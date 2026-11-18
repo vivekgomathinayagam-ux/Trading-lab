@@ -35,8 +35,10 @@ jobs:
           for s in SPY QQQ TQQQ UPRO SQQQ SPXU; do
             git show "origin/data:backtests/data/etf1m/$s.csv.gz" > "backtests/data/etf1m/$s.csv.gz" 2>/dev/null || rm -f "backtests/data/etf1m/$s.csv.gz"
           done
+          mkdir -p backtests/data/alpaca5m
           for s in SPY QQQ; do
             git show "origin/data:backtests/data/etf5m/$s.csv.gz" > "backtests/data/etf5m/$s.csv.gz" 2>/dev/null || rm -f "backtests/data/etf5m/$s.csv.gz"
+            git show "origin/data:backtests/data/alpaca5m/$s.csv.gz" > "backtests/data/alpaca5m/$s.csv.gz" 2>/dev/null || rm -f "backtests/data/alpaca5m/$s.csv.gz"
           done
           git show origin/data:ledger/daytrade_trades.csv > ledger/daytrade_trades.csv 2>/dev/null || true
           git show origin/data:backtests/floor/latest/trades_1m.csv > ledger/floor_trades_1m.csv 2>/dev/null || true
@@ -57,6 +59,12 @@ jobs:
         run: python -m lab.foundry.batch4 --archive1m backtests/data/etf1m --archive5m backtests/data/etf5m --desk-trades ledger/floor_trades_1m.csv --out out/foundry/batch4
       - name: Batch 5 (profit-lock exit, CVD down-morning gate, H13 diagnostics, ORB first break, regime check) on both archives
         run: python -m lab.foundry.batch5 --archive1m backtests/data/etf1m --archive5m backtests/data/etf5m --desk-trades ledger/floor_trades_1m.csv --out out/foundry/batch5
+      - name: Batch 6 (H13 / 0.5% morning continuation / 13:00 cutoff / first-hour range marker) on the long archive and both short ones
+        continue-on-error: true
+        run: |
+          if [ -s backtests/data/alpaca5m/SPY.csv.gz ]; then
+            python -m lab.foundry.batch6 --long backtests/data/alpaca5m --a backtests/data/etf1m --b backtests/data/etf5m --out out/foundry/batch6 > /dev/null
+          fi
       - name: Session post-mortem (latest archived day)
         run: python -m lab.foundry.postmortem --archive backtests/data/etf1m --trades ledger/daytrade_trades.csv --out out/postmortem
       - name: Summary

@@ -45,6 +45,20 @@ jobs:
         if: ${{ hashFiles('backtests/data/alpaca5m/*.csv.gz') != '' }}
         run: |
           bash scripts/save_to_data_branch.sh "alpaca-history archive $(date -u +%Y-%m-%d)" backtests/data/alpaca5m:backtests/data/alpaca5m
+      - name: Restore the long 1-minute ETF archive
+        run: |
+          mkdir -p backtests/data/alpaca1m
+          for s in SPY QQQ TQQQ UPRO SQQQ SPXU; do
+            git show "origin/data:backtests/data/alpaca1m/$s.csv.gz" > "backtests/data/alpaca1m/$s.csv.gz" 2>/dev/null || rm -f "backtests/data/alpaca1m/$s.csv.gz"
+          done
+      - name: Fetch Alpaca 1-minute bars (6 ETFs, 2022 on; volspike MA grid, PREREG_volspike_grid.md)
+        continue-on-error: true
+        timeout-minutes: 40
+        run: python -m lab.foundry.fetch_alpaca backtests/data/alpaca1m SPY,QQQ,TQQQ,UPRO,SQQQ,SPXU 2022-01-01 1Min
+      - name: Save the 1-minute archive to the data branch
+        if: ${{ hashFiles('backtests/data/alpaca1m/*.csv.gz') != '' }}
+        run: |
+          bash scripts/save_to_data_branch.sh "alpaca-history 1m archive $(date -u +%Y-%m-%d)" backtests/data/alpaca1m:backtests/data/alpaca1m
       - name: Foundry batch 1 rules on the long sample
         continue-on-error: true
         timeout-minutes: 60
