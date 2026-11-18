@@ -1,4 +1,4 @@
-# News & momentum stock scalper (`news_scalp`): spec v0, 2026-11-17
+# News & momentum stock scalper (`news_scalp`): spec v1, 2026-11-17
 
 Source: Vivek's brief (2026-11-17, "AI-Powered News & Momentum Stock Scalping Agent"). Stage: **research** (Mode 1). Paper only after the backtest gate; live mode not built.
 
@@ -40,3 +40,29 @@ Source: Vivek's brief (2026-11-17, "AI-Powered News & Momentum Stock Scalping Ag
 
 ## Honest prior
 At a 120 s hold, a 0.05-0.10% spread plus slippage eats a third to half of a 0.30% target. Most published news-scalping edges vanish after realistic fills. The backtest decides.
+
+
+## v1 scope (Vivek, 2026-11-17 evening): the goal restated
+Develop a strategy that can **confidently call a small % move, up or down**, by combining every resource we have: news, macro/political events, charts and price action, volume, Skylit options flow, and Claude's reasoning. Open to any liquid ticker, not a fixed list.
+
+**Universe (any of these, filtered by the liquidity rules above):** US stocks with fresh catalysts; ADRs and country ETFs (EWZ, FXI, EWJ, EWW, INDA, KWEB...) when foreign political or economic news hits; sector ETFs (XLE, XLF, SMH...) for macro news; index ETFs and their inverse versions.
+
+**Direction:** up = buy the stock/ETF. Down = buy an inverse ETF (SQQQ, SPXU, SOXS...) or a defined-risk long put. No shorting (needs margin, money rule 4).
+
+**Inputs and what each is for**
+| Input | Role | Source |
+|---|---|---|
+| Company news, filings | catalyst: what moved and why | Alpaca News (Benzinga), SEC EDGAR, Alpha Vantage news sentiment |
+| Macro and political news | which countries, sectors, rates or currencies are hit | pre-market web search by Claude, economic calendar (CPI, FOMC, jobs, tariffs, elections) |
+| Charts and price action | timing and confirmation: trend, VWAP, key levels, gaps, opening range | Alpaca 1-min/5-min bars |
+| Volume | the one signal working on our desks so far (volspike): relative volume and spikes confirm the move is real | Alpaca bars |
+| Options flow | confirmation of conviction (sweeps, flow tide) | Skylit (inside the study budget) |
+| Claude reasoning | reads the news, judges surprise vs. expected, picks tickers, writes the watchlist with a direction and a confidence | pre-market scheduled run only (no LLM in the trading loop) |
+
+**How "confident" gets measured (not claimed):** every call is logged before the open: ticker, direction, size of move, window, confidence 0-100. A scorer checks it against what the price actually did. Confidence buckets must be calibrated (calls marked 80 should be right about 80% of the time) and beat a no-skill baseline before any desk trades on them.
+
+**Two tracks, run together**
+1. **Forward call log (starts now, costs nothing):** a pre-market run writes `news/calls/<day>.json`; the lab scores it after the close. This builds the track record that historical news data may not give us.
+2. **Historical event study:** once the Alpaca news history query works, replay catalysts against 1-min bars to find which kinds of news (earnings surprise, guidance, FDA, macro print, tariff headline...) lead to follow-through vs. fade, and which chart/volume conditions sharpen it.
+
+A paper desk starts only when one track clears the backtest gate above (or the forward log reaches 50+ calls with calibrated, above-baseline accuracy after costs).

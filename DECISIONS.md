@@ -382,3 +382,7 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-17 (evening) personal scalp experiment, no effect on the plan
 - Vivek asked for a one-off indicator-only scalping backtest as a personal experiment. Files: strategies/scalp/, lab/scalp/, workflow scalp-backtest. It changes nothing: no desks, priorities, board items, news-scalper plan or Alpaca adapter plans were altered.
+
+## 2026-11-17 19:45 news_scalp spec v1
+- Vivek restated the goal: confidently call small % moves up or down using everything (news incl. macro/political and foreign, charts, volume, Skylit flow, Claude reasoning), any liquid ticker. Spec v1 adds a broad universe, inverse ETFs/defined-risk puts for down calls, and a forward pre-market call log scored after each close, alongside the historical event study.
+- New scheduled task Newsie (weekdays pre-market) writes the call log to branch main under news/calls/. Research only; no orders.
