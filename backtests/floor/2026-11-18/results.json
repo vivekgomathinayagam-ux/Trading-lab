@@ -1,0 +1,1013 @@
+{
+ "run_at": "2026-11-18T02:58+00:00",
+ "data_source": "Yahoo Finance 1m (archived), 5m, 1d",
+ "bars_1m": {
+  "SPY": 14430,
+  "QQQ": 14429,
+  "TQQQ": 14429,
+  "UPRO": 13939,
+  "SQQQ": 14429,
+  "SPXU": 14157
+ },
+ "main_1m": {
+  "sessions": 34,
+  "first_day": "2026-10-01",
+  "last_day": "2026-11-17",
+  "benchmark_pct": {
+   "SPY": -4.18,
+   "QQQ": -11.52,
+   "TQQQ": -34.24,
+   "UPRO": -14.48,
+   "SQQQ": 37.68,
+   "SPXU": 12.93
+  },
+  "desks": [
+   {
+    "desk": "orb_vol",
+    "label": "ORB + volume",
+    "trades": 23,
+    "win_rate_pct": 34.8,
+    "avg_win_pct": 1.17,
+    "avg_loss_pct": -0.73,
+    "expectancy_pct": -0.071,
+    "profit_factor": 0.85,
+    "total_return_pct": -1.85,
+    "end_equity": 981.48,
+    "max_dd_pct": -4.28,
+    "sharpe_daily_ann": -0.45,
+    "exits": {
+     "eod": 21,
+     "stop": 1,
+     "target": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": -0.82
+     },
+     "SPXU": {
+      "trades": 5,
+      "pnl_usd": -32.57
+     },
+     "SPY": {
+      "trades": 4,
+      "pnl_usd": -1.85
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": 84.28
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": -13.92
+     },
+     "UPRO": {
+      "trades": 5,
+      "pnl_usd": -53.62
+     }
+    },
+    "targets_hit": 1
+   },
+   {
+    "desk": "ema_vol",
+    "label": "EMA 9/21 + volume",
+    "trades": 24,
+    "win_rate_pct": 29.2,
+    "avg_win_pct": 0.6,
+    "avg_loss_pct": -0.54,
+    "expectancy_pct": -0.206,
+    "profit_factor": 0.46,
+    "total_return_pct": -4.9,
+    "end_equity": 950.96,
+    "max_dd_pct": -5.48,
+    "sharpe_daily_ann": -3.29,
+    "exits": {
+     "eod": 24
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": -16.36
+     },
+     "SPXU": {
+      "trades": 12,
+      "pnl_usd": 6.28
+     },
+     "SPY": {
+      "trades": 1,
+      "pnl_usd": 2.66
+     },
+     "SQQQ": {
+      "trades": 1,
+      "pnl_usd": 1.05
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": -11.07
+     },
+     "UPRO": {
+      "trades": 4,
+      "pnl_usd": -31.6
+     }
+    },
+    "targets_hit": 0
+   },
+   {
+    "desk": "volspike",
+    "label": "Volume spike",
+    "trades": 34,
+    "win_rate_pct": 52.9,
+    "avg_win_pct": 1.02,
+    "avg_loss_pct": -0.65,
+    "expectancy_pct": 0.234,
+    "profit_factor": 1.76,
+    "total_return_pct": 8.01,
+    "end_equity": 1080.1,
+    "max_dd_pct": -3.27,
+    "sharpe_daily_ann": 3.92,
+    "exits": {
+     "eod": 32,
+     "stop": 2
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": 0.51
+     },
+     "SPXU": {
+      "trades": 10,
+      "pnl_usd": 57.74
+     },
+     "SPY": {
+      "trades": 4,
+      "pnl_usd": -1.1
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": 13.9
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": 36.93
+     },
+     "UPRO": {
+      "trades": 11,
+      "pnl_usd": -27.84
+     }
+    },
+    "targets_hit": 0
+   },
+   {
+    "desk": "ema_vol_v2",
+    "label": "EMA 9/21 + volume v2",
+    "trades": 23,
+    "win_rate_pct": 34.8,
+    "avg_win_pct": 0.58,
+    "avg_loss_pct": -0.49,
+    "expectancy_pct": -0.119,
+    "profit_factor": 0.63,
+    "total_return_pct": -2.76,
+    "end_equity": 972.4,
+    "max_dd_pct": -4.17,
+    "sharpe_daily_ann": -1.96,
+    "exits": {
+     "eod": 23
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": -16.36
+     },
+     "SPXU": {
+      "trades": 9,
+      "pnl_usd": 25.28
+     },
+     "SPY": {
+      "trades": 1,
+      "pnl_usd": 2.66
+     },
+     "SQQQ": {
+      "trades": 4,
+      "pnl_usd": 1.85
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": -11.71
+     },
+     "UPRO": {
+      "trades": 3,
+      "pnl_usd": -29.33
+     }
+    },
+    "targets_hit": 0
+   },
+   {
+    "desk": "orb_plain",
+    "label": "ORB (no volume filter)",
+    "trades": 34,
+    "win_rate_pct": 35.3,
+    "avg_win_pct": 1.71,
+    "avg_loss_pct": -0.74,
+    "expectancy_pct": 0.123,
+    "profit_factor": 1.26,
+    "total_return_pct": 3.8,
+    "end_equity": 1037.98,
+    "max_dd_pct": -6.64,
+    "sharpe_daily_ann": 1.43,
+    "exits": {
+     "eod": 30,
+     "stop": 2,
+     "target": 2
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 6,
+      "pnl_usd": 0.68
+     },
+     "SPXU": {
+      "trades": 6,
+      "pnl_usd": 81.8
+     },
+     "SPY": {
+      "trades": 11,
+      "pnl_usd": -25.47
+     },
+     "SQQQ": {
+      "trades": 9,
+      "pnl_usd": -26.21
+     },
+     "UPRO": {
+      "trades": 2,
+      "pnl_usd": 7.15
+     }
+    },
+    "targets_hit": 2
+   },
+   {
+    "desk": "ema_plain",
+    "label": "EMA 9/21 (no volume filter)",
+    "trades": 28,
+    "win_rate_pct": 32.1,
+    "avg_win_pct": 1.14,
+    "avg_loss_pct": -0.63,
+    "expectancy_pct": -0.064,
+    "profit_factor": 0.85,
+    "total_return_pct": -2.03,
+    "end_equity": 979.66,
+    "max_dd_pct": -5.78,
+    "sharpe_daily_ann": -0.76,
+    "exits": {
+     "eod": 26,
+     "target": 1,
+     "stop": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 7,
+      "pnl_usd": -8.77
+     },
+     "SPXU": {
+      "trades": 7,
+      "pnl_usd": -11.59
+     },
+     "SPY": {
+      "trades": 8,
+      "pnl_usd": -11.64
+     },
+     "SQQQ": {
+      "trades": 6,
+      "pnl_usd": 11.68
+     }
+    },
+    "targets_hit": 1
+   },
+   {
+    "desk": "volspike_2x",
+    "label": "Volume spike (2x)",
+    "trades": 34,
+    "win_rate_pct": 52.9,
+    "avg_win_pct": 1.34,
+    "avg_loss_pct": -0.86,
+    "expectancy_pct": 0.305,
+    "profit_factor": 1.75,
+    "total_return_pct": 10.48,
+    "end_equity": 1104.77,
+    "max_dd_pct": -4.73,
+    "sharpe_daily_ann": 3.71,
+    "exits": {
+     "eod": 31,
+     "stop": 2,
+     "target": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 1,
+      "pnl_usd": 3.17
+     },
+     "SPXU": {
+      "trades": 14,
+      "pnl_usd": 60.05
+     },
+     "SPY": {
+      "trades": 2,
+      "pnl_usd": -0.47
+     },
+     "SQQQ": {
+      "trades": 4,
+      "pnl_usd": -1.6
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": 42.65
+     },
+     "UPRO": {
+      "trades": 11,
+      "pnl_usd": 1.0
+     }
+    },
+    "targets_hit": 1
+   }
+  ]
+ },
+ "stress_1m": {
+  "sessions": 34,
+  "first_day": "2026-10-01",
+  "last_day": "2026-11-17",
+  "benchmark_pct": {
+   "SPY": -4.18,
+   "QQQ": -11.52,
+   "TQQQ": -34.24,
+   "UPRO": -14.48,
+   "SQQQ": 37.68,
+   "SPXU": 12.93
+  },
+  "desks": [
+   {
+    "desk": "orb_vol",
+    "label": "ORB + volume",
+    "trades": 23,
+    "win_rate_pct": 30.4,
+    "avg_win_pct": 1.19,
+    "avg_loss_pct": -0.83,
+    "expectancy_pct": -0.215,
+    "profit_factor": 0.63,
+    "total_return_pct": -5.05,
+    "end_equity": 949.52,
+    "max_dd_pct": -5.68,
+    "sharpe_daily_ann": -1.71,
+    "exits": {
+     "eod": 21,
+     "stop": 1,
+     "target": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": -3.12
+     },
+     "SPXU": {
+      "trades": 5,
+      "pnl_usd": -41.45
+     },
+     "SPY": {
+      "trades": 4,
+      "pnl_usd": -4.31
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": 76.85
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": -17.29
+     },
+     "UPRO": {
+      "trades": 5,
+      "pnl_usd": -61.13
+     }
+    },
+    "targets_hit": 1
+   },
+   {
+    "desk": "ema_vol",
+    "label": "EMA 9/21 + volume",
+    "trades": 24,
+    "win_rate_pct": 20.8,
+    "avg_win_pct": 0.62,
+    "avg_loss_pct": -0.64,
+    "expectancy_pct": -0.376,
+    "profit_factor": 0.25,
+    "total_return_pct": -8.73,
+    "end_equity": 912.71,
+    "max_dd_pct": -8.74,
+    "sharpe_daily_ann": -5.92,
+    "exits": {
+     "eod": 24
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": -18.57
+     },
+     "SPXU": {
+      "trades": 12,
+      "pnl_usd": -17.73
+     },
+     "SPY": {
+      "trades": 1,
+      "pnl_usd": 2.05
+     },
+     "SQQQ": {
+      "trades": 1,
+      "pnl_usd": -0.82
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": -14.1
+     },
+     "UPRO": {
+      "trades": 4,
+      "pnl_usd": -38.14
+     }
+    },
+    "targets_hit": 0
+   },
+   {
+    "desk": "volspike",
+    "label": "Volume spike",
+    "trades": 34,
+    "win_rate_pct": 44.1,
+    "avg_win_pct": 1.05,
+    "avg_loss_pct": -0.71,
+    "expectancy_pct": 0.068,
+    "profit_factor": 1.17,
+    "total_return_pct": 2.09,
+    "end_equity": 1020.9,
+    "max_dd_pct": -4.15,
+    "sharpe_daily_ann": 2.07,
+    "exits": {
+     "stop": 3,
+     "eod": 31
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": -1.81
+     },
+     "SPXU": {
+      "trades": 10,
+      "pnl_usd": 37.3
+     },
+     "SPY": {
+      "trades": 4,
+      "pnl_usd": -3.53
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": -0.65
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": 31.97
+     },
+     "UPRO": {
+      "trades": 11,
+      "pnl_usd": -42.38
+     }
+    },
+    "targets_hit": 0
+   },
+   {
+    "desk": "ema_vol_v2",
+    "label": "EMA 9/21 + volume v2",
+    "trades": 23,
+    "win_rate_pct": 21.7,
+    "avg_win_pct": 0.69,
+    "avg_loss_pct": -0.54,
+    "expectancy_pct": -0.275,
+    "profit_factor": 0.35,
+    "total_return_pct": -6.2,
+    "end_equity": 937.96,
+    "max_dd_pct": -6.27,
+    "sharpe_daily_ann": -4.56,
+    "exits": {
+     "eod": 23
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": -18.57
+     },
+     "SPXU": {
+      "trades": 9,
+      "pnl_usd": 7.78
+     },
+     "SPY": {
+      "trades": 1,
+      "pnl_usd": 2.05
+     },
+     "SQQQ": {
+      "trades": 4,
+      "pnl_usd": -6.19
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": -14.77
+     },
+     "UPRO": {
+      "trades": 3,
+      "pnl_usd": -32.35
+     }
+    },
+    "targets_hit": 0
+   },
+   {
+    "desk": "orb_plain",
+    "label": "ORB (no volume filter)",
+    "trades": 34,
+    "win_rate_pct": 32.4,
+    "avg_win_pct": 1.71,
+    "avg_loss_pct": -0.81,
+    "expectancy_pct": 0.006,
+    "profit_factor": 1.01,
+    "total_return_pct": -0.26,
+    "end_equity": 997.41,
+    "max_dd_pct": -7.56,
+    "sharpe_daily_ann": 0.37,
+    "exits": {
+     "eod": 30,
+     "stop": 2,
+     "target": 2
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 6,
+      "pnl_usd": -2.69
+     },
+     "SPXU": {
+      "trades": 6,
+      "pnl_usd": 68.27
+     },
+     "SPY": {
+      "trades": 11,
+      "pnl_usd": -32.19
+     },
+     "SQQQ": {
+      "trades": 9,
+      "pnl_usd": -39.66
+     },
+     "UPRO": {
+      "trades": 2,
+      "pnl_usd": 3.68
+     }
+    },
+    "targets_hit": 2
+   },
+   {
+    "desk": "ema_plain",
+    "label": "EMA 9/21 (no volume filter)",
+    "trades": 28,
+    "win_rate_pct": 32.1,
+    "avg_win_pct": 1.01,
+    "avg_loss_pct": -0.75,
+    "expectancy_pct": -0.184,
+    "profit_factor": 0.64,
+    "total_return_pct": -5.26,
+    "end_equity": 947.37,
+    "max_dd_pct": -6.8,
+    "sharpe_daily_ann": -2.03,
+    "exits": {
+     "eod": 26,
+     "target": 1,
+     "stop": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 7,
+      "pnl_usd": -12.64
+     },
+     "SPXU": {
+      "trades": 7,
+      "pnl_usd": -24.55
+     },
+     "SPY": {
+      "trades": 8,
+      "pnl_usd": -16.51
+     },
+     "SQQQ": {
+      "trades": 6,
+      "pnl_usd": 1.08
+     }
+    },
+    "targets_hit": 1
+   },
+   {
+    "desk": "volspike_2x",
+    "label": "Volume spike (2x)",
+    "trades": 34,
+    "win_rate_pct": 50.0,
+    "avg_win_pct": 1.24,
+    "avg_loss_pct": -0.95,
+    "expectancy_pct": 0.143,
+    "profit_factor": 1.3,
+    "total_return_pct": 4.58,
+    "end_equity": 1045.77,
+    "max_dd_pct": -6.33,
+    "sharpe_daily_ann": 2.04,
+    "exits": {
+     "eod": 31,
+     "stop": 2,
+     "target": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 1,
+      "pnl_usd": 2.56
+     },
+     "SPXU": {
+      "trades": 14,
+      "pnl_usd": 33.1
+     },
+     "SPY": {
+      "trades": 2,
+      "pnl_usd": -1.69
+     },
+     "SQQQ": {
+      "trades": 4,
+      "pnl_usd": -9.68
+     },
+     "TQQQ": {
+      "trades": 2,
+      "pnl_usd": 36.21
+     },
+     "UPRO": {
+      "trades": 11,
+      "pnl_usd": -14.69
+     }
+    },
+    "targets_hit": 1
+   }
+  ]
+ },
+ "check_5m": {
+  "sessions": 39,
+  "first_day": "2026-09-24",
+  "last_day": "2026-11-17",
+  "benchmark_pct": {
+   "SPY": -4.15,
+   "QQQ": -10.63,
+   "TQQQ": -32.39,
+   "UPRO": -14.54,
+   "SQQQ": 34.02,
+   "SPXU": 13.09
+  },
+  "desks": [
+   {
+    "desk": "orb_vol",
+    "label": "ORB + volume",
+    "trades": 19,
+    "win_rate_pct": 31.6,
+    "avg_win_pct": 1.26,
+    "avg_loss_pct": -1.08,
+    "expectancy_pct": -0.338,
+    "profit_factor": 0.54,
+    "total_return_pct": -6.46,
+    "end_equity": 935.44,
+    "max_dd_pct": -9.96,
+    "sharpe_daily_ann": -1.7,
+    "exits": {
+     "eod": 16,
+     "stop": 2,
+     "target": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 3,
+      "pnl_usd": -8.61
+     },
+     "SPXU": {
+      "trades": 5,
+      "pnl_usd": 0.55
+     },
+     "SPY": {
+      "trades": 4,
+      "pnl_usd": -6.24
+     },
+     "SQQQ": {
+      "trades": 2,
+      "pnl_usd": 33.32
+     },
+     "TQQQ": {
+      "trades": 4,
+      "pnl_usd": -69.94
+     },
+     "UPRO": {
+      "trades": 1,
+      "pnl_usd": -13.63
+     }
+    },
+    "targets_hit": 1
+   },
+   {
+    "desk": "ema_vol",
+    "label": "EMA 9/21 + volume",
+    "trades": 12,
+    "win_rate_pct": 41.7,
+    "avg_win_pct": 0.19,
+    "avg_loss_pct": -0.33,
+    "expectancy_pct": -0.111,
+    "profit_factor": 0.41,
+    "total_return_pct": -1.34,
+    "end_equity": 986.63,
+    "max_dd_pct": -2.0,
+    "sharpe_daily_ann": -2.63,
+    "exits": {
+     "eod": 12
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 1,
+      "pnl_usd": -2.72
+     },
+     "SPXU": {
+      "trades": 6,
+      "pnl_usd": -13.31
+     },
+     "SPY": {
+      "trades": 2,
+      "pnl_usd": 0.57
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": 2.09
+     }
+    },
+    "targets_hit": 0
+   },
+   {
+    "desk": "volspike",
+    "label": "Volume spike",
+    "trades": 36,
+    "win_rate_pct": 38.9,
+    "avg_win_pct": 1.02,
+    "avg_loss_pct": -0.9,
+    "expectancy_pct": -0.155,
+    "profit_factor": 0.72,
+    "total_return_pct": -5.73,
+    "end_equity": 942.75,
+    "max_dd_pct": -16.2,
+    "sharpe_daily_ann": -1.91,
+    "exits": {
+     "eod": 33,
+     "stop": 2,
+     "target": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 4,
+      "pnl_usd": -20.93
+     },
+     "SPXU": {
+      "trades": 13,
+      "pnl_usd": 36.97
+     },
+     "SPY": {
+      "trades": 4,
+      "pnl_usd": -3.77
+     },
+     "SQQQ": {
+      "trades": 4,
+      "pnl_usd": 20.81
+     },
+     "TQQQ": {
+      "trades": 5,
+      "pnl_usd": -85.67
+     },
+     "UPRO": {
+      "trades": 6,
+      "pnl_usd": -4.64
+     }
+    },
+    "targets_hit": 1
+   },
+   {
+    "desk": "ema_vol_v2",
+    "label": "EMA 9/21 + volume v2",
+    "trades": 12,
+    "win_rate_pct": 41.7,
+    "avg_win_pct": 0.19,
+    "avg_loss_pct": -0.33,
+    "expectancy_pct": -0.111,
+    "profit_factor": 0.41,
+    "total_return_pct": -1.34,
+    "end_equity": 986.63,
+    "max_dd_pct": -2.0,
+    "sharpe_daily_ann": -2.63,
+    "exits": {
+     "eod": 12
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 1,
+      "pnl_usd": -2.72
+     },
+     "SPXU": {
+      "trades": 6,
+      "pnl_usd": -13.31
+     },
+     "SPY": {
+      "trades": 2,
+      "pnl_usd": 0.57
+     },
+     "SQQQ": {
+      "trades": 3,
+      "pnl_usd": 2.09
+     }
+    },
+    "targets_hit": 0
+   },
+   {
+    "desk": "orb_plain",
+    "label": "ORB (no volume filter)",
+    "trades": 39,
+    "win_rate_pct": 38.5,
+    "avg_win_pct": 1.54,
+    "avg_loss_pct": -0.79,
+    "expectancy_pct": 0.108,
+    "profit_factor": 1.22,
+    "total_return_pct": 3.71,
+    "end_equity": 1037.05,
+    "max_dd_pct": -7.04,
+    "sharpe_daily_ann": 0.94,
+    "exits": {
+     "eod": 34,
+     "stop": 2,
+     "target": 3
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 6,
+      "pnl_usd": -20.52
+     },
+     "SPXU": {
+      "trades": 7,
+      "pnl_usd": -22.81
+     },
+     "SPY": {
+      "trades": 14,
+      "pnl_usd": -18.39
+     },
+     "SQQQ": {
+      "trades": 11,
+      "pnl_usd": 91.04
+     },
+     "UPRO": {
+      "trades": 1,
+      "pnl_usd": 7.75
+     }
+    },
+    "targets_hit": 3
+   },
+   {
+    "desk": "ema_plain",
+    "label": "EMA 9/21 (no volume filter)",
+    "trades": 33,
+    "win_rate_pct": 39.4,
+    "avg_win_pct": 0.91,
+    "avg_loss_pct": -0.71,
+    "expectancy_pct": -0.068,
+    "profit_factor": 0.84,
+    "total_return_pct": -2.5,
+    "end_equity": 975.01,
+    "max_dd_pct": -5.64,
+    "sharpe_daily_ann": -0.79,
+    "exits": {
+     "eod": 31,
+     "target": 1,
+     "stop": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 8,
+      "pnl_usd": -8.52
+     },
+     "SPXU": {
+      "trades": 9,
+      "pnl_usd": -13.91
+     },
+     "SPY": {
+      "trades": 10,
+      "pnl_usd": -14.48
+     },
+     "SQQQ": {
+      "trades": 6,
+      "pnl_usd": 11.92
+     }
+    },
+    "targets_hit": 1
+   },
+   {
+    "desk": "volspike_2x",
+    "label": "Volume spike (2x)",
+    "trades": 39,
+    "win_rate_pct": 35.9,
+    "avg_win_pct": 0.93,
+    "avg_loss_pct": -0.94,
+    "expectancy_pct": -0.27,
+    "profit_factor": 0.55,
+    "total_return_pct": -10.28,
+    "end_equity": 897.16,
+    "max_dd_pct": -16.84,
+    "sharpe_daily_ann": -3.57,
+    "exits": {
+     "eod": 36,
+     "stop": 2,
+     "target": 1
+    },
+    "by_symbol": {
+     "QQQ": {
+      "trades": 6,
+      "pnl_usd": -29.69
+     },
+     "SPXU": {
+      "trades": 9,
+      "pnl_usd": 9.25
+     },
+     "SPY": {
+      "trades": 5,
+      "pnl_usd": -11.99
+     },
+     "SQQQ": {
+      "trades": 4,
+      "pnl_usd": 20.81
+     },
+     "TQQQ": {
+      "trades": 5,
+      "pnl_usd": -69.07
+     },
+     "UPRO": {
+      "trades": 10,
+      "pnl_usd": -22.16
+     }
+    },
+    "targets_hit": 1
+   }
+  ]
+ },
+ "base_rates": {
+  "SPY": {
+   "from": "2010-03-01",
+   "to": "2026-11-17",
+   "days": 4207,
+   "pct_days_high_5pct_above_open": 0.17,
+   "pct_days_low_2_5pct_below_open": 1.69,
+   "pct_days_both": 0.05,
+   "pct_days_close_5pct_above_open": 0.02
+  },
+  "QQQ": {
+   "from": "2010-03-01",
+   "to": "2026-11-17",
+   "days": 4207,
+   "pct_days_high_5pct_above_open": 0.19,
+   "pct_days_low_2_5pct_below_open": 3.64,
+   "pct_days_both": 0.07,
+   "pct_days_close_5pct_above_open": 0.1
+  },
+  "TQQQ": {
+   "from": "2010-03-01",
+   "to": "2026-11-17",
+   "days": 4207,
+   "pct_days_high_5pct_above_open": 6.73,
+   "pct_days_low_2_5pct_below_open": 30.95,
+   "pct_days_both": 1.47,
+   "pct_days_close_5pct_above_open": 3.78
+  },
+  "UPRO": {
+   "from": "2010-03-01",
+   "to": "2026-11-17",
+   "days": 4207,
+   "pct_days_high_5pct_above_open": 3.23,
+   "pct_days_low_2_5pct_below_open": 21.37,
+   "pct_days_both": 0.71,
+   "pct_days_close_5pct_above_open": 1.83
+  },
+  "SQQQ": {
+   "from": "2010-03-01",
+   "to": "2026-11-17",
+   "days": 4207,
+   "pct_days_high_5pct_above_open": 10.01,
+   "pct_days_low_2_5pct_below_open": 28.95,
+   "pct_days_both": 1.52,
+   "pct_days_close_5pct_above_open": 5.02
+  },
+  "SPXU": {
+   "from": "2010-03-01",
+   "to": "2026-11-17",
+   "days": 4207,
+   "pct_days_high_5pct_above_open": 5.7,
+   "pct_days_low_2_5pct_below_open": 18.8,
+   "pct_days_both": 0.69,
+   "pct_days_close_5pct_above_open": 2.78
+  }
+ }
+}

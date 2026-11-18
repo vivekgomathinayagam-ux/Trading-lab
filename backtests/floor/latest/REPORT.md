@@ -1,6 +1,6 @@
 # Trading Floor day-trade lab
 
-Run 2026-11-17T21:46+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
+Run 2026-11-18T02:58+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
 
 **1-minute backtest window:** 2026-10-01 to 2026-11-17, 34 trading sessions after a 3-session warm-up. Each desk starts with $1,000, trades whole shares, risks 2.5% per trade (stop) to make 5% (target), at most one trade a day, flat by 15:55 ET.
 
@@ -35,9 +35,9 @@ Buy-and-hold over the same window: SPY -4.18%, QQQ -11.52%, TQQQ -34.24%, UPRO -
 | Desk | Trades | Win rate | Expectancy / trade | Profit factor | Total return | Max drawdown |
 |---|---|---|---|---|---|---|
 | ORB + volume | 19 | 31.6% | -0.338% | 0.54 | -6.46% | -9.96% |
-| EMA 9/21 + volume | 13 | 38.5% | -0.187% | 0.28 | -2.42% | -2.73% |
+| EMA 9/21 + volume | 12 | 41.7% | -0.111% | 0.41 | -1.34% | -2.0% |
 | Volume spike | 36 | 38.9% | -0.155% | 0.72 | -5.73% | -16.2% |
-| EMA 9/21 + volume v2 | 13 | 38.5% | -0.187% | 0.28 | -2.42% | -2.73% |
+| EMA 9/21 + volume v2 | 12 | 41.7% | -0.111% | 0.41 | -1.34% | -2.0% |
 | ORB (no volume filter) | 39 | 38.5% | 0.108% | 1.22 | 3.71% | -7.04% |
 | EMA 9/21 (no volume filter) | 33 | 39.4% | -0.068% | 0.84 | -2.5% | -5.64% |
 | Volume spike (2x) | 39 | 35.9% | -0.27% | 0.55 | -10.28% | -16.84% |
