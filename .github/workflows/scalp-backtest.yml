@@ -1,0 +1,74 @@
+# Intraday scalp backtest (research only): fetch 1-minute Alpaca bars for 23 tickers, measure spreads, run the grid.
+name: scalp-backtest
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: data-branch-writer
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        group:
+          - "SPY,QQQ,AAPL,MSFT"
+          - "NVDA,AMZN,META,GOOGL"
+          - "TSLA,AMD,TQQQ,SQQQ"
+          - "SOXL,UPRO,PFE,T"
+          - "CCL,SOFI,RIOT,AAL"
+          - "RIVN,F,MARA"
+    env:
+      ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r lab/requirements.txt
+      - name: Fetch 1-minute bars
+        run: python -m lab.foundry.fetch_alpaca out/bars "${{ matrix.group }}" 2024-11-01 1Min
+      - name: Measure spreads
+        run: python -m lab.scalp.fetch_spreads "out/spreads_$(echo '${{ matrix.group }}' | cut -d, -f1).json" "${{ matrix.group }}"
+      - name: Name for artifact
+        id: nm
+        run: echo "n=$(echo '${{ matrix.group }}' | cut -d, -f1)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scalp-${{ steps.nm.outputs.n }}
+          path: out/
+          retention-days: 14
+  backtest:
+    needs: fetch
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r lab/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: scalp-*
+          merge-multiple: true
+          path: in/
+      - name: Merge spreads
+        run: |
+          python - <<'PY'
+          import glob, json
+          d = {}
+          for f in glob.glob("in/spreads_*.json"):
+              d.update(json.load(open(f)))
+          json.dump(d, open("in/spreads.json", "w"))
+          print(len(d), "tickers with spreads")
+          PY
+          ls in/bars | head -30
+      - name: Run the backtest
+        run: python -m lab.scalp.backtest in/bars in/spreads.json out/scalp
+      - name: Save results to the data branch
+        run: bash scripts/save_to_data_branch.sh "scalp backtest $(date -u +%Y-%m-%d)" out/scalp:backtests/scalp
