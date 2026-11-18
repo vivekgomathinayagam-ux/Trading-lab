@@ -1,0 +1,34 @@
+# Score Newsie's pre-market calls after the close (research only). Writes news/calls/scores/ on main (not a deploy path).
+name: score-calls
+on:
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "YYYY-MM-DD (default: today, New York)"
+        required: false
+  schedule:
+    - cron: "20 21 * * 1-5"      # 21:20 UTC = 4:20 PM ET (EST)
+permissions:
+  contents: write
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - run: python -m lab.news.score_calls news/calls ${{ github.event.inputs.day }}
+      - name: Commit scores
+        run: |
+          git config user.name "compound-city-lab"; git config user.email "lab@users.noreply.github.com"
+          git add news/calls/scores
+          git diff --cached --quiet && exit 0
+          git commit -m "Newsie scores $(date -u +%Y-%m-%d)"
+          for i in 1 2 3 4; do git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0; sleep $((i*5)); done
+          exit 1
