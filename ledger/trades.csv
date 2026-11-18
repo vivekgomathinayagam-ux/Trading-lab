@@ -144,3 +144,6 @@ ts,event,mode,strategy,symbol,side,qty,price,source,order_id,max_loss,cost,note
 2026-11-17T20:56:18+00:00,exit,paper,ema_vol_v2,TQQQ,sell,19,51.3243,yahoo_rt+slip,,,,eod; pnl $-6.11; sandbox ok 41827116
 2026-11-17T20:56:18+00:00,exit,paper,volspike,SQQQ,sell,22,47.3263,yahoo_rt+slip,,,,eod; pnl $+9.74; sandbox ok 41827117
 2026-11-18T17:12:29+00:00,entry,paper,orb_vol,SPXU,buy,24,39.4497,yahoo_rt+slip,,23.67,946.79,sandbox ok 41858369
+2026-11-18T17:20:29+00:00,entry,paper,ema_vol,QQQ,buy,1,658.7217,yahoo_rt+slip,,16.47,658.72,sandbox ok 41859101
+2026-11-18T17:20:31+00:00,entry,paper,ema_vol_v2,QQQ,buy,1,658.7217,yahoo_rt+slip,,16.47,658.72,sandbox ok 41859114
+2026-11-18T17:26:29+00:00,entry,paper,volspike,UPRO,buy,8,126.8234,yahoo_rt+slip,,25.36,1014.59,sandbox ok 41859701
