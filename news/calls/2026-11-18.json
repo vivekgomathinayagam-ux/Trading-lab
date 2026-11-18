@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-18",
+  "written_at_pt": "05:50",
+  "author": "Newsie (scheduled pre-market run, first file)",
+  "notes": "First call file: no scored history yet, so confidences are kept near 50-60. Futures quotes conflict between sources (Nasdaq +0.5% to +0.9%, S&P +0.1% to +0.4%, Dow -0.2% to flat). CNBC and Benzinga pages failed to load; PANW and TTWO results unknown, so no calls on them. No Skylit credits used.",
+  "calls": [
+    {
+      "ticker": "SMH",
+      "direction": "up",
+      "move_pct": 0.5,
+      "window_et": "09:40-11:30",
+      "confidence": 55,
+      "catalyst": "NVDA fiscal Q3 beat (rev $115.8B vs $109.1B est.), Q4 guide $130B vs $125.1B, supply commitments $390B, +$150B buyback; Asian Nvidia suppliers up 7%; AMD/CRWV up in sympathy.",
+      "macro_link": "AI capex trade relief after two down days for QQQ (-2.65%, -0.73%). Offsets: SEC probe headline on NVDA, 10y at 5.10%, Iran/Kuwait strikes.",
+      "chart_note": "QQQ closed 657.03 near the lower half of Nov 17's 646.65-663.36 range after a -2.5% flush and a bounce that failed; a gap up starts under Nov 16's 661.86 close. Gap-and-fade was the pattern on Nov 12 and Nov 17.",
+      "volume_note": "Earnings-day volume expected high in NVDA and chips; not measured pre-market (no live feed here).",
+      "flow_note": "Not checked this run.",
+      "sources": [
+        "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-18-dow-sp-500-nasdaq-nvidia-anthropic-ipo-090613569.html",
+        "https://currentlogic.substack.com/p/the-morning-brief-november-18-2026"
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "direction": "up",
+      "move_pct": 0.7,
+      "window_et": "09:40-11:30",
+      "confidence": 52,
+      "catalyst": "Same beat-and-raise as above; premarket about +3%.",
+      "macro_link": "Leader of the AI trade; sets QQQ tone.",
+      "chart_note": "After-hours gain was over +5% and has already faded toward +3%: fade risk is real, hence a near-coin-flip confidence.",
+      "volume_note": "Not measured.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://currentlogic.substack.com/p/the-morning-brief-november-18-2026",
+        "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-18-dow-sp-500-nasdaq-nvidia-anthropic-ipo-090613569.html"
+      ]
+    },
+    {
+      "ticker": "LOW",
+      "direction": "down",
+      "instrument_note": "put (no shorting)",
+      "move_pct": 0.5,
+      "window_et": "09:40-11:30",
+      "confidence": 53,
+      "catalyst": "Q3 sales +4.9% to $43.4B but margins slipped and full-year comp outlook about 1.4%; premarket about -2.7%.",
+      "macro_link": "10y yield 5.10% weighs on housing; housing starts/permits and pending home sales out this morning could add or relieve pressure.",
+      "chart_note": "No bar data for LOW in our archive; gap-down continuation vs. fill is untested here.",
+      "volume_note": "Not measured.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://currentlogic.substack.com/p/the-morning-brief-november-18-2026"
+      ]
+    }
+  ],
+  "market_read": {
+    "tone": "Tech-led relief bid after two down days on NVDA's beat; S&P and Dow lag, VIX ~24.7 still elevated, 10y 5.10%, Iran-US strikes in the Gulf, FOMC minutes this afternoon.",
+    "day_type": "event-driven",
+    "spy_bias": {"direction": "up", "confidence": 53},
+    "qqq_bias": {"direction": "up", "confidence": 57},
+    "comment": "Gap-up opens faded on Nov 12 and Nov 17; a failed gap would turn this into a down day. Low conviction."
+  },
+  "event_risk": [
+    "08:30 ET housing starts and building permits (Oct), pre-open",
+    "10:00 ET pending home sales (Oct), time assumed from the usual schedule, not confirmed",
+    "14:00 ET FOMC minutes (Oct 28 meeting)",
+    "After the close: PANW earnings; Anthropic IPO expected to price this evening (debut Thu)",
+    "Unscheduled: Iran/Kuwait/Strait of Hormuz headlines (oil)"
+  ],
+  "desk_flags": [
+    {"desk": "orb_vol", "flag": "normal", "reason": "Gap day after a big earnings print; opening range forms before the 10:00 data. Nothing scheduled inside 09:30-09:45."},
+    {"desk": "ema_vol", "flag": "caution", "reason": "Eod holds cross the 14:00 FOMC minutes; on Nov 17 this desk bought a failed bounce. A gap-and-fade would hit long TQQQ entries."},
+    {"desk": "volspike", "flag": "normal", "reason": "No release inside the morning window except 10:00 pending home sales (minor). Eod holds cross 14:00 minutes."},
+    {"desk": "ema_vol_v2", "flag": "caution", "reason": "Same as ema_vol: 14:00 FOMC minutes and gap-fade risk for late long entries."}
+  ]
+}
