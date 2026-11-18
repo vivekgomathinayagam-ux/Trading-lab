@@ -1,10 +1,10 @@
 {
-  "as_of": "2026-11-17T20:59:14+00:00",
+  "as_of": "2026-11-18T14:30:29+00:00",
   "mode": "paper",
   "equity": 1065.11,
   "settled_cash": 1065.11,
   "peak_equity": 1100.1,
-  "start_of_day_equity": 1054.75,
+  "start_of_day_equity": 1065.11,
   "drawdown": 0.0318,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
@@ -33,18 +33,6 @@
       "desk": "ema_vol_v2",
       "label": "EMA 9/21 + volume v2",
       "cash": 977.53,
-      "position": null
-    },
-    {
-      "desk": "cvd_spy",
-      "label": "CVD turn 3-min (SPY)",
-      "cash": 980.86,
-      "position": null
-    },
-    {
-      "desk": "cvd_tqqq",
-      "label": "CVD turn 3-min (TQQQ)",
-      "cash": 917.32,
       "position": null
     }
   ]
