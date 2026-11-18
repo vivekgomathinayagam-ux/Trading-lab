@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-18T20:45:29+00:00",
+ "as_of": "2026-11-18T20:59:29+00:00",
  "peak": {
   "orb_vol": 1003.0591364,
   "ema_vol": 1000.4176900000002,
@@ -37,73 +37,45 @@
   "skylit": "ok"
  },
  "marks": {
-  "SPY": 730.65,
-  "QQQ": 658.93,
-  "TQQQ": 52.315,
-  "UPRO": 125.63,
-  "SQQQ": 46.51,
-  "SPXU": 39.325
+  "SPY": 730.28,
+  "QQQ": 659.5,
+  "TQQQ": 52.44,
+  "UPRO": 125.38,
+  "SQQQ": 46.38,
+  "SPXU": 39.39
  },
  "desks": {
   "orb_vol": {
-   "cash": 13.100933400000827,
+   "cash": 954.7498734000009,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-18",
-   "pos": {
-    "sym": "SPXU",
-    "qty": 24,
-    "entry_px": 39.449715,
-    "stop": 38.463472124999996,
-    "target": 41.42220075,
-    "entry_t": "2026-11-18T12:12:28.829983-05:00"
-   },
+   "pos": null,
    "label": "ORB + volume",
-   "equity": 956.9
+   "equity": 954.75
   },
   "ema_vol": {
-   "cash": 304.32274280000047,
+   "cash": 964.5106788000005,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-18",
-   "pos": {
-    "sym": "QQQ",
-    "qty": 1,
-    "entry_px": 658.721718,
-    "stop": 642.25367505,
-    "target": 691.6578039000001,
-    "entry_t": "2026-11-18T12:20:28.830777-05:00"
-   },
+   "pos": null,
    "label": "EMA 9/21 + volume",
-   "equity": 963.25
+   "equity": 964.51
   },
   "volspike": {
-   "cash": 72.37810520000187,
+   "cash": 1078.194945200002,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-18",
-   "pos": {
-    "sym": "UPRO",
-    "qty": 8,
-    "entry_px": 126.82338,
-    "stop": 123.6527955,
-    "target": 133.164549,
-    "entry_t": "2026-11-18T12:26:28.831374-05:00"
-   },
+   "pos": null,
    "label": "Volume spike",
-   "equity": 1077.42
+   "equity": 1078.19
   },
   "ema_vol_v2": {
-   "cash": 318.8115628000003,
+   "cash": 978.9994988000003,
    "start_equity": 1000.0,
    "last_entry_day": "2026-11-18",
-   "pos": {
-    "sym": "QQQ",
-    "qty": 1,
-    "entry_px": 658.721718,
-    "stop": 642.25367505,
-    "target": 691.6578039000001,
-    "entry_t": "2026-11-18T12:20:28.830777-05:00"
-   },
+   "pos": null,
    "label": "EMA 9/21 + volume v2",
-   "equity": 977.74
+   "equity": 979.0
   }
  },
  "retired": {
