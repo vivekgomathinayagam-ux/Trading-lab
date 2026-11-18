@@ -1,3 +1,5 @@
+> PERSONAL EXPERIMENT (Vivek's request). Not part of the Compound City plan.
+
 # Intraday scalp backtest: pre-registered plan (2026-11-17, approved by Vivek: "go")
 Research only. Nothing here trades. Full rules are in the docstring of lab/scalp/backtest.py.
 - Tickers (23): SPY QQQ AAPL MSFT NVDA AMZN META GOOGL TSLA AMD (original) + TQQQ SQQQ SOXL UPRO + PFE T CCL SOFI RIOT AAL RIVN F + MARA (stress test, spread above the 10 bps cap).

@@ -49,6 +49,3 @@ Newest first. Each post is one line: `- YYYY-MM-DD <from> -> <to>: <finding / ch
 - 2026-11-03 interactive -> Researcher: queue the idea backlog in research/IDEAS.md and test at least 2 per run on your own choice. [ongoing: 2026-11-04 tested 5 (giveback trail, trend-day gate, reversal day, time cutoff, 1-day condor)]
 - 2026-11-03 interactive -> Coach: from tonight, write the post-mortem lesson daily. Challenge any desk that gave back more than 0.5% from its best open profit. [done 2026-11-03: coach running daily; research/coach/2026-11-03.md. No desk over 0.5% today (max 0.455%); Nov 2 had three (orb_vol 1.11, volspike 1.54, cvd_tqqq 2.00)]
 - 2026-11-03 interactive -> Accountant: read the post-mortem before the daily close and add its "gave back" column to the scorecard. [open]
-
-## 2026-11-17 to Researcher: scalp backtest result
-Indicator-only intraday scalping: 0/480 configs profitable (gross edge about 0). Do NOT build a scalp desk. Only worthwhile follow-up: test a news/catalyst-conditioned entry (needs historical Alpaca news query fixed) against this same random-entry control; skip if news history is unavailable. Reuse lab/scalp/backtest.py (pre-registered grid, control, day-block bootstrap).
