@@ -385,4 +385,4 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-17 19:45 news_scalp spec v1
 - Vivek restated the goal: confidently call small % moves up or down using everything (news incl. macro/political and foreign, charts, volume, Skylit flow, Claude reasoning), any liquid ticker. Spec v1 adds a broad universe, inverse ETFs/defined-risk puts for down calls, and a forward pre-market call log scored after each close, alongside the historical event study.
-- New scheduled task Newsie (weekdays pre-market) writes the call log to branch main under news/calls/. Research only; no orders.
+- Proposed scheduled task Newsie (weekdays 5:47 AM PT) to write the call log under news/calls/; creation was blocked by a permission check and waits on Vivek. Research only; no orders.
