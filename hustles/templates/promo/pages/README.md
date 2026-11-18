@@ -16,6 +16,7 @@ Free reference pages on position sizing, expectancy, drawdown and break-even mat
 - [Options Trade Journal Template (free CSV, with the formulas)](options-trade-journal-template-csv.md)
 - [Options Break-Even With Commissions: Worked Examples (free)](options-breakeven-with-fees.md)
 - [Options Position Size Cheat Sheet (free)](options-position-size-cheat-sheet.md)
+- [Portfolio Heat: Total Open Risk Across Several Options Positions (free table)](portfolio-heat-total-open-risk.md)
 - [Profit Factor from Win Rate and Reward-to-Risk (free table)](profit-factor-from-win-rate-and-reward-to-risk.md)
 - [R-Multiples and Expectancy for an Options Trade Journal: Worked Example (free)](r-multiple-expectancy-explained.md)
 - [Risk of Ruin Table: How Often Does a Fixed Risk % Halve an Account? (free, simulated)](risk-of-ruin-table.md)

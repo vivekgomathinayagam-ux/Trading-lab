@@ -109,3 +109,8 @@
 - Measure: no Vivek answers in City Hall; Gumroad not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 22 of 45.
 - Promote: new free page `promo/pages/options-trade-journal-template-csv.md` plus downloadable `options-trade-journal-template.csv` (3 made-up rows, values recomputed by script and matched to the page table: +118.70/+0.99R, -81.30/-0.54R, +98.70/+0.99R). Added to hub index. One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, add Plan Pack to Toolkit, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-18 (cloud run)
+- Measure: no Vivek answers for the hustles in City Hall; Gumroad not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 23 of 45.
+- Promote: new free page `promo/pages/portfolio-heat-total-open-risk.md` (targets "total open risk options", "portfolio heat"; table computed by script, worked example hand-checked: 150 + 200 + 2x180 = $710 = 7.10% of $10,000). Added to hub index. One change only; listing and price untouched.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, add Plan Pack to Toolkit, community drafts A/B, Gumroad views/sales check.
