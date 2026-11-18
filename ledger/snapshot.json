@@ -1,20 +1,34 @@
 {
-  "as_of": "2026-11-18T17:15:29+00:00",
+  "as_of": "2026-11-18T17:30:29+00:00",
   "mode": "paper",
-  "equity": 1059.11,
-  "settled_cash": 110.39,
+  "equity": 1054.41,
+  "settled_cash": -2208.21,
   "peak_equity": 1100.1,
   "start_of_day_equity": 1065.11,
-  "drawdown": 0.0373,
+  "drawdown": 0.0415,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
+    {
+      "cost_basis": 1314.84,
+      "date_acquired": "2026-11-18T17:20:29.276Z",
+      "id": 2760380,
+      "quantity": 2.0,
+      "symbol": "QQQ"
+    },
     {
       "cost_basis": 954.72,
       "date_acquired": "2026-11-18T17:12:29.356Z",
       "id": 2760289,
       "quantity": 24.0,
       "symbol": "SPXU"
+    },
+    {
+      "cost_basis": 1003.76,
+      "date_acquired": "2026-11-18T17:26:29.313Z",
+      "id": 2760438,
+      "quantity": 8.0,
+      "symbol": "UPRO"
     }
   ],
   "strategies": [],
@@ -35,20 +49,41 @@
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 963.04,
-      "position": null
+      "cash": 304.32,
+      "position": {
+        "sym": "QQQ",
+        "qty": 1,
+        "entry_px": 658.721718,
+        "stop": 642.25367505,
+        "target": 691.6578039000001,
+        "entry_t": "2026-11-18T12:20:28.830777-05:00"
+      }
     },
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 1086.97,
-      "position": null
+      "cash": 72.38,
+      "position": {
+        "sym": "UPRO",
+        "qty": 8,
+        "entry_px": 126.82338,
+        "stop": 123.6527955,
+        "target": 133.164549,
+        "entry_t": "2026-11-18T12:26:28.831374-05:00"
+      }
     },
     {
       "desk": "ema_vol_v2",
       "label": "EMA 9/21 + volume v2",
-      "cash": 977.53,
-      "position": null
+      "cash": 318.81,
+      "position": {
+        "sym": "QQQ",
+        "qty": 1,
+        "entry_px": 658.721718,
+        "stop": 642.25367505,
+        "target": 691.6578039000001,
+        "entry_t": "2026-11-18T12:20:28.830777-05:00"
+      }
     }
   ]
 }
