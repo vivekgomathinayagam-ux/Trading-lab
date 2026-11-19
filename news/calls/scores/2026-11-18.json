@@ -1,0 +1,48 @@
+{
+ "day": "2026-11-18",
+ "scored": [
+  {
+   "ticker": "SMH",
+   "direction": "up",
+   "move_pct": 0.5,
+   "window_et": "09:40-11:30",
+   "confidence": 55,
+   "result": "miss",
+   "entry": 458.97,
+   "best_fav_pct": 0.27
+  },
+  {
+   "ticker": "NVDA",
+   "direction": "up",
+   "move_pct": 0.7,
+   "window_et": "09:40-11:30",
+   "confidence": 52,
+   "result": "miss",
+   "entry": 156.545,
+   "best_fav_pct": 0.169
+  },
+  {
+   "ticker": "LOW",
+   "direction": "down",
+   "move_pct": 0.5,
+   "window_et": "09:40-11:30",
+   "confidence": 53,
+   "result": "miss",
+   "entry": 218.27,
+   "best_fav_pct": 0.174
+  }
+ ],
+ "market_read": {
+  "tone": "Tech-led relief bid after two down days on NVDA's beat; S&P and Dow lag, VIX ~24.7 still elevated, 10y 5.10%, Iran-US strikes in the Gulf, FOMC minutes this afternoon.",
+  "day_type": "event-driven",
+  "spy_bias": {
+   "direction": "up",
+   "confidence": 53
+  },
+  "qqq_bias": {
+   "direction": "up",
+   "confidence": 57
+  },
+  "comment": "Gap-up opens faded on Nov 12 and Nov 17; a failed gap would turn this into a down day. Low conviction."
+ }
+}
