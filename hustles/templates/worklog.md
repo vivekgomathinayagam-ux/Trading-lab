@@ -114,3 +114,9 @@
 - Measure: no Vivek answers for the hustles in City Hall; Gumroad not reachable from unattended run; no sales or analytics. Ledger unchanged, nothing estimated. Day 23 of 45.
 - Promote: new free page `promo/pages/portfolio-heat-total-open-risk.md` (targets "total open risk options", "portfolio heat"; table computed by script, worked example hand-checked: 150 + 200 + 2x180 = $710 = 7.10% of $10,000). Added to hub index. One change only; listing and price untouched.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, add Plan Pack to Toolkit, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-19 (cloud run)
+- Measure: no Vivek answers for the hustles in City Hall; Gumroad analytics not reachable from unattended run. Public store page fetched: no rating or sales count displayed. Ledger unchanged, nothing estimated. Day 24 of 45.
+- Promote: new free page `promo/pages/risk-reward-ratio-long-option-stop-and-target.md` (targets "options risk reward ratio calculator"; table computed by script, worked example asserted: $2.00 premium, 25% stop -> $50 risk, 75% target -> $150 gain = 3.00; breakeven win rate 25%). Added to hub index. One change only; listing and price untouched.
+- Third experiment: not started. A generic search on what sells found no sourced, specific demand for a new $0 product, and every new store listing needs a Chrome session; a one-pager without cited demand would break the rules. Revisit when a Chrome session exists.
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack is in the Toolkit (store page already mentions it), community drafts A/B, Gumroad views/sales check.

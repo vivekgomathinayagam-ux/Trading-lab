@@ -394,3 +394,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Volspike MA grid pre-registered (`research/foundry/PREREG_volspike_grid.md`, 1,190 variants, holdout 2026). `alpaca-history` now also pulls 1-minute bars for SPY, QQQ, TQQQ, UPRO, SQQQ, SPXU from 2022 into data:backtests/data/alpaca1m/ (lab workflow only). `foundry-lab` runs batch 6 daily on the long archive.
 - Newsie shadow test registered and run for day 1 (n=1, report only).
 - Paper desks unchanged (4: orb_vol, ema_vol, volspike, ema_vol_v2). No engine/ or strategies/ change; no deploy. orb_vol has 12 paper trades, below the 20 the retire rule needs.
+
+## 2026-11-19 Hustle Department
+- No new experiment started (2 active, limit 3): no specific, cited demand found for a $0 idea, and every new listing is blocked on a Chrome session. Promotion continues with one new free page (risk-reward ratio). Cadence stays daily: Drawdown Tracker not yet live.
