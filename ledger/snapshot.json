@@ -1,22 +1,14 @@
 {
-  "as_of": "2026-11-19T20:00:30+00:00",
+  "as_of": "2026-11-19T20:15:29+00:00",
   "mode": "paper",
-  "equity": 1050.29,
-  "settled_cash": 399.99,
+  "equity": 1050.64,
+  "settled_cash": 1050.64,
   "peak_equity": 1100.1,
   "start_of_day_equity": 1058.3,
-  "drawdown": 0.0453,
+  "drawdown": 0.045,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 658.31,
-      "date_acquired": "2026-11-19T16:04:29.551Z",
-      "id": 2764182,
-      "quantity": 1.0,
-      "symbol": "QQQ"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
@@ -34,15 +26,8 @@
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 415.66,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 662.53248,
-        "stop": 645.969168,
-        "target": 695.659104,
-        "entry_t": "2026-11-19T11:04:28.979774-05:00"
-      }
+      "cash": 1060.85,
+      "position": null
     },
     {
       "desk": "ema_vol_v2",
