@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-19",
+  "written_at_pt": "05:55",
+  "author": "Newsie (scheduled pre-market run, file 2)",
+  "notes": "Day 1 went 0 of 3 (best favorable move 0.17-0.27% vs 0.5-0.7% targets) and the up/up bias on a gap-up was wrong. Changes: smaller move_pct (0.4), no index long on a big gap after three gap-and-fade days (coach BOARD note), every desk flagged when a scheduled release sits inside the 15:55 hold. Futures figures come from two pre-market briefs (Nasdaq 100 +2.0 to +2.2%, S&P +1.1 to +1.25%, Dow +0.6%); times of those quotes not confirmed. Anthropic (ANT) first-trade time conflicts between sources (about 10:00 ET vs later). Walmart premarket % not found, so no call. Philly Fed value not found. No Skylit credits used.",
+  "calls": [
+    {
+      "ticker": "PANW",
+      "direction": "up",
+      "move_pct": 0.4,
+      "window_et": "09:40-11:30",
+      "confidence": 52,
+      "catalyst": "FQ1 beat: EPS $1.05 vs $0.97, revenue $3.44B (+39% y/y), FY revenue guide raised to $14.52-14.57B; premarket about +9-10%.",
+      "macro_link": "AI/security software bid alongside the Anthropic IPO; offset by hawkish Fed talk (Waller: Dec 50bp hike likely) and 10y near 5.08%.",
+      "chart_note": "No PANW bars in our archive. Large earnings gaps can extend or fill in the first two hours; untested here, so close to a coin flip.",
+      "volume_note": "Earnings-day volume will be very high; not measured pre-market.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://optionsoracle.substack.com/p/anthropic-prices-at-83-nasdaq-futures",
+        "https://www.tradingkey.com/analysis/stocks/us-stocks/262313137-us-pre-market-anthropic-tradingkey"
+      ]
+    },
+    {
+      "ticker": "QQQ",
+      "direction": "down",
+      "instrument_note": "SQQQ (inverse ETF, no shorting)",
+      "move_pct": 0.4,
+      "window_et": "09:40-11:30",
+      "confidence": 52,
+      "catalyst": "Gap-fade call: Nasdaq 100 futures about +2% on Anthropic IPO excitement (priced $83 above the $70-78 range), PANW and chip strength.",
+      "macro_link": "Rates backdrop is hostile: Oct FOMC minutes said further hikes likely appropriate, Waller sees a Dec 50bp hike, 10y about 5.08%, Brent about $92 on Hormuz shipping attacks. IPO supply (~$81B float) may pull money from other megacaps.",
+      "chart_note": "Prior close 659.51. A +2% gap opens near 672-673, right at Nov 16's high 672.14 (the breakdown level from Nov 13-16). Gap-ups faded on Nov 12, 17 and 18. If the open holds above 672 after 09:45, this call is likely wrong.",
+      "volume_note": "Not measured pre-market.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://optionsoracle.substack.com/p/anthropic-prices-at-83-nasdaq-futures",
+        "https://www.marketscreener.com/news/nasdaq-futures-jump-on-hopes-for-strong-anthropic-market-debut-ce785ed2d98bf522"
+      ]
+    },
+    {
+      "ticker": "PDD",
+      "direction": "down",
+      "instrument_note": "put (no shorting)",
+      "move_pct": 0.4,
+      "window_et": "09:40-11:30",
+      "confidence": 51,
+      "catalyst": "Premarket about +10% on Q3 results with revenue roughly flat y/y (about 108.3B yuan); a large gap on a flat top line is a fade candidate.",
+      "macro_link": "China ADRs bid with BABA (+4%, AI cloud +53%); KWEB/FXI sentiment supports, which argues against the fade.",
+      "chart_note": "No PDD bars in our archive; single-source move size. Low conviction.",
+      "volume_note": "Not measured.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://www.tradingkey.com/analysis/stocks/us-stocks/262313137-us-pre-market-anthropic-tradingkey"
+      ]
+    }
+  ],
+  "market_read": {
+    "tone": "Big tech-led gap up (NQ ~+2%, ES ~+1.1%) on the Anthropic IPO and PANW, after five straight S&P losses; hawkish Fed (hike talk), 10y ~5.08%, oil ~$92 Brent, gold at 52-week lows.",
+    "day_type": "event-driven",
+    "spy_bias": {"direction": "neutral", "confidence": 50},
+    "qqq_bias": {"direction": "neutral", "confidence": 50},
+    "comment": "Gap opens at prior resistance (SPY ~738 vs Nov 16 low 738.07 / Nov 17 high 739.76; QQQ ~672 vs Nov 16 high 672.14). Three gap-and-fade days in a row argue down; the size of the catalyst argues up. Neutral by rule after day 1. ANT's first trade (around 10:00 ET or later) can swing QQQ either way."
+  },
+  "event_risk": [
+    "08:30 ET initial jobless claims (203K vs 198K expected, one source) and Philly Fed (Nov), pre-open",
+    "09:25 ET Fed Gov. Jefferson speaks",
+    "10:00 ET Leading Economic Index (Oct)",
+    "10:00 ET approx: Anthropic (ANT) first trade; time not confirmed, could be later",
+    "10:30 ET EIA natural gas storage",
+    "12:30 ET Chicago Fed Goolsbee speaks",
+    "13:00 ET 10-year TIPS auction results",
+    "14:15 ET Fed Vice Chair for Supervision Barr speaks",
+    "Unscheduled: Strait of Hormuz shipping headlines (oil)"
+  ],
+  "desk_flags": [
+    {"desk": "orb_vol", "flag": "caution", "reason": "Large gap into prior resistance after three gap-and-fade days; the 09:30-09:45 range may be wide and the first break may be false. ANT's debut near 10:00 can whipsaw QQQ/TQQQ."},
+    {"desk": "ema_vol", "flag": "caution", "reason": "Fed speakers at 12:30 and 14:15 ET fall inside the hold to 15:55; long TQQQ entries after a +2% gap carry fade risk (desk bought failed bounces on Nov 17)."},
+    {"desk": "volspike", "flag": "caution", "reason": "IPO debut around 10:00 can produce volume spikes unrelated to trend; 12:30 and 14:15 Fed speakers inside the hold (volspike lost after 14:00 on Nov 18)."},
+    {"desk": "ema_vol_v2", "flag": "caution", "reason": "Same as ema_vol: Fed speakers 12:30 and 14:15 ET inside the hold; gap-fade risk for late long entries."}
+  ]
+}
