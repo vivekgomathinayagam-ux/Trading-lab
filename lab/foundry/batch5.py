@@ -218,6 +218,8 @@ def early_set(days_by: dict) -> pd.DataFrame:
 
 
 def gate_diff(t: pd.DataFrame, flag: str, col: str = "net", boot: bool = True) -> dict:
+    if len(t) == 0 or flag not in t.columns:  # e.g. CVD desks retired: no trades to gate
+        return dict(gated_n=0, other_n=0, gated_days=0, gated=None, other=None, diff=None)
     a, b = t[t[flag]], t[~t[flag]]
     res = dict(gated_n=int(len(a)), other_n=int(len(b)), gated_days=int(a["day"].nunique()) if len(a) else 0,
                gated=float(a[col].mean() * 100) if len(a) else None,
@@ -386,7 +388,7 @@ def main(argv=None) -> int:
         cg = cvd_desk_gate(Path(a.desk_trades), Path(a.archive1m))
         cg.to_csv(out / "h15_cvd_desks.csv", index=False)
         summary["H15_desks"] = {"all": gate_diff(cg, "gated"),
-                                "by_desk": {k: gate_diff(g, "gated", boot=False) for k, g in cg.groupby("desk")}}
+                                "by_desk": {k: gate_diff(g, "gated", boot=False) for k, g in cg.groupby("desk")} if len(cg) else {}}
         ob = orb_label(Path(a.desk_trades), Path(a.archive1m))
         ob.to_csv(out / "h17_orb.csv", index=False)
         summary["H17"] = {k: dict(first_n=int(g["first"].sum()), first=float(g[g["first"]]["net"].mean() * 100) if g["first"].any() else None,
