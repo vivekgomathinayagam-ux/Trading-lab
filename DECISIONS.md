@@ -397,3 +397,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-19 Hustle Department
 - No new experiment started (2 active, limit 3): no specific, cited demand found for a $0 idea, and every new listing is blocked on a Chrome session. Promotion continues with one new free page (risk-reward ratio). Cadence stays daily: Drawdown Tracker not yet live.
+
+## 2026-11-20 Hustle Department
+- No new experiment started (2 active, limit 3): still no specific, cited demand for a $0 idea. Promotion continues with one free page (win-rate confidence interval). Cadence stays daily: Drawdown Tracker not yet live.

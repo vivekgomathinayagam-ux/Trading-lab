@@ -10,6 +10,7 @@ Free reference pages on position sizing, expectancy, drawdown and break-even mat
 - [Drawdown Recovery: How Much Gain You Need to Get Back to Even (free table)](drawdown-recovery-gain-needed.md)
 - [Expected Move Calculator: Implied Volatility to a One-Standard-Deviation Range (free)](expected-move-from-implied-volatility.md)
 - [Expected Value Per Trade in R: Win Rate and Reward-to-Risk Table (free)](expected-value-per-trade-in-r.md)
+- [How Many Trades Before You Can Trust Your Win Rate? (free confidence-interval table)](how-many-trades-to-trust-a-win-rate.md)
 - [Kelly Criterion Table: The Math of Bet Size From Win Rate and Payoff Ratio (free)](kelly-fraction-table-from-win-rate-and-payoff.md)
 - [Losing Streak Probability Table: How Many Losses in a Row Are Normal? (free)](losing-streak-probability-table.md)
 - [Long Option Contracts From a Stop Percentage: How Many Can You Buy? (free table)](long-option-contracts-from-stop-percentage.md)

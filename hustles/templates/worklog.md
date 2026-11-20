@@ -120,3 +120,9 @@
 - Promote: new free page `promo/pages/risk-reward-ratio-long-option-stop-and-target.md` (targets "options risk reward ratio calculator"; table computed by script, worked example asserted: $2.00 premium, 25% stop -> $50 risk, 75% target -> $150 gain = 3.00; breakeven win rate 25%). Added to hub index. One change only; listing and price untouched.
 - Third experiment: not started. A generic search on what sells found no sourced, specific demand for a new $0 product, and every new store listing needs a Chrome session; a one-pager without cited demand would break the rules. Revisit when a Chrome session exists.
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack is in the Toolkit (store page already mentions it), community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-20 (cloud run)
+- Measure: no Vivek answers for the hustles in City Hall; Gumroad analytics not reachable from unattended run. Public store page fetched (loads, $12, journal + calculator + Plan Pack bonus listed, no rating or sales count shown). Ledger unchanged, nothing estimated. Day 25 of 45.
+- Promote: new free page `promo/pages/how-many-trades-to-trust-a-win-rate.md` (targets "how many trades to evaluate a strategy", "win rate confidence interval"; Wilson 95% table computed by script, hand-checked: 50 trades at 60% -> 46% to 72%). Added to hub index. One change only; listing and price untouched.
+- Third experiment: not started (no sourced demand for a $0 idea; listings need Chrome).
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit (store page already lists it), community drafts A/B, Gumroad views/sales check.
