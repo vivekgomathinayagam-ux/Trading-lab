@@ -1,0 +1,48 @@
+{
+ "day": "2026-11-19",
+ "scored": [
+  {
+   "ticker": "PANW",
+   "direction": "up",
+   "move_pct": 0.4,
+   "window_et": "09:40-11:30",
+   "confidence": 52,
+   "result": "hit",
+   "entry": 363.9,
+   "best_fav_pct": 0.407
+  },
+  {
+   "ticker": "QQQ",
+   "direction": "down",
+   "move_pct": 0.4,
+   "window_et": "09:40-11:30",
+   "confidence": 52,
+   "result": "miss",
+   "entry": 671.54,
+   "best_fav_pct": 0.171
+  },
+  {
+   "ticker": "PDD",
+   "direction": "down",
+   "move_pct": 0.4,
+   "window_et": "09:40-11:30",
+   "confidence": 51,
+   "result": "hit",
+   "entry": 85.39,
+   "best_fav_pct": 0.597
+  }
+ ],
+ "market_read": {
+  "tone": "Big tech-led gap up (NQ ~+2%, ES ~+1.1%) on the Anthropic IPO and PANW, after five straight S&P losses; hawkish Fed (hike talk), 10y ~5.08%, oil ~$92 Brent, gold at 52-week lows.",
+  "day_type": "event-driven",
+  "spy_bias": {
+   "direction": "neutral",
+   "confidence": 50
+  },
+  "qqq_bias": {
+   "direction": "neutral",
+   "confidence": 50
+  },
+  "comment": "Gap opens at prior resistance (SPY ~738 vs Nov 16 low 738.07 / Nov 17 high 739.76; QQQ ~672 vs Nov 16 high 672.14). Three gap-and-fade days in a row argue down; the size of the catalyst argues up. Neutral by rule after day 1. ANT's first trade (around 10:00 ET or later) can swing QQQ either way."
+ }
+}
