@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-20T02:14+00:00",
+ "run_at": "2026-11-20T02:25+00:00",
  "data_source": "Yahoo Finance 1m (archived), 5m, 1d",
  "bars_1m": {
   "SPY": 15210,
@@ -734,28 +734,28 @@
     "desk": "volspike",
     "label": "Volume spike",
     "trades": 36,
-    "win_rate_pct": 47.2,
-    "avg_win_pct": 0.88,
-    "avg_loss_pct": -0.95,
-    "expectancy_pct": -0.09,
-    "profit_factor": 0.82,
-    "total_return_pct": -3.51,
-    "end_equity": 964.88,
+    "win_rate_pct": 50.0,
+    "avg_win_pct": 1.02,
+    "avg_loss_pct": -0.91,
+    "expectancy_pct": 0.055,
+    "profit_factor": 1.12,
+    "total_return_pct": 1.61,
+    "end_equity": 1016.08,
     "max_dd_pct": -13.52,
-    "sharpe_daily_ann": -1.13,
+    "sharpe_daily_ann": 0.44,
     "exits": {
-     "eod": 32,
-     "stop": 3,
+     "eod": 33,
+     "stop": 2,
      "target": 1
     },
     "by_symbol": {
      "QQQ": {
-      "trades": 6,
-      "pnl_usd": -20.53
+      "trades": 5,
+      "pnl_usd": -3.87
      },
      "SPXU": {
-      "trades": 13,
-      "pnl_usd": 44.72
+      "trades": 14,
+      "pnl_usd": 79.26
      },
      "SPY": {
       "trades": 4,
@@ -947,57 +947,57 @@
  "base_rates": {
   "SPY": {
    "from": "2010-03-01",
-   "to": "2026-11-18",
-   "days": 4208,
+   "to": "2026-11-19",
+   "days": 4209,
    "pct_days_high_5pct_above_open": 0.17,
-   "pct_days_low_2_5pct_below_open": 1.69,
+   "pct_days_low_2_5pct_below_open": 1.71,
    "pct_days_both": 0.05,
    "pct_days_close_5pct_above_open": 0.02
   },
   "QQQ": {
    "from": "2010-03-01",
-   "to": "2026-11-18",
-   "days": 4208,
+   "to": "2026-11-19",
+   "days": 4209,
    "pct_days_high_5pct_above_open": 0.19,
-   "pct_days_low_2_5pct_below_open": 3.64,
+   "pct_days_low_2_5pct_below_open": 3.66,
    "pct_days_both": 0.07,
    "pct_days_close_5pct_above_open": 0.1
   },
   "TQQQ": {
    "from": "2010-03-01",
-   "to": "2026-11-18",
-   "days": 4208,
-   "pct_days_high_5pct_above_open": 6.73,
-   "pct_days_low_2_5pct_below_open": 30.96,
+   "to": "2026-11-19",
+   "days": 4209,
+   "pct_days_high_5pct_above_open": 6.72,
+   "pct_days_low_2_5pct_below_open": 30.98,
    "pct_days_both": 1.47,
    "pct_days_close_5pct_above_open": 3.78
   },
   "UPRO": {
    "from": "2010-03-01",
-   "to": "2026-11-18",
-   "days": 4208,
+   "to": "2026-11-19",
+   "days": 4209,
    "pct_days_high_5pct_above_open": 3.23,
-   "pct_days_low_2_5pct_below_open": 21.39,
+   "pct_days_low_2_5pct_below_open": 21.41,
    "pct_days_both": 0.71,
    "pct_days_close_5pct_above_open": 1.83
   },
   "SQQQ": {
    "from": "2010-03-01",
-   "to": "2026-11-18",
-   "days": 4208,
-   "pct_days_high_5pct_above_open": 10.0,
+   "to": "2026-11-19",
+   "days": 4209,
+   "pct_days_high_5pct_above_open": 10.03,
    "pct_days_low_2_5pct_below_open": 28.94,
    "pct_days_both": 1.52,
-   "pct_days_close_5pct_above_open": 5.01
+   "pct_days_close_5pct_above_open": 5.04
   },
   "SPXU": {
    "from": "2010-03-01",
-   "to": "2026-11-18",
-   "days": 4208,
-   "pct_days_high_5pct_above_open": 5.7,
-   "pct_days_low_2_5pct_below_open": 18.8,
+   "to": "2026-11-19",
+   "days": 4209,
+   "pct_days_high_5pct_above_open": 5.73,
+   "pct_days_low_2_5pct_below_open": 18.79,
    "pct_days_both": 0.69,
-   "pct_days_close_5pct_above_open": 2.78
+   "pct_days_close_5pct_above_open": 2.8
   }
  }
 }

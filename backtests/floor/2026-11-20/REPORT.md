@@ -1,6 +1,6 @@
 # Trading Floor day-trade lab
 
-Run 2026-11-20T02:14+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
+Run 2026-11-20T02:25+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
 
 **1-minute backtest window:** 2026-10-01 to 2026-11-19, 36 trading sessions after a 3-session warm-up. Each desk starts with $1,000, trades whole shares, risks 2.5% per trade (stop) to make 5% (target), at most one trade a day, flat by 15:55 ET.
 
@@ -36,7 +36,7 @@ Buy-and-hold over the same window: SPY -6.36%, QQQ -13.13%, TQQQ -37.87%, UPRO -
 |---|---|---|---|---|---|---|
 | ORB + volume | 19 | 36.8% | -0.185% | 0.7 | -3.69% | -9.61% |
 | EMA 9/21 + volume | 13 | 30.8% | -0.311% | 0.17 | -4.0% | -4.33% |
-| Volume spike | 36 | 47.2% | -0.09% | 0.82 | -3.51% | -13.52% |
+| Volume spike | 36 | 50.0% | 0.055% | 1.12 | 1.61% | -13.52% |
 | EMA 9/21 + volume v2 | 13 | 30.8% | -0.311% | 0.17 | -4.0% | -4.33% |
 | ORB (no volume filter) | 40 | 37.5% | 0.209% | 1.43 | 7.99% | -7.05% |
 | EMA 9/21 (no volume filter) | 34 | 38.2% | 0.062% | 1.14 | 1.73% | -5.64% |
@@ -46,12 +46,12 @@ Buy-and-hold over the same window: SPY -6.36%, QQQ -13.13%, TQQQ -37.87%, UPRO -
 
 | ETF | Days | Reached +5% above the open | Fell 2.5% below the open | Both on the same day | Closed +5% above the open |
 |---|---|---|---|---|---|
-| SPY | 4208 | 0.17% | 1.69% | 0.05% | 0.02% |
-| QQQ | 4208 | 0.19% | 3.64% | 0.07% | 0.1% |
-| TQQQ | 4208 | 6.73% | 30.96% | 1.47% | 3.78% |
-| UPRO | 4208 | 3.23% | 21.39% | 0.71% | 1.83% |
-| SQQQ | 4208 | 10.0% | 28.94% | 1.52% | 5.01% |
-| SPXU | 4208 | 5.7% | 18.8% | 0.69% | 2.78% |
+| SPY | 4209 | 0.17% | 1.71% | 0.05% | 0.02% |
+| QQQ | 4209 | 0.19% | 3.66% | 0.07% | 0.1% |
+| TQQQ | 4209 | 6.72% | 30.98% | 1.47% | 3.78% |
+| UPRO | 4209 | 3.23% | 21.41% | 0.71% | 1.83% |
+| SQQQ | 4209 | 10.03% | 28.94% | 1.52% | 5.04% |
+| SPXU | 4209 | 5.73% | 18.79% | 0.69% | 2.8% |
 
 ## Per-ETF breakdown (1-minute, paper desks)
 
