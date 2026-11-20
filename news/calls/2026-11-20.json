@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-20",
+  "written_at_pt": "05:55",
+  "author": "Newsie (scheduled pre-market run, file 3)",
+  "notes": "Scores so far: 2 of 6 hit, all in the 50-65 bucket (33%), so confidence stays low (51-56). Coach Nov 19 note applied: when the calls lean one way, the bias says so (down 55+ here), and desk flags are differentiated instead of four 'caution's. Futures figures conflict across sources and quote times are mostly inferred: S&P -0.6 to -1.0%, Nasdaq 100 -1.4 to -1.9%, Dow flat to -0.4% (around 05:56-08:00 ET). 10y 4.99-5.05% (sources disagree). Waller 08:25 ET and the 99% December-hike pricing are single-source. Main risk to every down call: S&P has fallen six days in a row, Nov 19 closed at its lows (SPY 716.27, QQQ 645.16), VIX is above 30 and it is monthly opex, so a sharp short-covering bounce after the open is quite possible. No Skylit credits used.",
+  "calls": [
+    {
+      "ticker": "INTU",
+      "direction": "down",
+      "instrument_note": "put (no shorting)",
+      "move_pct": 0.5,
+      "window_et": "09:50-11:30",
+      "confidence": 53,
+      "catalyst": "FQ1 beat (revenue $4.354B +12%, adj EPS $2.91) but FQ2 guide below expectations and FY27 revenue guide cut to $23.08-23.37B; Credit Karma outlook cut; Mailchimp sold to Bending Spoons for ~$3.68B. Premarket about -8% to -11%.",
+      "macro_link": "Software and AI names under pressure in a broad risk-off tape; guide cuts get punished more when the index is falling.",
+      "chart_note": "No INTU bars in our archive. A guide-cut gap often keeps leaking in the first two hours, but a -10% gap can also squeeze early; window starts 09:50 to skip the opening swing.",
+      "volume_note": "Earnings-day volume will be very high; not measured pre-market.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://finance.yahoo.com/markets/stocks/articles/premarket-movers-anthropic-slides-debut-105600121.html",
+        "https://optionsoracle.substack.com/p/anthropic-slips-below-90-asia-drops",
+        "https://www.tradingkey.com/analysis/stocks/us-stocks/262315308-us-pre-market-anthropic-tradingkey"
+      ]
+    },
+    {
+      "ticker": "SMH",
+      "direction": "down",
+      "instrument_note": "SOXS (inverse ETF) or put; no shorting",
+      "move_pct": 0.6,
+      "window_et": "09:50-11:30",
+      "confidence": 54,
+      "catalyst": "Global chip rout overnight: Nikkei -5.1%, Kospi -5.2%, Taiwan -5.7% (steepest week since 1997 per CNBC/LSEG via one source), SoftBank -14%. US premarket: TSM ~-4%, AMD -5 to -7% (Hunterbrook short disclosure), MU/WDC -4%+, INTC -5%, AVGO ~-3%, NVDA ~$142.5 (17-month low, six straight losses).",
+      "macro_link": "AI capex/valuation doubts after the Anthropic IPO failed to lift the trade (ANT -6 to -10% premarket on day 2); new US export-license rules cited; Fed hike pricing for December keeps multiples under pressure.",
+      "chart_note": "No SMH bars in our archive. Semis led Nov 19's -3.9% QQQ day; follow-through is the base case, but semis are the most oversold group and the most likely to snap back if the index bounces.",
+      "volume_note": "Not measured pre-market.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://optionsoracle.substack.com/p/anthropic-slips-below-90-asia-drops",
+        "https://www.tradingkey.com/analysis/stocks/us-stocks/262315308-us-pre-market-anthropic-tradingkey"
+      ]
+    },
+    {
+      "ticker": "QQQ",
+      "direction": "down",
+      "instrument_note": "SQQQ (inverse ETF, no shorting)",
+      "move_pct": 0.4,
+      "window_et": "09:50-11:30",
+      "confidence": 52,
+      "catalyst": "Nasdaq 100 futures about -1.4% to -1.9% after a -3.9% QQQ day; chip and AI selling continues overnight.",
+      "macro_link": "VIX above 30 (highest since March), Dec Fed hike priced near 99% (single source), BTC and gold also falling (broad de-risking, not just a rotation). 10y back near 5%, slightly lower, which is a mild offset.",
+      "chart_note": "Nov 19 QQQ: open 671.05, high 676.46, close 645.16 at the day's low area (low 644.34). A -1.5% gap opens near 635. Closing at the low argues for follow-through; six straight down days, VIX 30 and opex argue for a bounce. Correlated with the SMH call: treat them as one bet, not two. If QQQ reclaims 645 (yesterday's close) after 09:50, this call is likely wrong.",
+      "volume_note": "Nov 19 was a heavy one-way day; not measured pre-market.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://finance.yahoo.com/markets/stocks/articles/premarket-movers-anthropic-slides-debut-105600121.html",
+        "https://optionsoracle.substack.com/p/anthropic-slips-below-90-asia-drops"
+      ]
+    }
+  ],
+  "market_read": {
+    "tone": "Risk-off: global AI/chip rout (Asia -5%), Nasdaq futures down ~1.5-1.9%, VIX >30, gold and bitcoin falling too, after SPY -2.94% / QQQ -3.87% on Nov 19 and six straight S&P losses.",
+    "day_type": "event-driven (gap down; trend down is the base case, a violent oversold bounce is the main alternative)",
+    "spy_bias": {"direction": "down", "confidence": 55},
+    "qqq_bias": {"direction": "down", "confidence": 56},
+    "comment": "Coach asked for the bias to match the calls; it does, at modest confidence. SPY prior close 716.27 (day low 715.65), a -0.8% gap opens near 710. Unlike Nov 17-19 this is a gap DOWN into no nearby support from our bars, so the gap-and-fade pattern of the last week argues for an early bounce, not for more selling at the bell. If SPY gets back above 716 by 10:30, drop the down bias. Monthly opex and VIX 30 mean wide ranges either way."
+  },
+  "event_risk": [
+    "08:25 ET Fed Governor Waller speaks (pre-open; single source)",
+    "09:30 ET monthly options expiration day (pinning/large flows into the close)",
+    "10:00 ET UMich final November consumer sentiment and inflation expectations",
+    "13:00 ET Baker Hughes rig count (minor)",
+    "December WTI contract expires today"
+  ],
+  "desk_flags": [
+    {"desk": "orb_vol", "flag": "caution", "reason": "The 09:30-09:45 range will be wide on a gap-down with VIX >30, and the 10:00 ET UMich release lands right after the range closes, so the first break may be news noise. An SQQQ/SPXU break in the trend direction fits the day; a bull-ETF break is the riskier side."},
+    {"desk": "ema_vol", "flag": "normal", "reason": "Trend-following entries fit a likely trend day in either direction; no major release inside the hold after 10:00 ET."},
+    {"desk": "volspike", "flag": "caution", "reason": "On Nov 19 its only trade bought a QQQ bounce inside a one-way down day (-$17.34). Today's open will throw large volume spikes in both directions; long bull-ETF spikes against a down bias are the weak side."},
+    {"desk": "ema_vol_v2", "flag": "normal", "reason": "Same as ema_vol: trend entries suit the day; no major release inside the hold after 10:00 ET."}
+  ]
+}
