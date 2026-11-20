@@ -400,3 +400,4 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-20 Hustle Department
 - No new experiment started (2 active, limit 3): still no specific, cited demand for a $0 idea. Promotion continues with one free page (win-rate confidence interval). Cadence stays daily: Drawdown Tracker not yet live.
+- 2026-11-20 (Accountant): Day 20 close, no decision changes. First +5% target hit in paper (Volume spike SPXU +$49.72, 24 shares, exit `target`). Volume spike +11.06% on 20 trades, the other three desks negative (ORB −4.53%, EMA −3.55%, EMA v2 −2.10%), SPY −9.77% since Oct 26. No retire triggers (no desk at 30 trades). floor-lab's after-close run again missing at 22:45 UTC. Logged in STATE.md Known gaps.
