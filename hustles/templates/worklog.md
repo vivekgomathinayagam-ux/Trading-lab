@@ -126,3 +126,9 @@
 - Promote: new free page `promo/pages/how-many-trades-to-trust-a-win-rate.md` (targets "how many trades to evaluate a strategy", "win rate confidence interval"; Wilson 95% table computed by script, hand-checked: 50 trades at 60% -> 46% to 72%). Added to hub index. One change only; listing and price untouched.
 - Third experiment: not started (no sourced demand for a $0 idea; listings need Chrome).
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit (store page already lists it), community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-21 (cloud run)
+- Measure: no Vivek answers for the hustles in City Hall; Gumroad analytics not reachable from unattended run. Ledger unchanged, nothing estimated. Day 26 of 45.
+- Promote: new free page `promo/pages/payoff-ratio-and-expectancy-from-average-win-and-loss.md` (targets "payoff ratio expectancy calculator"; table computed by script, hand-checked: 60% win, $75 avg win, $100 avg loss -> +$5; 40% at payoff 1.5 -> 0). Added to hub index. One change only; listing and price untouched.
+- Third experiment: not started (no sourced demand for a $0 idea; listings need Chrome).
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit, community drafts A/B, Gumroad views/sales check.
