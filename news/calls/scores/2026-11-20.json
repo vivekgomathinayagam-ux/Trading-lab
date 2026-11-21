@@ -1,0 +1,48 @@
+{
+ "day": "2026-11-20",
+ "scored": [
+  {
+   "ticker": "INTU",
+   "direction": "down",
+   "move_pct": 0.5,
+   "window_et": "09:50-11:30",
+   "confidence": 53,
+   "result": "miss",
+   "entry": 297.92,
+   "best_fav_pct": 0.14
+  },
+  {
+   "ticker": "SMH",
+   "direction": "down",
+   "move_pct": 0.6,
+   "window_et": "09:50-11:30",
+   "confidence": 54,
+   "result": "miss",
+   "entry": 432.01,
+   "best_fav_pct": 0.449
+  },
+  {
+   "ticker": "QQQ",
+   "direction": "down",
+   "move_pct": 0.4,
+   "window_et": "09:50-11:30",
+   "confidence": 52,
+   "result": "miss",
+   "entry": 637.2,
+   "best_fav_pct": 0.259
+  }
+ ],
+ "market_read": {
+  "tone": "Risk-off: global AI/chip rout (Asia -5%), Nasdaq futures down ~1.5-1.9%, VIX >30, gold and bitcoin falling too, after SPY -2.94% / QQQ -3.87% on Nov 19 and six straight S&P losses.",
+  "day_type": "event-driven (gap down; trend down is the base case, a violent oversold bounce is the main alternative)",
+  "spy_bias": {
+   "direction": "down",
+   "confidence": 55
+  },
+  "qqq_bias": {
+   "direction": "down",
+   "confidence": 56
+  },
+  "comment": "Coach asked for the bias to match the calls; it does, at modest confidence. SPY prior close 716.27 (day low 715.65), a -0.8% gap opens near 710. Unlike Nov 17-19 this is a gap DOWN into no nearby support from our bars, so the gap-and-fade pattern of the last week argues for an early bounce, not for more selling at the bell. If SPY gets back above 716 by 10:30, drop the down bias. Monthly opex and VIX 30 mean wide ranges either way."
+ }
+}
