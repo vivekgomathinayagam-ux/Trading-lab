@@ -1,6 +1,6 @@
 # Trading Floor day-trade lab
 
-Run 2026-11-21T02:14+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
+Run 2026-11-21T02:32+00:00 · data: Yahoo Finance 1m (archived), 5m, 1d · spec: `strategies/daytrade/spec.md` (pre-registered)
 
 **1-minute backtest window:** 2026-10-01 to 2026-11-20, 37 trading sessions after a 3-session warm-up. Each desk starts with $1,000, trades whole shares, risks 2.5% per trade (stop) to make 5% (target), at most one trade a day, flat by 15:55 ET.
 
@@ -46,12 +46,12 @@ Buy-and-hold over the same window: SPY -9.61%, QQQ -17.85%, TQQQ -48.02%, UPRO -
 
 | ETF | Days | Reached +5% above the open | Fell 2.5% below the open | Both on the same day | Closed +5% above the open |
 |---|---|---|---|---|---|
-| SPY | 4209 | 0.17% | 1.71% | 0.05% | 0.02% |
-| QQQ | 4209 | 0.19% | 3.66% | 0.07% | 0.1% |
-| TQQQ | 4209 | 6.72% | 30.98% | 1.47% | 3.78% |
-| UPRO | 4209 | 3.23% | 21.41% | 0.71% | 1.83% |
-| SQQQ | 4209 | 10.03% | 28.94% | 1.52% | 5.04% |
-| SPXU | 4209 | 5.73% | 18.79% | 0.69% | 2.8% |
+| SPY | 4210 | 0.17% | 1.73% | 0.05% | 0.02% |
+| QQQ | 4210 | 0.19% | 3.68% | 0.07% | 0.1% |
+| TQQQ | 4210 | 6.72% | 31.0% | 1.47% | 3.78% |
+| UPRO | 4210 | 3.23% | 21.43% | 0.71% | 1.83% |
+| SQQQ | 4210 | 10.05% | 28.93% | 1.52% | 5.06% |
+| SPXU | 4210 | 5.75% | 18.79% | 0.69% | 2.83% |
 
 ## Per-ETF breakdown (1-minute, paper desks)
 

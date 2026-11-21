@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-21T02:14+00:00",
+ "run_at": "2026-11-21T02:32+00:00",
  "data_source": "Yahoo Finance 1m (archived), 5m, 1d",
  "bars_1m": {
   "SPY": 15600,
@@ -959,57 +959,57 @@
  "base_rates": {
   "SPY": {
    "from": "2010-03-01",
-   "to": "2026-11-19",
-   "days": 4209,
+   "to": "2026-11-20",
+   "days": 4210,
    "pct_days_high_5pct_above_open": 0.17,
-   "pct_days_low_2_5pct_below_open": 1.71,
+   "pct_days_low_2_5pct_below_open": 1.73,
    "pct_days_both": 0.05,
    "pct_days_close_5pct_above_open": 0.02
   },
   "QQQ": {
    "from": "2010-03-01",
-   "to": "2026-11-19",
-   "days": 4209,
+   "to": "2026-11-20",
+   "days": 4210,
    "pct_days_high_5pct_above_open": 0.19,
-   "pct_days_low_2_5pct_below_open": 3.66,
+   "pct_days_low_2_5pct_below_open": 3.68,
    "pct_days_both": 0.07,
    "pct_days_close_5pct_above_open": 0.1
   },
   "TQQQ": {
    "from": "2010-03-01",
-   "to": "2026-11-19",
-   "days": 4209,
+   "to": "2026-11-20",
+   "days": 4210,
    "pct_days_high_5pct_above_open": 6.72,
-   "pct_days_low_2_5pct_below_open": 30.98,
+   "pct_days_low_2_5pct_below_open": 31.0,
    "pct_days_both": 1.47,
    "pct_days_close_5pct_above_open": 3.78
   },
   "UPRO": {
    "from": "2010-03-01",
-   "to": "2026-11-19",
-   "days": 4209,
+   "to": "2026-11-20",
+   "days": 4210,
    "pct_days_high_5pct_above_open": 3.23,
-   "pct_days_low_2_5pct_below_open": 21.41,
+   "pct_days_low_2_5pct_below_open": 21.43,
    "pct_days_both": 0.71,
    "pct_days_close_5pct_above_open": 1.83
   },
   "SQQQ": {
    "from": "2010-03-01",
-   "to": "2026-11-19",
-   "days": 4209,
-   "pct_days_high_5pct_above_open": 10.03,
-   "pct_days_low_2_5pct_below_open": 28.94,
+   "to": "2026-11-20",
+   "days": 4210,
+   "pct_days_high_5pct_above_open": 10.05,
+   "pct_days_low_2_5pct_below_open": 28.93,
    "pct_days_both": 1.52,
-   "pct_days_close_5pct_above_open": 5.04
+   "pct_days_close_5pct_above_open": 5.06
   },
   "SPXU": {
    "from": "2010-03-01",
-   "to": "2026-11-19",
-   "days": 4209,
-   "pct_days_high_5pct_above_open": 5.73,
+   "to": "2026-11-20",
+   "days": 4210,
+   "pct_days_high_5pct_above_open": 5.75,
    "pct_days_low_2_5pct_below_open": 18.79,
    "pct_days_both": 0.69,
-   "pct_days_close_5pct_above_open": 2.8
+   "pct_days_close_5pct_above_open": 2.83
   }
  }
 }
