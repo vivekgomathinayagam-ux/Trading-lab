@@ -53,6 +53,8 @@ _Read this first. Updated by every session and scheduled task. Times are America
 **Previously (day 17):** 2026-11-17 14:45 PT. Accountant daily close, paper day 17 (4 active desks; CVD desks retired by Vivek today, their last 2 trades were losses). Today: Volume spike SQQQ +$9.74 (eod); EMA 9/21 and EMA v2 both TQQQ eod losses (−$5.79, −$6.11); ORB no setup; no +5% hits, no stops. Books: ORB −4.01%, EMA −3.70%, Volume spike +8.70%, EMA v2 −2.25%; SPY hold −4.05%. Bot healthy (heartbeat 15:21 PT, kill switch off); floor-lab ran today (21:46 UTC), the first run seen since Nov 13.
 **Previously:** 2026-11-03 14:50 PT (daily close, paper day 7: 6 trades, 1 win (CVD TQQQ +$2.98), 5 small losses; EMA v2 took its first paper trade; no +5% hits; bot healthy, kill switch off; SPY hold −1.02% since start)
 **Earlier:** 2026-11-02 14:45 PT (daily close, paper day 6: 4 trades, all losses)
+**Hustles as of 2026-11-22 08:50 PT:** no sales data reachable; ledger unchanged ($0, day 27 of 45); added free slippage-vs-expectancy page (26 pages + hub). No third experiment: no sourced $0 idea a cloud run can publish; web search shows the journal/calculator niche is crowded. Prior (Nov 21): payoff-ratio page.
+
 **Hustles as of 2026-11-20 08:50 PT:** no sales data reachable; ledger unchanged ($0, day 25 of 45); added free win-rate-confidence page (24 pages + hub). No third experiment (no sourced demand; listings need Chrome). Prior (Nov 19): risk-reward-ratio page.
 
 **Hustles prior note, 2026-11-19 08:50 PT:** no sales data reachable; ledger unchanged ($0, day 24 of 45); added free risk-reward-ratio page (23 pages + hub). No third experiment: no sourced demand found, and listings need Chrome. Prior (Nov 18): portfolio-heat page.

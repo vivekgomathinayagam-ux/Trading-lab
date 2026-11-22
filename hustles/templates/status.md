@@ -36,3 +36,4 @@ Update 2026-11-18 08:50 PT: still no reachable sales data; Sales 0 known, Revenu
 Update 2026-11-19 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 24 of 45. Store page fetched (no rating or sales count shown; page lists the Plan Pack bonus). New free page: risk-reward-ratio-long-option-stop-and-target.md.
 Update 2026-11-20 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 25 of 45. New free page: how-many-trades-to-trust-a-win-rate.md.
 Update 2026-11-21 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 26 of 45. New free page: payoff-ratio-and-expectancy-from-average-win-and-loss.md.
+Update 2026-11-22 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 27 of 45. New free page: expectancy-net-of-slippage-and-fees.md (26 pages + hub).

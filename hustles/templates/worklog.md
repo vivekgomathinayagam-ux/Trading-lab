@@ -132,3 +132,9 @@
 - Promote: new free page `promo/pages/payoff-ratio-and-expectancy-from-average-win-and-loss.md` (targets "payoff ratio expectancy calculator"; table computed by script, hand-checked: 60% win, $75 avg win, $100 avg loss -> +$5; 40% at payoff 1.5 -> 0). Added to hub index. One change only; listing and price untouched.
 - Third experiment: not started (no sourced demand for a $0 idea; listings need Chrome).
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-22 (cloud run)
+- Measure: no Vivek answers for the hustles in City Hall; Gumroad analytics not reachable from an unattended run. Ledger unchanged, nothing estimated. Day 27 of 45. Demand check (web search): the "options journal + position size calculator" niche on Gumroad/Etsy is crowded with many similar listings; no sales data for ours. Repo is public, so pages are readable on github.com; GitHub Pages is still off (Chrome task).
+- Promote: new free page `promo/pages/expectancy-net-of-slippage-and-fees.md` (targets "slippage expectancy", "trading edge after costs"; table computed by script, spot-checked: 40% at 3:1 = +0.60R gross, +0.45R after 0.15R). Added to hub index. One change only; listing and price untouched.
+- Third experiment: not started (no sourced $0 idea that a cloud run can publish; every marketplace listing needs Chrome).
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit, community drafts A/B, Gumroad views/sales check.
