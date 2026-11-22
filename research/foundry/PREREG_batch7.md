@@ -30,3 +30,8 @@ As batch 6, on all Newsie days to date (Nov 18-20): sit_out / caution / bias per
 
 ## Variants counted
 Volspike grid 1,190 + base; H25 3 gates x 2 rules x 2 sides = 12; H26 3 rules x 2 slot designs = 6 (3 new). Newsie 3 flags x 4 desks (counted in batch 6, not again).
+
+## H27: Tempest term structure as a side gate (added 2026-11-21 before the Tempest pull; Skylit PLAN item 4)
+Data: Tempest daily history (`tempest_history`, SPY and QQQ, ~2 years to 2026-11-20), cached at data:research/skylit/tempest/. Decision for session D uses the row of the PRIOR session's close only.
+Rule: stress = prior-close SPY `term_slope` > 0 (9-day vol above 30-day: inverted). On stress days the desk takes only inverse-ETF signals (SQQQ/SPXU); on calm days only bull-ETF signals. Applied to volspike, orb_3x and ema_3x replays (batch 7 signals), vs the same desk ungated on the same days. Also reported: QQQ's own slope, and the plain gate "trade only calm days".
+Bar: gated mean > ungated mean and > 0 in both halves of the Tempest window, CI lower bound > 0, > 0 at 2x costs, ≥ 100 trades. Variants: 3 desks x 1 rule (+2 reported) = 3 (+6 reported).
