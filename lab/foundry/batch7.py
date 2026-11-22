@@ -109,7 +109,7 @@ FLAT_M = FLAT_AT.hour * 60 + FLAT_AT.minute - 570
 END_M = ENTRY_END.hour * 60 + ENTRY_END.minute - 570
 
 
-def outcome(d: pd.DataFrame, i: int, slip_mult: float = 1.0, sym: str = "SPY"):
+def outcome(d: pd.DataFrame, i: int, slip_mult: float = 1.0, sym: str = "SPY", target_pct: float = TARGET_PCT):
     """Trade from a signal at bar i (Desk rules). Returns dict or None (pending invalid)."""
     a = _arrays(d)
     n = len(a["o"])
@@ -119,7 +119,7 @@ def outcome(d: pd.DataFrame, i: int, slip_mult: float = 1.0, sym: str = "SPY"):
     slip = SLIP[sym] * slip_mult
     o, h, l, m = a["o"], a["h"], a["l"], a["m"]
     entry = o[j] * (1 + slip)
-    stop, target = entry * (1 - STOP_PCT), entry * (1 + TARGET_PCT)
+    stop, target = entry * (1 - STOP_PCT), entry * (1 + target_pct)
     qty = int(EQUITY // entry)
     if qty < 1:
         return None
@@ -459,6 +459,59 @@ def run_holdout(data, sig, pool, out) -> dict:
         res["top3_holdout"][name] = s
     hs = sig[sig.day > DEV_END]
     res.update({"holdout_" + k: v for k, v in run_h25_h26(hs, pool).items()})
+    return res
+
+
+def h27(sig: pd.DataFrame, tempest_csv: Path, rules=("volspike", "orb_3x", "ema_3x")) -> dict:
+    """H27: prior-close Tempest term_slope > 0 (stress) -> only inverse-ETF signals; else only bull ETFs."""
+    tv = pd.read_csv(tempest_csv).sort_values("date")
+    tv["stress_next"] = (tv.term_slope > 0).shift(1)          # the prior session's close decides
+    m = dict(zip(tv.date, tv.stress_next))
+    res = {}
+    for rule in rules:
+        s = sig[(sig.rule == rule) & (sig.day >= tv.date.iloc[1])].copy()
+        s["stress"] = s.day.map(m)
+        s = s[s.stress.notna()]
+        inv = s.sym.isin(SHORT_SIDE).values
+        st = s.stress.astype(bool).values
+        days = sorted(s.day.unique())
+        mid = days[len(days) // 2]
+        out = {}
+        for name, mask in (("base", None), ("gate", (st & inv) | (~st & ~inv)), ("calm_only", ~st)):
+            t = pick(s, mask)
+            sm = summary(t)
+            sm["h1"] = float(t[t.day < mid].pnl.mean())
+            sm["h2"] = float(t[t.day >= mid].pnl.mean())
+            out[name] = sm
+        res[rule] = out
+    return res
+
+
+def h28(data: dict, sig: pd.DataFrame, rules=("volspike", "orb_3x", "ema_3x", "orb_none")) -> dict:
+    """H28: same entries, +5% target (spec) vs no target (stop and 15:55 only); paired per trade."""
+    res = {}
+    for rule in rules:
+        t = pick(sig[sig.rule == rule]).copy()
+        b = [outcome(data[r.sym], int(r.i), 1.0, r.sym, target_pct=1e9) for r in t.itertuples()]
+        b2 = [outcome(data[r.sym], int(r.i), 2.0, r.sym, target_pct=1e9) for r in t.itertuples()]
+        t["pnl_hold"] = [x["pnl"] for x in b]
+        t["pnl_hold2"] = [x["pnl"] for x in b2]
+        t["diff"] = t.pnl_hold - t.pnl
+        inv = t.sym.isin(SHORT_SIDE)
+        out = {}
+        for cell, m in (("all", slice(None)), ("inverse", inv), ("bull", ~inv)):
+            c = t[m]
+            for per, pm in (("dev", c.day <= DEV_END), ("dev_h1", c.day <= "2023-12-31"),
+                            ("dev_h2", (c.day > "2023-12-31") & (c.day <= DEV_END)), ("holdout", c.day > DEV_END)):
+                x = c[pm]
+                if x.empty:
+                    continue
+                lo, hi = boot_ci(x["diff"].values)
+                out[f"{cell}|{per}"] = {"n": int(len(x)), "target_mean": float(x.pnl.mean()),
+                                        "hold_mean": float(x.pnl_hold.mean()), "hold_mean_2x": float(x.pnl_hold2.mean()),
+                                        "diff": float(x["diff"].mean()), "diff_ci": [lo, hi],
+                                        "targets": int((x.reason == "target").sum())}
+        res[rule] = out
     return res
 
 

@@ -1,6 +1,6 @@
 # Research queue (ordered; the Researcher edits this)
 
-_Last set: 2026-11-18 by the Researcher (Wednesday build run). Top item first._
+_Last set: 2026-11-21 by the Researcher (Saturday review run). Top item first._
 
 ## Now
 - [x] Paper report script `lab/floor/paper_report.py` (2026-10-28, tested)
@@ -21,7 +21,9 @@ _Last set: 2026-11-18 by the Researcher (Wednesday build run). Top item first._
 
 - [x] Wed Nov 18 build run (`research/foundry/batch6_REPORT.md`): first tests on the long Alpaca archive (1,729 sessions). H13, the 0.5% morning continuation, the 13:00 cutoff and the first-hour day-type marker all flat over 6 years; Skylit daily market tide refuted; Flux inner-band gate right sign but CI includes 0 (29 sessions). Skylit cache: Flux 1-min 30 sessions SPY/QQQ + market tide 360 days (~200 credits). Volspike MA grid pre-registered; 1-min Alpaca pull added to alpaca-history. 0 of 6 passed; no desk change.
 
-1. **Sat Nov 21 review run:** paper stats with CIs; parity bar by bar from the Nov 18 bar log (before/after PR #3 split); Newsie week shadow (flags, bias) per desk; volspike MA grid if `data:backtests/data/alpaca1m/` landed; re-test batches 2-5 rules (giveback trail, profit lock, fail-fast, ORB variants) on the long archive (LESSONS 47).
+- [x] Sat Nov 21 review (`research/weekly/2026-W47.md`, `research/foundry/batch7_REPORT.md`): paper 78 rows, volspike 20 trades +0.54 [−0.10, +1.24], no desk retirable; parity 6/6 bar by bar since PR #3; Newsie 3-day shadow (caution +$14.40, bias +$5.14); volspike MA grid (924 filters) refuted; volume gate, per-side slot, Tempest side gate, target-vs-hold all refuted; the four paper desks' own code has ~0 expectancy on 1,222 Alpaca sessions (LESSONS 49). Tempest history cached (~170 credits).
+
+1. **Wed Nov 25 build run (the desks have no edge; look for a different source):** (a) news-scalper harness, historical Alpaca news query fixed first (Vivek's item 3, overdue); (b) Skylit study last day Nov 24 is past by Wednesday: if possible pull the intraday 5-min market tide (first hour) before then, else note it missed the window; test tide-in-first-hour vs rest-of-day on SPY/QQQ (pre-register); (c) Flux extreme-band tag, slope/side split (coach 11-18, 11-19); (d) an inverse-ETF-only trend rule judged on 2022 and 2024 separately; (e) structural stop beyond the mid-morning bounce (coach 11-16) and the H12 by-symbol re-cut (coach 11-17) on the long archive. Long archive first (Alpaca 1-min for ETF rules, 5-min from 2020 for SPY/QQQ).
 2. ~~**Live-bar logging**~~ (done 2026-11-17, `ledger/daytrade_bars_<day>.csv`) in the bot (logging only; tests prove desks trade identically) so parity compares bar by bar. 3 of 6 parity gaps this week trace to Yahoo bar revisions that can't be proven without it.
 3. **Run parity inside floor-lab** after the archive step (one more step in the Actions job; lab code only). Also make floor-lab's 5-min robustness table skip the CVD desks (3-min candles cannot be built from 5-min bars).
 4. **Skylit forward collection** (also feeds combo C-2; until it exists, the Saturday run pulls the week's 10:00 ET 0DTE SPY/QQQ boards, 5 calls): `engine/skylit_feed.py` read-only snapshot at 09:45/10:30/12:30/15:00 ET for SPY, QQQ, SPXW (~20 credits/day) written to the ledger, so forward data accrues without paid backfills.
@@ -34,7 +36,7 @@ _Last set: 2026-11-18 by the Researcher (Wednesday build run). Top item first._
 6. **Skylit paper desks**: pre-register 1-3 ETF day-trade setups built from what step 5 found, back-test once, then build `engine/skylit_feed.py` (read-only) and put them on paper.
 
 ## Next
-- **Month-1 report, Sat Nov 28** (`research/reports/2026-11-month1.md`), with a separate agent re-deriving every number from the raw ledger and `data:validate-data`. Apply the retirement rule to any desk at 20+ trades.
+- **Month-1 report, Sat Nov 28** (`research/reports/2026-11-month1.md`), with a separate agent re-deriving every number from the raw ledger and `data:validate-data`. Apply the retirement rule to any desk at 20+ trades, and decide the paper slots after the frozen month with LESSONS 49 in view (replay of each desk's code on 2022-2026 next to its paper stats). Publish as a doc and link it from City Hall.
 7. First pre-registered combos (`research/combos.md`): portfolio of the three paper desks, drop-one, GEX regime as a gate on each day-trade desk. Judged on forward days only.
 8. Option spreads from Skylit signals: model-priced first (2x cost stress). Paper needs real-time option prices and an options order path; the order path is `engine/` order code, so it goes to Vivek as one PR plus one City Hall item.
 9. New-setup ideas from the CHARTER list, one per week, pre-registered.
