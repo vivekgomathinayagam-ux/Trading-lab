@@ -9,3 +9,4 @@
 Not live. Revenue $0 (as of 2026-10-29).
 - 2026-11-14 (cloud run): no change; listing still queued for a Chrome session.
 - 2026-11-15 (cloud run): no change; listing still queued for a Chrome session.
+- 2026-11-23 (cloud run): no change; listing still queued for a Chrome session.

@@ -412,3 +412,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - **Code (lab only; engine/ and strategies/ untouched, no deploy):** `lab/foundry/batch7.py` (fast desk replay on the Alpaca 1-min archive, tested equal to `lab.floor.engine.simulate` trade for trade; split back-adjustment of raw Alpaca bars for multi-session features), `lab/tests/test_foundry_batch7.py`.
 - **Skylit (study week):** Tempest daily SPY/QQQ Oct 2024-Nov 2026 and market tide 15-min Nov 2025-Nov 2026 cached on `data:research/skylit/` (~330 credits this run; balance 103,293; study week ≈ 525 of 10,000). The MCP truncates results above ~153 rows, so intraday tide is pulled in 5-day windows.
 - Parity: first bar-by-bar replay from the bot's bar log, 6 of 6 paper trades match since PR #3.
+
+## 2026-11-23 Hustle Department
+- Promotion only: added free page gap-risk-fill-past-your-stop-in-r.md and hub link. No start, kill, launch or price change. Cadence unchanged (daily): Drawdown Tracker not yet live, Chrome-only work queued.

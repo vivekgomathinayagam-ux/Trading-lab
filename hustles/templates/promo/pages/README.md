@@ -8,6 +8,7 @@ Free reference pages on position sizing, expectancy, drawdown and break-even mat
 - [Credit Spread Break-Even Win Rate: How Often a Short Vertical Must Win (free)](credit-spread-break-even-win-rate.md)
 - [Daily Loss Limit and Pre-Trade Checklist for Options Day Traders: Worked Example (free)](daily-loss-limit-and-pre-trade-checklist.md)
 - [Drawdown Recovery: How Much Gain You Need to Get Back to Even (free table)](drawdown-recovery-gain-needed.md)
+- [Gap Risk: How Much Does a Fill Past Your Stop Cost in R? (free table)](gap-risk-fill-past-your-stop-in-r.md)
 - [How Much Slippage Erases a Trading Edge? Expectancy Net of Slippage (free table)](expectancy-net-of-slippage-and-fees.md)
 - [Expected Move Calculator: Implied Volatility to a One-Standard-Deviation Range (free)](expected-move-from-implied-volatility.md)
 - [Expected Value Per Trade in R: Win Rate and Reward-to-Risk Table (free)](expected-value-per-trade-in-r.md)

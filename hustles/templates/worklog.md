@@ -138,3 +138,9 @@
 - Promote: new free page `promo/pages/expectancy-net-of-slippage-and-fees.md` (targets "slippage expectancy", "trading edge after costs"; table computed by script, spot-checked: 40% at 3:1 = +0.60R gross, +0.45R after 0.15R). Added to hub index. One change only; listing and price untouched.
 - Third experiment: not started (no sourced $0 idea that a cloud run can publish; every marketplace listing needs Chrome).
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-23 (cloud run)
+- Measure: no Vivek answers for the hustles in City Hall; Gumroad analytics not reachable from an unattended run; web search for the store returns only other sellers. GitHub traffic API: 55 views / 3 uniques over 14 days (mostly internal). Ledger unchanged, nothing estimated. Day 28 of 45.
+- Promote: new free page `promo/pages/gap-risk-fill-past-your-stop-in-r.md` (targets "stop loss slippage", "gap past stop loss risk"; table computed by script, asserted: 2% stop filled 3% past = 2.50R, $5,000 position loses $250). Added to hub index. One change only; listing and price untouched.
+- Third experiment: not started (no sourced $0 idea a cloud run can publish; listings need Chrome).
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit, community drafts A/B, Gumroad views/sales check.
