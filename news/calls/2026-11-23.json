@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-23",
+  "written_at_pt": "06:00",
+  "author": "Newsie (scheduled pre-market run, file 4)",
+  "notes": "Scores so far 2 of 9 hit (22%, all 50-65 bucket), so confidence stays at 50-55. Board asks applied: fade calls start at 09:45/10:00, not 09:30, and the bias states a lean instead of neutral. Today is the mirror of Nov 20: a huge relief GAP UP after a -8.6% week (S&P correction, Nasdaq ~-5.3% Friday, Friday closed at its lows on SPY 627M shares). Futures, sources disagree by time: S&P +2.1 to +2.9%, Nasdaq 100 +2.9 to +3.6%, Dow +1.7 to +2.1% (05:23-08:15 ET). Reasons given: bargain hunting/short covering in AI and chips, Oracle saying AI contract funding is secured, Korea/China market-support steps. VIX ~30-31 (from 35+), 10y 4.91% (-14bp Friday), WTI ~$82 (-1.5 to -2.3%), gold +2.5-2.9%, BTC flat ~$61k. Fed: ~96% December hike priced (single source). Thanksgiving week: Thu closed, Fri 13:00 ET close, PCE/GDP/durables Wed 08:30 ET; thin volume after Tuesday. The Nov 12/17/18/19 gap-ups all faded from the first minutes, but those were not capitulation follow-ups; after a washout Friday a relief day can run all day. Low conviction both ways. No Skylit credits used (time).",
+  "calls": [
+    {
+      "ticker": "CRWD",
+      "direction": "down",
+      "instrument_note": "put (no shorting)",
+      "move_pct": 0.5,
+      "window_et": "10:00-11:30",
+      "confidence": 55,
+      "catalyst": "CrowdStrike agreed to buy Zscaler in an all-stock deal near $43.9B (1.135 CRWD per ZS, ~34% premium). CRWD about -8 to -9% premarket while the tape is up 2-3%.",
+      "macro_link": "Idiosyncratic: merger-arb desks short the acquirer against long ZS in all-stock deals, a steady supply that tends to cap acquirer bounces on deal day even in a strong tape.",
+      "chart_note": "No CRWD bars in our archive. Window starts 10:00 to skip a possible opening squeeze with the market rally; if CRWD reclaims its 09:30-10:00 high, the call is likely wrong.",
+      "volume_note": "Deal-day volume will be several times normal; not measured pre-market.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://finance.yahoo.com/markets/stocks/articles/premarket-movers-chip-stocks-lead-124424524.html",
+        "https://www.foxbusiness.com/markets/stocks-november-23-2026"
+      ]
+    },
+    {
+      "ticker": "QQQ",
+      "direction": "down",
+      "instrument_note": "SQQQ (inverse ETF, no shorting)",
+      "move_pct": 0.4,
+      "window_et": "09:45-11:30",
+      "confidence": 51,
+      "catalyst": "Gap-fade bet: Nasdaq 100 futures +2.9 to +3.6% after QQQ -5.4% Friday (close 610.04, low 606.23). A +3% gap opens near 628.",
+      "macro_link": "Rebound is short covering plus bargain hunting; nothing changed on the hike pricing (~96% December) and the AI/chip worries (NVDA leadership change) are unresolved. Lower 10y (4.91%) and softer oil are mild tailwinds against this call.",
+      "chart_note": "Our bars: every gap-up this month (Nov 12, 17, 18, 19) faded from the first 30 minutes; Nov 19 opened 671 and closed 645. Counter-case: Friday was a capitulation-style close at the low on record volume, and VIX is easing, so a trend-up relief day is quite possible. If QQQ holds above its opening 15-min high after 10:15, this call is likely wrong. Correlated with the SPY bias: one bet, not two.",
+      "volume_note": "Friday QQQ volume 950M, the heaviest in our archive window; expect high but falling volume today.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://www.tipranks.com/news/futures-rebound-strongly-after-last-weeks-ai-stocks-led-rout",
+        "https://finance.yahoo.com/markets/stocks/articles/premarket-movers-chip-stocks-lead-124424524.html"
+      ]
+    }
+  ],
+  "market_read": {
+    "tone": "Relief rally: futures up 2-3.5% after a correction week, chips and neoclouds +5-10% premarket, VIX back near 30, yields and oil lower; Thanksgiving week, thin after Tuesday.",
+    "day_type": "event-driven (large gap up; early fade then chop is my slight lean, an all-day trend-up relief rally is the main alternative)",
+    "spy_bias": {"direction": "down", "confidence": 51},
+    "qqq_bias": {"direction": "down", "confidence": 52},
+    "comment": "Bias is open-to-close from the gap open, not vs. Friday's close (everything is up vs. Friday). SPY prior close 690.91; a +2.3% gap opens near 707, under Friday's 10:00 high 718.29. The lean comes from this month's gap-up fades and is weak (51/52): a fresh washout often gives a trend-up Monday. If SPY is above its opening 30-min high at 10:30, drop the down bias."
+  },
+  "event_risk": [
+    "09:45 ET S&P Global flash November PMIs (time from the usual schedule; sources did not state it)",
+    "NY Fed President Williams speaks (time not found; check before trading)",
+    "Wed Nov 25 08:30 ET PCE, Q3 GDP 2nd estimate, durable goods, jobless claims",
+    "Thu Nov 26 market closed; Fri Nov 27 early close 13:00 ET"
+  ],
+  "desk_flags": [
+    {"desk": "orb_vol", "flag": "caution", "reason": "A 2-3% gap makes the 09:30-09:45 range very wide and the 09:45 PMI lands as the range closes; in gap-ups this month the first break up failed. An inverse-ETF break fits my lean; a bull-ETF break is the riskier side, but the lean is weak."},
+    {"desk": "ema_vol", "flag": "normal", "reason": "Trend entries suit either outcome (fade or relief trend); no major scheduled release inside the hold after 09:45."},
+    {"desk": "volspike", "flag": "caution", "reason": "Opening volume spikes will be extreme in both directions on a gap after a record-volume Friday; spikes before 10:00 are mostly noise. Later spikes in the direction of the 10:00-10:30 trend are fine."},
+    {"desk": "ema_vol_v2", "flag": "normal", "reason": "Same as ema_vol."}
+  ]
+}
