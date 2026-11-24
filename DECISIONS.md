@@ -415,3 +415,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-23 Hustle Department
 - Promotion only: added free page gap-risk-fill-past-your-stop-in-r.md and hub link. No start, kill, launch or price change. Cadence unchanged (daily): Drawdown Tracker not yet live, Chrome-only work queued.
+
+## 2026-11-24 Hustle Department
+- Promotion only: added free page long-option-underlying-move-to-recover-premium.md and hub link. No start, kill, launch or price change. Cadence unchanged (daily): Drawdown Tracker not yet live, Chrome-only work queued.

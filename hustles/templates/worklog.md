@@ -144,3 +144,9 @@
 - Promote: new free page `promo/pages/gap-risk-fill-past-your-stop-in-r.md` (targets "stop loss slippage", "gap past stop loss risk"; table computed by script, asserted: 2% stop filled 3% past = 2.50R, $5,000 position loses $250). Added to hub index. One change only; listing and price untouched.
 - Third experiment: not started (no sourced $0 idea a cloud run can publish; listings need Chrome).
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-24 (cloud run)
+- Measure: no Vivek answers for the hustles in City Hall; Gumroad analytics not reachable from an unattended run. GitHub traffic API: 51 views / 3 uniques over 14 days (mostly internal). Ledger unchanged, nothing estimated. Day 29 of 45.
+- Promote: new free page `promo/pages/long-option-underlying-move-to-recover-premium.md` (targets "how far must stock move for option to profit"; table computed by script, asserted: $1.00 premium at delta 0.50 = $2.00; $3.00 at 0.30 = $10.00). Added to hub index. One change only; listing and price untouched.
+- Third experiment: not started (no sourced $0 idea a cloud run can publish; listings need Chrome).
+- Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit, community drafts A/B, Gumroad views/sales check.

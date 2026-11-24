@@ -18,6 +18,7 @@ Free reference pages on position sizing, expectancy, drawdown and break-even mat
 - [Long Option Contracts From a Stop Percentage: How Many Can You Buy? (free table)](long-option-contracts-from-stop-percentage.md)
 - [Options Trade Journal Template (free CSV, with the formulas)](options-trade-journal-template-csv.md)
 - [Options Break-Even With Commissions: Worked Examples (free)](options-breakeven-with-fees.md)
+- [Long Option: How Far Must the Underlying Move to Recover the Premium? (free table)](long-option-underlying-move-to-recover-premium.md)
 - [Options Position Size Cheat Sheet (free)](options-position-size-cheat-sheet.md)
 - [Payoff Ratio and Expectancy From Average Win and Average Loss (free table, in dollars)](payoff-ratio-and-expectancy-from-average-win-and-loss.md)
 - [Portfolio Heat: Total Open Risk Across Several Options Positions (free table)](portfolio-heat-total-open-risk.md)
