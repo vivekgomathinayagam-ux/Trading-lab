@@ -1,19 +1,19 @@
 {
-  "as_of": "2026-11-24T19:30:30+00:00",
+  "as_of": "2026-11-24T19:45:30+00:00",
   "mode": "paper",
-  "equity": 1108.77,
-  "settled_cash": 176.58,
+  "equity": 1109.28,
+  "settled_cash": -794.22,
   "peak_equity": 1157.94,
   "start_of_day_equity": 1151.46,
-  "drawdown": 0.0425,
+  "drawdown": 0.042,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
   "positions": [
     {
-      "cost_basis": 934.72,
+      "cost_basis": 1905.51,
       "date_acquired": "2026-11-24T19:10:30.578Z",
       "id": 2778585,
-      "quantity": 23.0,
+      "quantity": 47.0,
       "symbol": "SPXU"
     }
   ],
@@ -47,8 +47,15 @@
     {
       "desk": "ema_vol_v2",
       "label": "EMA 9/21 + volume v2",
-      "cash": 977.22,
-      "position": null
+      "cash": 0.89,
+      "position": {
+        "sym": "SPXU",
+        "qty": 24,
+        "entry_px": 40.68033,
+        "stop": 39.663321749999994,
+        "target": 42.7143465,
+        "entry_t": "2026-11-24T14:40:29.868942-05:00"
+      }
     }
   ]
 }
