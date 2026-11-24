@@ -1,0 +1,38 @@
+{
+ "day": "2026-11-23",
+ "scored": [
+  {
+   "ticker": "CRWD",
+   "direction": "down",
+   "move_pct": 0.5,
+   "window_et": "10:00-11:30",
+   "confidence": 55,
+   "result": "miss",
+   "entry": 206.79,
+   "best_fav_pct": 0.164
+  },
+  {
+   "ticker": "QQQ",
+   "direction": "down",
+   "move_pct": 0.4,
+   "window_et": "09:45-11:30",
+   "confidence": 51,
+   "result": "miss",
+   "entry": 645.47,
+   "best_fav_pct": 0.228
+  }
+ ],
+ "market_read": {
+  "tone": "Relief rally: futures up 2-3.5% after a correction week, chips and neoclouds +5-10% premarket, VIX back near 30, yields and oil lower; Thanksgiving week, thin after Tuesday.",
+  "day_type": "event-driven (large gap up; early fade then chop is my slight lean, an all-day trend-up relief rally is the main alternative)",
+  "spy_bias": {
+   "direction": "down",
+   "confidence": 51
+  },
+  "qqq_bias": {
+   "direction": "down",
+   "confidence": 52
+  },
+  "comment": "Bias is open-to-close from the gap open, not vs. Friday's close (everything is up vs. Friday). SPY prior close 690.91; a +2.3% gap opens near 707, under Friday's 10:00 high 718.29. The lean comes from this month's gap-up fades and is weak (51/52): a fresh washout often gives a trend-up Monday. If SPY is above its opening 30-min high at 10:30, drop the down bias."
+ }
+}
