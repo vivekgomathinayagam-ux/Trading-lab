@@ -418,3 +418,5 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 
 ## 2026-11-24 Hustle Department
 - Promotion only: added free page long-option-underlying-move-to-recover-premium.md and hub link. No start, kill, launch or price change. Cadence unchanged (daily): Drawdown Tracker not yet live, Chrome-only work queued.
+
+- 2026-11-24 (Accountant): Day 22 close: 4 paper trades, 0 wins, −$52.61; no retire triggers (no desk at 30 trades). Found why `risk_state.json` never matched the desk books: in paper it tracks the pooled Tradier sandbox mirror account (`engine/worker.py`). Reporting change only: the city Watchtower now computes drawdown and daily loss from the desk books (worst desk), replacing a 13.6% figure that mixed two accounts. engine/ untouched; wiring the kill switch to the desks is needed before any go-live and needs Vivek's yes. Details in STATE.md Known gaps.
