@@ -1,21 +1,36 @@
 {
-  "as_of": "2026-11-24T15:00:30+00:00",
+  "as_of": "2026-11-24T15:15:30+00:00",
   "mode": "paper",
-  "equity": 1151.46,
-  "settled_cash": 1151.46,
-  "peak_equity": 1152.31,
+  "equity": 1156.74,
+  "settled_cash": 208.58,
+  "peak_equity": 1156.74,
   "start_of_day_equity": 1151.46,
-  "drawdown": 0.0007,
+  "drawdown": 0.0,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [],
+  "positions": [
+    {
+      "cost_basis": 942.88,
+      "date_acquired": "2026-11-24T15:12:30.422Z",
+      "id": 2777807,
+      "quantity": 8.0,
+      "symbol": "UPRO"
+    }
+  ],
   "strategies": [],
   "daytrade_desks": [
     {
       "desk": "orb_vol",
       "label": "ORB + volume",
-      "cash": 954.75,
-      "position": null
+      "cash": 12.52,
+      "position": {
+        "sym": "UPRO",
+        "qty": 8,
+        "entry_px": 117.77886,
+        "stop": 114.83438849999999,
+        "target": 123.667803,
+        "entry_t": "2026-11-24T10:12:29.839565-05:00"
+      }
     },
     {
       "desk": "ema_vol",
