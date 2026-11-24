@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-24",
+  "written_at_pt": "05:55",
+  "author": "Newsie (scheduled pre-market run, file 5)",
+  "notes": "Scores so far 2 of 11 (18%, all 50-65 bucket), below the ~50% no-skill baseline, so I make one call only, keep confidence at 52, and follow the coach's Nov 23 ask: on a gap of 1.5%+ give day-level direction for the indexes, no intraday index call, and start any call window after the opening range and the 10:00 data (10:15). Setup: Monday was the strongest day since April 2025 (SPY 690.91 -> 722.39 in our bars, intraday V 713.53-727.98) on Jensen Huang's return to Nvidia (NVDA ~+31%). This morning futures are giving part of it back and the drop grew through the morning: TipRanks 05:50 ET NQ -1.2% / ES -0.5%; SSBCrack 06:36 ET NQ -2% / ES -1%; Yahoo ~08:22 ET NQ -2.2% / ES -1.3% / Dow -0.7%. NVDA ~-5.5% premarket, chips and optical names -2 to -5%, Anthropic briefly under its $83 IPO price. VIX ~30 (+13%), 10y ~4.92%, WTI ~$80, December hike priced ~95% (25bp) and hike bets revived on the rally. Kospi +6-7%, Nikkei +4% overnight (already in EWY/EWJ, no call). Thanksgiving week: Wed 08:30 ET PCE/GDP/durables/claims, Thu closed, Fri 13:00 close. Not verified (pages failed): HPE lower premarket after earnings, Sanofi buying Insmed for ~$41B; no call on either. No Skylit credits used.",
+  "calls": [
+    {
+      "ticker": "BBY",
+      "direction": "up",
+      "move_pct": 0.6,
+      "window_et": "10:15-11:30",
+      "confidence": 52,
+      "catalyst": "Best Buy Q3 beat and raised: comparable sales +6.1%, revenue $10.2B vs $9.9B expected, adj. EPS $1.62 vs $1.49, full-year guidance raised; first quarter under the new CEO. About +5% premarket.",
+      "macro_link": "Idiosyncratic consumer name, largely outside the AI/chip unwind that is driving the index down; holiday-season read into Black Friday. A falling Nasdaq can still drag it, which is the main risk.",
+      "chart_note": "No BBY bars in our archive. Window starts 10:15 so the gap's opening range and the 10:00 consumer-confidence print are done; the idea is post-earnings drift, not the open. If BBY is below its 09:30-10:00 low at 10:15, the call is likely wrong.",
+      "volume_note": "Earnings-day volume will be several times normal; not measured pre-market.",
+      "flow_note": "Not checked.",
+      "sources": [
+        "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-24-dow-sp-500-nasdaq-rebound-090614276.html",
+        "https://www.cnbc.com/2026/11/24/stocks-moving-the-most-today-live-updates.html"
+      ]
+    }
+  ],
+  "market_read": {
+    "tone": "Give-back after Monday's +4.6% Nvidia-led surge: futures down 1-1.3% (S&P) and 2-2.2% (Nasdaq 100) and falling into the morning, chips leading lower, VIX back up near 30, hike bets revived.",
+    "day_type": "event-driven (gap down ~1.3% SPY / ~2% QQQ; the opening range will be wide and the 10:00 data can swing it; after that my slight lean is a weak drift lower or chop, not a trend day either way)",
+    "spy_bias": {"direction": "down", "confidence": 53},
+    "qqq_bias": {"direction": "down", "confidence": 54},
+    "comment": "Bias is open-to-close from the gap open, not vs. Monday's close. Expected opens: SPY about 711-716 (a -1.0 to -1.6% range of gaps; Monday's low was 713.53, so the open sits near it), QQQ about 634-641 (Monday's low 641.95). The first 15 minutes can swing 1.5-2% either way, as on Nov 19, 20 and 23; I make no call inside it. Lean down because the gap has grown all morning and the leader (NVDA) is weakest, but this month gaps have reversed as often as they ran, and a gap down to Monday's low can be bought. Tripwire: if SPY is above its opening 30-min high at 10:30, drop the down bias; if it is below its 30-min low, the down bias holds."
+  },
+  "event_risk": [
+    "08:15 ET ADP weekly employment (before the open)",
+    "09:00 ET FHFA house price index (usual time; not confirmed by a source)",
+    "10:00 ET Conference Board consumer confidence, November (expected 92.1, prior 91.7; usual time, not confirmed by a source)",
+    "10:00 ET Richmond Fed manufacturing, November (prior -2; usual time, not confirmed by a source)",
+    "After the close: Dell and HP Inc earnings (no intraday effect; AI-server read for Wednesday)",
+    "Wed Nov 25 08:30 ET PCE, Q3 GDP 2nd estimate, durable goods, jobless claims; Thu Nov 26 closed; Fri Nov 27 13:00 ET close"
+  ],
+  "desk_flags": [
+    {"desk": "orb_vol", "flag": "caution", "reason": "A 1-2% gap down to Monday's low plus the 10:00 consumer-confidence and Richmond Fed prints right after the 09:30-09:45 range closes: a first break in either direction can reverse at 10:00. A bull-ETF break up is the riskier side given the down lean."},
+    {"desk": "ema_vol", "flag": "normal", "reason": "Trend entries after 10:00 suit either a drift lower or a rebound; no scheduled release inside the hold after 10:00."},
+    {"desk": "volspike", "flag": "caution", "reason": "Volume spikes from 09:30 to 10:05 will come from the gap and the 10:00 data, not a trend; skip spikes in that window. Later spikes are normal."},
+    {"desk": "ema_vol_v2", "flag": "normal", "reason": "Same as ema_vol."}
+  ]
+}
