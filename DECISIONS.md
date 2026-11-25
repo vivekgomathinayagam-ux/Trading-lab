@@ -427,3 +427,5 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - No third experiment: any new listing needs a Chrome session. No new idea researched this run.
 - GitHub Pages not attempted: needs a repo setting, and its commercial-use limit is unclear for a site that promotes a product.
 - Paused the daily extra free page: no evidence the repo pages are a search channel. Cadence stays daily for the bad-input tests on the other two workbooks.
+
+- 2026-11-25 (Accountant): Day 23 close, last day of the month-1 test: 3 paper trades, 3 wins, +$42.12; Volume spike +8.46%, the other three desks negative, SPY −5.85%; no retire triggers. Bugs found, no code or desk change: (1) no early-close handling in the bot or lab replay (Nov 27 closes 13:00 ET); (2) today's Volume spike entry likely passed its VWAP filter only because of bad Yahoo volume bars (LESSONS 56): marked, not removed. Both in STATE.md Known gaps for the Researcher.
