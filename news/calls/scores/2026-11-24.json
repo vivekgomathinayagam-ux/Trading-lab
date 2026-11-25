@@ -1,0 +1,28 @@
+{
+ "day": "2026-11-24",
+ "scored": [
+  {
+   "ticker": "BBY",
+   "direction": "up",
+   "move_pct": 0.6,
+   "window_et": "10:15-11:30",
+   "confidence": 52,
+   "result": "miss",
+   "entry": 99.3402,
+   "best_fav_pct": 0.221
+  }
+ ],
+ "market_read": {
+  "tone": "Give-back after Monday's +4.6% Nvidia-led surge: futures down 1-1.3% (S&P) and 2-2.2% (Nasdaq 100) and falling into the morning, chips leading lower, VIX back up near 30, hike bets revived.",
+  "day_type": "event-driven (gap down ~1.3% SPY / ~2% QQQ; the opening range will be wide and the 10:00 data can swing it; after that my slight lean is a weak drift lower or chop, not a trend day either way)",
+  "spy_bias": {
+   "direction": "down",
+   "confidence": 53
+  },
+  "qqq_bias": {
+   "direction": "down",
+   "confidence": 54
+  },
+  "comment": "Bias is open-to-close from the gap open, not vs. Monday's close. Expected opens: SPY about 711-716 (a -1.0 to -1.6% range of gaps; Monday's low was 713.53, so the open sits near it), QQQ about 634-641 (Monday's low 641.95). The first 15 minutes can swing 1.5-2% either way, as on Nov 19, 20 and 23; I make no call inside it. Lean down because the gap has grown all morning and the leader (NVDA) is weakest, but this month gaps have reversed as often as they ran, and a gap down to Monday's low can be bought. Tripwire: if SPY is above its opening 30-min high at 10:30, drop the down bias; if it is below its 30-min low, the down bias holds."
+ }
+}

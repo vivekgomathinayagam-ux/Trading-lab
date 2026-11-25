@@ -1,11 +1,11 @@
 # Newsie call scores (hit = called move reached before the same move the other way)
 
-Calls scored: 11
+Calls scored: 12
 
 | confidence | calls | hit | miss | none | hit rate (hit / hit+miss) |
 |---|---|---|---|---|---|
 | 0-50 | 0 | 0 | 0 | 0 | - |
-| 50-65 | 11 | 2 | 9 | 0 | 18% |
+| 50-65 | 12 | 2 | 10 | 0 | 17% |
 | 65-80 | 0 | 0 | 0 | 0 | - |
 | 80-100 | 0 | 0 | 0 | 0 | - |
 
