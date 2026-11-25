@@ -2,7 +2,7 @@
 import datetime as dt
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
-from openpyxl.formatting.rule import CellIsRule
+from openpyxl.formatting.rule import CellIsRule, FormulaRule
 from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.chart import LineChart, Reference
 
@@ -21,10 +21,10 @@ lines=[("Options Day Trader Journal",18,True),
 ("How to use it",13,True),
 ("1. Go to the 'Journal' tab. Add one row per trade. Fill only the yellow cells.",11,False),
 ("2. Planned risk ($) is the most you were willing to lose on the trade BEFORE you entered (for a long option, usually the premium paid).",11,False),
-("3. Multiplier is 100 for US stock options, 1 for shares. Fees is your total commission and fees for the round trip.",11,False),
+("3. Multiplier is pre-filled with 100 (US stock options); change it to 1 for shares. Fees is your total commission and fees for the round trip. A yellow 'Check qty' means the contracts or multiplier cell is empty.",11,False),
 ("4. P&L ($), R-multiple, win/loss and the running total fill in by themselves. Do not type in the grey cells.",11,False),
 ("5. 'Stats' shows the whole picture. 'Calendar' shows each day's P&L for the month you choose. 'By Setup' splits results by setup tag.",11,False),
-("6. The Journal has room for 500 trades. To add more, copy the last row's formulas down (every grey cell).",11,False),("",11,False),
+("6. The Journal has room for 500 trades. To add more, copy a whole row (click its row number), insert the copy ABOVE the last row so the totals include it, then type over the yellow cells.",11,False),("",11,False),
 ("Words used",13,True),
 ("R-multiple: your P&L divided by the risk you planned. +1R means you made what you risked; -1R means you lost all of it.",11,False),
 ("Expectancy: the average R (or $) you make per trade. Positive means the sample is profitable after fees.",11,False),
@@ -55,14 +55,15 @@ for r in range(2,N+2):
     for c in range(1,12):
         x=j.cell(row=r,column=c); x.fill=inp; x.border=box
     j.cell(row=r,column=1).number_format="yyyy-mm-dd"
+    j.cell(row=r,column=8,value=100)   # options default; change to 1 for shares
     for c in (5,6): j.cell(row=r,column=c).number_format="0.00"
     j.cell(row=r,column=9).number_format="0.00"; j.cell(row=r,column=10).number_format="#,##0.00"
     if r-2<len(sample):
         for c,v in enumerate(sample[r-2],start=1): j.cell(row=r,column=c,value=v)
     # P&L: long = (exit-entry), short = (entry-exit); direction must be Long/Short
-    j.cell(row=r,column=12,value=f'=IF(OR(E{r}="",F{r}=""),"",ROUND(IF(D{r}="Short",E{r}-F{r},F{r}-E{r})*G{r}*H{r}-I{r},2))')
+    j.cell(row=r,column=12,value=f'=IF(OR(E{r}="",F{r}="",N(G{r})<=0,N(H{r})<=0),"",ROUND(IF(D{r}="Short",E{r}-F{r},F{r}-E{r})*G{r}*H{r}-I{r},2))')
     j.cell(row=r,column=13,value=f'=IF(OR(L{r}="",N(J{r})<=0),"",L{r}/J{r})')
-    j.cell(row=r,column=14,value=f'=IF(L{r}="","",IF(L{r}>0,"Win",IF(L{r}<0,"Loss","Flat")))')
+    j.cell(row=r,column=14,value=f'=IF(L{r}="",IF(AND(E{r}<>"",F{r}<>""),"Check qty",""),IF(L{r}>0,"Win",IF(L{r}<0,"Loss","Flat")))')
     j.cell(row=r,column=15,value=f'=IF(L{r}="","",SUM($L$2:L{r}))')
     j.cell(row=r,column=16,value=f'=IF(L{r}="","",MAX(0,MAX($O$2:O{r})))')
     j.cell(row=r,column=17,value=f'=IF(L{r}="","",P{r}-O{r})')
@@ -74,6 +75,8 @@ for r in range(2,N+2):
 dv=DataValidation(type="list",formula1='"Long,Short"',allow_blank=True); j.add_data_validation(dv); dv.add(f"D2:D{N+1}")
 j.conditional_formatting.add(f"N2:N{N+1}",CellIsRule(operator="equal",formula=['"Win"'],fill=PatternFill("solid",bgColor="C6EFCE")))
 j.conditional_formatting.add(f"N2:N{N+1}",CellIsRule(operator="equal",formula=['"Loss"'],fill=PatternFill("solid",bgColor="FFC7CE")))
+
+j.conditional_formatting.add(f"N2:N{N+1}",CellIsRule(operator="equal",formula=['"Check qty"'],fill=PatternFill("solid",bgColor="FFEB9C")))
 
 # ---------- Stats
 st=wb.create_sheet("Stats")
@@ -107,17 +110,32 @@ for i,(a,f,nf,note) in enumerate(rows,start=3):
 st["A21"]="Longest win streak"; st["A22"]="Longest losing streak"
 st["A21"].font=st["A22"].font=Font(bold=True)
 for r in range(2,N+2):
-    j.cell(row=r,column=19,value=f'=IF(N{r}="Win",N(S{r-1})+1,0)' if r>2 else f'=IF(N2="Win",1,0)')
-    j.cell(row=r,column=20,value=f'=IF(N{r}="Loss",N(T{r-1})+1,0)' if r>2 else f'=IF(N2="Loss",1,0)')
+    # OFFSET reaches the row above without a direct reference, so deleting the sample rows cannot cause #REF!
+    j.cell(row=r,column=19,value=f'=IF(N{r}="Win",N(OFFSET(N{r},-1,5))+1,0)')
+    j.cell(row=r,column=20,value=f'=IF(N{r}="Loss",N(OFFSET(N{r},-1,6))+1,0)')
+    j.cell(row=r,column=21,value=f'=IF(L{r}="","",COUNT($L$2:L{r}))')
+j["U1"]="closed trade # (helper)"; j.column_dimensions["U"].hidden=True
 j["S1"]="win streak (helper)"; j["T1"]="loss streak (helper)"
 j.column_dimensions["S"].hidden=True; j.column_dimensions["T"].hidden=True
 st["B21"]=f"=MAX(Journal!$S$2:$S${N+1})"; st["B22"]=f"=MAX(Journal!$T$2:$T${N+1})"
 for a in ("B21","B22"): st[a].border=box; st[a].fill=gry
-# equity chart
+# equity chart: the latest 60 closed trades; empty slots are #N/A so the line stops at the last trade
+W=60
+st["E21"]=f"Chart data: running P&L of the latest {W} closed trades"; st["E21"].font=Font(italic=True,color="667085")
+st["E22"]="Trade #"; st["F22"]="Running P&L ($)"; st["E22"].font=st["F22"].font=Font(bold=True)
+U=f"Journal!$U$2:$U${N+1}"; O=f"Journal!$O$2:$O${N+1}"
+for i in range(W):
+    r=23+i; num=f"(MAX(0,$B$3-{W})+{i+1})"
+    st.cell(row=r,column=5,value=f'=IF({num}>$B$3,"",{num})')
+    st.cell(row=r,column=6,value=f'=IF({num}>$B$3,NA(),INDEX({O},MATCH({num},{U},0)))').number_format='#,##0.00;[Red]-#,##0.00'
+st.column_dimensions["E"].width=10; st.column_dimensions["F"].width=18
+st.conditional_formatting.add(f"F23:F{22+W}",FormulaRule(formula=["ISNA(F23)"],font=Font(color="FFFFFF")))
 ch=LineChart(); ch.title="Running P&L ($)"; ch.height=8; ch.width=18
-ch.add_data(Reference(j,min_col=15,min_row=1,max_row=60),titles_from_data=True); ch.legend=None
+ch.add_data(Reference(st,min_col=6,min_row=22,max_row=22+W),titles_from_data=True); ch.legend=None
+ch.set_categories(Reference(st,min_col=5,min_row=23,max_row=22+W))
+ch.x_axis.title="Trade #"; ch.x_axis.delete=False; ch.y_axis.delete=False; ch.x_axis.tickLblPos="low"
 for _s in ch.series: _s.smooth=False   # straight segments, no smoothing overshoot
-st.add_chart(ch,"E3")
+st.add_chart(ch,"H3")
 
 # ---------- By Setup
 b=wb.create_sheet("By Setup")
@@ -128,7 +146,7 @@ b["H1"]="Type your setup tags in column A (same spelling as the Journal). Sample
 C=f"Journal!$C$2:$C${N+1}"
 for r,tag in enumerate(["ORB","Reversal","Vertical","","","","","","",""],start=2):
     c=b.cell(row=r,column=1,value=tag or None); c.fill=inp; c.border=box
-    b.cell(row=r,column=2,value=f'=IF(A{r}="","",COUNTIFS({C},A{r},{L},"<>"))')
+    b.cell(row=r,column=2,value=f'=IF(A{r}="","",COUNTIFS({C},A{r},{Nn},"Win")+COUNTIFS({C},A{r},{Nn},"Loss")+COUNTIFS({C},A{r},{Nn},"Flat"))')
     b.cell(row=r,column=3,value=f'=IF(OR(A{r}="",N(B{r})=0),"",COUNTIFS({C},A{r},{Nn},"Win")/B{r})').number_format="0.0%"
     b.cell(row=r,column=4,value=f'=IF(A{r}="","",SUMIFS({L},{C},A{r}))').number_format='#,##0.00;[Red]-#,##0.00'
     b.cell(row=r,column=5,value=f'=IF(OR(A{r}="",N(B{r})=0),"",D{r}/B{r})').number_format='#,##0.00;[Red]-#,##0.00'
@@ -137,7 +155,7 @@ for r,tag in enumerate(["ORB","Reversal","Vertical","","","","","","",""],start=
 
 # ---------- Calendar
 k=wb.create_sheet("Calendar")
-k["A1"]="Month to show (type the first day of the month):"; k["A1"].font=Font(bold=True)
+k["A1"]="Month to show (type any date in that month):"; k["A1"].font=Font(bold=True)
 k["E1"]=dt.date(2026,10,1); k["E1"].number_format="mmmm yyyy"; k["E1"].fill=inp; k["E1"].border=box
 for i,d in enumerate(["Mon","Tue","Wed","Thu","Fri"]):
     c=k.cell(row=3,column=2+i,value=d); c.font=hdr; c.fill=hfill; c.alignment=Alignment(horizontal="center")
@@ -149,7 +167,7 @@ D=f"Journal!$A$2:$A${N+1}"
 # Monday of week containing 1st: $E$1 - WEEKDAY($E$1,3)
 for w in range(6):
     r=4+w*2
-    k.cell(row=r,column=1,value=f"=$E$1-WEEKDAY($E$1,3)+{7*w}").number_format="d mmm"
+    k.cell(row=r,column=1,value=f"=($E$1-DAY($E$1)+1)-WEEKDAY($E$1-DAY($E$1)+1,3)+{7*w}").number_format="d mmm"
     k.cell(row=r,column=1).font=Font(bold=True)
     for d in range(5):
         col=2+d

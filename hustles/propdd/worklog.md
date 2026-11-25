@@ -16,3 +16,4 @@
 - 2026-11-21 (cloud run): no change; listing still queued for a Chrome session.
 - 2026-11-22 (cloud run): no change; listing still queued for a Chrome session.
 - 2026-11-24 (cloud run): no change; listing still queued for a Chrome session.
+- 2026-11-25 (cloud run): no change; listing still queued. Bad-input test due next run, before any publish. Drop on 2026-12-11 if still unpublished.

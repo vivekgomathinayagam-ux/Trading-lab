@@ -150,3 +150,11 @@
 - Promote: new free page `promo/pages/long-option-underlying-move-to-recover-premium.md` (targets "how far must stock move for option to profit"; table computed by script, asserted: $1.00 premium at delta 0.50 = $2.00; $3.00 at 0.30 = $10.00). Added to hub index. One change only; listing and price untouched.
 - Third experiment: not started (no sourced $0 idea a cloud run can publish; listings need Chrome).
 - Still QUEUED for Chrome: enable GitHub Pages for promo/pages, publish Drawdown Tracker listing, confirm Plan Pack in the Toolkit, community drafts A/B, Gumroad views/sales check.
+
+## 2026-11-25 (cloud run)
+- Measure: no City Hall answers for hustles; Gmail not connected; Drive search for "gumroad" empty; public product page loads ($12, no rating or sales count); web search did not surface it. GitHub traffic not read this run (no traffic tool in this session). Ledger unchanged, nothing estimated. Day 30 of 45.
+- Build (instead of another free page): bad-input test of the paid files found faults in the live v1 (blank premium -> "Fits: Yes, 250 contracts"; reversed strikes -> "Yes"; deleting sample rows -> #REF!; missing multiplier -> false loss; chart stopped at 59 rows; By Setup counted open trades; Calendar needed the 1st of the month; rows copied past 500 not counted). Fixed in the build scripts, regenerated, 166/166 checks plus row delete/insert pass in LibreOffice. Excel/Google Sheets not tested.
+- Free HTML calculator had the same blank-premium fault (76 contracts); fixed and checked in headless Chromium at phone width.
+- One change type only (product fix); price, title, cover untouched.
+- QUEUED for Chrome, in order: (1) upload v1.2 files + FAQ line (product/listing/v1.2-fixes.md), (2) read Gumroad analytics for views and sales, (3) publish Drawdown Tracker, (4) community drafts A/B where rules allow, (5) GitHub Pages (read the terms note in promo/PLAN.md first), (6) retake the Stats screenshot.
+- Next cloud run: same bad-input test on the Drawdown Tracker and the Plan Pack.

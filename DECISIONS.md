@@ -420,3 +420,10 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Promotion only: added free page long-option-underlying-move-to-recover-premium.md and hub link. No start, kill, launch or price change. Cadence unchanged (daily): Drawdown Tracker not yet live, Chrome-only work queued.
 
 - 2026-11-24 (Accountant): Day 22 close: 4 paper trades, 0 wins, −$52.61; no retire triggers (no desk at 30 trades). Found why `risk_state.json` never matched the desk books: in paper it tracks the pooled Tradier sandbox mirror account (`engine/worker.py`). Reporting change only: the city Watchtower now computes drawdown and daily loss from the desk books (worst desk), replacing a 13.6% figure that mixed two accounts. engine/ untouched; wiring the kill switch to the desks is needed before any go-live and needs Vivek's yes. Details in STATE.md Known gaps.
+
+## 2026-11-25 Hustle Department
+- Fixed faults in the live Toolkit (calculator said "Fits: Yes" on blank or wrong inputs; journal #REF! after deleting sample rows, and others) and the same fault in the free HTML calculator. v1.2 is in the repo, tested in LibreOffice; upload is queued for a Chrome session and the live listing still sells v1.
+- 30-day check (day 30): 0 known sales, visits unmeasured since Oct 28 (0 views then). The kill rule needs both, so no kill on missing data. Set now, before the result: on 2026-12-11 the Toolkit is killed (no more work; free listing may stay) unless a sale is traced to a source; the Drawdown Tracker is dropped if still unpublished by then (it needs Vivek's browser).
+- No third experiment: any new listing needs a Chrome session. No new idea researched this run.
+- GitHub Pages not attempted: needs a repo setting, and its commercial-use limit is unclear for a site that promotes a product.
+- Paused the daily extra free page: no evidence the repo pages are a search channel. Cadence stays daily for the bad-input tests on the other two workbooks.

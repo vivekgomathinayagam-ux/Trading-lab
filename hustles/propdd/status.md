@@ -10,3 +10,4 @@ Not live. Revenue $0 (as of 2026-10-29).
 - 2026-11-14 (cloud run): no change; listing still queued for a Chrome session.
 - 2026-11-15 (cloud run): no change; listing still queued for a Chrome session.
 - 2026-11-23 (cloud run): no change; listing still queued for a Chrome session.
+- 2026-11-25 (cloud run): no change. Needs a bad-input test before publishing (the Toolkit failed one today). Drop on 2026-12-11 if still unpublished.

@@ -11,6 +11,9 @@ Goal: sales, as fast as honest channels allow. Store: https://vivekgo8.gumroad.c
 3. Gumroad affiliates: allowed to open the product to affiliates later; only after the first sale (costs a commission, never up-front money).
 4. Community posts (Reddit, X, Discord, forums): ONLY in Vivek's interactive Chrome session, ONLY where the group's rules allow self-promotion, one honest post per community, saying it was built with AI and what it is. Each post is read against the group's rules first. No reposting, no sock accounts, no DMs.
 
+## Public hosting for the free pages (checked 2026-11-25)
+GitHub's docs say Pages is not allowed as hosting to run an online business or any site "primarily directed at either facilitating commercial transactions" (docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits). A free reference site with one product link is not named either way. If it is switched on in a Chrome session, keep every page useful without the purchase and keep the product link as a footnote. A publishing source has to be chosen in repo settings, so a cloud run does not try it.
+
 ## Never (these end the hustle's account or are illegal, so they are not "means" at all)
 Fake reviews or testimonials, fake accounts, buying/faking sales, spam or mass DMs, claiming the sheet makes money, pretending Vivek is someone else, posting where rules ban it.
 

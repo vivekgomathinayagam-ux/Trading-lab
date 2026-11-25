@@ -21,7 +21,7 @@ Built with AI assistance (Claude) and tested by recalculating every formula.
 
 ## FAQ
 - **Works in Google Sheets?** Yes: upload the .xlsx to Drive and open with Google Sheets. Excel works as is.
-- **How many trades?** 500 rows. Copy the last row's grey formulas down for more.
+- **How many trades?** 500 rows. For more, copy a whole row, insert the copy above the last row, then type over the yellow cells.
 - **Does it pull prices?** No. You type your own fills, so it never goes stale or breaks.
 - **Shares instead of options?** Yes: set Multiplier to 1.
 - **Short trades?** Set Direction to Short; P&L flips.

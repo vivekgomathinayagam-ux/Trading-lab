@@ -13,13 +13,19 @@
 <div id="out"></div>
 <p>Want a journal and a full calculator in one file? <a href="https://vivekgo8.gumroad.com/l/aobhdm">Options Day Trader Toolkit ($12)</a>. Built with AI assistance (Claude).</p>
 <script>
-function calc(a){var risk=a.acct*a.pct/100,per;
- if(a.kind==="credit")per=(a.w-a.prem)*100;else per=a.prem*100;
- per+=a.fee;var n=per>0?Math.floor(risk/per):0;
- return{risk:risk,per:per,n:n};}
+function calc(a){var risk=a.acct*a.pct/100,err="";
+ if(!(a.acct>0))err="Enter your account size.";
+ else if(!(a.pct>0))err="Enter your risk per trade (%).";
+ else if(!(a.prem>0))err="Enter the premium, debit or credit (above 0).";
+ else if(a.kind==="credit"&&!(a.w>0))err="Enter the strike width.";
+ else if(a.kind==="credit"&&a.prem>=a.w)err="Credit is at or above the width: check the price.";
+ else if(!(a.fee>=0))err="Fees cannot be negative.";
+ if(err)return{risk:risk,per:null,n:null,err:err};
+ var per=(a.kind==="credit"?a.w-a.prem:a.prem)*100+a.fee;
+ return{risk:risk,per:per,n:Math.floor(Math.round(risk*100)/Math.round(per*100)),err:""};}
 function run(){var g=function(i){return parseFloat(document.getElementById(i).value)||0};
  var r=calc({acct:g("acct"),pct:g("pct"),kind:document.getElementById("kind").value,prem:g("prem"),w:g("w"),fee:g("fee")});
- document.getElementById("out").innerHTML="Dollar risk allowed: <b>$"+r.risk.toFixed(2)+"</b><br>Max loss per contract (with fees): <b>$"+r.per.toFixed(2)+"</b><br>Contracts that fit: <b>"+r.n+"</b>"+(r.n===0?"<br><em>Too big for your rule. Skip it or pick a cheaper structure.</em>":"");}
+ document.getElementById("out").innerHTML=r.err?"<em>Check inputs: "+r.err+"</em>":"Dollar risk allowed: <b>$"+r.risk.toFixed(2)+"</b><br>Max loss per contract (with fees): <b>$"+r.per.toFixed(2)+"</b><br>Contracts that fit: <b>"+r.n+"</b>"+(r.n===0?"<br><em>Too big for your rule. Skip it or pick a cheaper structure.</em>":"");}
 document.querySelectorAll("input,select").forEach(function(e){e.addEventListener("input",run)});run();
 if(typeof module!=="undefined")module.exports={calc:calc};
 </script></body></html>

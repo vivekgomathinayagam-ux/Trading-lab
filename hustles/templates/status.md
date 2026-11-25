@@ -38,3 +38,5 @@ Update 2026-11-20 08:50 PT: still no reachable sales data; Sales 0 known, Revenu
 Update 2026-11-21 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 26 of 45. New free page: payoff-ratio-and-expectancy-from-average-win-and-loss.md.
 Update 2026-11-22 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 27 of 45. New free page: expectancy-net-of-slippage-and-fees.md (26 pages + hub).
 Update 2026-11-24 08:50 PT: still no reachable sales data; Sales 0 known, Revenue $0. Day 29 of 45. New free page: long-option-underlying-move-to-recover-premium.md.
+Update 2026-11-25 08:50 PT (day 30 of 45): 0 known sales, revenue $0. Visits unmeasured (cloud runs cannot read Gumroad analytics; Gmail not connected; a Drive search for "gumroad" found nothing). Public page loads at $12, no rating or sales count shown.
+**Live files have faults; fixed v1.2 files are in the repo, NOT yet uploaded** (see product/listing/v1.2-fixes.md). 30-day check: cannot be judged without visit data, so no kill today. Trial end Dec 11: kill if no sale is traced by then.
