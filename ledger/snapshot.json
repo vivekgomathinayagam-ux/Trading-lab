@@ -1,29 +1,14 @@
 {
-  "as_of": "2026-11-25T20:45:30+00:00",
+  "as_of": "2026-11-25T20:59:30+00:00",
   "mode": "paper",
-  "equity": 1170.22,
-  "settled_cash": -889.24,
+  "equity": 1169.23,
+  "settled_cash": 1169.23,
   "peak_equity": 1180.91,
   "start_of_day_equity": 1120.8,
-  "drawdown": 0.0091,
+  "drawdown": 0.0099,
   "kill_switch_on": false,
   "paper_equity_start": 1000.0,
-  "positions": [
-    {
-      "cost_basis": 609.74,
-      "date_acquired": "2026-11-25T16:26:30.476Z",
-      "id": 2783439,
-      "quantity": 1.0,
-      "symbol": "QQQ"
-    },
-    {
-      "cost_basis": 1400.3,
-      "date_acquired": "2026-11-25T17:10:30.367Z",
-      "id": 2783851,
-      "quantity": 2.0,
-      "symbol": "SPY"
-    }
-  ],
+  "positions": [],
   "strategies": [],
   "daytrade_desks": [
     {
@@ -35,41 +20,20 @@
     {
       "desk": "ema_vol",
       "label": "EMA 9/21 + volume",
-      "cash": 252.1,
-      "position": {
-        "sym": "SPY",
-        "qty": 1,
-        "entry_px": 707.401452,
-        "stop": 689.7164157,
-        "target": 742.7715246,
-        "entry_t": "2026-11-25T12:10:30.017215-05:00"
-      }
+      "cash": 969.99,
+      "position": null
     },
     {
       "desk": "volspike",
       "label": "Volume spike",
-      "cash": 450.71,
-      "position": {
-        "sym": "QQQ",
-        "qty": 1,
-        "entry_px": 612.7705296,
-        "stop": 597.45126636,
-        "target": 643.40905608,
-        "entry_t": "2026-11-25T11:26:30.011905-05:00"
-      }
+      "cash": 1084.64,
+      "position": null
     },
     {
       "desk": "ema_vol_v2",
       "label": "EMA 9/21 + volume v2",
-      "cash": 265.49,
-      "position": {
-        "sym": "SPY",
-        "qty": 1,
-        "entry_px": 707.401452,
-        "stop": 689.7164157,
-        "target": 742.7715246,
-        "entry_t": "2026-11-25T12:10:30.017215-05:00"
-      }
+      "cash": 983.37,
+      "position": null
     }
   ]
 }
