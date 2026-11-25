@@ -29,8 +29,44 @@ OPEN_MIN = 9 * 60 + 30            # 09:30 ET in minutes
 ENTRY_START = dtime(9, 35)
 ENTRY_END = dtime(15, 30)
 FLAT_AT = dtime(15, 55)
+# Early closes (NYSE 13:00 ET; dates checked on nyse.com by the Accountant 2026-11-25). Same spec
+# offsets from the close: no new entries from 12:30, flat from 12:55. Add each year's dates here.
+EARLY_CLOSES = {date(2026, 11, 27), date(2026, 12, 24)}
+EARLY_ENTRY_END = dtime(12, 30)
+EARLY_FLAT_AT = dtime(12, 55)
+
+
+def entry_end_for(d: date) -> dtime:
+    return EARLY_ENTRY_END if d in EARLY_CLOSES else ENTRY_END
+
+
+def flat_at_for(d: date) -> dtime:
+    return EARLY_FLAT_AT if d in EARLY_CLOSES else FLAT_AT
 VOL_MULT = 3.0
 MINUTE_MULT = 1.5
+# Running-volume guard (LESSONS 56, 2026-11-25): Yahoo sometimes reports the session's running
+# volume as one minute's volume. Such a bar is treated as having NO volume (no spike, kept out of
+# the volume baselines and VWAP). Test: more than 20x the median of the prior 20 clean bars AND at
+# least half of today's clean volume so far. Checked on Alpaca 1-min 2022-2026 and the Yahoo archive
+# (research/foundry/volguard_REPORT.md).
+RUNNING_VOL_MULT = 20.0
+RUNNING_VOL_FRAC = 0.5
+
+
+def running_volume_mask(days, vols, lookback: int = 20) -> list[bool]:
+    """Batch form of the running-volume guard (same rule as Features.update; tested equal).
+    days, vols: per-bar session key and volume, in time order. True = treat the bar's volume as missing."""
+    out, prior, day, vv = [], deque(maxlen=lookback), None, 0.0
+    for d, v in zip(days, vols):
+        if d != day:
+            day, vv = d, 0.0
+        med = median(prior) if len(prior) >= 10 else 0.0
+        bad = bool(med > 0 and vv > 0 and v > RUNNING_VOL_MULT * med and v >= RUNNING_VOL_FRAC * vv)
+        out.append(bad)
+        if not bad:
+            prior.append(v)
+            vv += v
+    return out
 
 
 @dataclass(frozen=True)
@@ -50,8 +86,11 @@ class Features:
 
     def __init__(self, bar_minutes: int = 1, vol_lookback: int = 20, same_minute_days: int = 5,
                  breakout_lookback: int = 15, or_minutes: int = 15, ema_fast: int = 9,
-                 ema_slow: int = 21, ema_bucket_minutes: int = 5):
+                 ema_slow: int = 21, ema_bucket_minutes: int = 5, vol_guard: bool = True):
         self.bm = bar_minutes
+        self.vol_guard = vol_guard
+        self.vol_missing = False          # latest bar's volume judged a running total (LESSONS 56)
+        self.vol_missing_n = 0            # count of such bars seen (logging only)
         self.or_minutes = or_minutes
         self.ema_bucket = ema_bucket_minutes
         self.kf, self.ks = 2 / (ema_fast + 1), 2 / (ema_slow + 1)
@@ -113,21 +152,29 @@ class Features:
         # ratios against PRIOR bars only
         prior = list(self.vols)
         med = median(prior) if len(prior) >= 10 else 0.0
-        self.vol_ratio = bar.v / med if med > 0 else math.nan
-        hist = self.minute_hist.get(m)
-        if hist and len(hist) >= 3 and sum(hist) > 0:
-            self.minute_ratio = bar.v / (sum(hist) / len(hist))
+        self.vol_missing = bool(self.vol_guard and med > 0 and self.vv > 0
+                                and bar.v > RUNNING_VOL_MULT * med and bar.v >= RUNNING_VOL_FRAC * self.vv)
+        if self.vol_missing:
+            self.vol_missing_n += 1
+            self.vol_ratio = self.minute_ratio = math.nan
         else:
-            self.minute_ratio = math.nan
+            self.vol_ratio = bar.v / med if med > 0 else math.nan
+            hist = self.minute_hist.get(m)
+            if hist and len(hist) >= 3 and sum(hist) > 0:
+                self.minute_ratio = bar.v / (sum(hist) / len(hist))
+            else:
+                self.minute_ratio = math.nan
         self.prior_high = max(self.highs) if len(self.highs) == self.highs.maxlen else math.nan
         self._prev_close_today = prev_close
-        # add this bar
-        self.vols.append(bar.v)
-        self.today_minute_vols[m] = bar.v
+        # add this bar (a running-volume bar adds its prices but no volume)
+        v = 0.0 if self.vol_missing else bar.v
+        if not self.vol_missing:
+            self.vols.append(v)
+            self.today_minute_vols[m] = v
         self.highs.append(bar.h)
         tp = (bar.h + bar.l + bar.c) / 3
-        self.pv += tp * bar.v
-        self.vv += bar.v
+        self.pv += tp * v
+        self.vv += v
         self.vwap = self.pv / self.vv if self.vv > 0 else bar.c
         if m < self.or_minutes:
             self.or_high = bar.h if self.or_high is None else max(self.or_high, bar.h)
@@ -425,7 +472,7 @@ class Desk:
         p = self.pos
         if not p or p.sym != sym:
             return None
-        if bar.t.time() >= FLAT_AT:
+        if bar.t.time() >= flat_at_for(bar.t.date()):
             return ("eod", bar.o)
         if bar.l <= p.stop:
             return ("stop", min(bar.o, p.stop))
@@ -444,12 +491,12 @@ class Desk:
             return False
         if self.last_entry_day == bar.t.date().isoformat():
             return False
-        if not (ENTRY_START <= bar.t.time() < ENTRY_END):
+        if not (ENTRY_START <= bar.t.time() < entry_end_for(bar.t.date())):
             return False
         return self.rule.signal(f, bar)
 
     def pending_valid(self, bar: Bar) -> bool:
-        return (self.pending_day == bar.t.date().isoformat() and bar.t.time() < ENTRY_END)
+        return (self.pending_day == bar.t.date().isoformat() and bar.t.time() < entry_end_for(bar.t.date()))
 
     def shares_for(self, px: float) -> int:
         return int(self.cash // px) if px > 0 else 0

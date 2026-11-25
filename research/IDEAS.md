@@ -44,7 +44,7 @@ Rank by: expected edge × testability with our data ÷ cost.
 
 ## From the Coach, 2026-11-04 (hindsight leads only; the Researcher pre-registers)
 - [x] (2026-11-07 too rare: 1-2 qualifying days in 44 sessions, LESSONS 29) Extended-impulse filter: skip new long entries when QQQ/SPY is up 1.5% or more from the open (or from the low) inside 45 minutes; mirror: skip new shorts after a drop of 1.5% or more. Evidence: Nov 4 QQQ +1.83% in 40 minutes, then orb_vol UPRO 10:13 (-0.71%), F1/F2 QQQ 10:00 (-0.546% stop). Ties to LESSON 8 (tentative). Count qualifying days in the 41-session archive first; expect few.
-- [ ] Impulse fade, both sides: after an impulse of 1.5% or more, short (SQQQ/SPXU) on the first lower low after the peak; after a drop of 1.5% or more, long (TQQQ/UPRO) on the first higher high. Different from LESSON 22 (0.6% leg, VWAP cross, refuted): bigger leg, price-structure trigger.
+- [x] (2026-11-25 batch 8 H31: refuted both sides, LESSONS 57) Impulse fade, both sides: after an impulse of 1.5% or more, short (SQQQ/SPXU) on the first lower low after the peak; after a drop of 1.5% or more, long (TQQQ/UPRO) on the first higher high. Different from LESSON 22 (0.6% leg, VWAP cross, refuted): bigger leg, price-structure trigger.
 - [x] (2026-11-07 done, LESSONS 23 update: late shorts lose their edge, longs lose all day) Split LESSON 23's 13:00+ bucket by side and by whether the day is above its open. Nov 4: QQQ shorts from 13:45-14:45 won +0.31/+0.27%, all late longs lost. If late shorts win and late longs lose in both archives, 23 is partly regime (lesson 24).
 
 ## Data upgrades
@@ -144,3 +144,7 @@ Rank by: expected edge × testability with our data ÷ cost.
 - [ ] **First extreme-band tag, as seen live (both sides), replacing the 'session low was a tag' version.** Enter against the FIRST 1-min price at or beyond the extreme band after 10:00 (long at a lower tag, short at an upper tag), 0.5% stop vs none, exit at 30 minutes and 15:55, vs random entries, on the Flux 1-min archive. Nov 17-24: 9 first tags, fade positive to the close on 4 (Nov 18 SPY +0.58, Nov 20 SPY +4.24 and QQQ +5.51 upper, Nov 24 QQQ +0.49), negative on 5 (-0.82 to -3.88); the level's 30-min slope did not separate them. SPY and QQQ tags on one day are not independent (5 days).
 - [ ] **Is the volume gate revision-proof on thin ETFs?** Count, per symbol, how often a bar passes the 3x gate live but not in the archive and the reverse (bar logs from Nov 18), after bad-volume bars are removed (LESSON 56). Nov 24: UPRO 14:16 was 2.8x live and 5.2x archived, so lab and paper took opposite sides. If UPRO/SPXU flip often, test taking the volume signal from SPY and executing on the 3x ETF, long and short.
 
+## Researcher 2026-11-25
+- [x] Open-reversal V-day count and entry test (coach 2026-11-23): too rare to build (LESSONS 58).
+- [ ] Running-volume guard follow-up: refetch a flagged bar's volume on the next poll (Yahoo may correct it) and log both values in the bar log, so the guard can be checked live against Alpaca each week. Logging only.
+- [ ] Early-close calendar for 2027: add the NYSE half days once nyse.com lists them (LESSONS 59).

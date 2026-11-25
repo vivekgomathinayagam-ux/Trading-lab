@@ -1,0 +1,143 @@
+{
+ "days": [
+  {
+   "day": "2026-11-18",
+   "flags": {
+    "orb_vol": "normal",
+    "ema_vol": "caution",
+    "volspike": "normal",
+    "ema_vol_v2": "caution"
+   },
+   "events": [
+    "10:00",
+    "14:00"
+   ],
+   "bias": {
+    "spy": "up",
+    "qqq": "up"
+   }
+  },
+  {
+   "day": "2026-11-19",
+   "flags": {
+    "orb_vol": "caution",
+    "ema_vol": "caution",
+    "volspike": "caution",
+    "ema_vol_v2": "caution"
+   },
+   "events": [
+    "10:00",
+    "10:30",
+    "12:30",
+    "13:00",
+    "14:15"
+   ],
+   "bias": {
+    "spy": "neutral",
+    "qqq": "neutral"
+   }
+  },
+  {
+   "day": "2026-11-20",
+   "flags": {
+    "orb_vol": "caution",
+    "ema_vol": "normal",
+    "volspike": "caution",
+    "ema_vol_v2": "normal"
+   },
+   "events": [
+    "10:00",
+    "13:00"
+   ],
+   "bias": {
+    "spy": "down",
+    "qqq": "down"
+   }
+  },
+  {
+   "day": "2026-11-23",
+   "flags": {
+    "orb_vol": "caution",
+    "ema_vol": "normal",
+    "volspike": "caution",
+    "ema_vol_v2": "normal"
+   },
+   "events": [
+    "09:45"
+   ],
+   "bias": {
+    "spy": "down",
+    "qqq": "down"
+   }
+  },
+  {
+   "day": "2026-11-24",
+   "flags": {
+    "orb_vol": "caution",
+    "ema_vol": "normal",
+    "volspike": "caution",
+    "ema_vol_v2": "normal"
+   },
+   "events": [
+    "10:00"
+   ],
+   "bias": {
+    "spy": "down",
+    "qqq": "down"
+   }
+  },
+  {
+   "day": "2026-11-25",
+   "flags": {
+    "orb_vol": "caution",
+    "ema_vol": "caution",
+    "volspike": "caution",
+    "ema_vol_v2": "caution"
+   },
+   "events": [
+    "09:45",
+    "10:00",
+    "10:30",
+    "14:00"
+   ],
+   "bias": {
+    "spy": "up",
+    "qqq": "down"
+   }
+  }
+ ],
+ "per_desk": {
+  "orb_vol": {
+   "base": -27.81,
+   "sit_out": -27.81,
+   "caution": -5.14,
+   "caution_day": -5.14,
+   "bias": 0.0,
+   "n": 2
+  },
+  "ema_vol": {
+   "base": 6.94,
+   "sit_out": 6.94,
+   "caution": -5.01,
+   "caution_day": -5.01,
+   "bias": 8.72,
+   "n": 4
+  },
+  "volspike": {
+   "base": -2.32,
+   "sit_out": -2.32,
+   "caution": -6.14,
+   "caution_day": -8.77,
+   "bias": -23.48,
+   "n": 6
+  },
+  "ema_vol_v2": {
+   "base": 5.84,
+   "sit_out": 5.84,
+   "caution": -6.11,
+   "caution_day": -6.11,
+   "bias": 7.62,
+   "n": 4
+  }
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "orb_vol": {
+  "n_off": 2,
+  "n_on": 2,
+  "mean_off": -1.4624,
+  "mean_on": -1.4624,
+  "only_off": 0,
+  "only_on": 0,
+  "sum_off": -2.925,
+  "sum_on": -2.925,
+  "changed_days": []
+ },
+ "ema_vol": {
+  "n_off": 4,
+  "n_on": 4,
+  "mean_off": 0.1297,
+  "mean_on": -0.1647,
+  "only_off": 1,
+  "only_on": 1,
+  "sum_off": 0.519,
+  "sum_on": -0.659,
+  "changed_days": [
+   "2026-11-18"
+  ]
+ },
+ "volspike": {
+  "n_off": 6,
+  "n_on": 6,
+  "mean_off": -0.103,
+  "mean_on": 0.9036,
+  "only_off": 2,
+  "only_on": 2,
+  "sum_off": -0.618,
+  "sum_on": 5.421,
+  "changed_days": [
+   "2026-11-19",
+   "2026-11-25"
+  ]
+ },
+ "ema_vol_v2": {
+  "n_off": 4,
+  "n_on": 4,
+  "mean_off": 0.1057,
+  "mean_on": -0.1887,
+  "only_off": 1,
+  "only_on": 1,
+  "sum_off": 0.423,
+  "sum_on": -0.755,
+  "changed_days": [
+   "2026-11-18"
+  ]
+ },
+ "orb_plain": {
+  "n_off": 6,
+  "n_on": 6,
+  "mean_off": 0.5506,
+  "mean_on": 0.5506,
+  "only_off": 0,
+  "only_on": 0,
+  "sum_off": 3.303,
+  "sum_on": 3.303,
+  "changed_days": []
+ },
+ "ema_plain": {
+  "n_off": 5,
+  "n_on": 5,
+  "mean_off": 0.5727,
+  "mean_on": 0.5727,
+  "only_off": 0,
+  "only_on": 0,
+  "sum_off": 2.863,
+  "sum_on": 2.863,
+  "changed_days": []
+ },
+ "volspike_2x": {
+  "n_off": 6,
+  "n_on": 6,
+  "mean_off": 1.0225,
+  "mean_on": 0.9406,
+  "only_off": 1,
+  "only_on": 1,
+  "sum_off": 6.135,
+  "sum_on": 5.644,
+  "changed_days": [
+   "2026-11-25"
+  ]
+ }
+}

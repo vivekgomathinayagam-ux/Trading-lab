@@ -26,3 +26,4 @@ Every rule, parameter set and combination looked at, kept or not. Add a row each
 | 2026-11-18 | Volspike MA grid (registered) | see 2026-11-21 | run 2026-11-21 | 212 |
 | 2026-11-21 | Volspike MA grid (run; 1-min Alpaca 2022-2026, holdout 2026) | 924 filters + base (the 11-18 count of 1,190 was an arithmetic slip) | none; refuted (0 above random p95, top 3 lost on holdout) | 1,137 |
 | 2026-11-21 | Foundry batch 7 | H25 volume gate 3 levels x ORB/EMA x 2 sides (12), H26 per-side slot x 3 rules (3), H27 Tempest side gate 3 (+6 reported), H28 target vs hold 4 | none passed | 1,165 |
+| 2026-11-25 | Foundry batch 8 + volume guard | H30 V days 4 cells x 2 symbols (8), H31 impulse fade 2 sides x 2 symbols (4), volume-guard filter settings looked at (6; data filter, not a rule) | none passed; guard 20x/0.5 shipped as a data fix | 1,183 |

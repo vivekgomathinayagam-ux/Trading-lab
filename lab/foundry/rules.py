@@ -14,6 +14,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from strategies.daytrade.core import running_volume_mask
+
 SLIP = 0.0002
 FEE = 0.00003
 COST = 2 * (SLIP + FEE)          # round trip, fraction
@@ -22,13 +24,18 @@ RULES = ["F1_cloud_ride", "F2_cloud_ride_tight", "F3_vwap_trend", "F4_trend_brea
 
 
 # ------------------------------------------------------------------ data
-def load_bars(path: Path) -> pd.DataFrame:
+def load_bars(path: Path, clean_volume: bool = True) -> pd.DataFrame:
     d = pd.read_csv(path)
     d["t"] = pd.to_datetime(d["t"], utc=True).dt.tz_convert("America/New_York")
     d = d.set_index("t").sort_index()
     m = d.index.hour * 60 + d.index.minute
     d = d[(m >= 570) & (m < 960) & (d.index.dayofweek < 5)]
-    return d[["o", "h", "l", "c", "v"]].astype(float)
+    d = d[["o", "h", "l", "c", "v"]].astype(float)
+    if clean_volume and len(d) > 1 and (d.index[1] - d.index[0]) < pd.Timedelta(minutes=5):
+        # LESSONS 56: Yahoo running-volume bars -> volume 0 (missing), same rule as the desks
+        bad = running_volume_mask(d.index.date, d["v"].values)
+        d.loc[np.array(bad), "v"] = 0.0
+    return d
 
 
 def to_5min(d: pd.DataFrame) -> pd.DataFrame:
