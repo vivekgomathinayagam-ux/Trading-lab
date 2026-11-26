@@ -148,3 +148,8 @@ Rank by: expected edge × testability with our data ÷ cost.
 - [x] Open-reversal V-day count and entry test (coach 2026-11-23): too rare to build (LESSONS 58).
 - [ ] Running-volume guard follow-up: refetch a flagged bar's volume on the next poll (Yahoo may correct it) and log both values in the bar log, so the guard can be checked live against Alpaca each week. Logging only.
 - [ ] Early-close calendar for 2027: add the NYSE half days once nyse.com lists them (LESSONS 59).
+
+## From the Coach, 2026-11-25 (hindsight leads only; the Researcher pre-registers)
+- [ ] **Same-bar tie between ETFs: which one gets the desk's one slot (both sides).** Today priority order gives SPY/QQQ the slot over UPRO/TQQQ. Long side: on bars where a desk signals both a 1x ETF and its 3x twin, compare 1x (spec), 3x full size, and 3x at one third size. Short side: on bars where SQQQ and SPXU both signal, compare SQQQ-first (spec), SPXU-first and half each. Alpaca 1-min 2022-2026, desks' own code, vs random same-bar picks, split by year, with stop rate and max drawdown (the 2.5% stop is hit far more often on 3x). Evidence cuts both ways: Nov 25 ema_vol UPRO 12:09 would have hit +5% in a lab fill (+4.4% of equity vs SPY +1.0%), but over 6 long ties in the lab Oct 26-Nov 25, 3x beat 1x twice and without Nov 25 summed -3.59% vs -0.79% of equity.
+- [ ] **First extreme-band tag, running count (extends the 2026-11-24 item):** Nov 25 first upper tags after 10:00 (SPY 12:05, QQQ 12:08) were continuation: fade -1.94% / -2.45% to 15:55. By that definition Nov 17-25: fade positive on 4 of 11 tags (6 sessions; SPY and QQQ same-day tags are not independent).
+
