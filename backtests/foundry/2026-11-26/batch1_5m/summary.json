@@ -1,0 +1,226 @@
+{
+ "meta": {
+  "sessions": 57,
+  "first": "2026-09-08",
+  "last": "2026-11-25",
+  "syms": "SPY,QQQ"
+ },
+ "rules": {
+  "F1_cloud_ride": {
+   "trades": 250,
+   "win": 0.304,
+   "exp_pct": -0.0091,
+   "ci": [
+    -0.0941,
+    0.093
+   ],
+   "pf": 0.95,
+   "exp_2x": -0.0551,
+   "half1": -0.0438,
+   "half2": 0.0219,
+   "n1": 118,
+   "n2": 132,
+   "longs": 139,
+   "shorts": 111,
+   "long_exp": -0.1014,
+   "short_exp": 0.1064,
+   "rand95": 0.0352,
+   "total_pct": -2.282,
+   "exits": {
+    "cloud": 176,
+    "eod": 46,
+    "stop": 28
+   },
+   "avg_bars": 24.6,
+   "by_sym": {
+    "QQQ": -0.0045,
+    "SPY": -0.0136
+   }
+  },
+  "F2_cloud_ride_tight": {
+   "trades": 337,
+   "win": 0.294,
+   "exp_pct": -0.0088,
+   "ci": [
+    -0.0549,
+    0.0401
+   ],
+   "pf": 0.93,
+   "exp_2x": -0.0548,
+   "half1": -0.0306,
+   "half2": 0.0123,
+   "n1": 166,
+   "n2": 171,
+   "longs": 161,
+   "shorts": 176,
+   "long_exp": -0.0591,
+   "short_exp": 0.0372,
+   "rand95": -0.0116,
+   "total_pct": -2.966,
+   "exits": {
+    "cloud": 325,
+    "stop": 11,
+    "eod": 1
+   },
+   "avg_bars": 8.8,
+   "by_sym": {
+    "QQQ": 0.0026,
+    "SPY": -0.0203
+   }
+  },
+  "F3_vwap_trend": {
+   "trades": 215,
+   "win": 0.233,
+   "exp_pct": -0.0202,
+   "ci": [
+    -0.0856,
+    0.0802
+   ],
+   "pf": 0.82,
+   "exp_2x": -0.0662,
+   "half1": -0.0559,
+   "half2": 0.0115,
+   "n1": 101,
+   "n2": 114,
+   "longs": 111,
+   "shorts": 104,
+   "long_exp": -0.0817,
+   "short_exp": 0.0455,
+   "rand95": 0.0124,
+   "total_pct": -4.337,
+   "exits": {
+    "vwap": 180,
+    "eod": 31,
+    "stop": 4
+   },
+   "avg_bars": 13.8,
+   "by_sym": {
+    "QQQ": -0.0216,
+    "SPY": -0.0186
+   }
+  },
+  "F4_trend_break": {
+   "trades": 88,
+   "win": 0.398,
+   "exp_pct": -0.0217,
+   "ci": [
+    -0.1145,
+    0.0913
+   ],
+   "pf": 0.87,
+   "exp_2x": -0.0677,
+   "half1": -0.0444,
+   "half2": 0.0044,
+   "n1": 47,
+   "n2": 41,
+   "longs": 42,
+   "shorts": 46,
+   "long_exp": -0.0116,
+   "short_exp": -0.031,
+   "rand95": 0.0922,
+   "total_pct": -1.91,
+   "exits": {
+    "eod": 54,
+    "stop": 34
+   },
+   "avg_bars": 30.1,
+   "by_sym": {
+    "QQQ": 0.0613,
+    "SPY": -0.0975
+   }
+  },
+  "F5_fib_618": {
+   "trades": 68,
+   "win": 0.441,
+   "exp_pct": -0.0678,
+   "ci": [
+    -0.1437,
+    0.0097
+   ],
+   "pf": 0.61,
+   "exp_2x": -0.1138,
+   "half1": -0.0637,
+   "half2": -0.0717,
+   "n1": 33,
+   "n2": 35,
+   "longs": 37,
+   "shorts": 31,
+   "long_exp": -0.1277,
+   "short_exp": 0.0037,
+   "rand95": 0.0613,
+   "total_pct": -4.613,
+   "exits": {
+    "target": 25,
+    "eod": 19,
+    "fib_stop": 17,
+    "stop": 7
+   },
+   "avg_bars": 17.6,
+   "by_sym": {
+    "QQQ": -0.0507,
+    "SPY": -0.0909
+   }
+  },
+  "F6_fib_382": {
+   "trades": 98,
+   "win": 0.459,
+   "exp_pct": -0.0674,
+   "ci": [
+    -0.1295,
+    -0.0026
+   ],
+   "pf": 0.56,
+   "exp_2x": -0.1134,
+   "half1": -0.0844,
+   "half2": -0.0496,
+   "n1": 50,
+   "n2": 48,
+   "longs": 47,
+   "shorts": 51,
+   "long_exp": -0.0916,
+   "short_exp": -0.045,
+   "rand95": 0.041,
+   "total_pct": -6.601,
+   "exits": {
+    "target": 47,
+    "fib_stop": 26,
+    "eod": 14,
+    "stop": 11
+   },
+   "avg_bars": 13.1,
+   "by_sym": {
+    "QQQ": -0.0765,
+    "SPY": -0.0561
+   }
+  },
+  "C1_long_0945": {
+   "trades": 114,
+   "win": 0.43,
+   "exp_pct": -0.1991,
+   "ci": [
+    -0.4827,
+    0.0492
+   ],
+   "pf": 0.54,
+   "exp_2x": -0.2451,
+   "half1": -0.0218,
+   "half2": -0.3703,
+   "n1": 56,
+   "n2": 58,
+   "longs": 114,
+   "shorts": 0,
+   "long_exp": -0.1991,
+   "short_exp": null,
+   "rand95": null,
+   "total_pct": -22.697,
+   "exits": {
+    "eod": 114
+   },
+   "avg_bars": 78.0,
+   "by_sym": {
+    "QQQ": -0.2096,
+    "SPY": -0.1886
+   }
+  }
+ }
+}
