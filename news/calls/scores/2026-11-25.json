@@ -1,0 +1,17 @@
+{
+ "day": "2026-11-25",
+ "scored": [],
+ "market_read": {
+  "tone": "Risk-off gap down: chip/AI rout day 2, new tariff proposal, hot core PCE (3.3% vs 3.2%), VIX ~31, a holiday ahead.",
+  "day_type": "event-driven (gap down about -1.8 to -2.2% SPY and -2.5 to -3.2% QQQ; the 09:30-10:15 range will be very wide; after that chop or a partial gap-fill is as likely as a trend lower)",
+  "spy_bias": {
+   "direction": "up",
+   "confidence": 51
+  },
+  "qqq_bias": {
+   "direction": "down",
+   "confidence": 52
+  },
+  "comment": "Bias is open-to-close from the gap open, not vs. Tuesday's close (SPY 718.47, QQQ 637.80 in our bars). Expected opens: SPY about 700-708, QQQ about 615-624 (Tuesday's lows were 712.14 and 631.15, so both open well under them). The first 15-30 minutes can swing 2% either way, as on Nov 19, 20, 23 and 24; no call inside it. Set separately, per the coach: the gap comes mostly from chips, so QQQ (heavier in NVDA/AVGO/AMD/MU) keeps a slight down lean on a second leg of the same unwind, while SPY's gap of ~2% to below Tuesday's low has been partly bought on recent gap-downs (Nov 24 SPY +0.51% open to close) and pre-holiday sessions lean firm. Both are close to coin flips. Tripwire: at 10:30, if SPY is above its opening 30-min high, the SPY up lean is confirmed and QQQ down should be dropped; if QQQ is below its opening 30-min low, the QQQ down lean holds and the SPY up lean should be dropped."
+ }
+}
