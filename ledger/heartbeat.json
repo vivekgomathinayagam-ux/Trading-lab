@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-11-26T20:45:18+00:00",
+  "as_of": "2026-11-26T21:00:18+00:00",
   "status": "ok",
-  "market_open": true,
+  "market_open": false,
   "mode": "paper",
   "kill_switch_on": false,
   "strategies": [
