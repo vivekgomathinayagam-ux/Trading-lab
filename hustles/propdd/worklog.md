@@ -17,3 +17,4 @@
 - 2026-11-22 (cloud run): no change; listing still queued for a Chrome session.
 - 2026-11-24 (cloud run): no change; listing still queued for a Chrome session.
 - 2026-11-25 (cloud run): no change; listing still queued. Bad-input test due next run, before any publish. Drop on 2026-12-11 if still unpublished.
+- 2026-11-26 (cloud run): bad-input test found 40 failures in 1,162 checks: status read OK with blank or negative rules, a loss typed as text, a repeated day, entries below the last formula row or on inserted rows; blank row broke "last day". All 60 random logs already matched the independent model. Fixed (Rules check line, CHECK statuses, hidden helper column), regenerated; 1,162/1,162 and row delete/insert/copy pass in LibreOffice. Excel/Google Sheets not tested. Listing draft updated to match. Still queued for a Chrome session.

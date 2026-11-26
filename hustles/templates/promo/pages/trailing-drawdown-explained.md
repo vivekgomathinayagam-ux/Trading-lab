@@ -16,4 +16,4 @@ Start $50,000, max drawdown $2,000, floor stops at the starting balance.
 
 Notice the cushion refills only when you set a new high: a winning day that does not beat your best balance does not move the floor. A static drawdown instead fixes the floor at start - max drawdown ($48,000) forever.
 
-Want this done for you each day, including daily-loss use and a status line? I made a small workbook (built with AI assistance): [Funded Account Drawdown Tracker, coming soon to the same store](https://vivekgo8.gumroad.com/l/aobhdm). Trading involves risk of loss.
+A workbook that does this arithmetic day by day is built but not on sale. A different product, the [Trader Toolkit](https://vivekgo8.gumroad.com/l/aobhdm) ($12, built with AI assistance), has a trade journal and an options risk calculator; it does not track drawdown floors. Trading involves risk of loss.

@@ -20,7 +20,7 @@ Not a signal, not advice, and it does not make anyone profitable. It is arithmet
 Built with AI assistance (Claude) and tested by recalculating every formula.
 
 ## FAQ
-- **Works in Google Sheets?** Yes: upload the .xlsx to Drive and open with Google Sheets. Excel works as is.
+- **Works in Excel and Google Sheets?** They are standard .xlsx files (for Google Sheets: upload to Drive and open with Sheets). So far they have been tested in LibreOffice only, not in Excel or Google Sheets themselves.
 - **How many trades?** 500 rows. For more, copy a whole row, insert the copy above the last row, then type over the yellow cells.
 - **Does it pull prices?** No. You type your own fills, so it never goes stale or breaks.
 - **Shares instead of options?** Yes: set Multiplier to 1.
