@@ -446,3 +446,6 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Made the Drawdown Tracker's cover, thumbnail and two screenshots (original art; screenshots are LibreOffice renders of the shipped file); retook the Toolkit Stats screenshot without the chart.
 - No start, kill or scale decision (no sale data; dates stay Dec 11). Third slot stays empty: with no Chrome session since Oct 28, another listing would only join the publishing queue.
 - Cadence unchanged (daily 8:43 PT): not everything is live (Drawdown Tracker unpublished).
+
+## 2026-11-27 Accountant
+- Day 24 close (half day): 1 paper trade (Volume spike QQQ +$0.70, eod 12:56 ET); no retire triggers (no desk at 30 trades). Early-close handling worked on its first live half day. Small leftover gap, no code or desk change: `engine/clock.py` still closes at 16:00 (stale-quote warnings and empty `marks` after 13:00). In STATE.md Known gaps.
