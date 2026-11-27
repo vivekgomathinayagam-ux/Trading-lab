@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-27",
+  "written_at_pt": "06:00",
+  "author": "Newsie (scheduled pre-market run, file 7)",
+  "notes": "Half day: US stocks close 13:00 ET (bonds early too). Scores still 2 of 12 (17%, all 50-65), below the ~50% no-skill baseline, so I keep confidence near 50 and make ZERO calls: the index gap is 1.5-2.4% (coach's rule: no intraday index call on a 2%+ gap) and no single-stock catalyst I could size. Wed Nov 25 lesson: I leaned QQQ down 52 / SPY up 51 on a gap down; both reversed up hard from 09:30 (our bars: SPY open 703.18, low 695.45, close 717.80, +2.08% open-to-close; QQQ 617.10 -> 634.31, +2.79%; TQQQ +8.96%). SPY up was right, QQQ down was wrong; the chip-unwind 'second leg' did not come, the gap was bought. Setup today (TipRanks 08:28 ET): Nasdaq-100 futures +2.35%, S&P +1.67%, Dow +1.44%; Upstox: S&P +1.53%, NDX +2%. Driver: dip-buying in AI/chips (NVDA, MU, AMD, AVGO, DELL named) after a heavy November selloff; Asia closed strong (KOSPI +4.3%, Shanghai +3.7%, Nikkei and Hang Seng +2.1%). TipRanks notes AI names 'have given back some of their early gains'. Oil: WTI ~$84.8 (+1.3%) on Hormuz shipping and Saudi-site attacks; Brent ~$96. No Fed/export/tariff headline over the holiday found (did not search deeply). Single names seen but not called: VRTX down (FDA extended povetacicept review up to 3 months; a delay, not a rejection; size unknown, delays often half-fade), MO down (considering buying part of Imperial Brands), SPCX up (Musk share-donation headline; not a catalyst I trust), RKLB/ASTS up (headline only). No Skylit credits used. Expected opens from Wed close: SPY ~728-730, QQQ ~647-650 (Wed closes 717.80 / 634.31; Tuesday's highs in our bars are not checked).",
+  "calls": [],
+  "market_read": {
+    "tone": "Risk-on gap up into a thin Black Friday half day: AI/chip rebound continuation after Wednesday's full gap-down reversal; oil firm on Gulf attacks.",
+    "day_type": "chop after the gap (thin holiday tape, 3.5-hour session); a gap-and-fade and a slow drift up are both plausible, a trend day less so",
+    "spy_bias": {"direction": "down", "confidence": 52},
+    "qqq_bias": {"direction": "down", "confidence": 53},
+    "comment": "Bias is open-to-close (09:30-13:00) from the gap open, not vs. Wednesday's close. Lean: slight fade, because gap-ups faded on Nov 12, 17 and 18, today's gap stacks on top of Wednesday's +2% / +2.8% intraday reversal (SPY open is ~3.7% above Wednesday's low in under 1.5 sessions), TipRanks already reports AI names giving back early gains, and holiday volume is thin. Against it: pre-holiday and Black Friday sessions lean firm, and Wednesday showed dip buyers are active; this is close to a coin flip. QQQ gets the bigger lean because its gap is larger and chip-led. Tripwire: at 10:15, if SPY and QQQ are above their 09:30-10:00 highs, drop both down leans (a drift-up half day); if QQQ is below its 09:30-10:00 low, the fade lean holds. Any index target should be small (0.4-0.6%) given the short session."
+  },
+  "event_risk": [
+    "08:30 ET advance trade/inventories (October) possibly today: headline only (TipRanks related article), not confirmed by a calendar source; out before the open either way",
+    "No scheduled 10:00 ET release found",
+    "12:00-13:00 ET thin pre-close volume; 13:00 ET equity close (bond market early close too); last desk entries 12:30 ET, flat by 12:55 ET per the early-close fix",
+    "Oil headline risk (Hormuz shipping, Saudi energy sites): unscheduled"
+  ],
+  "desk_flags": [
+    {"desk": "orb_vol", "flag": "caution", "reason": "Gap up 1.5-2.4% with a slight fade lean: a bull-ETF break up (TQQQ/UPRO) out of the 09:30-09:45 range is the riskier side; Wednesday's lesson is that the first break can also run all day, so caution, not sit_out."},
+    {"desk": "ema_vol", "flag": "caution", "reason": "Half day: holds are cut to 12:55 and volume is thin after ~11:30, so crosses after 11:30 have little room; entries before 11:00 are fine."},
+    {"desk": "volspike", "flag": "caution", "reason": "Long-only entries on a gap-up with a fade lean (coin flip); spikes in the first 30 minutes come from the gap itself. Shadow test: score as 'caution on every entry today'."},
+    {"desk": "ema_vol_v2", "flag": "caution", "reason": "Same as ema_vol."}
+  ],
+  "sources": [
+    "https://www.tipranks.com/news/futures-gain-ahead-of-black-friday-trading-on-strength-in-tech-stocks",
+    "https://upstox.com/news/market-news/us-stocks/dow-jones-s-and-p-500-nasdaq-futures-hint-gap-up-open-on-black-friday-us-tech-and-ai-stocks-to-watch-today/article-204109/",
+    "https://www.tipranks.com/news/u-s-stock-futures-in-focus-ahead-of-a-shortened-black-friday-session",
+    "https://jbiznews.com/us-stock-futures-jump-before-a-short-black-friday-session/",
+    "https://www.fxleaders.com/news/2026/11/27/dow-futures-surge-past-50400-on-black-friday-amid-tech-rebound/"
+  ]
+}
