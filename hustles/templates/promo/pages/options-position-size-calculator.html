@@ -16,6 +16,7 @@
 function calc(a){var risk=a.acct*a.pct/100,err="";
  if(!(a.acct>0))err="Enter your account size.";
  else if(!(a.pct>0))err="Enter your risk per trade (%).";
+ else if(!(a.pct<100))err="Risk per trade must be below 100%.";
  else if(!(a.prem>0))err="Enter the premium, debit or credit (above 0).";
  else if(a.kind==="credit"&&!(a.w>0))err="Enter the strike width.";
  else if(a.kind==="credit"&&a.prem>=a.w)err="Credit is at or above the width: check the price.";

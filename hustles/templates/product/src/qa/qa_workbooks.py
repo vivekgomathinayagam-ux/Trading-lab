@@ -59,6 +59,30 @@ for k,e in bad_v.items():
     for c in ("B14","B15","B16","B18","B20"): check(f"v {k} {c} blank",v[c].value in (None,""),True)
     check("v "+k+" errors",errors(w),[])
 
+# Account tab: bad inputs never give a Yes or a contract count (added 2026-11-27)
+A="Account"
+bad_a={"pct typed as 5":{(A,"B4"):5},"pct 100":{(A,"B4"):1},"neg pct":{(A,"B4"):-0.05},"blank pct":{(A,"B4"):None},"text pct":{(A,"B4"):"five"},
+ "blank acct":{(A,"B3"):None},"text acct":{(A,"B3"):"abc"},"neg acct and pct":{(A,"B3"):-5000,(A,"B4"):-0.05}}
+for i,(k,e) in enumerate(bad_a.items()):
+    w=recalc(CALC,f"ba{i}",e); a=w[A]
+    for c in ("B5","B7","B8","B12"): check(f"a {k} {c} blank",a[c].value in (None,""),True)
+    check(f"a {k} result",str(a["B13"].value).startswith("Check inputs: "),True)
+    for sh,fit,num in ((L,"B16","B17"),(V,"B19","B20")):
+        check(f"a {k} {sh} fits",str(w[sh][fit].value).startswith("Check inputs: Account tab"),True)
+        check(f"a {k} {sh} n blank",w[sh][num].value in (None,""),True)
+    check(f"a {k} errors",errors(w),[])
+a=recalc(CALC,"a0")[A]
+for c,want in (("B5",250),("B7",500),("B8",2),("B12",5),("B13","5 contract(s) fit"),("B14","OK")): check(f"a default {c}",a[c].value,want)
+for i,(k,e) in enumerate({"blank daily":{(A,"B6"):None},"daily 10":{(A,"B6"):10},"neg daily":{(A,"B6"):-0.1},"text daily":{(A,"B6"):"x"}}.items()):
+    w=recalc(CALC,f"ad{i}",e); a=w[A]
+    for c in ("B7","B8"): check(f"a {k} {c} blank",a[c].value in (None,""),True)
+    check(f"a {k} trade size still works",a["B12"].value,5); check(f"a {k} errors",errors(w),[])
+for i,(k,v_) in enumerate({"blank":None,"zero":0,"neg":-3,"text":"abc"}.items()):
+    w=recalc(CALC,f"am{i}",{(A,"B11"):v_}); a=w[A]
+    check(f"a mcl {k} n blank",a["B12"].value in (None,""),True); check(f"a mcl {k} result",str(a["B13"].value).startswith("Check inputs: "),True)
+    check(f"a mcl {k} errors",errors(w),[])
+a=recalc(CALC,"abig",{(A,"B11"):251})[A]; check("a too big n",a["B12"].value,0); check("a too big text",a["B13"].value.startswith("Too big"),True)
+
 # ---- journal: independent Python figures
 def pnl(d,en,ex,q,m,f): return round(((en-ex) if d=="Short" else (ex-en))*q*m-f,2)
 base=[("Long",1.20,1.85,2,100,2),("Long",2.10,1.40,1,100,1),("Short",1.50,2.30,2,100,2),("Long",0.80,0.55,3,100,3),("Long",1.00,1.90,2,100,2)]
@@ -88,6 +112,16 @@ for i in range(75):
 w=recalc(JRN,"j75",e); s=w["Stats"]
 check("75 count",s["B3"].value,75); check("chart first #",s["E23"].value,16); check("chart first",s["F23"].value,run[15])
 check("chart last #",s["E82"].value,75); check("chart last",s["F82"].value,run[74]); check("75 errors",errors(w),[])
+# a wrong direction, price or fee flags the row and leaves the totals alone (added 2026-11-27)
+good=dict(A=dt.date(2026,10,9),C="ORB",D="Long",E=1.0,F=1.5,G=1,H=100,I=1,J=100)
+for i,(k,c,flag) in enumerate([("blank dir",{"D":None},"Check dir"),("typo dir",{"D":"Shrt"},"Check dir"),("text entry",{"E":"1.2o"},"Check price"),
+    ("text exit",{"F":"abc"},"Check price"),("neg entry",{"E":-1.0},"Check price"),("neg exit",{"F":-1.0},"Check price"),
+    ("text fee",{"I":"1o"},"Check price"),("text qty",{"G":"two"},"Check qty")]):
+    w=recalc(JRN,f"jb{i}",row(7,**{**good,**c})); j,s=w[J],w["Stats"]
+    check(f"{k} flag",j["N7"].value,flag); check(f"{k} pnl blank",j["L7"].value in (None,""),True)
+    check(f"{k} count",s["B3"].value,5); check(f"{k} total",s["B7"].value,round(sum(p),2)); check(f"{k} errors",errors(w),[])
+for i,(k,c,want) in enumerate([("blank fee",{"I":None},50),("lower-case short",{"D":"short"},-51),("worthless exit",{"F":0},-101)]):
+    w=recalc(JRN,f"jg{i}",row(7,**{**good,**c})); check(f"{k} pnl",w[J]["L7"].value,want); check(f"{k} errors",errors(w),[])
 print(f"{n-len(fails)}/{n} checks passed")
 for f in fails: print("FAIL",f)
 sys.exit(1 if fails else 0)

@@ -439,3 +439,10 @@ Newest at the bottom. Changes to risk caps / risk engine / anything touching liv
 - Found: the public repo exposes the paid files. Not removed (deliverables are kept in the repo by rule and history would keep them). Needs the repo made private by Vivek; not sent as a message (standing order: contact only after a sale).
 - No start, kill or scale decision; kill dates stay Dec 11. No third experiment: any listing needs a Chrome session.
 - Cadence unchanged (daily 8:43 PT): not everything is live (Drawdown Tracker unpublished).
+
+## 2026-11-27 Hustle Department
+- Fixed more faults in the live Toolkit's paid files: calculator Account tab (500% or negative risk showed a trade as fitting; text showed #VALUE!) and journal (blank or mistyped direction counted as Long; a price typo broke the totals; a negative price counted as a win). Free HTML calculator now rejects risk of 100% or more. LibreOffice 328/328 and 103/103, row delete/insert pass.
+- Checked formulas in Google Sheets for the first time, with test copies in Vivek's Drive that were moved to trash afterwards. Calculator, journal, one Plan Pack case and one tracker case computed as expected. The repo FAQ and tracker listing text now say exactly that; Excel stays "not tested".
+- Made the Drawdown Tracker's cover, thumbnail and two screenshots (original art; screenshots are LibreOffice renders of the shipped file); retook the Toolkit Stats screenshot without the chart.
+- No start, kill or scale decision (no sale data; dates stay Dec 11). Third slot stays empty: with no Chrome session since Oct 28, another listing would only join the publishing queue.
+- Cadence unchanged (daily 8:43 PT): not everything is live (Drawdown Tracker unpublished).

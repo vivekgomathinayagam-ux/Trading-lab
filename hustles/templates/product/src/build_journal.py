@@ -21,7 +21,7 @@ lines=[("Options Day Trader Journal",18,True),
 ("How to use it",13,True),
 ("1. Go to the 'Journal' tab. Add one row per trade. Fill only the yellow cells.",11,False),
 ("2. Planned risk ($) is the most you were willing to lose on the trade BEFORE you entered (for a long option, usually the premium paid).",11,False),
-("3. Multiplier is pre-filled with 100 (US stock options); change it to 1 for shares. Fees is your total commission and fees for the round trip. A yellow 'Check qty' means the contracts or multiplier cell is empty.",11,False),
+("3. Multiplier is pre-filled with 100 (US stock options); change it to 1 for shares. Fees is your total commission and fees for the round trip. A yellow 'Check' result means the row is not counted yet: qty = contracts or multiplier; dir = pick Long or Short; price = prices and fees must be plain numbers.",11,False),
 ("4. P&L ($), R-multiple, win/loss and the running total fill in by themselves. Do not type in the grey cells.",11,False),
 ("5. 'Stats' shows the whole picture. 'Calendar' shows each day's P&L for the month you choose. 'By Setup' splits results by setup tag.",11,False),
 ("6. The Journal has room for 500 trades. To add more, copy a whole row (click its row number), insert the copy ABOVE the last row so the totals include it, then type over the yellow cells.",11,False),("",11,False),
@@ -60,10 +60,12 @@ for r in range(2,N+2):
     j.cell(row=r,column=9).number_format="0.00"; j.cell(row=r,column=10).number_format="#,##0.00"
     if r-2<len(sample):
         for c,v in enumerate(sample[r-2],start=1): j.cell(row=r,column=c,value=v)
-    # P&L: long = (exit-entry), short = (entry-exit); direction must be Long/Short
-    j.cell(row=r,column=12,value=f'=IF(OR(E{r}="",F{r}="",N(G{r})<=0,N(H{r})<=0),"",ROUND(IF(D{r}="Short",E{r}-F{r},F{r}-E{r})*G{r}*H{r}-I{r},2))')
+    # P&L: long = (exit-entry), short = (entry-exit). A wrong direction, price or fee leaves P&L blank and flags
+    # the row, so one typo can neither flip a result nor turn every total into #VALUE!
+    bad=f'N(G{r})<=0,N(H{r})<=0,AND(D{r}<>"Long",D{r}<>"Short"),NOT(ISNUMBER(E{r})),NOT(ISNUMBER(F{r})),N(E{r})<0,N(F{r})<0,AND(I{r}<>"",NOT(ISNUMBER(I{r})))'
+    j.cell(row=r,column=12,value=f'=IF(OR(E{r}="",F{r}="",{bad}),"",ROUND(IF(D{r}="Short",E{r}-F{r},F{r}-E{r})*G{r}*H{r}-N(I{r}),2))')
     j.cell(row=r,column=13,value=f'=IF(OR(L{r}="",N(J{r})<=0),"",L{r}/J{r})')
-    j.cell(row=r,column=14,value=f'=IF(L{r}="",IF(AND(E{r}<>"",F{r}<>""),"Check qty",""),IF(L{r}>0,"Win",IF(L{r}<0,"Loss","Flat")))')
+    j.cell(row=r,column=14,value=f'=IF(L{r}="",IF(AND(E{r}<>"",F{r}<>""),IF(OR(N(G{r})<=0,N(H{r})<=0),"Check qty",IF(AND(D{r}<>"Long",D{r}<>"Short"),"Check dir","Check price")),""),IF(L{r}>0,"Win",IF(L{r}<0,"Loss","Flat")))')
     j.cell(row=r,column=15,value=f'=IF(L{r}="","",SUM($L$2:L{r}))')
     j.cell(row=r,column=16,value=f'=IF(L{r}="","",MAX(0,MAX($O$2:O{r})))')
     j.cell(row=r,column=17,value=f'=IF(L{r}="","",P{r}-O{r})')
@@ -76,7 +78,7 @@ dv=DataValidation(type="list",formula1='"Long,Short"',allow_blank=True); j.add_d
 j.conditional_formatting.add(f"N2:N{N+1}",CellIsRule(operator="equal",formula=['"Win"'],fill=PatternFill("solid",bgColor="C6EFCE")))
 j.conditional_formatting.add(f"N2:N{N+1}",CellIsRule(operator="equal",formula=['"Loss"'],fill=PatternFill("solid",bgColor="FFC7CE")))
 
-j.conditional_formatting.add(f"N2:N{N+1}",CellIsRule(operator="equal",formula=['"Check qty"'],fill=PatternFill("solid",bgColor="FFEB9C")))
+j.conditional_formatting.add(f"N2:N{N+1}",FormulaRule(formula=['LEFT(N2,5)="Check"'],fill=PatternFill("solid",bgColor="FFEB9C")))
 
 # ---------- Stats
 st=wb.create_sheet("Stats")

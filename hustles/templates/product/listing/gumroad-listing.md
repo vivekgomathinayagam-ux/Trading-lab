@@ -20,7 +20,7 @@ Not a signal, not advice, and it does not make anyone profitable. It is arithmet
 Built with AI assistance (Claude) and tested by recalculating every formula.
 
 ## FAQ
-- **Works in Excel and Google Sheets?** They are standard .xlsx files (for Google Sheets: upload to Drive and open with Sheets). So far they have been tested in LibreOffice only, not in Excel or Google Sheets themselves.
+- **Works in Excel and Google Sheets?** They are standard .xlsx files (for Google Sheets: upload to Drive and open with Sheets). The calculations were checked in LibreOffice and, with test copies, in Google Sheets (charts and cell coloring were not checked there). They have not been tested in Excel itself.
 - **How many trades?** 500 rows. For more, copy a whole row, insert the copy above the last row, then type over the yellow cells.
 - **Does it pull prices?** No. You type your own fills, so it never goes stale or breaks.
 - **Shares instead of options?** Yes: set Multiplier to 1.
@@ -32,4 +32,4 @@ Built with AI assistance (Claude) and tested by recalculating every formula.
 trading journal, options trading, risk calculator, position size, spreadsheet, day trading, google sheets
 
 ## Cover/screenshot checklist (do after the account exists)
-Journal tab with sample rows, Stats tab with chart, Calendar tab, Vertical spread tab. Real screenshots only, from the files as shipped.
+Journal tab with sample rows, Stats tab, Calendar tab, Vertical spread tab. Real screenshots only, from the files as shipped. screenshot-1-stats.png was retaken 2026-11-27 (stats table only, no chart): upload it with the v1.2 files. Paste the FAQ answers above only after the new files are uploaded.

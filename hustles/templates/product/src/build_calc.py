@@ -21,7 +21,7 @@ txt=[("Options Risk & Position Size Calculator",18,True),
 for i,(t,z,b) in enumerate(txt,start=2):
     c=s.cell(row=i,column=2,value=t); c.font=Font(size=z,bold=b,color=NAVY if b else "000000"); c.alignment=Alignment(wrap_text=True)
 def sheet(name):
-    w=wb.create_sheet(name); w.column_dimensions["A"].width=36; w.column_dimensions["B"].width=16; w.column_dimensions["C"].width=62; return w
+    w=wb.create_sheet(name); w.column_dimensions["A"].width=52; w.column_dimensions["B"].width=16; w.column_dimensions["C"].width=62; return w
 def put(w,r,label,val,nf=None,inputcell=False,note=""):
     w.cell(row=r,column=1,value=label).font=Font(bold=True)
     c=w.cell(row=r,column=2,value=val); c.border=box; c.fill=inp if inputcell else gry
@@ -32,15 +32,17 @@ def title(w,t):
 USD='$#,##0.00'; 
 a=sheet("Account"); title(a,"Your account and risk limit")
 put(a,3,"Account size ($)",5000,USD,True)
-put(a,4,"Max loss per trade (% of account)",0.05,"0.0%",True,"Example: 5% means you will not risk more than 5% on one trade")
-put(a,5,"Max loss per trade ($)","=B3*B4",USD,note="Account size times the percent")
+put(a,4,"Max loss per trade (% of account)",0.05,"0.0%",True,"Type it with the % sign: 5% means you risk at most 5% on one trade")
+def acct(f): return '=IF($B$14<>"OK","",'+f+')'
+put(a,5,"Max loss per trade ($)",acct("B3*B4"),USD,note="Account size times the percent")
 put(a,6,"Max loss per day (% of account)",0.10,"0.0%",True,"Optional: your stop-for-the-day level")
-put(a,7,"Max loss per day ($)","=B3*B6",USD)
-put(a,8,"Trades you could lose in a row before the daily limit","=IF(B5=0,\"\",ROUNDDOWN(B7/B5,0))","0",note="If every trade lost its full max")
+put(a,7,"Max loss per day ($)",acct('IF(OR(N(B6)<=0,N(B6)>=1),"",B3*B6)'),USD,note="Blank if the daily percent is empty or not between 0% and 100%")
+put(a,8,"Trades you could lose in a row before the daily limit",acct('IF(B7="","",ROUNDDOWN(ROUND(B7/B5,9),0))'),"0",note="If every trade lost its full max")
 a["A10"]="Position size for any trade"; a["A10"].font=Font(bold=True,color=NAVY,size=12)
 put(a,11,"Max loss per contract ($)",50,USD,True,"From the other tabs, or type your own")
-put(a,12,"Contracts allowed","=IF(B11<=0,\"\",ROUNDDOWN(B5/B11,0))","0",note="Whole contracts only")
-put(a,13,"Result",'=IF(B12="","",IF(B12=0,"Too big for your limit: even 1 contract risks more than "&TEXT(B5,"$#,##0.00"),B12&" contract(s) fit"))')
+put(a,12,"Contracts allowed",acct('IF(N(B11)<=0,"",ROUNDDOWN(ROUND(B5/B11,9),0))'),"0",note="Whole contracts only")
+put(a,13,"Result",'=IF(B14<>"OK","Check inputs: "&B14,IF(N(B11)<=0,"Check inputs: enter the max loss per contract (above 0)",IF(B12=0,"Too big for your limit: even 1 contract risks more than "&TEXT(B5,"$#,##0.00"),B12&" contract(s) fit")))')
+put(a,14,"Check on account inputs",'=IF(N(B3)<=0,"Enter the account size (above 0)",IF(OR(N(B4)<=0,N(B4)>=1),"Max loss per trade must be above 0% and below 100% (type 5%, not 5)","OK"))')
 # long option
 l=sheet("Long option"); title(l,"Long call or put")
 put(l,3,"Premium paid per share ($)",1.25,'0.00',True,"The price you pay, as quoted")
@@ -57,8 +59,8 @@ put(l,12,"Max loss per contract ($)",ok("$B$18","B3*B5+B6/B4"),USD)
 put(l,13,"Breakeven at expiry",ok("$B$18","IF(B7=\"Call\",B8+B3+B6/(B4*B5),B8-B3-B6/(B4*B5))"),'0.00')
 put(l,14,"Max profit",ok("$B$18","IF(B7=\"Call\",\"Unlimited\",(B8-B3)*B4*B5-B6)"),USD,note="Put: strike minus premium, if the stock goes to zero")
 put(l,15,"Move needed to break even (%)",ok("$B$18","ABS(B13-B8)/B8"),"0.00%",note="From the strike, as a share of the strike")
-put(l,16,"Fits your risk limit?",'=IF(B18<>"OK","Check inputs: "&B18,IF(ROUND(B11,2)<=ROUND(Account!B5,2),"Yes","No: max loss "&TEXT(B11,"$#,##0.00")&" is above your limit of "&TEXT(Account!B5,"$#,##0.00")))')
-put(l,17,"Most contracts that fit",ok("$B$18","ROUNDDOWN(ROUND(Account!B5/B12,9),0)"),"0")
+put(l,16,"Fits your risk limit?",'=IF(Account!B14<>"OK","Check inputs: Account tab: "&Account!B14,IF(B18<>"OK","Check inputs: "&B18,IF(ROUND(B11,2)<=ROUND(Account!B5,2),"Yes","No: max loss "&TEXT(B11,"$#,##0.00")&" is above your limit of "&TEXT(Account!B5,"$#,##0.00"))))')
+put(l,17,"Most contracts that fit",ok("$B$18",'IF(Account!$B$14<>"OK","",ROUNDDOWN(ROUND(Account!B5/B12,9),0))'),"0")
 put(l,18,"Check on inputs",'=IF(N(B3)<=0,"Enter the premium (above 0)",IF(N(B4)<1,"Enter the number of contracts (1 or more)",IF(N(B4)<>INT(N(B4)),"Contracts must be a whole number",IF(N(B5)<=0,"Enter the multiplier (100 for US options)",IF(N(B6)<0,"Fees cannot be negative",IF(AND(B7<>"Call",B7<>"Put"),"Pick Call or Put",IF(N(B8)<=0,"Enter the strike (above 0)","OK")))))))')
 # vertical
 v=sheet("Vertical spread"); title(v,"Vertical spread (debit or credit)")
@@ -78,7 +80,7 @@ put(v,15,"Max profit ($)",ok("$B$21",'IF(B13="Debit",(B12-B6)*B7*B8-B9,B6*B7*B8-
 put(v,16,"Breakeven at expiry",ok("$B$21",'IF(B3="Bull call (debit)",B4+B6,IF(B3="Bear put (debit)",B5-B6,IF(B3="Bull put (credit)",B5-B6,B4+B6)))'),'0.00',note="Before fees")
 put(v,17,"Reward : risk",ok("$B$21",'B15/B14'),'0.00')
 put(v,18,"Max loss per contract ($)",ok("$B$21",'B14/B7'),USD)
-put(v,19,"Fits your risk limit?",'=IF(B21<>"OK","Check inputs: "&B21,IF(ROUND(B14,2)<=ROUND(Account!B5,2),"Yes","No: max loss "&TEXT(B14,"$#,##0.00")&" is above your limit of "&TEXT(Account!B5,"$#,##0.00")))')
-put(v,20,"Most contracts that fit",ok("$B$21",'ROUNDDOWN(ROUND(Account!B5/B18,9),0)'),"0")
+put(v,19,"Fits your risk limit?",'=IF(Account!B14<>"OK","Check inputs: Account tab: "&Account!B14,IF(B21<>"OK","Check inputs: "&B21,IF(ROUND(B14,2)<=ROUND(Account!B5,2),"Yes","No: max loss "&TEXT(B14,"$#,##0.00")&" is above your limit of "&TEXT(Account!B5,"$#,##0.00"))))')
+put(v,20,"Most contracts that fit",ok("$B$21",'IF(Account!$B$14<>"OK","",ROUNDDOWN(ROUND(Account!B5/B18,9),0))'),"0")
 put(v,21,"Check on inputs",'=IF(AND(B3<>"Bull call (debit)",B3<>"Bear put (debit)",B3<>"Bull put (credit)",B3<>"Bear call (credit)"),"Pick the spread type from the list",IF(OR(N(B4)<=0,N(B5)<=0),"Enter both strikes",IF(N(B5)<=N(B4),"Higher strike must be above lower strike",IF(N(B6)<=0,"Enter the net price (above 0)",IF(N(B7)<1,"Enter the number of contracts (1 or more)",IF(N(B7)<>INT(N(B7)),"Contracts must be a whole number",IF(N(B8)<=0,"Enter the multiplier (100 for US options)",IF(N(B9)<0,"Fees cannot be negative",IF(AND(B13="Debit",N(B6)>=B5-B4),"Debit is at or above the width: check the price",IF(AND(B13="Credit",N(B6)>=B5-B4),"Credit is at or above the width: check the price","OK"))))))))))')
 wb.save("../Options Risk and Position Size Calculator.xlsx"); print("ok")
