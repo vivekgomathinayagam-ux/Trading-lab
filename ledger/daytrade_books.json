@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-26T20:59:18+00:00",
+ "as_of": "2026-11-27T14:30:19+00:00",
  "peak": {
   "orb_vol": 1003.0591364,
   "ema_vol": 1000.4176900000002,
@@ -14,7 +14,7 @@
   "volspike": 1084.6381576000022,
   "ema_vol_v2": 983.3730932000005
  },
- "sod_date": "2026-11-26",
+ "sod_date": "2026-11-27",
  "benchmark": {
   "SPY": {
    "date": "2026-10-26",
@@ -24,19 +24,26 @@
  "started": "2026-10-26",
  "evaluation": "preliminary",
  "feed": {
-  "yahoo_down": [
-   "SPY",
-   "QQQ",
-   "TQQQ",
-   "UPRO",
-   "SQQQ",
-   "SPXU"
-  ],
-  "entries_paused": true,
-  "price_source": {},
+  "yahoo_down": [],
+  "entries_paused": false,
+  "price_source": {
+   "SPY": "yahoo_rt",
+   "QQQ": "yahoo_rt",
+   "TQQQ": "yahoo_rt",
+   "UPRO": "yahoo_rt",
+   "SQQQ": "yahoo_rt",
+   "SPXU": "yahoo_rt"
+  },
   "skylit": "ok"
  },
- "marks": {},
+ "marks": {
+  "SPY": 725.34,
+  "QQQ": 645.48,
+  "TQQQ": 47.685,
+  "UPRO": 120.9,
+  "SQQQ": 47.0,
+  "SPXU": 39.4
+ },
  "desks": {
   "orb_vol": {
    "cash": 932.074985400001,
