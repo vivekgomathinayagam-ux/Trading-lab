@@ -1,0 +1,17 @@
+{
+ "day": "2026-11-27",
+ "scored": [],
+ "market_read": {
+  "tone": "Risk-on gap up into a thin Black Friday half day: AI/chip rebound continuation after Wednesday's full gap-down reversal; oil firm on Gulf attacks.",
+  "day_type": "chop after the gap (thin holiday tape, 3.5-hour session); a gap-and-fade and a slow drift up are both plausible, a trend day less so",
+  "spy_bias": {
+   "direction": "down",
+   "confidence": 52
+  },
+  "qqq_bias": {
+   "direction": "down",
+   "confidence": 53
+  },
+  "comment": "Bias is open-to-close (09:30-13:00) from the gap open, not vs. Wednesday's close. Lean: slight fade, because gap-ups faded on Nov 12, 17 and 18, today's gap stacks on top of Wednesday's +2% / +2.8% intraday reversal (SPY open is ~3.7% above Wednesday's low in under 1.5 sessions), TipRanks already reports AI names giving back early gains, and holiday volume is thin. Against it: pre-holiday and Black Friday sessions lean firm, and Wednesday showed dip buyers are active; this is close to a coin flip. QQQ gets the bigger lean because its gap is larger and chip-led. Tripwire: at 10:15, if SPY and QQQ are above their 09:30-10:00 highs, drop both down leans (a drift-up half day); if QQQ is below its 09:30-10:00 low, the fade lean holds. Any index target should be small (0.4-0.6%) given the short session."
+ }
+}
